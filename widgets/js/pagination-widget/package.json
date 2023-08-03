@@ -1,0 +1,19 @@
+{
+  "name": "pagination-widget-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel src/index.html"
+  },
+  "keywords": ["Pagination widget example"],
+  "author": "@SearchStax Inc.",
+  "license": "ISC",
+    "devDependencies": {
+    "@parcel/transformer-sass": "^2.9.3",
+    "parcel": "^2.9.3"
+  },
+  "dependencies": {
+    "@searchstax-inc/searchstudio-ux-js": "^0.4.3"
+  }
+}
