@@ -1,14 +1,12 @@
 {
-  "name": "searchstax-hosted-page",
+  "name": "job-search-sample",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "parcel src/index.html"
   },
-  "keywords": [
-    "SearchStax Search Page"
-  ],
+  "keywords": ["Job Search App"],
   "author": "@SearchStax Inc.",
   "license": "ISC",
   "devDependencies": {

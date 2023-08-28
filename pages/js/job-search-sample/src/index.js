@@ -1,26 +1,27 @@
 import '@searchstax-inc/searchstudio-ux-js/dist/styles/mainTheme.css'
 import './main.scss'
-import { Searchstax } from '@searchstax-inc/searchstudio-ux-js';
+import { Searchstax } from '@searchstax-inc/searchstudio-ux-js'
 import { initConfig } from '../../config';
+
 
 const searchstax = new Searchstax();
 
-searchstax.initialize( initConfig.acceleratorSample );
+searchstax.initialize( initConfig.jobSearchSample );
 
 searchstax.addSearchFeedbackWidget("search-feedback-container", {
     templates: {
       main: {
           template: `
-          {{#searchExecuted}}
-              <div class="searchstax-feedback-container">
-                  Showing <b>{{startResultIndex}} - {{endResultIndex}}</b> of <b>{{totalResults}}</b> results {{#searchTerm}} for "<b>{{searchTerm}}</b>" {{/searchTerm}}
-                  <div class="searchstax-feedback-container-suggested">
-                    {{#autoCorrectedQuery}}
-                      Search instead for <a href="#" class="searchstax-feedback-original-query">{{originalQuery}}</a>
-                    {{/autoCorrectedQuery}}
-                  </div>
-              </div>
-          {{/searchExecuted}}
+        {{#searchExecuted}}
+            <div class="searchstax-feedback-container">
+            <h3>{{totalResults}} Jobs found </b> {{#searchTerm}} for <b>{{searchTerm}}</b> {{/searchTerm}} </h3>
+                <div class="searchstax-feedback-container-suggested">
+                  {{#autoCorrectedQuery}}
+                    Search instead for <a href="#" class="searchstax-feedback-original-query">{{originalQuery}}</a>
+                  {{/autoCorrectedQuery}}
+                </div>
+            </div>
+        {{/searchExecuted}}
         `,
           originalQueryClass: `searchstax-feedback-original-query`
       }
@@ -33,12 +34,7 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
     templates: {
     mainTemplate: {
         template: `
-        <div class="searchstax-search-input-container">
-            <div class="searchstax-search-input-wrapper">
-                <input type="text" id="searchstax-search-input" class="searchstax-search-input" placeholder="Search For..." />
-                <button class="searchstax-spinner-icon" id="searchstax-search-input-action-button"></button>
-            </div>
-        </div>
+          <input type="text" autocomplete="off" id="searchstax-search-input" class="searchstax-search-input" placeholder="Search for job posts, companies" />
         `,
         searchInputId: "searchstax-search-input"
     },
@@ -58,7 +54,9 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
         mainTemplateDesktop: {
             template: `
       {{#hasResultsOrExternalPromotions}}
-        <div class="searchstax-facets-container-desktop"></div>
+        <div class="searchstax-facets-container-desktop">
+          <h3>Filters</h3>
+        </div>
       {{/hasResultsOrExternalPromotions}}
       `,
             facetsContainerId: "",
@@ -194,44 +192,29 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
       },
       searchResultTemplate: {
         template: `
-            <div class="searchstax-search-result {{#thumbnail}} has-thumbnail {{/thumbnail}}">
-
-                {{#unmappedFields}}
-                    {{#isImage}}
-                        <div class="searchstax-search-result-image-container">
-                        <img src="{{value}}" class="searchstax-result-image">
+              <div class="searchstax-search-result {{#thumbnail}} has-thumbnail {{/thumbnail}}">
+                  <div class="searchstax-search-result-content">
+                    <div class="searchstax-search-result-title-wrapper">
+                        <div class="searchstax-search-result-title-container">
+                          <h2 class="searchstax-search-result-title">{{title}}</h2>
                         </div>
-                    {{/isImage}}
-                {{/unmappedFields}}
-
-            <div class="searchstax-search-result-content">
-
-                <div class="searchstax-search-result-title-wrapper">
-
-                    <div class="searchstax-search-result-title-container">
-                        <h2 class="searchstax-search-result-title">{{title}}</h2>
                     </div>
-
-                    {{#ribbon}}
-                        <div class="searchstax-search-result-ribbon">
-                        <span class="pill">{{ribbon}}</span>
-                        {{#promoted}}
-                            <span> Promoted </span>
-                        {{/promoted}}
-                        </div>
-                    {{/ribbon}}          
-                </div>
-
-
-                {{#description}}
+                    {{#description}}
                     <p class="searchstax-search-result-description searchstax-search-result-common">
                         {{description}}
                     </p>
-                {{/description}}
+                    {{/description}}
 
-            </div>
-                
-            </div>
+                    {{#ribbon}}
+                          <span class="pill">{{ribbon}}</span>
+                    {{/ribbon}} 
+                  </div>
+                  <div class="searchstax-search-result-action">
+                    <button class="btn-outline">Save For Later</button>
+                    <button class="btn-primary">Apply</button>
+                    
+                  </div>
+              </div>
             `,
         searchResultUniqueIdAttribute: "data-searchstax-unique-result-id"
       },
@@ -243,19 +226,52 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
                 {{#spellingSuggestion}}
                     <span>&nbsp;Did you mean <a href="#" class="searchstax-suggestion-term">{{ spellingSuggestion }}</a>?</span>
                 {{/spellingSuggestion}}
-            </div>
-            <div>
-                <p>Search Help:</p>
-                <li> Check for typos and spelling errors </li>
-                <li> User more general search terms </li>
-                <li> Use different search terms </li>
+
+                <br>
+                <div>
+                  <p>Search Help:</p>
+                  <li> Check for typos and spelling errors </li>
+                  <li> User more general search terms </li>
+                  <li> Use different search terms </li>
+                </div>
+
             </div>
             `
       }
     },
   });
 
-  searchstax.addPaginationWidget("searchstax-pagination-container", {
+  searchstax.addRelatedSearchesWidget("searchstax-related-searches-container", {
+    relatedSearchesURL: initConfig.jobSearchRelatedSearchSample.relatedSearchesURL,
+    relatedSearchesAPIKey: initConfig.jobSearchRelatedSearchSample.relatedSearchesAPIKey,
+   templates: {
+     main: {
+         template: `
+       {{#hasRelatedSearches}}
+           <div class="searchstax-related-searches-container" id="searchstax-related-searches-container">
+               <h3>Also search for: </h3> <span id="searchstax-related-searches"></span>
+               {{#relatedSearches}}
+               <span class="searchstax-related-search">
+
+               </span>
+           {{/relatedSearches}}
+           </div>
+       {{/hasRelatedSearches}}
+       `,
+         relatedSearchesContainerClass: `searchstax-related-search`,
+     },
+     relatedSearch: {
+         template: `
+       <p class="searchstax-related-search-item">
+           {{ related_search }}
+       </p>
+       `,
+         relatedSearchContainerClass: `searchstax-related-search-item`,
+     },
+   },
+ });
+
+   searchstax.addPaginationWidget("searchstax-pagination-container", {
     templates: {
         mainTemplate: {
             template: `
@@ -276,53 +292,3 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
         }
     },
   });
-
-  searchstax.addRelatedSearchesWidget("searchstax-related-searches-container", {
-    relatedSearchesURL: initConfig.acceleratorRelatedSearchSample.relatedSearchesURL,
-    relatedSearchesAPIKey: initConfig.acceleratorRelatedSearchSample.relatedSearchesAPIKey,
-   templates: {
-     main: {
-         template: `
-       {{#hasRelatedSearches}}
-           <div class="searchstax-related-searches-container" id="searchstax-related-searches-container">
-               <h3>Related searches</h3> <span id="searchstax-related-searches"></span>
-               {{#relatedSearches}}
-               <span class="searchstax-related-search">
-
-               </span>
-           {{/relatedSearches}}
-           </div>
-       {{/hasRelatedSearches}}
-       `,
-         relatedSearchesContainerClass: `searchstax-related-search`,
-     },
-     relatedSearch: {
-         template: `
-       <span class="searchstax-related-search-item">
-           {{ related_search }}
-       </span>
-       `,
-         relatedSearchContainerClass: `searchstax-related-search-item`,
-     },
-   },
- });
-
-
- 
-document.addEventListener('click', function(event) {
-  if (event.target.classList.contains('searchstax-related-search-item')) {
-    scrollToTop();
-  }
-});
-
-function scrollToTop() {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
-}
-
-
-
-
-
