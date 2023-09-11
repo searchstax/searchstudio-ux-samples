@@ -8,6 +8,17 @@ const searchstaxConfig = {
     relatedSearchesURL: "https://app.searchstax.com/api/v1/1442/related-search/",
     relatedSearchesAPIKey: "fac98ad405cc50e0c0693331e8d2119de592f0e3",
 };
+
+const jobSearchConfig = {
+    language: "en",
+    searchURL: "https://searchcloud-2-us-east-1.searchstax.com/29847/jobsearchuxsample-1447/emselect",
+    suggesterURL: "https://searchcloud-2-us-east-1.searchstax.com/29847/jobsearchuxsample-1447_suggester/emsuggest",
+    searchAuth: "9c77f740418413b6701fe7a98cc7c640987a9af1",
+    trackApiKey: "Cnpe2IL7uXaztPzavTIuDAiAmfydOa12f0iAGE0hLlY",
+    authType: "token",
+    relatedSearchesURL: "https://app.searchstax.com/api/v1/1447/related-search/",
+    relatedSearchesAPIKey: "3014f9d0276906ac17fff16c500e5ee75b20d73c",
+}
   
 
-export { searchstaxConfig };
+export { searchstaxConfig, jobSearchConfig };
