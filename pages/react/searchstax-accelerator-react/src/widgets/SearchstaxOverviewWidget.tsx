@@ -10,7 +10,7 @@ function searchOverviewTemplate(
   ) {
     return (
       <>
-        {searchFeedbackData && searchFeedbackData?.searchExecuted && searchFeedbackData?.totalResults && (
+        {searchFeedbackData && searchFeedbackData?.searchExecuted && searchFeedbackData?.totalResults > 0 && (
           <>
             Showing{" "}
             <b>
@@ -52,6 +52,6 @@ function searchOverviewTemplate(
         <SearchstaxOverviewWidget searchOverviewTemplate={searchOverviewTemplate}></SearchstaxOverviewWidget>
     );
   };
-  
+
   export default OverviewWidget;
 

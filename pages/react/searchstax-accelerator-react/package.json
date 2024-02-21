@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@searchstax-inc/searchstudio-ux-js": "^0.5.11",
-    "@searchstax-inc/searchstudio-ux-react": "^0.2.3",
+    "@searchstax-inc/searchstudio-ux-react": "^0.2.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
