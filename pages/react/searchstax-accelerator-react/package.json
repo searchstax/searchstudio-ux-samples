@@ -10,8 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@searchstax-inc/searchstudio-ux-js": "^0.5.11",
-    "@searchstax-inc/searchstudio-ux-react": "^0.2.4",
+    "@searchstax-inc/searchstudio-ux-js": "^0.5.15",
+    "@searchstax-inc/searchstudio-ux-react": "^0.2.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
