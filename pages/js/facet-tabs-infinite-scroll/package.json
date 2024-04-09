@@ -1,0 +1,21 @@
+{
+  "name": "facets-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel src/index.html"
+  },
+  "keywords": [
+    "SearchStax Search Page"
+  ],
+  "author": "@SearchStax Inc.",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.9.3",
+    "parcel": "^2.9.3"
+  },
+  "dependencies": {
+    "@searchstax-inc/searchstudio-ux-js": "^0.5.23"
+  }
+}
