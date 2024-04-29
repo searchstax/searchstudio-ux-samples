@@ -213,7 +213,7 @@
               </div>
             </ng-template>
           </app-searchstax-external-promotions>
-          <app-searchstax-results [afterLinkClick]="afterLinkClick" [resultsTemplate]="resultsTemplate">
+          <app-searchstax-results [afterLinkClick]="afterLinkClick" [resultsTemplate]="resultsTemplate" [resultsPerPage]="3">
             <ng-template #resultsTemplate let-searchResults="searchResults" let-resultClicked="resultClicked"
               let-isImage="isImage" let-context="context">
               <div class="searchstax-search-results">

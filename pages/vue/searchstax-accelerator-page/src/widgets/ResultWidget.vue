@@ -30,7 +30,7 @@
                       <h2 class="searchstax-search-result-title">{{ searchResult.title }}</h2>
                     </div>
 
-                    
+
                     <div v-if="searchResult.ribbon" class="searchstax-search-result-ribbon">
                       <span class="pill">{{ searchResult.ribbon }}</span>
                       <div v-if="searchResult.promoted" class="searchstax-search-result-promoted"></div>
@@ -44,7 +44,7 @@
                 </p>
             </div>
 
-            
+
             <a
               v-if="searchResult.url"
               :href="searchResult.url"
