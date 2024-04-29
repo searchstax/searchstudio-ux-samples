@@ -1,6 +1,6 @@
 import { SearchstaxResultWidget } from "@searchstax-inc/searchstudio-ux-react";
 
-import type { 
+import type {
     ISearchstaxSearchMetadata,
     ISearchstaxParsedResult
 } from "@searchstax-inc/searchstudio-ux-js";
@@ -65,13 +65,13 @@ function afterLinkClick(result: ISearchstaxParsedResult) {
                   )}
                 </div>
               ))}
-  
+
               <div className="searchstax-search-result-content">
                 <div className="searchstax-search-result-title-wrapper">
                   <div className="searchstax-search-result-title-container">
                     <h2 className="searchstax-search-result-title">{searchResult.title}</h2>
                   </div>
-  
+
                   {searchResult.ribbon && (
                     <div className="searchstax-search-result-ribbon">
                       <span className="pill">{searchResult.ribbon}</span>
@@ -79,14 +79,14 @@ function afterLinkClick(result: ISearchstaxParsedResult) {
                     </div>
                   )}
                 </div>
-  
+
                 {searchResult.description && (
                   <p className="searchstax-search-result-description searchstax-search-result-common">
                     {searchResult.description}
                   </p>
                 )}
               </div>
-  
+
               {searchResult.url && (
                 <a
                   href={searchResult.url}
@@ -108,10 +108,11 @@ const ResultWidget: React.FC = () => {
     return (
         <SearchstaxResultWidget
         afterLinkClick={afterLinkClick}
+        resultsPerPage={10}
         noResultTemplate={noResultTemplate}
         resultsTemplate={resultsTemplate}
         ></SearchstaxResultWidget>
     );
   };
-  
+
   export default ResultWidget;

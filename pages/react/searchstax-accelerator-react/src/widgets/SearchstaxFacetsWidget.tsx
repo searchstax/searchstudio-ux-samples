@@ -55,7 +55,12 @@ function facetsTemplateDesktop(
                           }`}
                           ref={facetContainers[key + facet.name]}
                         >
-                          <div className="searchstax-facet-input">
+                          <div className={
+                                    "searchstax-facet-input" +
+                                    " desktop-" +
+                                    key +
+                                    facet.name
+                                  }>
                             <input
                               type="checkbox"
                               className="searchstax-facet-input-checkbox"
@@ -126,7 +131,8 @@ function facetsTemplateDesktop(
       index: string,
       event: React.MouseEvent<HTMLDivElement, MouseEvent>,
       data: IFacetValueData,
-      isInput: boolean
+      isInput: boolean,
+      isMobile?: boolean
     ) => void,
     isChecked: (facetValue: IFacetValueData) => boolean | undefined,
     unselectFacet: (facet: IFacetValue) => void,
@@ -220,7 +226,12 @@ function facetsTemplateDesktop(
                                 }`}
                                 ref={facetContainers[key + facet.name]}
                               >
-                                <div className="searchstax-facet-input">
+                                <div className={
+                                    "searchstax-facet-input" +
+                                    " mobile-" +
+                                    key +
+                                    facet.name
+                                  }>
                                   <input
                                     type="checkbox"
                                     className="searchstax-facet-input-checkbox"
@@ -228,7 +239,7 @@ function facetsTemplateDesktop(
                                     readOnly={true}
                                     disabled={facetValue.disabled}
                                     onClick={(e) => {
-                                      selectFacet(key + facet.name, e, facetValue, true);
+                                      selectFacet(key + facet.name, e, facetValue, true, true);
                                     }}
                                   />
                                 </div>
@@ -305,6 +316,6 @@ function facetsTemplateDesktop(
       ></SearchstaxFacetsWidget>
     );
   };
-  
+
   export default FacetsWidget;
 
