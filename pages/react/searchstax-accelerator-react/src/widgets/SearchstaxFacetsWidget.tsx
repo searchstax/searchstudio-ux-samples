@@ -19,7 +19,8 @@ function facetsTemplateDesktop(
       index: string,
       event: React.MouseEvent<HTMLDivElement, MouseEvent>,
       data: IFacetValueData,
-      isInput: boolean
+      isInput: boolean,
+      isMobile?: boolean
     ) => void,
     isChecked: (facetValue: IFacetValueData) => boolean | undefined,
     showMoreLessDesktop: (e: React.MouseEvent<HTMLDivElement, MouseEvent>, data: IFacetData) => void
