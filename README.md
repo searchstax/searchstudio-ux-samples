@@ -1,8 +1,8 @@
 ![Searchstax](./images/banner.png)
-# SearchStudio-UX-Samples
+# SiteSearch-UX-Samples
 
 
-This repository contains the code examples for the Searchstudio UX libraries.
+This repository contains the code examples for the Site Search UX libraries.
 
 
 # Installation
