@@ -10,6 +10,7 @@ import {
   SearchstaxRelatedSearchesWidget,
   SearchstaxExternalPromotionsWidget,
   SearchstaxFacetsWidget,
+  //@ts-ignore
 } from "@searchstax-inc/searchstudio-ux-react";
 
 import type {
@@ -32,7 +33,7 @@ import { InputTemplate } from "./templates/inputTemplates.js";
 
 function App() {
   //@ts-ignore
-  const [searchstaxInstance, setSearchstaxInstance] = useState(
+  const [searchstaxInstance, setSearchstaxInstance] = useState(// eslint-disable-line
     null as null | Searchstax
   );
 
