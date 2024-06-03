@@ -201,53 +201,47 @@ searchstax.addSearchResultsWidget("searchstax-results-container", {
     },
     searchResultTemplate: {
       template: `
-              <div class="searchstax-search-result {{#thumbnail}} has-thumbnail {{/thumbnail}}">
-                  {{#promoted}}
-                      <div class="searchstax-search-result-promoted"></div>
-                  {{/promoted}}
+      <div class="searchstax-search-result {{#thumbnail}} has-thumbnail {{/thumbnail}}">
+        {{#url}}
+          <a href="{{url}}" data-searchstax-unique-result-id="{{uniqueId}}" class="searchstax-result-item-link"></a>
+        {{/url}}
 
-                  {{#url}}
-                      <a href="{{url}}" data-searchstax-unique-result-id="{{uniqueId}}" class="searchstax-result-item-link"></a>
-                  {{/url}}
-
-                  {{#ribbon}}
-                      <div class="searchstax-search-result-ribbon">
-                      {{ribbon}}
-                      </div>
-                  {{/ribbon}}
-
-                  {{#thumbnail}}
-                      <img src="{{thumbnail}}" class="searchstax-thumbnail">
-                  {{/thumbnail}}
-                  <div class="searchstax-search-result-title-container">
-                      <span class="searchstax-search-result-title">{{title}}</span>
-                  </div>
-
-                  {{#paths}}
-                      <p class="searchstax-search-result-common">
-                          {{paths}}
-                      </p>
-                  {{/paths}}
-
-                  {{#description}}
-                      <p class="searchstax-search-result-description searchstax-search-result-common">
-                          {{description}}
-                      </p>
-                  {{/description}}
-
-                  {{#unmappedFields}}
-                      {{#isImage}}
-                          <div class="searchstax-search-result-image-container">
+        {{#unmappedFields}}
+          {{#isImage}}
+                        <div class="searchstax-search-result-image-container">
                           <img src="{{value}}" class="searchstax-result-image">
-                          </div>
-                      {{/isImage}}
-                      {{^isImage}}
-                          <p class="searchstax-search-result-common">
-                          {{value}}
-                          </p>
-                      {{/isImage}}
-                  {{/unmappedFields}}
-              </div>
+                        </div>
+          {{/isImage}}
+        {{/unmappedFields}}
+
+            <div class="searchstax-search-result-content">
+
+                <div class="searchstax-search-result-title-wrapper">
+
+                    <div class="searchstax-search-result-title-container">
+                        <h2 class="searchstax-search-result-title">{{title}}</h2>
+                    </div>
+
+                    {{#ribbon}}
+                        <div class="searchstax-search-result-ribbon">
+                        <span class="pill">{{ribbon}}</span>
+                        {{#promoted}}
+                            <span> Promoted </span>
+                        {{/promoted}}
+                        </div>
+                    {{/ribbon}}
+                </div>
+
+
+                {{#description}}
+                    <p class="searchstax-search-result-description searchstax-search-result-common">
+                        {{description}}
+                    </p>
+                {{/description}}
+
+            </div>
+
+            </div>
               `,
       searchResultUniqueIdAttribute: `data-searchstax-unique-result-id`,
     },
@@ -355,7 +349,7 @@ searchstax.addExternalPromotionsWidget(
         <div class="searchstax-external-promotion searchstax-search-result">
             <div class="icon-elevated"></div>
             {{#url}}
-            <a href="{{url}}" data-searchstax-unique-result-id="{{uniqueId}}" class="searchstax-result-item-link"></a>
+            <a href="{{url}}" class="searchstax-result-item-link"></a>
             {{/url}}
             <div class="searchstax-search-result-title-container">
                 <span class="searchstax-search-result-title">{{name}}</span>
