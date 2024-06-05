@@ -78,7 +78,7 @@ function App() {
         initialized={initialized}
         beforeSearch={beforeSearch}
         afterSearch={afterSearch}
-        authType="token"
+        authType={config.authType}
         router={{ enabled: true }}
         language="en"
       >
