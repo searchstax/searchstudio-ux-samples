@@ -1,7 +1,7 @@
 import "@searchstax-inc/searchstudio-ux-js/dist/styles/mainTheme.css";
 import "./main.scss";
 import { Searchstax } from "@searchstax-inc/searchstudio-ux-js";
-import { initConfig } from "../../config";
+import { initConfig, renderConfig } from "../../config";
 
 const searchstax = new Searchstax();
 
@@ -30,7 +30,7 @@ searchstax.addSearchFeedbackWidget("search-feedback-container", {
 });
 
 searchstax.addSearchInputWidget("searchstax-input-container", {
-  suggestAfterMinChars: 3,
+  suggestAfterMinChars: renderConfig.inputWidget.suggestAfterMinChars,
   templates: {
     mainTemplate: {
       template: `
@@ -52,9 +52,9 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
 });
 
 searchstax.addFacetsWidget("searchstax-facets-container", {
-  facetingType: "and",
-  itemsPerPageDesktop: 3,
-  itemsPerPageMobile: 99,
+  facetingType: renderConfig.facetsWidget.facetingType,
+  itemsPerPageDesktop:  renderConfig.facetsWidget.itemsPerPageDesktop,
+  itemsPerPageMobile: renderConfig.facetsWidget.itemsPerPageMobile,
   templates: {
     mainTemplateDesktop: {
       template: `
@@ -263,6 +263,8 @@ searchstax.addSearchResultsWidget("searchstax-results-container", {
               `,
     },
   },
+  renderMethod: renderConfig.resultsWidget.renderMethod,
+  resultsPerPage: renderConfig.resultsWidget.itemsPerPage,
 });
 
 searchstax.addPaginationWidget("searchstax-pagination-container", {
