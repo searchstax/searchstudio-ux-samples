@@ -8,6 +8,9 @@ const initConfig = {
     searchAuth: "b065448ad1484e205f4851f0ce89d128e704e2f4",
     trackApiKey: "DPAOKNB9c5chZZDwN1Il9dLUCLMGF1ggehy0dWewZwk",
     authType: "token",
+    relatedSearchesURL:
+      "https://app.searchstax.com/api/v1/1447/related-search/",
+    relatedSearchesAPIKey: "3014f9d0276906ac17fff16c500e5ee75b20d73c",
   },
   acceleratorRelatedSearchSample: {
     relatedSearchesURL:
