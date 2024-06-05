@@ -9,7 +9,7 @@ const config = {
     relatedSearchesAPIKey: "fac98ad405cc50e0c0693331e8d2119de592f0e3",
 };
 
-const renderOptionsConfig = {
+const renderConfig = {
     inputWidget: {
       suggestAfterMinChars: 3,
     },
@@ -24,6 +24,5 @@ const renderOptionsConfig = {
     },
   };
 
-const renderConfig = renderOptionsConfig;
 
 export { config, renderConfig};
