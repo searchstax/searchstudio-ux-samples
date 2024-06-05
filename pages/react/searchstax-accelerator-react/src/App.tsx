@@ -21,7 +21,7 @@ import type {
 } from "@searchstax-inc/searchstudio-ux-js";
 import { Searchstax } from "@searchstax-inc/searchstudio-ux-js";
 //@ts-ignore
-import { config } from "../../config.js";
+import { config, renderConfig } from "../../config.js";
 import { noResultTemplate, resultsTemplate } from "./templates/resultsTemplates.js";
 import { infiniteScrollTemplate, paginationTemplate } from "./templates/paginationTemplates.js";
 import { searchRelatedSearchesTemplate } from "./templates/relatedSearchesTemplates.js";
@@ -85,6 +85,7 @@ function App() {
         <div className="searchstax-page-layout-container">
           <SearchstaxInputWidget
             inputTemplate={InputTemplate}
+            suggestAfterMinChars={renderConfig.inputWidget.suggestAfterMinChars}
             afterAutosuggest={afterAutosuggest}
             beforeAutosuggest={beforeAutosuggest}
           ></SearchstaxInputWidget>
@@ -101,9 +102,9 @@ function App() {
           <div className="searchstax-page-layout-facet-result-container">
             <div className="searchstax-page-layout-facet-container">
               <SearchstaxFacetsWidget
-                facetingType="and"
-                itemsPerPageDesktop={2}
-                itemsPerPageMobile={3}
+                facetingType={renderConfig.facetsWidget.facetingType}
+                itemsPerPageDesktop={renderConfig.facetsWidget.itemsPerPageDesktop}
+                itemsPerPageMobile={renderConfig.facetsWidget.itemsPerPageMobile}
                 specificFacets={undefined}
                 facetsTemplateDesktop={facetsTemplateDesktop}
                 facetsTemplateMobile={facetsTemplateMobile}
@@ -118,8 +119,8 @@ function App() {
               ></SearchstaxExternalPromotionsWidget>
               <SearchstaxResultWidget
                 afterLinkClick={afterLinkClick}
-                resultsPerPage={3}
-                // renderMethod="infiniteScroll"
+                resultsPerPage={renderConfig.resultsWidget.resultsPerPage}
+                renderMethod={renderConfig.resultsWidget.renderMethod}
                 noResultTemplate={noResultTemplate}
                 resultsTemplate={resultsTemplate}
               ></SearchstaxResultWidget>

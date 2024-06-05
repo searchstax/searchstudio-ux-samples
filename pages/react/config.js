@@ -9,4 +9,20 @@ const config = {
     relatedSearchesAPIKey: "fac98ad405cc50e0c0693331e8d2119de592f0e3",
 };
 
-export { config };
+const renderConfig = {
+    inputWidget: {
+      suggestAfterMinChars: 3,
+    },
+    facetsWidget: {
+      itemsPerPageDesktop: 3,
+      itemsPerPageMobile: 99,
+      facetingType: "and", // "and" | "or" | "showUnavailable" | "tabs"
+    },
+    resultsWidget: {
+      renderMethod: "pagination", //'infiniteScroll' or 'pagination'
+      itemsPerPage: 10,
+    },
+  };
+
+
+export { config, renderConfig};
