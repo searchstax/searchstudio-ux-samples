@@ -31,7 +31,7 @@ const initConfig = {
   },
 };
 
-renderOptionsConfig = {
+const renderConfig = {
   inputWidget: {
     suggestAfterMinChars: 3,
   },
@@ -42,10 +42,8 @@ renderOptionsConfig = {
   },
   resultsWidget: {
     renderMethod: "pagination", //'infiniteScroll' or 'pagination'
-    itemsPerPage: 3,
+    itemsPerPage: 10,
   },
 };
-
-const renderConfig = renderOptionsConfig;
 
 export { initConfig, renderConfig };
