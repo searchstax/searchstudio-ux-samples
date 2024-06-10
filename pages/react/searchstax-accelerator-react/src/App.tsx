@@ -80,7 +80,7 @@ function App() {
         afterSearch={afterSearch}
         authType={config.authType}
         router={{ enabled: true }}
-        language="en"
+        language={config.language}
       >
         <div className="searchstax-page-layout-container">
           <SearchstaxInputWidget
