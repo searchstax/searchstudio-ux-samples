@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src * self blob: data: gap:; style-src * self 'unsafe-inline' blob: data: gap:; script-src * 'self' 'unsafe-eval' 'unsafe-inline' blob: data: gap:; object-src * 'self' blob: data: gap:; img-src * self 'unsafe-inline' blob: data: gap:; connect-src self * 'unsafe-inline' blob: data: gap:; frame-src * self blob: data: gap:;">
     <script src="index.js" type="module"></script>
     <title>Searchstax Seach Page</title>
-
     <script type="text/javascript">
       var _msq = _msq || []; //declare object
       var analyticsBaseUrl = 'https://analytics-us-east.searchstax.com';
@@ -17,7 +17,7 @@
         s.parentNode.insertBefore(ms, s);
       })();
     </script>
-    
+
 </head>
 <body>
 
@@ -25,17 +25,17 @@
 
         <div class="searchstax-page-layout-container">
             <div id="searchstax-input-container"></div>
-      
+
             <div class="search-details-container">
               <div id="search-feedback-container"></div>
                   <div id="search-sorting-container"></div>
             </div>
-      
+
             <div class="searchstax-page-layout-facet-result-container">
               <div class="searchstax-page-layout-facet-container">
                 <div id="searchstax-facets-container"></div>
               </div>
-      
+
               <div class="searchstax-page-layout-result-container">
                 <div class="feedback-container">
                   <div id="search-feedback-container"></div>
@@ -51,6 +51,6 @@
             </div>
       </div>
 
-    </div>    
+    </div>
 </body>
 </html>
