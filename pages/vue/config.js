@@ -19,6 +19,21 @@ const jobSearchConfig = {
     relatedSearchesURL: "https://app.searchstax.com/api/v1/1447/related-search/",
     relatedSearchesAPIKey: "3014f9d0276906ac17fff16c500e5ee75b20d73c",
 }
-  
 
-export { searchstaxConfig, jobSearchConfig };
+const renderConfig = {
+    inputWidget: {
+      suggestAfterMinChars: 3,
+    },
+    facetsWidget: {
+      itemsPerPageDesktop: 3,
+      itemsPerPageMobile: 99,
+      facetingType: "and", // "and" | "or" | "showUnavailable" | "tabs"
+    },
+    resultsWidget: {
+      renderMethod: "pagination", //'infiniteScroll' or 'pagination'
+      itemsPerPage: 10,
+    },
+  };
+
+
+export { searchstaxConfig, jobSearchConfig, renderConfig };

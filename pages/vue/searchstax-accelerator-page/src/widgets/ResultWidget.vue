@@ -1,6 +1,6 @@
 <template>
   <div>
-    <SearchstaxResultWidget :afterLinkClick="afterLinkClick">
+    <SearchstaxResultWidget :afterLinkClick="afterLinkClick" :resultsPerPage="renderConfig.resultsWidget.itemsPerPage" :renderMethod="renderConfig.resultsWidget.renderMethod">
       <template #results="{ searchResults, resultClicked }">
         <div class="searchstax-search-results" v-if="searchResults && searchResults.length">
           <div
@@ -62,11 +62,18 @@
 
 <script>
 import { SearchstaxResultWidget } from '@searchstax-inc/searchstudio-ux-vue'
+import {renderConfig} from '../../../config';
+
 
 export default {
   components: {
     SearchstaxResultWidget
-  }
+  },
+  data(){
+    return{
+      renderConfig
+    }
+  },
 }
 </script>
 
