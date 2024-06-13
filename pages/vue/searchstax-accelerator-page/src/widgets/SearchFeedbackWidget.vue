@@ -1,7 +1,7 @@
 <template>
   <div>
     <SearchstaxSearchFeedbackWidget>
-            <template #searchFeedback="{ searchFeedbackData, onOriginalQueryClick }">
+      <template #searchFeedback="{ searchFeedbackData, onOriginalQueryClick }">
               <div
                 class="searchstax-feedback-container"
                 v-if="searchFeedbackData && searchFeedbackData?.searchExecuted && searchFeedbackData?.totalResults"

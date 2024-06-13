@@ -1,12 +1,12 @@
 <template>
   <div>
     <SearchstaxWrapper
-      :language="searchstaxConfig.language"
-      :searchURL="searchstaxConfig.searchURL"
-      :suggesterURL="searchstaxConfig.suggesterURL"
-      :trackApiKey="searchstaxConfig.trackApiKey"
-      :searchAuth="searchstaxConfig.searchAuth"
-      :authType="searchstaxConfig.authType"
+      :language="config.language"
+      :searchURL="config.searchURL"
+      :suggesterURL="config.suggesterURL"
+      :trackApiKey="config.trackApiKey"
+      :searchAuth="config.searchAuth"
+      :authType="config.authType"
     >
       <template #default>
         <div class="searchstax-page-layout-container">
@@ -45,7 +45,7 @@
 </template>
 
 <script setup>
-import { searchstaxConfig } from '../../config'
+import { config } from '../../config'
 import { SearchstaxWrapper } from '@searchstax-inc/searchstudio-ux-vue'
 import SearchInputWidget from '@/widgets/SearchInputWidget.vue'
 import ResultWidget from '@/widgets/ResultWidget.vue'

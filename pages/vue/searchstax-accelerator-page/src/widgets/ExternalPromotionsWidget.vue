@@ -1,7 +1,7 @@
 <template>
   <div>
     <SearchstaxExternalPromotionsWidget>
-              <template #externalPromotions="{ externalPromotionsData, trackClick }">
+      <template #externalPromotions="{ externalPromotionsData, trackClick }">
                 <div
                   class="searchstax-external-promotions-container"
                   id="searchstax-external-promotions-container"

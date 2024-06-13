@@ -1,7 +1,7 @@
 <template>
   <div>
     <SearchstaxSortingWidget>
-            <template #sorting="{ sortingData, orderChange, selectedSorting }">
+      <template #sorting="{ sortingData, orderChange, selectedSorting }">
               <div
                 class="searchstax-sorting-container"
                 v-if="sortingData && sortingData?.searchExecuted && sortingData?.hasResultsOrExternalPromotions"
@@ -28,10 +28,16 @@
 
 <script>
 import { SearchstaxSortingWidget } from '@searchstax-inc/searchstudio-ux-vue';
+import {renderConfig} from '../../../config';
 export default {
   components: {
     SearchstaxSortingWidget
-  }
+  },
+  data(){
+    return{
+      renderConfig
+    }
+  },
 }
 </script>
 
