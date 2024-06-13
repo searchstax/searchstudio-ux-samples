@@ -1,4 +1,4 @@
-const searchstaxConfig = {
+const config = {
     language: 'en',
     searchURL: 'https://searchcloud-2-us-east-1.searchstax.com/29847/corpsiteuxsamples-1442/emselect',
     suggesterURL: 'https://searchcloud-2-us-east-1.searchstax.com/29847/corpsiteuxsamples-1442_suggester/emsuggest',
@@ -36,4 +36,4 @@ const renderConfig = {
   };
 
 
-export { searchstaxConfig, jobSearchConfig, renderConfig };
+export { config, jobSearchConfig, renderConfig };

@@ -1,8 +1,8 @@
 <template>
   <div>
     <SearchstaxRelatedSearchesWidget
-              :relatedSearchesURL="searchstaxConfig.relatedSearchesURL"
-              :relatedSearchesAPIKey="searchstaxConfig.relatedSearchesAPIKey"
+              :relatedSearchesURL="config.relatedSearchesURL"
+              :relatedSearchesAPIKey="config.relatedSearchesAPIKey"
             >
             <template #related="{ relatedData, executeSearch }">
                 <div
@@ -30,14 +30,14 @@
 
 <script>
 import { SearchstaxRelatedSearchesWidget } from '@searchstax-inc/searchstudio-ux-vue';
-import { searchstaxConfig } from '../../../config';
+import { config } from '../../../config';
 export default {
   components: {
     SearchstaxRelatedSearchesWidget
   },
   data(){
     return{
-      searchstaxConfig
+      config
     }
   },
   methods:{
