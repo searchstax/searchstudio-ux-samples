@@ -79,6 +79,7 @@ function App() {
         beforeSearch={beforeSearch}
         afterSearch={afterSearch}
         authType={config.authType}
+        analyticsBaseUrl={config.analyticsBaseUrl}
         router={{ enabled: true }}
         language="en"
       >

@@ -71,21 +71,6 @@ function afterLinkClick(result: ISearchstaxParsedResult) {
 export default function Home() {
   return (
     <>
-      <Script
-        id="msq"
-        onLoad={() => {
-          var _msq: any = _msq || []; //declare object
-          var analyticsBaseUrl = "https://analytics-us-east.searchstax.co";
-          (function () {
-            var ms = document.createElement("script");
-            ms.type = "text/javascript";
-            ms.src =
-              "https://static.searchstax.co/studio-js/v3/js/studio-analytics.js";
-            var s = document.getElementsByTagName("script")[0];
-            if (s.parentNode) s.parentNode.insertBefore(ms, s);
-          })();
-        }}
-      ></Script>
       <SearchstaxWrapper
         searchURL={config.searchURL}
         suggesterURL={config.suggesterURL}
@@ -95,6 +80,7 @@ export default function Home() {
         beforeSearch={beforeSearch}
         afterSearch={afterSearch}
         authType={config.authType}
+        analyticsBaseUrl={config.analyticsBaseUrl}
         router={{ enabled: true }}
         language="en"
       >
