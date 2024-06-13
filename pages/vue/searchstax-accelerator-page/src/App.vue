@@ -7,6 +7,7 @@
       :trackApiKey="config.trackApiKey"
       :searchAuth="config.searchAuth"
       :authType="config.authType"
+      :analyticsBaseUrl="config.analyticsBaseUrl"
     >
       <template #default>
         <div class="searchstax-page-layout-container">
