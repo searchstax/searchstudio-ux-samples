@@ -1,5 +1,6 @@
-import { useState } from "react";
-import "./App.scss";
+"use client";
+import "./../../node_modules/@searchstax-inc/searchstudio-ux-js/dist/styles/mainTheme.css";
+import "./style.css";
 import {
   SearchstaxWrapper,
   SearchstaxInputWidget,
@@ -18,58 +19,73 @@ import type {
   ISearchstaxParsedResult,
   ISearchstaxSuggestProps,
   ISearchstaxSuggestResponse,
+  Searchstax,
 } from "@searchstax-inc/searchstudio-ux-js";
-import { Searchstax } from "@searchstax-inc/searchstudio-ux-js";
+
 //@ts-ignore
-import { config, renderConfig } from "../../config.js";
-import { noResultTemplate, resultsTemplate } from "./templates/resultsTemplates.js";
-import { infiniteScrollTemplate, paginationTemplate } from "./templates/paginationTemplates.js";
-import { searchRelatedSearchesTemplate } from "./templates/relatedSearchesTemplates.js";
-import { searchExternalPromotionsTemplate } from "./templates/externalPromotionsTemplates.js";
-import { facetsTemplateDesktop, facetsTemplateMobile } from "./templates/facetTemplates.js";
-import { searchSortingTemplate } from "./templates/sorting.templates.js";
-import { searchOverviewTemplate } from "./templates/searchOverviewTemplates.js";
-import { InputTemplate } from "./templates/inputTemplates.js";
+import { config, renderConfig } from "./../../../config.js";
+import {
+  noResultTemplate,
+  resultsTemplate,
+} from "./templates/resultsTemplates";
+import {
+  infiniteScrollTemplate,
+  paginationTemplate,
+} from "./templates/paginationTemplates";
+import { searchRelatedSearchesTemplate } from "./templates/relatedSearchesTemplates";
+import { searchExternalPromotionsTemplate } from "./templates/externalPromotionsTemplates";
+import {
+  facetsTemplateDesktop,
+  facetsTemplateMobile,
+} from "./templates/facetTemplates";
+import { searchSortingTemplate } from "./templates/sorting.templates";
+import { searchOverviewTemplate } from "./templates/searchOverviewTemplates";
+import { InputTemplate } from "./templates/inputTemplates";
+import Script from "next/script";
+function beforeSearch(props: ISearchObject) {
+  const propsCopy = { ...props };
+  return propsCopy;
+}
+function afterSearch(results: ISearchstaxParsedResult[]) {
+  const copy = [...results];
+  return copy;
+}
+function initialized(searchstax: Searchstax) {}
+function afterAutosuggest(result: ISearchstaxSuggestResponse) {
+  const copy = { ...result };
+  return copy;
+}
+function beforeAutosuggest(props: ISearchstaxSuggestProps) {
+  // gets suggestProps, if passed along further autosuggest will execute, if null then event gets canceled
+  // props can be modified and passed along
+  const propsCopy = { ...props };
+  return propsCopy;
+}
+function afterLinkClick(result: ISearchstaxParsedResult) {
+  // gets result that was clicked, if passed along further functions will execute, if null then event gets canceled
+  const resultCopy = { ...result };
 
-function App() {
-  //@ts-ignore
-  const [searchstaxInstance, setSearchstaxInstance] = useState(// eslint-disable-line
-    null as null | Searchstax
-  );
+  return resultCopy;
+}
 
-  function beforeSearch(props: ISearchObject) {
-    const propsCopy = { ...props };
-    return propsCopy;
-  }
-  function afterSearch(results: ISearchstaxParsedResult[]) {
-    const copy = [...results];
-    return copy;
-  }
-
-  function initialized(searchstax: Searchstax) {
-    setSearchstaxInstance(searchstax);
-  }
-
-  function afterAutosuggest(result: ISearchstaxSuggestResponse) {
-    const copy = { ...result };
-    return copy;
-  }
-  function beforeAutosuggest(props: ISearchstaxSuggestProps) {
-    // gets suggestProps, if passed along further autosuggest will execute, if null then event gets canceled
-    // props can be modified and passed along
-    const propsCopy = { ...props };
-    return propsCopy;
-  }
-
-  function afterLinkClick(result: ISearchstaxParsedResult) {
-    // gets result that was clicked, if passed along further functions will execute, if null then event gets canceled
-    const resultCopy = { ...result };
-
-    return resultCopy;
-  }
-
+export default function Home() {
   return (
     <>
+      <Script
+        id="msq"
+        onLoad={() => {
+          var _msq: any = _msq || []; //declare object
+          var analyticsBaseUrl = "https://analytics-us-east.searchstax.co";
+          (function () {
+            var ms = document.createElement("script");
+            ms.type = "text/javascript";
+            ms.src =
+              "https://static.searchstax.co/studio-js/v3/js/studio-analytics.js";
+            var s = document.getElementsByTagName("script")[0];
+            if (s.parentNode) s.parentNode.insertBefore(ms, s);
+          })();
+        }}
+      ></Script>
       <SearchstaxWrapper
         searchURL={config.searchURL}
         suggesterURL={config.suggesterURL}
@@ -103,8 +119,12 @@ function App() {
             <div className="searchstax-page-layout-facet-container">
               <SearchstaxFacetsWidget
                 facetingType={renderConfig.facetsWidget.facetingType}
-                itemsPerPageDesktop={renderConfig.facetsWidget.itemsPerPageDesktop}
-                itemsPerPageMobile={renderConfig.facetsWidget.itemsPerPageMobile}
+                itemsPerPageDesktop={
+                  renderConfig.facetsWidget.itemsPerPageDesktop
+                }
+                itemsPerPageMobile={
+                  renderConfig.facetsWidget.itemsPerPageMobile
+                }
                 specificFacets={undefined}
                 facetsTemplateDesktop={facetsTemplateDesktop}
                 facetsTemplateMobile={facetsTemplateMobile}
@@ -140,5 +160,3 @@ function App() {
     </>
   );
 }
-
-export default App;
