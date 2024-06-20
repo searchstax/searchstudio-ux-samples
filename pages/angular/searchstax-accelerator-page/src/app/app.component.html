@@ -1,53 +1,113 @@
 <div>
-  <app-searchstax-wrapper [searchURL]="config.searchURL" [authType]="config.authType" [suggesterURL]="config.suggesterURL"
-    [trackApiKey]="config.trackApiKey" [searchAuth]="config.searchAuth" [beforeSearch]="beforeSearch"
-    [afterSearch]="afterSearch" (initialized)="initialized($event)">
+  <app-searchstax-wrapper
+    [searchURL]="config.searchURL"
+    [suggesterURL]="config.suggesterURL"
+    [trackApiKey]="config.trackApiKey"
+    [searchAuth]="config.searchAuth"
+    [beforeSearch]="beforeSearch"
+    [afterSearch]="afterSearch"
+    [authType]="config.authType"
+    [analyticsBaseUrl]="config.analyticsBaseUrl"
+    (initialized)="initialized($event)"
+  >
     <div class="searchstax-page-layout-container">
-      <app-searchstax-input [afterAutosuggest]="afterAutosuggest" [beforeAutosuggest]="beforeAutosuggest"
-        [suggestAfterMinChars]="3" [templateOverride]="inputTemplate">
-        <ng-template #inputTemplate let-suggestions="suggestions" let-onMouseLeave="onMouseLeave"
-          let-onMouseOver="onMouseOver" let-onMouseClick="onMouseClick" let-context="context">
+      <app-searchstax-input
+        [afterAutosuggest]="afterAutosuggest"
+        [beforeAutosuggest]="beforeAutosuggest"
+        [suggestAfterMinChars]="renderConfig.inputWidget.suggestAfterMinChars"
+        [templateOverride]="inputTemplate"
+      >
+        <ng-template
+          #inputTemplate
+          let-suggestions="suggestions"
+          let-onMouseLeave="onMouseLeave"
+          let-onMouseOver="onMouseOver"
+          let-onMouseClick="onMouseClick"
+          let-context="context"
+        >
           <div class="searchstax-search-input-wrapper">
-            <input type="text" id="searchstax-search-input" class="searchstax-search-input"
-              placeholder="SEARCH FOR..." />
-            <div class="searchstax-autosuggest-container" [ngClass]="{ hidden: suggestions.length === 0 }"
-              (mouseleave)="onMouseLeave(context)">
-              <div class="searchstax-autosuggest-item" *ngFor="let suggestion of suggestions">
-                <div class="searchstax-autosuggest-item-term-container" [innerHtml]="suggestion.term"
-                  (mouseover)="onMouseOver(suggestion, context)" (click)="onMouseClick($event, context)"></div>
+            <input
+              type="text"
+              id="searchstax-search-input"
+              class="searchstax-search-input"
+              placeholder="SEARCH FOR..."
+            />
+            <div
+              class="searchstax-autosuggest-container"
+              [ngClass]="{ hidden: suggestions.length === 0 }"
+              (mouseleave)="onMouseLeave(context)"
+            >
+              <div
+                class="searchstax-autosuggest-item"
+                *ngFor="let suggestion of suggestions"
+              >
+                <div
+                  class="searchstax-autosuggest-item-term-container"
+                  [innerHtml]="suggestion.term"
+                  (mouseover)="onMouseOver(suggestion, context)"
+                  (click)="onMouseClick($event, context)"
+                ></div>
               </div>
             </div>
-            <button class="searchstax-spinner-icon" id="searchstax-search-input-action-button"></button>
+            <button
+              class="searchstax-spinner-icon"
+              id="searchstax-search-input-action-button"
+            ></button>
           </div>
         </ng-template>
       </app-searchstax-input>
       <div class="search-details-container">
         <app-searchstax-search-feedback [templateOverride]="feedbackTemplate">
-          <ng-template #feedbackTemplate let-searchFeedbackData="searchFeedbackData"
-            let-onOriginalQueryClick="onOriginalQueryClick" let-context="context">
+          <ng-template
+            #feedbackTemplate
+            let-searchFeedbackData="searchFeedbackData"
+            let-onOriginalQueryClick="onOriginalQueryClick"
+            let-context="context"
+          >
             <div class="searchstax-feedback-container">
               Showing
-              <b>{{ searchFeedbackData!.startResultIndex }} - {{ searchFeedbackData!.endResultIndex }}</b>
+              <b
+                >{{ searchFeedbackData!.startResultIndex }} -
+                {{ searchFeedbackData!.endResultIndex }}</b
+              >
               of <b>{{ searchFeedbackData!.totalResults }}</b> results
-              <span *ngIf="searchFeedbackData.searchTerm">for "<b>{{ searchFeedbackData!.searchTerm }}</b>"
+              <span *ngIf="searchFeedbackData.searchTerm"
+                >for "<b>{{ searchFeedbackData!.searchTerm }}</b
+                >"
               </span>
               <div class="searchstax-feedback-container-suggested">
                 <div *ngIf="searchFeedbackData.autoCorrectedQuery">
                   Search instead for
-                  <a href="#" (click)="onOriginalQueryClick($event, context)"
-                    class="searchstax-feedback-original-query">{{ searchFeedbackData!.originalQuery }}</a>
+                  <a
+                    href="#"
+                    (click)="onOriginalQueryClick($event, context)"
+                    class="searchstax-feedback-original-query"
+                    >{{ searchFeedbackData!.originalQuery }}</a
+                  >
                 </div>
               </div>
             </div>
           </ng-template>
         </app-searchstax-search-feedback>
-        <app-searchstax-search-sorting [templateOverride]="sortingTemplateOverride">
-          <ng-template #sortingTemplateOverride let-selectedSorting="selectedSorting" let-orderChange="orderChange"
-            let-context="context">
+        <app-searchstax-search-sorting
+          [templateOverride]="sortingTemplateOverride"
+        >
+          <ng-template
+            #sortingTemplateOverride
+            let-selectedSorting="selectedSorting"
+            let-orderChange="orderChange"
+            let-context="context"
+          >
             <div class="searchstax-sorting-container">
-              <label class="searchstax-sorting-label" for="sort-by">Sort By</label>
-              <select id="searchstax-search-order-select" class="searchstax-search-order-select"
-                [value]="selectedSorting" (change)="orderChange($event, context)">
+              <label class="searchstax-sorting-label" for="sort-by"
+                >Sort By</label
+              >
+              <select
+                id="searchstax-search-order-select"
+                class="searchstax-search-order-select"
+                [value]="selectedSorting"
+                (change)="orderChange($event, context)"
+              >
                 <option value="">Relevance</option>
                 <option value="date desc">Newest Content</option>
                 <option value="date asc">Oldest Content</option>
@@ -58,48 +118,104 @@
       </div>
       <div class="searchstax-page-layout-facet-result-container">
         <div class="searchstax-page-layout-facet-container">
-          <app-searchstax-search-facets [facetingType]="'showUnavailable'" [itemsPerPageDesktop]="2"
-            [itemsPerPageMobile]="99" [templateOverrideDesktop]="templateOverrideDesktop"
-            [templateOverrideMobile]="templateOverrideMobile">
-            <ng-template #templateOverrideDesktop let-facetsTemplateDataDesktop="facetsTemplateDataDesktop"
-              let-isNotDeactivated="isNotDeactivated" let-context="context" let-toggleFacetGroup="toggleFacetGroup"
-              let-facetValues="facetValues" let-isChecked="isChecked" let-selectFacet="selectFacet"
-              let-showMoreLessDesktop="showMoreLessDesktop">
+          <app-searchstax-search-facets
+            [facetingType]="renderConfig.facetsWidget.facetingType"
+            [itemsPerPageDesktop]="renderConfig.facetsWidget.itemsPerPageDesktop"
+            [itemsPerPageMobile]="renderConfig.facetsWidget.itemsPerPageMobile"
+            [templateOverrideDesktop]="templateOverrideDesktop"
+            [templateOverrideMobile]="templateOverrideMobile"
+          >
+            <ng-template
+              #templateOverrideDesktop
+              let-facetsTemplateDataDesktop="facetsTemplateDataDesktop"
+              let-isNotDeactivated="isNotDeactivated"
+              let-context="context"
+              let-toggleFacetGroup="toggleFacetGroup"
+              let-facetValues="facetValues"
+              let-isChecked="isChecked"
+              let-selectFacet="selectFacet"
+              let-showMoreLessDesktop="showMoreLessDesktop"
+            >
               <div class="searchstax-facets-container-desktop">
-                <div class="searchstax-facet-container" *ngFor="let facet of facetsTemplateDataDesktop?.facets"
-                  [class]="{ active: isNotDeactivated(facet.name, context) }">
+                <div
+                  class="searchstax-facet-container"
+                  *ngFor="let facet of facetsTemplateDataDesktop?.facets"
+                  [class]="{ active: isNotDeactivated(facet.name, context) }"
+                >
                   <div>
-                    <div class="searchstax-facet-title-container" (click)="toggleFacetGroup(facet.name, context)">
-                      <div class="searchstax-facet-title">{{ facet.label }}</div>
+                    <div
+                      class="searchstax-facet-title-container"
+                      (click)="toggleFacetGroup(facet.name, context)"
+                    >
+                      <div class="searchstax-facet-title">
+                        {{ facet.label }}
+                      </div>
                       <div class="searchstax-facet-title-arrow active"></div>
                     </div>
                     <div class="searchstax-facet-values-container">
-                      <div *ngFor="let facetValue of facetValues(facet); index as key"
+                      <div
+                        *ngFor="
+                          let facetValue of facetValues(facet);
+                          index as key
+                        "
                         class="searchstax-facet-value-container"
-                        [class]="{ 'searchstax-facet-value-disabled': facetValue.disabled }" #ref>
+                        [class]="{
+                          'searchstax-facet-value-disabled': facetValue.disabled
+                        }"
+                        #ref
+                      >
                         <div class="searchstax-facet-input">
-                          <input type="checkbox" class="searchstax-facet-input-checkbox"
-                            [checked]="isChecked(facetValue, context)" [disabled]="facetValue.disabled"
-                            (click)="selectFacet(ref, $event, facetValue, true, context)" />
+                          <input
+                            type="checkbox"
+                            class="searchstax-facet-input-checkbox"
+                            [checked]="isChecked(facetValue, context)"
+                            [disabled]="facetValue.disabled"
+                            (click)="
+                              selectFacet(
+                                ref,
+                                $event,
+                                facetValue,
+                                true,
+                                context
+                              )
+                            "
+                          />
                         </div>
-                        <div class="searchstax-facet-value-label"
-                          (click)="selectFacet(ref, $event, facetValue, false, context)">
+                        <div
+                          class="searchstax-facet-value-label"
+                          (click)="
+                            selectFacet(ref, $event, facetValue, false, context)
+                          "
+                        >
                           {{ facetValue.value }}
                         </div>
-                        <div class="searchstax-facet-value-count"
-                          (click)="selectFacet(ref, $event, facetValue, false, context)">
+                        <div
+                          class="searchstax-facet-value-count"
+                          (click)="
+                            selectFacet(ref, $event, facetValue, false, context)
+                          "
+                        >
                           ({{ facetValue.count }})
                         </div>
                       </div>
-                      <div class="searchstax-facet-show-more-container" *ngIf="facet.hasMoreFacets">
-                        <div class="searchstax-facet-show-more-container"
-                          (click)="showMoreLessDesktop($event, facet, context)">
-                          <div *ngIf="facet.showingAllFacets"
-                            class="searchstax-facet-show-less-button searchstax-facet-show-button">
+                      <div
+                        class="searchstax-facet-show-more-container"
+                        *ngIf="facet.hasMoreFacets"
+                      >
+                        <div
+                          class="searchstax-facet-show-more-container"
+                          (click)="showMoreLessDesktop($event, facet, context)"
+                        >
+                          <div
+                            *ngIf="facet.showingAllFacets"
+                            class="searchstax-facet-show-less-button searchstax-facet-show-button"
+                          >
                             less
                           </div>
-                          <div *ngIf="!facet.showingAllFacets"
-                            class="searchstax-facet-show-more-button searchstax-facet-show-button">
+                          <div
+                            *ngIf="!facet.showingAllFacets"
+                            class="searchstax-facet-show-more-button searchstax-facet-show-button"
+                          >
                             more
                           </div>
                         </div>
@@ -109,71 +225,168 @@
                 </div>
               </div>
             </ng-template>
-            <ng-template #templateOverrideMobile let-isNotDeactivated="isNotDeactivated" let-context="context"
-              let-toggleFacetGroup="toggleFacetGroup" let-facetValues="facetValues" let-isChecked="isChecked"
-              let-selectFacet="selectFacet" let-openOverlay="openOverlay"
-              let-selectedFacetsCheckboxes="selectedFacetsCheckboxes" let-unselectFacet="unselectFacet"
-              let-unselectAll="unselectAll" let-facetMobileData="facetMobileData"
-              let-facetsTemplateDataMobile="facetsTemplateDataMobile" let-closeOverlay="closeOverlay"
-              let-showMoreLessDesktop="showMoreLessDesktop">
+            <ng-template
+              #templateOverrideMobile
+              let-isNotDeactivated="isNotDeactivated"
+              let-context="context"
+              let-toggleFacetGroup="toggleFacetGroup"
+              let-facetValues="facetValues"
+              let-isChecked="isChecked"
+              let-selectFacet="selectFacet"
+              let-openOverlay="openOverlay"
+              let-selectedFacetsCheckboxes="selectedFacetsCheckboxes"
+              let-unselectFacet="unselectFacet"
+              let-unselectAll="unselectAll"
+              let-facetMobileData="facetMobileData"
+              let-facetsTemplateDataMobile="facetsTemplateDataMobile"
+              let-closeOverlay="closeOverlay"
+              let-showMoreLessDesktop="showMoreLessDesktop"
+            >
               <div class="searchstax-facets-container-mobile">
                 <div class="searchstax-facets-pills-container">
-                  <div class="searchstax-facets-pill searchstax-facets-pill-filter-by" (click)="openOverlay(context)">
+                  <div
+                    class="searchstax-facets-pill searchstax-facets-pill-filter-by"
+                    (click)="openOverlay(context)"
+                  >
                     <div class="searchstax-facets-pill-label">Filter By</div>
                   </div>
                   <div class="searchstax-facets-pills-selected">
-                    <div class="searchstax-facets-pill searchstax-facets-pill-facets"
-                      *ngFor="let facet of selectedFacetsCheckboxes" (click)="unselectFacet(facet, context)">
-                      <div class="searchstax-facets-pill-label">{{ facet.value }} ({{ facet.count }})</div>
+                    <div
+                      class="searchstax-facets-pill searchstax-facets-pill-facets"
+                      *ngFor="let facet of selectedFacetsCheckboxes"
+                      (click)="unselectFacet(facet, context)"
+                    >
+                      <div class="searchstax-facets-pill-label">
+                        {{ facet.value }} ({{ facet.count }})
+                      </div>
                       <div class="searchstax-facets-pill-icon-close"></div>
                     </div>
                   </div>
-                  <div class="searchstax-facets-pill searchstax-clear-filters searchstax-facets-pill-clear-all"
-                    *ngIf="selectedFacetsCheckboxes.length" (click)="unselectAll(context)">
-                    <div class="searchstax-facets-pill-label">Clear Filters</div>
+                  <div
+                    class="searchstax-facets-pill searchstax-clear-filters searchstax-facets-pill-clear-all"
+                    *ngIf="selectedFacetsCheckboxes.length"
+                    (click)="unselectAll(context)"
+                  >
+                    <div class="searchstax-facets-pill-label">
+                      Clear Filters
+                    </div>
                   </div>
                 </div>
-                <div class="searchstax-facets-mobile-overlay"
-                  [class]="{ 'searchstax-show': facetMobileData(facetsTemplateDataMobile)?.overlayOpened }">
+                <div
+                  class="searchstax-facets-mobile-overlay"
+                  [class]="{
+                    'searchstax-show': facetMobileData(facetsTemplateDataMobile)
+                      ?.overlayOpened
+                  }"
+                >
                   <div class="searchstax-facets-mobile-overlay-header">
-                    <div class="searchstax-facets-mobile-overlay-header-title">Filter By</div>
-                    <div class="searchstax-search-close" (click)="closeOverlay(context)"></div>
+                    <div class="searchstax-facets-mobile-overlay-header-title">
+                      Filter By
+                    </div>
+                    <div
+                      class="searchstax-search-close"
+                      (click)="closeOverlay(context)"
+                    ></div>
                   </div>
                   <div class="searchstax-facets-container-mobile">
-                    <div *ngFor="let facet of facetsTemplateDataMobile?.facets" class="searchstax-facet-container"
-                      [class]="{ active: isNotDeactivated(facet.name, context) }">
+                    <div
+                      *ngFor="let facet of facetsTemplateDataMobile?.facets"
+                      class="searchstax-facet-container"
+                      [class]="{
+                        active: isNotDeactivated(facet.name, context)
+                      }"
+                    >
                       <div>
-                        <div class="searchstax-facet-title-container" (click)="toggleFacetGroup(facet.name, context)">
-                          <div class="searchstax-facet-title">{{ facet.label }}</div>
-                          <div class="searchstax-facet-title-arrow active"></div>
+                        <div
+                          class="searchstax-facet-title-container"
+                          (click)="toggleFacetGroup(facet.name, context)"
+                        >
+                          <div class="searchstax-facet-title">
+                            {{ facet.label }}
+                          </div>
+                          <div
+                            class="searchstax-facet-title-arrow active"
+                          ></div>
                         </div>
                         <div class="searchstax-facet-values-container">
-                          <div *ngFor="let facetValue of facetValues(facet); index as key"
+                          <div
+                            *ngFor="
+                              let facetValue of facetValues(facet);
+                              index as key
+                            "
                             class="searchstax-facet-value-container"
-                            [class]="{ 'searchstax-facet-value-disabled': facetValue.disabled }" #ref>
+                            [class]="{
+                              'searchstax-facet-value-disabled':
+                                facetValue.disabled
+                            }"
+                            #ref
+                          >
                             <div class="searchstax-facet-input">
-                              <input type="checkbox" class="searchstax-facet-input-checkbox"
-                                [checked]="isChecked(facetValue, context)" [disabled]="facetValue.disabled"
-                                (click)="selectFacet(ref, $event, facetValue, true, context)" />
+                              <input
+                                type="checkbox"
+                                class="searchstax-facet-input-checkbox"
+                                [checked]="isChecked(facetValue, context)"
+                                [disabled]="facetValue.disabled"
+                                (click)="
+                                  selectFacet(
+                                    ref,
+                                    $event,
+                                    facetValue,
+                                    true,
+                                    context
+                                  )
+                                "
+                              />
                             </div>
-                            <div class="searchstax-facet-value-label"
-                              (click)="selectFacet(ref, $event, facetValue, false, context)">
+                            <div
+                              class="searchstax-facet-value-label"
+                              (click)="
+                                selectFacet(
+                                  ref,
+                                  $event,
+                                  facetValue,
+                                  false,
+                                  context
+                                )
+                              "
+                            >
                               {{ facetValue.value }}
                             </div>
-                            <div class="searchstax-facet-value-count"
-                              (click)="selectFacet(ref, $event, facetValue, false, context)">
+                            <div
+                              class="searchstax-facet-value-count"
+                              (click)="
+                                selectFacet(
+                                  ref,
+                                  $event,
+                                  facetValue,
+                                  false,
+                                  context
+                                )
+                              "
+                            >
                               ({{ facetValue.count }})
                             </div>
                           </div>
-                          <div class="searchstax-facet-show-more-container" *ngIf="facet.hasMoreFacets">
-                            <div class="searchstax-facet-show-more-container"
-                              (click)="showMoreLessDesktop($event, facet, context)">
-                              <div *ngIf="facet.showingAllFacets"
-                                class="searchstax-facet-show-less-button searchstax-facet-show-button">
+                          <div
+                            class="searchstax-facet-show-more-container"
+                            *ngIf="facet.hasMoreFacets"
+                          >
+                            <div
+                              class="searchstax-facet-show-more-container"
+                              (click)="
+                                showMoreLessDesktop($event, facet, context)
+                              "
+                            >
+                              <div
+                                *ngIf="facet.showingAllFacets"
+                                class="searchstax-facet-show-less-button searchstax-facet-show-button"
+                              >
                                 less
                               </div>
-                              <div *ngIf="!facet.showingAllFacets"
-                                class="searchstax-facet-show-more-button searchstax-facet-show-button">
+                              <div
+                                *ngIf="!facet.showingAllFacets"
+                                class="searchstax-facet-show-more-button searchstax-facet-show-button"
+                              >
                                 more
                               </div>
                             </div>
@@ -182,47 +395,96 @@
                       </div>
                     </div>
                   </div>
-                  <button class="searchstax-facets-mobile-overlay-done" (click)="closeOverlay(context)">Done</button>
+                  <button
+                    class="searchstax-facets-mobile-overlay-done"
+                    (click)="closeOverlay(context)"
+                  >
+                    Done
+                  </button>
                 </div>
               </div>
             </ng-template>
           </app-searchstax-search-facets>
         </div>
         <div class="searchstax-page-layout-result-container">
-          <app-searchstax-external-promotions [templateOverride]="externalPromotionsTemplate">
-            <ng-template #externalPromotionsTemplate let-context="context"
-              let-externalPromotionsData="externalPromotionsData" let-trackClick="trackClick">
-              <div class="searchstax-external-promotions-container" id="searchstax-external-promotions-container">
-                <div class="searchstax-external-promotion searchstax-search-result"
-                  *ngFor="let externalPromotion of externalPromotionsData.externalPromotions">
+          <app-searchstax-external-promotions
+            [templateOverride]="externalPromotionsTemplate"
+          >
+            <ng-template
+              #externalPromotionsTemplate
+              let-context="context"
+              let-externalPromotionsData="externalPromotionsData"
+              let-trackClick="trackClick"
+            >
+              <div
+                class="searchstax-external-promotions-container"
+                id="searchstax-external-promotions-container"
+              >
+                <div
+                  class="searchstax-external-promotion searchstax-search-result"
+                  *ngFor="
+                    let externalPromotion of externalPromotionsData.externalPromotions
+                  "
+                >
                   <div class="icon-elevated"></div>
-                  <a *ngIf="externalPromotion.url" [href]="externalPromotion.url"
-                    (click)="trackClick(externalPromotion, $event, context)" class="searchstax-result-item-link"></a>
+                  <a
+                    *ngIf="externalPromotion.url"
+                    [href]="externalPromotion.url"
+                    (click)="trackClick(externalPromotion, $event, context)"
+                    class="searchstax-result-item-link"
+                  ></a>
                   <div class="searchstax-search-result-title-container">
-                    <span class="searchstax-search-result-title">{{ externalPromotion.name }}</span>
+                    <span class="searchstax-search-result-title">{{
+                      externalPromotion.name
+                    }}</span>
                   </div>
-                  <p *ngIf="externalPromotion.description"
-                    class="searchstax-search-result-description searchstax-search-result-common">
+                  <p
+                    *ngIf="externalPromotion.description"
+                    class="searchstax-search-result-description searchstax-search-result-common"
+                  >
                     {{ externalPromotion.description }}
                   </p>
-                  <p *ngIf="externalPromotion.url"
-                    class="searchstax-search-result-description searchstax-search-result-common">
+                  <p
+                    *ngIf="externalPromotion.url"
+                    class="searchstax-search-result-description searchstax-search-result-common"
+                  >
                     {{ externalPromotion.url }}
                   </p>
                 </div>
               </div>
             </ng-template>
           </app-searchstax-external-promotions>
-          <app-searchstax-results [afterLinkClick]="afterLinkClick" [resultsTemplate]="resultsTemplate" [resultsPerPage]="3">
-            <ng-template #resultsTemplate let-searchResults="searchResults" let-resultClicked="resultClicked"
-              let-isImage="isImage" let-context="context">
+          <app-searchstax-results
+            [afterLinkClick]="afterLinkClick"
+            [resultsTemplate]="resultsTemplate"
+            [resultsPerPage]="renderConfig.resultsWidget.resultsPerPage"
+            [renderMethod]="renderConfig.resultsWidget.renderMethod"
+            [noResultsTemplate]="noResultsTemplate"
+          >
+            <ng-template
+              #resultsTemplate
+              let-searchResults="searchResults"
+              let-resultClicked="resultClicked"
+              let-isImage="isImage"
+              let-context="context"
+            >
               <div class="searchstax-search-results">
-                <div class="searchstax-search-result" [ngClass]="{'has-thumbnail': searchResult.thumbnail}"
-                  *ngFor="let searchResult of searchResults">
-
-                  <div *ngFor="let unmappedField of searchResult.unmappedFields">
-                    <div *ngIf="isImage(unmappedField)" class="searchstax-search-result-image-container">
-                      <img [src]="unmappedField.value" class="searchstax-result-image" />
+                <div
+                  class="searchstax-search-result"
+                  [ngClass]="{ 'has-thumbnail': searchResult.thumbnail }"
+                  *ngFor="let searchResult of searchResults"
+                >
+                  <div
+                    *ngFor="let unmappedField of searchResult.unmappedFields"
+                  >
+                    <div
+                      *ngIf="isImage(unmappedField)"
+                      class="searchstax-search-result-image-container"
+                    >
+                      <img
+                        [src]="unmappedField.value"
+                        class="searchstax-result-image"
+                      />
                     </div>
                     <div *ngIf="!isImage(unmappedField)">
                       <p class="searchstax-search-result-common">
@@ -232,89 +494,158 @@
                   </div>
 
                   <div class="searchstax-search-result-content">
-
                     <div class="searchstax-search-result-title-wrapper">
-
                       <div class="searchstax-search-result-title-container">
                         <h2 class="searchstax-search-result-title">
-                          {{searchResult.title}}
+                          {{ searchResult.title }}
                         </h2>
                       </div>
 
-                      <div *ngIf="searchResult.ribbon" class="searchstax-search-result-ribbon">
-                        <span class="pill">{{searchResult.ribbon}}</span>
-                        <div *ngIf="searchResult.promoted" class="searchstax-search-result-promoted"></div>
+                      <div
+                        *ngIf="searchResult.ribbon"
+                        class="searchstax-search-result-ribbon"
+                      >
+                        <span class="pill">{{ searchResult.ribbon }}</span>
+                        <div
+                          *ngIf="searchResult.promoted"
+                          class="searchstax-search-result-promoted"
+                        ></div>
                       </div>
-
                     </div>
 
-                    <p *ngIf="searchResult.description"
-                      class="searchstax-search-result-description searchstax-search-result-common">
-                      {{searchResult.description}}
+                    <p
+                      *ngIf="searchResult.description"
+                      class="searchstax-search-result-description searchstax-search-result-common"
+                    >
+                      {{ searchResult.description }}
                     </p>
-
                   </div>
 
-                  <a *ngIf="searchResult.url" [href]="searchResult.url"
-                    [attr.data-searchstax-unique-result-id]="searchResult.uniqueId"
-                    (click)="resultClicked(searchResult, $event, context)" class="searchstax-result-item-link">
+                  <a
+                    *ngIf="searchResult.url"
+                    [href]="searchResult.url"
+                    [attr.data-searchstax-unique-result-id]="
+                      searchResult.uniqueId
+                    "
+                    (click)="resultClicked(searchResult, $event, context)"
+                    class="searchstax-result-item-link"
+                  >
                   </a>
-
                 </div>
               </div>
             </ng-template>
-            <ng-template #noResultsTemplate let-metadata="metadata" let-searchTerm="searchTerm">
+            <ng-template
+              #noResultsTemplate
+              let-metadata="metadata"
+              let-searchTerm="searchTerm"
+            >
               <div class="searchstax-no-results">
                 Showing <strong>no results</strong> for
                 <strong>"{{ searchTerm }}"</strong>
                 <br />
                 <span *ngIf="metadata?.spellingSuggestion"
                   >&nbsp;Did you mean
-                  <a href="#" class="searchstax-suggestion-term">{{ metadata?.spellingSuggestion }}</a
+                  <a href="#" class="searchstax-suggestion-term">{{
+                    metadata?.spellingSuggestion
+                  }}</a
                   >?</span
                 >
               </div>
               <div>
                 <p>
-                  Try searching for search related terms or topics. We offer a wide variety of content to help you get
-                  the information you need.
+                  Try searching for search related terms or topics. We offer a
+                  wide variety of content to help you get the information you
+                  need.
                 </p>
-                <p>Lost? Click on the ‘X” in the Search Box to reset your search.</p>
+                <p>
+                  Lost? Click on the ‘X” in the Search Box to reset your search.
+                </p>
               </div>
             </ng-template>
           </app-searchstax-results>
-
-          <app-searchstax-related-searches [relatedSearchesURL]="config.relatedSearchesURL"
-            [relatedSearchesAPIKey]="config.relatedSearchesAPIKey" [templateOverride]="relatedTemplate">
-            <ng-template #relatedTemplate let-rand="rand" let-relatedData="relatedData"
-              let-executeSearch="executeSearch" let-context="context">
-              <div class="searchstax-related-searches-container" [id]="'searchstax-related-searches-container' + rand">
+          <app-searchstax-related-searches
+            [relatedSearchesURL]="config.relatedSearchesURL"
+            [relatedSearchesAPIKey]="config.relatedSearchesAPIKey"
+            [templateOverride]="relatedTemplate"
+          >
+            <ng-template
+              #relatedTemplate
+              let-rand="rand"
+              let-relatedData="relatedData"
+              let-executeSearch="executeSearch"
+              let-context="context"
+            >
+              <div
+                class="searchstax-related-searches-container"
+                [id]="'searchstax-related-searches-container' + rand"
+              >
                 Related searches: <span id="searchstax-related-searches"></span>
-                <span class="searchstax-related-search" *ngIf="relatedData.relatedSearches">
-                  <span *ngFor="let related of relatedData.relatedSearches" (click)="executeSearch(related, context)"
-                    class="searchstax-related-search searchstax-related-search-item">
-                    {{ related.related_search }}<span *ngIf="!related.last">,</span>
+                <span
+                  class="searchstax-related-search"
+                  *ngIf="relatedData.relatedSearches"
+                >
+                  <span
+                    *ngFor="let related of relatedData.relatedSearches"
+                    (click)="executeSearch(related, context)"
+                    class="searchstax-related-search searchstax-related-search-item"
+                  >
+                    {{ related.related_search
+                    }}<span *ngIf="!related.last">,</span>
                   </span>
                 </span>
               </div>
             </ng-template>
           </app-searchstax-related-searches>
 
-          <app-searchstax-search-pagination [templateOverride]="paginationTemplate">
-            <ng-template #paginationTemplate let-paginationData="paginationData" let-previousPage="previousPage"
-              let-nextPage="nextPage" let-context="context">
+          <app-searchstax-search-pagination
+            [templateOverride]="paginationTemplate"
+            [infiniteScrollTemplateOverride]="infiniteScrollTemplate"
+          >
+            <ng-template
+              #paginationTemplate
+              let-paginationData="paginationData"
+              let-previousPage="previousPage"
+              let-nextPage="nextPage"
+              let-context="context"
+            >
               <div class="searchstax-pagination-container">
                 <div class="searchstax-pagination-content">
-                  <a class="searchstax-pagination-previous" (click)="previousPage($event, context)"
-                    id="searchstax-pagination-previous">
+                  <a
+                    class="searchstax-pagination-previous"
+                    (click)="previousPage($event, context)"
+                    id="searchstax-pagination-previous"
+                  >
                     &lt; Previous
                   </a>
                   <div class="searchstax-pagination-details">
-                    {{ paginationData?.startResultIndex }} - {{ paginationData?.endResultIndex }} of
+                    {{ paginationData?.startResultIndex }} -
+                    {{ paginationData?.endResultIndex }} of
                     {{ paginationData?.totalResults }}
                   </div>
-                  <a class="searchstax-pagination-next" (click)="nextPage($event, context)"
-                    id="searchstax-pagination-next">Next ></a>
+                  <a
+                    class="searchstax-pagination-next"
+                    (click)="nextPage($event, context)"
+                    id="searchstax-pagination-next"
+                    >Next ></a
+                  >
+                </div>
+              </div>
+            </ng-template>
+
+            <ng-template
+              #infiniteScrollTemplate
+              let-paginationData="paginationData"
+              let-nextPage="nextPage"
+              let-context="context"
+            >
+              <div class="searchstax-pagination-container">
+                <div class="searchstax-pagination-content">
+                  <a
+                    class="searchstax-pagination-load-more"
+                    (click)="nextPage($event, context)"
+                  >
+                    Load More
+                  </a>
                 </div>
               </div>
             </ng-template>

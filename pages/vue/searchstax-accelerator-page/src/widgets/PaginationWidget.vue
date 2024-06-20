@@ -4,7 +4,7 @@
       <template #pagination="{ paginationData, previousPage, nextPage }">
                 <div
                   class="searchstax-pagination-container"
-                  v-if="paginationData && paginationData.totalResults > 0 "
+                  v-if="paginationData"
                 >
                   <div class="searchstax-pagination-content">
                     <a
@@ -23,6 +23,13 @@
                     >Next ></a>
                   </div>
                 </div>
+              </template>
+               <template #infiniteScroll="{ nextPage }">
+                <div className="searchstax-pagination-container">
+                <a class="searchstax-pagination-load-more"
+                  @click="nextPage"
+                >Load More override</a>
+              </div>
               </template>
     </SearchstaxPaginationWidget>
   </div>
