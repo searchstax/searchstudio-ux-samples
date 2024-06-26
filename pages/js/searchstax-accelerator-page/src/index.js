@@ -53,7 +53,7 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
 
 searchstax.addFacetsWidget("searchstax-facets-container", {
   facetingType: renderConfig.facetsWidget.facetingType,
-  itemsPerPageDesktop:  renderConfig.facetsWidget.itemsPerPageDesktop,
+  itemsPerPageDesktop: renderConfig.facetsWidget.itemsPerPageDesktop,
   itemsPerPageMobile: renderConfig.facetsWidget.itemsPerPageMobile,
   templates: {
     mainTemplateDesktop: {
@@ -170,15 +170,11 @@ searchstax.addSearchSortingWidget("search-sorting-container", {
           <div class="searchstax-sorting-container">
               <label class="searchstax-sorting-label" for="sort-by">Sort By</label>
               <select id="searchstax-search-order-select" class="searchstax-search-order-select">
-                  <option value="">
-                  Relevance
+                {{#sortOptions}}
+                  <option value="{{key}}">
+                    {{value}}
                   </option>
-                  <option value="date desc">
-                  Newest Content
-                  </option>
-                  <option value="date asc">
-                  Oldest Content
-                  </option>
+                {{/sortOptions}}
               </select>
           </div>
           {{/hasResultsOrExternalPromotions}}
