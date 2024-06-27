@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SearchstudioUxAngularModule } from '@searchstax-inc/searchstudio-ux-angular';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { SearchstudioUxAngularModule } from '@searchstax-inc/searchstudio-ux-ang
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SearchstudioUxAngularModule
+    SearchstudioUxAngularModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
