@@ -7,6 +7,7 @@
       :trackApiKey="config.trackApiKey"
       :searchAuth="config.searchAuth"
       :authType="config.authType"
+      :sessionId="sessionId"
       :analyticsBaseUrl="config.analyticsBaseUrl"
     >
       <template #default>
@@ -56,6 +57,8 @@ import SortingWidget from '@/widgets/SortingWidget.vue'
 import ExternalPromotionsWidget from '@/widgets/ExternalPromotionsWidget.vue'
 import PaginationWidget from '@/widgets/PaginationWidget.vue'
 import RelatedSearchesWidget from '@/widgets/RelatedSearchesWidget.vue'
+
+const sessionId = 'customSessionIdVue'
 </script>
 
 <style scoped></style>

@@ -12,6 +12,7 @@ export class AppComponent {
   title = 'searchstax-accelerator-page';
   config = config
   renderConfig = renderConfig
+  sessionId = 'cuastomSessionId'
   beforeSearch(props: ISearchObject) {
     const propsCopy = { ...props }
     return propsCopy
