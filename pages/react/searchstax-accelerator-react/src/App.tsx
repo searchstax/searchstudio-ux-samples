@@ -37,6 +37,8 @@ function App() {
     null as null | Searchstax
   );
 
+  const sessionId = 'customSessionId';
+
   function beforeSearch(props: ISearchObject) {
     const propsCopy = { ...props };
     return propsCopy;
@@ -79,6 +81,7 @@ function App() {
         beforeSearch={beforeSearch}
         afterSearch={afterSearch}
         authType={config.authType}
+        sessionId={sessionId}
         analyticsBaseUrl={config.analyticsBaseUrl}
         router={{ enabled: true }}
         language="en"

@@ -5,7 +5,7 @@ import { initConfig, renderConfig } from "../../config";
 
 const searchstax = new Searchstax();
 
-searchstax.initialize(initConfig.acceleratorSample);
+searchstax.initialize({...initConfig.acceleratorSample, sessionId: 'customSessionId'});
 
 searchstax.addSearchFeedbackWidget("search-feedback-container", {
   templates: {
