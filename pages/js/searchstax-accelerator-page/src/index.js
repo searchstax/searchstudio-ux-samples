@@ -5,7 +5,17 @@ import { initConfig, renderConfig } from "../../config";
 
 const searchstax = new Searchstax();
 
-searchstax.initialize({...initConfig.acceleratorSample, sessionId: 'customSessionId'});
+function makeId(length) {
+  let result = '';
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+}
+
+searchstax.initialize({...initConfig.acceleratorSample, sessionId: makeId(25)});
 
 searchstax.addSearchFeedbackWidget("search-feedback-container", {
   templates: {

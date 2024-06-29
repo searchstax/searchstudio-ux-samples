@@ -58,7 +58,17 @@ import ExternalPromotionsWidget from '@/widgets/ExternalPromotionsWidget.vue'
 import PaginationWidget from '@/widgets/PaginationWidget.vue'
 import RelatedSearchesWidget from '@/widgets/RelatedSearchesWidget.vue'
 
-const sessionId = 'customSessionIdVue'
+function makeId(length) {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  }
+
+const sessionId = makeId(25);
 </script>
 
 <style scoped></style>
