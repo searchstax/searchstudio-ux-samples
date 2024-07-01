@@ -104,7 +104,7 @@ export default function Home() {
           <div className="searchstax-page-layout-facet-result-container">
             <div className="searchstax-page-layout-facet-container">
               <SearchstaxFacetsWidget
-                facetingType={renderConfig.facetsWidget.facetingType}
+                facetingType={renderConfig.facetsWidget.facetingType} // eslint-disable-line
                 itemsPerPageDesktop={
                   renderConfig.facetsWidget.itemsPerPageDesktop
                 }
@@ -126,7 +126,7 @@ export default function Home() {
               <SearchstaxResultWidget
                 afterLinkClick={afterLinkClick}
                 resultsPerPage={renderConfig.resultsWidget.itemsPerPage}
-                renderMethod={renderConfig.resultsWidget.renderMethod}
+                renderMethod={renderConfig.resultsWidget.renderMethod} // eslint-disable-line
                 noResultTemplate={noResultTemplate}
                 resultsTemplate={resultsTemplate}
               ></SearchstaxResultWidget>
