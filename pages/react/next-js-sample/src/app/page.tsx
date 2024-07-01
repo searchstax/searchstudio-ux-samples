@@ -79,7 +79,7 @@ export default function Home() {
         initialized={initialized}
         beforeSearch={beforeSearch}
         afterSearch={afterSearch}
-        authType={config.authType as "token" | "basic" | undefined}
+        authType={config.authType as "token" | "basic" | undefined} // eslint-disable-line
         analyticsBaseUrl={config.analyticsBaseUrl}
         router={{ enabled: true }}
         language="en"
