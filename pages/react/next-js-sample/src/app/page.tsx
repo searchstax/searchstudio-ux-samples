@@ -79,7 +79,7 @@ export default function Home() {
         initialized={initialized}
         beforeSearch={beforeSearch}
         afterSearch={afterSearch}
-        authType={config.authType}
+        authType={config.authType as "token" | "basic" | undefined}
         analyticsBaseUrl={config.analyticsBaseUrl}
         router={{ enabled: true }}
         language="en"
