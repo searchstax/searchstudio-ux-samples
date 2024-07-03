@@ -94,7 +94,7 @@ function App() {
         sessionId={sessionId}
         analyticsBaseUrl={config.analyticsBaseUrl}
         router={{ enabled: true }}
-        language="en"
+        language={config.language}
       >
         <div className="searchstax-page-layout-container">
           <SearchstaxInputWidget
