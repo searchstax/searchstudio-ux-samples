@@ -68,26 +68,29 @@ function afterLinkClick(result: ISearchstaxParsedResult) {
   return resultCopy;
 }
 
+const renderConfTyped = renderConfig as any;
+const confTyped = config as any;
+
 export default function Home() {
   return (
     <>
       <SearchstaxWrapper
-        searchURL={config.searchURL}
-        suggesterURL={config.suggesterURL}
-        trackApiKey={config.trackApiKey}
-        searchAuth={config.searchAuth}
+        searchURL={confTyped.searchURL}
+        suggesterURL={confTyped.suggesterURL}
+        trackApiKey={confTyped.trackApiKey}
+        searchAuth={confTyped.searchAuth}
         initialized={initialized}
         beforeSearch={beforeSearch}
         afterSearch={afterSearch}
-        authType={config.authType}
-        analyticsBaseUrl={config.analyticsBaseUrl}
+        authType={confTyped.authType as "token" | "basic" | undefined} // eslint-disable-line
+        analyticsBaseUrl={confTyped.analyticsBaseUrl}
         router={{ enabled: true }}
         language="en"
       >
         <div className="searchstax-page-layout-container">
           <SearchstaxInputWidget
             inputTemplate={InputTemplate}
-            suggestAfterMinChars={renderConfig.inputWidget.suggestAfterMinChars}
+            suggestAfterMinChars={renderConfTyped.inputWidget.suggestAfterMinChars}
             afterAutosuggest={afterAutosuggest}
             beforeAutosuggest={beforeAutosuggest}
           ></SearchstaxInputWidget>
@@ -104,12 +107,12 @@ export default function Home() {
           <div className="searchstax-page-layout-facet-result-container">
             <div className="searchstax-page-layout-facet-container">
               <SearchstaxFacetsWidget
-                facetingType={renderConfig.facetsWidget.facetingType}
+                facetingType={renderConfTyped.facetsWidget.facetingType} // eslint-disable-line
                 itemsPerPageDesktop={
-                  renderConfig.facetsWidget.itemsPerPageDesktop
+                  renderConfTyped.facetsWidget.itemsPerPageDesktop
                 }
                 itemsPerPageMobile={
-                  renderConfig.facetsWidget.itemsPerPageMobile
+                  renderConfTyped.facetsWidget.itemsPerPageMobile
                 }
                 specificFacets={undefined}
                 facetsTemplateDesktop={facetsTemplateDesktop}
@@ -125,14 +128,14 @@ export default function Home() {
               ></SearchstaxExternalPromotionsWidget>
               <SearchstaxResultWidget
                 afterLinkClick={afterLinkClick}
-                resultsPerPage={renderConfig.resultsWidget.itemsPerPage}
-                renderMethod={renderConfig.resultsWidget.renderMethod}
+                resultsPerPage={renderConfTyped.resultsWidget.itemsPerPage}
+                renderMethod={renderConfTyped.resultsWidget.renderMethod} // eslint-disable-line
                 noResultTemplate={noResultTemplate}
                 resultsTemplate={resultsTemplate}
               ></SearchstaxResultWidget>
               <SearchstaxRelatedSearchesWidget
-                relatedSearchesURL={config.relatedSearchesURL}
-                relatedSearchesAPIKey={config.relatedSearchesAPIKey}
+                relatedSearchesURL={confTyped.relatedSearchesURL}
+                relatedSearchesAPIKey={confTyped.relatedSearchesAPIKey}
                 searchRelatedSearchesTemplate={searchRelatedSearchesTemplate}
               ></SearchstaxRelatedSearchesWidget>
               <SearchstaxPaginationWidget

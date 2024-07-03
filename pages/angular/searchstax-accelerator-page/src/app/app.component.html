@@ -7,6 +7,7 @@
     [beforeSearch]="beforeSearch"
     [afterSearch]="afterSearch"
     [authType]="config.authType"
+    [sessionId]="sessionId"
     [analyticsBaseUrl]="config.analyticsBaseUrl"
     (initialized)="initialized($event)"
   >
@@ -105,12 +106,10 @@
               <select
                 id="searchstax-search-order-select"
                 class="searchstax-search-order-select"
-                [value]="selectedSorting"
+                [(ngModel)]="context.selectedSorting"
                 (change)="orderChange($event, context)"
               >
-                <option value="">Relevance</option>
-                <option value="date desc">Newest Content</option>
-                <option value="date asc">Oldest Content</option>
+              <option *ngFor="let sortOption of context.sortingData.sortOptions" [value]="sortOption.key">{{sortOption.value}}</option>
               </select>
             </div>
           </ng-template>

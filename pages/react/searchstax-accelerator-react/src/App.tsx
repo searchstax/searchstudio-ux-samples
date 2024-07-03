@@ -37,6 +37,18 @@ function App() {
     null as null | Searchstax
   );
 
+  function makeId(length: number) {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  }
+
+  const sessionId = makeId(25);
+
   function beforeSearch(props: ISearchObject) {
     const propsCopy = { ...props };
     return propsCopy;
@@ -79,6 +91,7 @@ function App() {
         beforeSearch={beforeSearch}
         afterSearch={afterSearch}
         authType={config.authType}
+        sessionId={sessionId}
         analyticsBaseUrl={config.analyticsBaseUrl}
         router={{ enabled: true }}
         language={config.language}

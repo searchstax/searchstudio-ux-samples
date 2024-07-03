@@ -7,6 +7,7 @@
       :trackApiKey="config.trackApiKey"
       :searchAuth="config.searchAuth"
       :authType="config.authType"
+      :sessionId="sessionId"
       :analyticsBaseUrl="config.analyticsBaseUrl"
     >
       <template #default>
@@ -56,6 +57,18 @@ import SortingWidget from '@/widgets/SortingWidget.vue'
 import ExternalPromotionsWidget from '@/widgets/ExternalPromotionsWidget.vue'
 import PaginationWidget from '@/widgets/PaginationWidget.vue'
 import RelatedSearchesWidget from '@/widgets/RelatedSearchesWidget.vue'
+
+function makeId(length) {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  }
+
+const sessionId = makeId(25);
 </script>
 
 <style scoped></style>
