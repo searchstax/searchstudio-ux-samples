@@ -1,17 +1,24 @@
-import '@searchstax-inc/searchstudio-ux-js/dist/styles/mainTheme.css'
-import './main.scss'
-import { Searchstax } from '@searchstax-inc/searchstudio-ux-js'
-import { initConfig } from '../../config';
-
+import "@searchstax-inc/searchstudio-ux-js/dist/styles/mainTheme.css";
+import "./main.scss";
+import { Searchstax } from "@searchstax-inc/searchstudio-ux-js";
+import { initConfig } from "../../config";
 
 const searchstax = new Searchstax();
-
-searchstax.initialize( initConfig.jobSearchSample );
+function makeId(length) {
+  let result = '';
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+}
+searchstax.initialize({...initConfig.jobSearchSample, sessionId: makeId(25)});
 
 searchstax.addSearchFeedbackWidget("search-feedback-container", {
-    templates: {
-      main: {
-          template: `
+  templates: {
+    main: {
+      template: `
         {{#searchExecuted}}
             <div class="searchstax-feedback-container">
             <h3>{{totalResults}} Jobs found </b> {{#searchTerm}} for <b>{{searchTerm}}</b> {{/searchTerm}} </h3>
@@ -23,46 +30,45 @@ searchstax.addSearchFeedbackWidget("search-feedback-container", {
             </div>
         {{/searchExecuted}}
         `,
-          originalQueryClass: `searchstax-feedback-original-query`
-      }
+      originalQueryClass: `searchstax-feedback-original-query`,
     },
-  });
+  },
+});
 
-  
 searchstax.addSearchInputWidget("searchstax-input-container", {
-    suggestAfterMinChars: 3,
-    templates: {
+  suggestAfterMinChars: 3,
+  templates: {
     mainTemplate: {
-        template: `
+      template: `
           <input type="text" autocomplete="off" id="searchstax-search-input" class="searchstax-search-input" placeholder="Search for job posts, companies" />
         `,
-        searchInputId: "searchstax-search-input"
+      searchInputId: "searchstax-search-input",
     },
     autosuggestItemTemplate: {
-        template: `
+      template: `
         <div class="searchstax-autosuggest-item-term-container">{{{term}}}</div>
         `,
-    }
     },
-  });
+  },
+});
 
-  searchstax.addFacetsWidget("searchstax-facets-container", {
-    facetingType: "and",
-    itemsPerPageDesktop: 3,
-    itemsPerPageMobile: 99,
-    templates: {
-        mainTemplateDesktop: {
-            template: `
+searchstax.addFacetsWidget("searchstax-facets-container", {
+  facetingType: "and",
+  itemsPerPageDesktop: 3,
+  itemsPerPageMobile: 99,
+  templates: {
+    mainTemplateDesktop: {
+      template: `
       {{#hasResultsOrExternalPromotions}}
         <div class="searchstax-facets-container-desktop">
           <h3>Filters</h3>
         </div>
       {{/hasResultsOrExternalPromotions}}
       `,
-            facetsContainerId: "",
-        },
-        mainTemplateMobile: {
-            template: `
+      facetsContainerId: "",
+    },
+    mainTemplateMobile: {
+      template: `
         <div class="searchstax-facets-pills-container">
           <div class="searchstax-facets-pills-selected">
           </div>
@@ -77,13 +83,16 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
           <button class="searchstax-facets-mobile-overlay-done">Done</button>
         </div>
       `,
-            facetsContainerClass: `searchstax-facets-container-mobile`,
-            closeOverlayTriggerClasses: ["searchstax-facets-mobile-overlay-done","searchstax-search-close",],
-            filterByContainerClass: `searchstax-facets-pills-container`,
-            selectedFacetsContainerClass: `searchstax-facets-pills-selected`,
-        },
-        showMoreButtonContainerTemplate: {
-            template: `
+      facetsContainerClass: `searchstax-facets-container-mobile`,
+      closeOverlayTriggerClasses: [
+        "searchstax-facets-mobile-overlay-done",
+        "searchstax-search-close",
+      ],
+      filterByContainerClass: `searchstax-facets-pills-container`,
+      selectedFacetsContainerClass: `searchstax-facets-pills-selected`,
+    },
+    showMoreButtonContainerTemplate: {
+      template: `
       <div class="searchstax-facet-show-more-container">
       {{#showingAllFacets}}
         <div class="searchstax-facet-show-less-button searchstax-facet-show-button">less</div>
@@ -93,10 +102,10 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
       {{/showingAllFacets}}
     </div>
       `,
-            showMoreButtonClass: `searchstax-facet-show-more-container`,
-        },
-        facetItemContainerTemplate: {
-            template: `
+      showMoreButtonClass: `searchstax-facet-show-more-container`,
+    },
+    facetItemContainerTemplate: {
+      template: `
       <div>
         <div class="searchstax-facet-title-container">
             <div class="searchstax-facet-title">
@@ -107,91 +116,89 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
         <div class="searchstax-facet-values-container"></div>
       </div>
       `,
-            facetListTitleContainerClass: `searchstax-facet-title-container`,
-            facetListContainerClass: `searchstax-facet-values-container`,
-        },
-        clearFacetsTemplate: {
-            template: `
+      facetListTitleContainerClass: `searchstax-facet-title-container`,
+      facetListContainerClass: `searchstax-facet-values-container`,
+    },
+    clearFacetsTemplate: {
+      template: `
       {{#shouldShow}}}
         <div class="searchstax-facets-pill searchstax-clear-filters searchstax-facets-pill-clear-all">
         <div class="searchstax-facets-pill-label">Clear Filters</div>
         </div>
       {{/shouldShow}}
       `,
-            containerClass: `searchstax-facets-pill-clear-all`,
-        },
-        facetItemTemplate: {
-            template: `
+      containerClass: `searchstax-facets-pill-clear-all`,
+    },
+    facetItemTemplate: {
+      template: `
       <div class="searchstax-facet-input">
         <input type="checkbox" class="searchstax-facet-input-checkbox" {{#disabled}}disabled{{/disabled}} {{#isChecked}}checked{{/isChecked}}/>
       </div>
       <div class="searchstax-facet-value-label">{{value}}</div>
       <div class="searchstax-facet-value-count">({{count}})</div>
       `,
-            inputCheckboxClass: `searchstax-facet-input-checkbox`,
-            checkTriggerClasses: ["searchstax-facet-value-label","searchstax-facet-value-count",],
-        },
-        filterByTemplate: {
-            template: `
+      inputCheckboxClass: `searchstax-facet-input-checkbox`,
+      checkTriggerClasses: [
+        "searchstax-facet-value-label",
+        "searchstax-facet-value-count",
+      ],
+    },
+    filterByTemplate: {
+      template: `
       <div class="searchstax-facets-pill searchstax-facets-pill-filter-by">
         <div class="searchstax-facets-pill-label">Filter By</div>
       </div>
       `,
-            containerClass: `searchstax-facets-pill-filter-by`,
-        },
-        selectedFacetsTemplate: {
-            template: `
+      containerClass: `searchstax-facets-pill-filter-by`,
+    },
+    selectedFacetsTemplate: {
+      template: `
       <div class="searchstax-facets-pill searchstax-facets-pill-facets">
         <div class="searchstax-facets-pill-label">{{value}} ({{count}})</div>
         <div class="searchstax-facets-pill-icon-close"></div>
       </div>
       `,
-            containerClass: `searchstax-facets-pill-facets`,
-        },
-
+      containerClass: `searchstax-facets-pill-facets`,
     },
-  });
+  },
+});
 
-  searchstax.addSearchSortingWidget("search-sorting-container", {
-    templates: {
-      main: {
-          template: `
+searchstax.addSearchSortingWidget("search-sorting-container", {
+  templates: {
+    main: {
+      template: `
       {{#searchExecuted}}
         {{#hasResultsOrExternalPromotions}}
         <div class="searchstax-sorting-container">
             <label class="searchstax-sorting-label" for="sort-by">Sort By</label>
             <select id="searchstax-search-order-select" class="searchstax-search-order-select">
-                <option value="">
-                Relevance
-                </option>
-                <option value="date desc">
-                Newest Content
-                </option>
-                <option value="date asc">
-                Oldest Content
-                </option>
+            {{#sortOptions}}
+            <option value="{{key}}">
+              {{value}}
+            </option>
+          {{/sortOptions}}
             </select>
         </div>
         {{/hasResultsOrExternalPromotions}}
       {{/searchExecuted}}
       `,
-          selectId: `searchstax-search-order-select`
-      }
+      selectId: `searchstax-search-order-select`,
     },
-  });
+  },
+});
 
-  searchstax.addSearchResultsWidget("searchstax-results-container", {
-    templates: {
-      mainTemplate: {
+searchstax.addSearchResultsWidget("searchstax-results-container", {
+  templates: {
+    mainTemplate: {
       template: `
             <div class="searchstax-search-results-container">
                 <div class="searchstax-search-results" id="searchstax-search-results"></div>
             </div>
             `,
-        searchResultsContainerId: "searchstax-search-results",
-      },
-      searchResultTemplate: {
-        template: `
+      searchResultsContainerId: "searchstax-search-results",
+    },
+    searchResultTemplate: {
+      template: `
               <div class="searchstax-search-result {{#thumbnail}} has-thumbnail {{/thumbnail}}">
                   <div class="searchstax-search-result-content">
                     <div class="searchstax-search-result-title-wrapper">
@@ -207,19 +214,19 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
 
                     {{#ribbon}}
                           <span class="pill">{{ribbon}}</span>
-                    {{/ribbon}} 
+                    {{/ribbon}}
                   </div>
                   <div class="searchstax-search-result-action">
                     <button class="btn-outline">Save For Later</button>
                     <button class="btn-primary">Apply</button>
-                    
+
                   </div>
               </div>
             `,
-        searchResultUniqueIdAttribute: "data-searchstax-unique-result-id"
-      },
-      noSearchResultTemplate: {
-        template: `
+      searchResultUniqueIdAttribute: "data-searchstax-unique-result-id",
+    },
+    noSearchResultTemplate: {
+      template: `
             <div class="searchstax-no-results">
                 We're sorry, we couldn't find any results for <strong>"{{ searchTerm }}"</strong>
                 <br>
@@ -236,17 +243,19 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
                 </div>
 
             </div>
-            `
-      }
+            `,
     },
-  });
+  },
+});
 
-  searchstax.addRelatedSearchesWidget("searchstax-related-searches-container", {
-    relatedSearchesURL: initConfig.jobSearchRelatedSearchSample.relatedSearchesURL,
-    relatedSearchesAPIKey: initConfig.jobSearchRelatedSearchSample.relatedSearchesAPIKey,
-   templates: {
-     main: {
-         template: `
+searchstax.addRelatedSearchesWidget("searchstax-related-searches-container", {
+  relatedSearchesURL:
+    initConfig.jobSearchRelatedSearchSample.relatedSearchesURL,
+  relatedSearchesAPIKey:
+    initConfig.jobSearchRelatedSearchSample.relatedSearchesAPIKey,
+  templates: {
+    main: {
+      template: `
        {{#hasRelatedSearches}}
            <div class="searchstax-related-searches-container" id="searchstax-related-searches-container">
                <h3>Also search for: </h3> <span id="searchstax-related-searches"></span>
@@ -258,23 +267,23 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
            </div>
        {{/hasRelatedSearches}}
        `,
-         relatedSearchesContainerClass: `searchstax-related-search`,
-     },
-     relatedSearch: {
-         template: `
+      relatedSearchesContainerClass: `searchstax-related-search`,
+    },
+    relatedSearch: {
+      template: `
        <p class="searchstax-related-search-item">
            {{ related_search }}
        </p>
        `,
-         relatedSearchContainerClass: `searchstax-related-search-item`,
-     },
-   },
- });
+      relatedSearchContainerClass: `searchstax-related-search-item`,
+    },
+  },
+});
 
-   searchstax.addPaginationWidget("searchstax-pagination-container", {
-    templates: {
-        mainTemplate: {
-            template: `
+searchstax.addPaginationWidget("searchstax-pagination-container", {
+  templates: {
+    mainTemplate: {
+      template: `
       {{#results.length}}
         <div class="searchstax-pagination-container">
           <div class="searchstax-pagination-content">
@@ -287,8 +296,8 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
         </div>
       {{/results.length}}
       `,
-            previousButtonClass: "searchstax-pagination-previous",
-            nextButtonClass: "searchstax-pagination-next"
-        }
+      previousButtonClass: "searchstax-pagination-previous",
+      nextButtonClass: "searchstax-pagination-next",
     },
-  });
+  },
+});
