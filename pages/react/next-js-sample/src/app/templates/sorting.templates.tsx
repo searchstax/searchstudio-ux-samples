@@ -22,9 +22,13 @@ export function searchSortingTemplate(
                   orderChange(e.target.value);
                 }}
               >
-                <option value=""> Relevance </option>
-                <option value="date desc"> Newest Content </option>
-                <option value="date asc"> Oldest Content </option>
+               {sortingData.sortOptions.map(function (sortOption) {
+                  return (
+                    <option key={sortOption.key} value={sortOption.key}>
+                      {sortOption.value}
+                    </option>
+                  );
+                })}
               </select>
             </div>
           )}
