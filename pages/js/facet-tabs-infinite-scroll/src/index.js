@@ -15,7 +15,18 @@ import './main.scss'
 
 // Initialize SearchStax with config
 const searchstax = new Searchstax();
-searchstax.initialize( initConfig.acceleratorSample );
+
+function makeId(length) {
+  let result = '';
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+}
+
+searchstax.initialize( {...initConfig.acceleratorSample, sessionId: makeId(25)} );
 
 
 // Add Widgets
@@ -93,7 +104,7 @@ searchstax.addPaginationWidget("searchstax-pagination-container", {
                       </div>
                     </div>
                 {{/results.length}}
-                
+
                 `,
             loadMoreButtonClass: "searchstax-pagination-load-more"
         }

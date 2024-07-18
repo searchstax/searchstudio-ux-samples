@@ -35,7 +35,7 @@
                   :class="{ 'searchstax-facet-value-disabled': facetValue.disabled }"
                   :ref="
                     (el) => {
-                      facetContainers[key + facet.name] = el
+                      facetContainers[facetValue.value + '-desktop'] = el
                     }
                   "
                 >
@@ -45,18 +45,18 @@
                       class="searchstax-facet-input-checkbox"
                       :checked="isChecked(facetValue)"
                       :disabled="facetValue.disabled"
-                      @click="selectFacet(key + facet.name, $event, facetValue, true)"
+                      @click="selectFacet(facetValue.value + '-desktop', $event, facetValue, true)"
                     />
                   </div>
                   <div
                     class="searchstax-facet-value-label"
-                    @click="selectFacet(key + facet.name, $event, facetValue, false)"
+                    @click="selectFacet(facetValue.value + '-desktop', $event, facetValue, false)"
                   >
                     {{ facetValue.value }}
                   </div>
                   <div
                     class="searchstax-facet-value-count"
-                    @click="selectFacet(key + facet.name, $event, facetValue, false)"
+                    @click="selectFacet(facetValue.value + '-desktop', $event, facetValue, false)"
                   >
                     ({{ facetValue.count }})
                   </div>
@@ -164,7 +164,7 @@
                       :class="{ 'searchstax-facet-value-disabled': facetValue.disabled }"
                       :ref="
                         (el) => {
-                          facetContainers[key + facet.name] = el
+                          facetContainers[facetValue.value + '-mobile'] = el
                         }
                       "
                     >
@@ -174,18 +174,18 @@
                           class="searchstax-facet-input-checkbox"
                           :checked="isChecked(facetValue)"
                           :disabled="facetValue.disabled"
-                          @click="selectFacet(key + facet.name, $event, facetValue, true)"
+                          @click="selectFacet(facetValue.value + '-mobile', $event, facetValue, true)"
                         />
                       </div>
                       <div
                         class="searchstax-facet-value-label"
-                        @click="selectFacet(key + facet.name, $event, facetValue, false)"
+                        @click="selectFacet(facetValue.value + '-mobile', $event, facetValue, false)"
                       >
                         {{ facetValue.value }}
                       </div>
                       <div
                         class="searchstax-facet-value-count"
-                        @click="selectFacet(key + facet.name, $event, facetValue, false)"
+                        @click="selectFacet(facetValue.value + '-mobile', $event, facetValue, false)"
                       >
                         ({{ facetValue.count }})
                       </div>

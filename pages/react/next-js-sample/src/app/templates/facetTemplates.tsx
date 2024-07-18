@@ -44,7 +44,7 @@ export function facetsTemplateDesktop(
               >
                 <div className="searchstax-facet-title">
                   {" "}
-                  {facet.label} kjhjk
+                  {facet.label}
                 </div>
                 <div className="searchstax-facet-title-arrow active"></div>
               </div>

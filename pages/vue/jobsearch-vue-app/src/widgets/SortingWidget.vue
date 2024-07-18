@@ -16,9 +16,8 @@
                   :value="selectedSorting"
                   @change="orderChange($event)"
                 >
-                  <option value=""> Relevance </option>
-                  <option value="date desc"> Newest Content </option>
-                  <option value="date asc"> Oldest Content </option>
+                <option v-for="sortOption in sortingData.sortOptions"
+                :key="sortOption.key" :value="sortOption.key"> {{ sortOption.value }} </option>
                 </select>
               </div>
             </template>
