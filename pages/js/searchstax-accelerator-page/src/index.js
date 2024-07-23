@@ -267,7 +267,7 @@ searchstax.addSearchResultsWidget("searchstax-results-container", {
                     Showing <strong>no results</strong> for <strong>"{{ searchTerm }}"</strong>
                     <br>
                     {{#spellingSuggestion}}
-                        <span>&nbsp;Did you mean <a href="#" class="searchstax-suggestion-term">{{ spellingSuggestion }}</a>?</span>
+                        <span>&nbsp;Did you mean <a href="#" class="searchstax-suggestion-term" onclick="searchCallback('{{ spellingSuggestion }}')">{{ spellingSuggestion }}</a>?</span>
                     {{/spellingSuggestion}}
                 </div>
                 <ul class="searchstax-no-results-list">
