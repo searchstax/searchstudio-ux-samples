@@ -5,7 +5,8 @@ import {
 
 export function noResultTemplate(
   searchTerm: string,
-  metaData: ISearchstaxSearchMetadata | null
+  metaData: ISearchstaxSearchMetadata | null,
+  executeSearch: (searchTerm: string) => void
 ): React.ReactElement {
   return (
     <div>
@@ -17,7 +18,10 @@ export function noResultTemplate(
         {metaData?.spellingSuggestion && (
           <span>
             &nbsp;Did you mean{" "}
-            <a href="#" className="searchstax-suggestion-term">
+            <a href="#" className="searchstax-suggestion-term" onClick={(e) => {
+                          e.preventDefault();
+                          executeSearch(metaData?.spellingSuggestion);
+                        }}>
               {metaData?.spellingSuggestion}
             </a>
             ?
