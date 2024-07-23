@@ -534,6 +534,8 @@
               #noResultsTemplate
               let-metadata="metadata"
               let-searchTerm="searchTerm"
+              let-executeSearch="executeSearch"
+              let-context="context"
             >
               <div class="searchstax-no-results">
                 Showing <strong>no results</strong> for
@@ -541,7 +543,7 @@
                 <br />
                 <span *ngIf="metadata?.spellingSuggestion"
                   >&nbsp;Did you mean
-                  <a href="#" class="searchstax-suggestion-term">{{
+                  <a href="#" class="searchstax-suggestion-term" (click)="executeSearch(metadata?.spellingSuggestion ?? '', $event, context)">{{
                     metadata?.spellingSuggestion
                   }}</a
                   >?</span
