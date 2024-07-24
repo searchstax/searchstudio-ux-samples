@@ -59,6 +59,11 @@ export function resultsTemplate(
                 onClick={(event) => {
                   resultClicked(searchResult, event);
                 }}
+                onKeyDown={(e) => {
+                  if(e.key === 'Enter' || e.key === ' ') {
+                    resultClicked(searchResult, e);
+                  }
+                }}
                 data-searchstax-unique-result-id={searchResult.uniqueId}
                 className="searchstax-result-item-link searchstax-result-item-link-wrapping"
                 tabIndex={0}

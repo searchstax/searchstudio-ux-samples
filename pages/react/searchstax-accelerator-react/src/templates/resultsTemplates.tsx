@@ -53,7 +53,13 @@ export function resultsTemplate(
                       return (
                         <a href={searchResult.url ?? ''} onClick={event => {
                           resultClicked(searchResult, event);
-                        }} data-searchstax-unique-result-id={ searchResult.uniqueId} key={searchResult.uniqueId} className="searchstax-result-item-link searchstax-result-item-link-wrapping" tabIndex={0}>
+                        }}
+                        onKeyDown={(e) => {
+                          if(e.key === 'Enter' || e.key === ' ') {
+                            resultClicked(searchResult, e);
+                          }
+                        }}
+                        data-searchstax-unique-result-id={ searchResult.uniqueId} key={searchResult.uniqueId} className="searchstax-result-item-link searchstax-result-item-link-wrapping" tabIndex={0}>
                         <div
                           className={`searchstax-search-result ${
                             searchResult.thumbnail ? "has-thumbnail" : ""

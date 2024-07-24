@@ -116,6 +116,11 @@ export function facetsTemplateDesktop(
                       onClick={(e) => {
                         showMoreLessDesktop(e, facet);
                       }}
+                      onKeyDown={(e) => {
+                        if(e.key === 'Enter' || e.key === ' ') {
+                          showMoreLessDesktop(e as any, facet);
+                        }
+                      }}
                       tabIndex={0}
                     >
                       {facet.showingAllFacets && (
@@ -324,6 +329,11 @@ export function facetsTemplateMobile(
                           className="searchstax-facet-show-more-container"
                           onClick={(e) => {
                             showMoreLessMobile(e, facet);
+                          }}
+                          onKeyDown={(e) => {
+                            if(e.key === 'Enter' || e.key === ' ') {
+                              showMoreLessMobile(e as any, facet);
+                            }
                           }}
                           tabIndex={0}
                         >

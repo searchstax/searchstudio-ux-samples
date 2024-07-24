@@ -20,6 +20,11 @@ export function paginationTemplate(
                 onClick={(e) => {
                   previousPage(e);
                 }}
+                onKeyDown={(e) => {
+                  if(e.key === 'Enter' || e.key === ' ') {
+                    previousPage(e as any);
+                  }
+                }}
                 tabIndex={0}
 
                 id="searchstax-pagination-previous"
@@ -41,6 +46,11 @@ export function paginationTemplate(
                 }
                 onClick={(e) => {
                   nextPage(e);
+                }}
+                onKeyDown={(e) => {
+                  if(e.key === 'Enter' || e.key === ' ') {
+                    nextPage(e as any);
+                  }
                 }}
                 id="searchstax-pagination-next"
               >
@@ -68,6 +78,11 @@ export function paginationTemplate(
                 className="searchstax-pagination-load-more"
                 onClick={(e) => {
                   nextPage(e);
+                }}
+                onKeyDown={(e) => {
+                  if(e.key === 'Enter' || e.key === ' ') {
+                    nextPage(e as any);
+                  }
                 }}
                 tabIndex={0}
               >
