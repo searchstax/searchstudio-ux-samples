@@ -18,6 +18,8 @@
                       v-for="related in relatedData.relatedSearches"
                       :key="related.related_search"
                       @click="relatedSearchClickHandler(related, executeSearch)"
+                      @keyup.enter="executeSearch(related, executeSearch)"
+                      @keyup.space="executeSearch(related, executeSearch)"
                       tabindex="0"
                       class="searchstax-related-search searchstax-related-search-item"
                     > {{ related.related_search }}
