@@ -12,6 +12,8 @@
                       tabindex="0"
                       :disabled="paginationData?.isFirstPage"
                       @click="previousPage"
+                      @keyup.enter="previousPage"
+                      @keyup.space="previousPage"
                       id="searchstax-pagination-previous"
                     > &lt; Previous </a>
                     <div class="searchstax-pagination-details"> {{ paginationData?.startResultIndex }} - {{
@@ -21,6 +23,8 @@
                       tabindex="0"
                       :disabled="paginationData?.isLastPage"
                       @click="nextPage"
+                      @keyup.enter="nextPage"
+                      @keyup.space="nextPage"
                       id="searchstax-pagination-next"
                     >Next ></a>
                   </div>

@@ -12,6 +12,8 @@
             :href="searchResult.url"
             :data-searchstax-unique-result-id="searchResult.uniqueId"
             @click="resultClicked(searchResult, $event)"
+            @keyup.enter="resultClicked(searchResult, $event)"
+            @keyup.space="resultClicked(searchResult, $event)"
             class="searchstax-result-item-link searchstax-result-item-link-wrapping"
             tabindex="0"
           >

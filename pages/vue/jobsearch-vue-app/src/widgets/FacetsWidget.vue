@@ -66,6 +66,8 @@
                   <div
                     class="searchstax-facet-show-more-container"
                     @click="showMoreLessDesktop($event, facet)"
+                    @keyup.space="showMoreLessDesktop($event, facet)"
+                    @keyup.enter="showMoreLessDesktop($event, facet)"
                     tabindex="0"
                   >
                     <div
@@ -198,6 +200,8 @@
                         class="searchstax-facet-show-more-container"
                         tabindex="0"
                         @click="showMoreLessDesktop($event, facet)"
+                        @keyup.space="$event.preventDefault(); showMoreLessDesktop($event, facet)"
+                        @keyup.enter="showMoreLessDesktop($event, facet)"
                       >
                         <div
                           v-if="facet.showingAllFacets"

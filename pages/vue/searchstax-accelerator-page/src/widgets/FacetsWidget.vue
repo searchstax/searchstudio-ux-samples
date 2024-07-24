@@ -56,6 +56,8 @@
                           <div
                             class="searchstax-facet-show-more-container"
                             @click="showMoreLessDesktop($event, facet)"
+                            @keyup.space="$event.preventDefault(); showMoreLessDesktop($event, facet)"
+                            @keyup.enter="showMoreLessDesktop($event, facet)"
                             tabindex="0"
                           >
                             <div
@@ -165,7 +167,9 @@
                             >
                               <div
                                 class="searchstax-facet-show-more-container"
-                                @click="showMoreLessDesktop($event, facet)"
+                                 @click="showMoreLessDesktop($event, facet)"
+                                 @keyup.space="showMoreLessDesktop($event, facet)"
+                                 @keyup.enter="showMoreLessDesktop($event, facet)"
                                 tabindex="0"
                               >
                                 <div
