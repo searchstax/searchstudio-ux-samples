@@ -32,6 +32,7 @@
               id="searchstax-search-input"
               class="searchstax-search-input"
               placeholder="SEARCH FOR..."
+              aria-label="search"
             />
             <div
               class="searchstax-autosuggest-container"
@@ -46,6 +47,7 @@
                   class="searchstax-autosuggest-item-term-container"
                   [innerHtml]="suggestion.term"
                   (mouseover)="onMouseOver(suggestion, context)"
+                  tabindex="0"
                   (click)="onMouseClick($event, context)"
                 ></div>
               </div>
@@ -53,6 +55,7 @@
             <button
               class="searchstax-spinner-icon"
               id="searchstax-search-input-action-button"
+              aria-label="search"
             ></button>
           </div>
         </ng-template>
@@ -100,7 +103,7 @@
             let-context="context"
           >
             <div class="searchstax-sorting-container">
-              <label class="searchstax-sorting-label" for="sort-by"
+              <label class="searchstax-sorting-label" for="searchstax-search-order-select"
                 >Sort By</label
               >
               <select
@@ -168,6 +171,7 @@
                             type="checkbox"
                             class="searchstax-facet-input-checkbox"
                             [checked]="isChecked(facetValue, context)"
+                            [attr.aria-label]="facetValue.value + ' ' + facetValue.count"
                             [disabled]="facetValue.disabled"
                             (click)="
                               selectFacet(
@@ -204,6 +208,7 @@
                         <div
                           class="searchstax-facet-show-more-container"
                           (click)="showMoreLessDesktop($event, facet, context)"
+                          (keyup.enter)="showMoreLessDesktop($event, facet, context)" (keyup.space)="showMoreLessDesktop($event, facet, context)" tabindex="0"
                         >
                           <div
                             *ngIf="facet.showingAllFacets"
@@ -240,6 +245,7 @@
               let-facetsTemplateDataMobile="facetsTemplateDataMobile"
               let-closeOverlay="closeOverlay"
               let-showMoreLessDesktop="showMoreLessDesktop"
+              let-showMoreLessMobile="showMoreLessMobile"
             >
               <div class="searchstax-facets-container-mobile">
                 <div class="searchstax-facets-pills-container">
@@ -325,6 +331,7 @@
                                 type="checkbox"
                                 class="searchstax-facet-input-checkbox"
                                 [checked]="isChecked(facetValue, context)"
+                                [attr.aria-label]="facetValue.value + ' ' + facetValue.count"
                                 [disabled]="facetValue.disabled"
                                 (click)="
                                   selectFacet(
@@ -372,9 +379,7 @@
                           >
                             <div
                               class="searchstax-facet-show-more-container"
-                              (click)="
-                                showMoreLessDesktop($event, facet, context)
-                              "
+                              (click)="showMoreLessMobile($event, facet, context)" (keyup.enter)="showMoreLessMobile($event, facet, context)" (keyup.space)="showMoreLessMobile($event, facet, context)" tabindex="0"
                             >
                               <div
                                 *ngIf="facet.showingAllFacets"
@@ -473,6 +478,9 @@
                 [href]="searchResult.url"
                 [attr.data-searchstax-unique-result-id]="searchResult.uniqueId"
                 (click)="resultClicked(searchResult, $event, context)"
+                (keyup.enter)="resultClicked(searchResult, $event, context)"
+                (keyup.space)="resultClicked(searchResult, $event, context)"
+                tabindex="0"
                 class="searchstax-result-item-link searchstax-result-item-link-wrapping"
               >
 
@@ -549,16 +557,16 @@
                   >?</span
                 >
               </div>
-              <div>
-                <p>
+              <ul>
+                <li>
                   Try searching for search related terms or topics. We offer a
                   wide variety of content to help you get the information you
                   need.
-                </p>
-                <p>
+                </li>
+                <li>
                   Lost? Click on the ‘X” in the Search Box to reset your search.
-                </p>
-              </div>
+                </li>
+              </ul>
             </ng-template>
           </app-searchstax-results>
           <app-searchstax-related-searches
@@ -585,6 +593,9 @@
                   <span
                     *ngFor="let related of relatedData.relatedSearches"
                     (click)="executeSearch(related, context)"
+                    (keyup.enter)="executeSearch(related, context)"
+                    (keyup.space)="executeSearch(related, context)"
+                    tabindex="0"
                     class="searchstax-related-search searchstax-related-search-item"
                   >
                     {{ related.related_search
@@ -611,6 +622,9 @@
                   <a
                     class="searchstax-pagination-previous"
                     (click)="previousPage($event, context)"
+                    (keyup.enter)="previousPage($event, context)"
+                    (keyup.space)="previousPage($event, context)"
+                    tabindex="0"
                     id="searchstax-pagination-previous"
                   >
                     &lt; Previous
@@ -623,6 +637,9 @@
                   <a
                     class="searchstax-pagination-next"
                     (click)="nextPage($event, context)"
+                    (keyup.enter)="nextPage($event, context)"
+                    (keyup.space)="nextPage($event, context)"
+                    tabindex="0"
                     id="searchstax-pagination-next"
                     >Next ></a
                   >
@@ -641,6 +658,9 @@
                   <a
                     class="searchstax-pagination-load-more"
                     (click)="nextPage($event, context)"
+                    (keyup.enter)="nextPage($event, context)"
+                    (keyup.space)="nextPage($event, context)"
+                    tabindex="0"
                   >
                     Load More
                   </a>
