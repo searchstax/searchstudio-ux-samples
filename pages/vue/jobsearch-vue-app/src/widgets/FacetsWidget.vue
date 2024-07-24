@@ -45,6 +45,7 @@
                       class="searchstax-facet-input-checkbox"
                       :checked="isChecked(facetValue)"
                       :disabled="facetValue.disabled"
+                      :aria-label="facetValue.value + ' ' + facetValue.count"
                       @click="selectFacet(facetValue.value + '-desktop', $event, facetValue, true)"
                     />
                   </div>
@@ -65,6 +66,7 @@
                   <div
                     class="searchstax-facet-show-more-container"
                     @click="showMoreLessDesktop($event, facet)"
+                    tabindex="0"
                   >
                     <div
                       v-if="facet.showingAllFacets"
@@ -174,6 +176,7 @@
                           class="searchstax-facet-input-checkbox"
                           :checked="isChecked(facetValue)"
                           :disabled="facetValue.disabled"
+                          :aria-label="facetValue.value + ' ' + facetValue.count"
                           @click="selectFacet(facetValue.value + '-mobile', $event, facetValue, true)"
                         />
                       </div>
@@ -193,6 +196,7 @@
                     <div class="searchstax-facet-show-more-container" v-if="facet.hasMoreFacets">
                       <div
                         class="searchstax-facet-show-more-container"
+                        tabindex="0"
                         @click="showMoreLessDesktop($event, facet)"
                       >
                         <div
