@@ -20,6 +20,8 @@ export function paginationTemplate(
                 onClick={(e) => {
                   previousPage(e);
                 }}
+                tabIndex={0}
+
                 id="searchstax-pagination-previous"
               >
                 {" "}
@@ -33,6 +35,7 @@ export function paginationTemplate(
               </div>
               <a
                 className="searchstax-pagination-next"
+                tabIndex={0}
                 style={
                   paginationData?.isLastPage ? { pointerEvents: "none" } : {}
                 }
@@ -66,6 +69,7 @@ export function paginationTemplate(
                 onClick={(e) => {
                   nextPage(e);
                 }}
+                tabIndex={0}
               >
                 Show More &gt;
               </a>

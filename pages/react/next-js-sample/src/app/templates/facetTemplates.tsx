@@ -76,6 +76,7 @@ export function facetsTemplateDesktop(
                             className="searchstax-facet-input-checkbox"
                             checked={isChecked(facetValue)}
                             readOnly={true}
+                            aria-label={facetValue.value + ' ' + facetValue.count}
                             disabled={facetValue.disabled}
                             onClick={(e) => {
                               selectFacet(
@@ -115,6 +116,7 @@ export function facetsTemplateDesktop(
                       onClick={(e) => {
                         showMoreLessDesktop(e, facet);
                       }}
+                      tabIndex={0}
                     >
                       {facet.showingAllFacets && (
                         <div className="searchstax-facet-show-less-button searchstax-facet-show-button">
@@ -270,6 +272,7 @@ export function facetsTemplateMobile(
                                   className="searchstax-facet-input-checkbox"
                                   checked={isChecked(facetValue)}
                                   readOnly={true}
+                                  aria-label={facetValue.value + ' ' + facetValue.count}
                                   disabled={facetValue.disabled}
                                   onClick={(e) => {
                                     selectFacet(
@@ -322,6 +325,7 @@ export function facetsTemplateMobile(
                           onClick={(e) => {
                             showMoreLessMobile(e, facet);
                           }}
+                          tabIndex={0}
                         >
                           {facet.showingAllFacets && (
                             <div className="searchstax-facet-show-less-button searchstax-facet-show-button">

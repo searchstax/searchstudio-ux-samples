@@ -13,6 +13,7 @@ export function InputTemplate(
           id="searchstax-search-input"
           className="searchstax-search-input"
           placeholder="SEARCH FOR..."
+          aria-label="search"
         />
         <div
           className={`searchstax-autosuggest-container ${
@@ -32,6 +33,7 @@ export function InputTemplate(
                   onMouseOver={() => {
                     onMouseOver(suggestion);
                   }}
+                  tabIndex={0}
                   onClick={() => {
                     onMouseClick();
                   }}
@@ -43,6 +45,7 @@ export function InputTemplate(
 
         <button
           className="searchstax-spinner-icon"
+          aria-label="search"
           id="searchstax-search-input-action-button"
         ></button>
       </div>

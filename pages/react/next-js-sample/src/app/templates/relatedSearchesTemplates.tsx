@@ -23,6 +23,7 @@ export function searchRelatedSearchesTemplate(
                       onClick={() => {
                         executeSearch(related);
                       }}
+                      tabIndex={0}
                       className="searchstax-related-search searchstax-related-search-item"
                     >
                       {" "}
