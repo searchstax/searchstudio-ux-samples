@@ -6,8 +6,9 @@ import { initConfig, renderConfig } from "../../config";
 const searchstax = new Searchstax();
 
 function makeId(length) {
-  let result = '';
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let result = "";
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
   const charactersLength = characters.length;
   for (let i = 0; i < length; i++) {
     result += characters.charAt(Math.floor(Math.random() * charactersLength));
@@ -15,7 +16,10 @@ function makeId(length) {
   return result;
 }
 
-searchstax.initialize({...initConfig.acceleratorSample, sessionId: makeId(25)});
+searchstax.initialize({
+  ...initConfig.acceleratorSample,
+  sessionId: makeId(25),
+});
 
 searchstax.addSearchFeedbackWidget("search-feedback-container", {
   templates: {
@@ -46,8 +50,8 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
       template: `
       <div class="searchstax-search-input-container">
         <div class="searchstax-search-input-wrapper">
-          <input type="text" id="searchstax-search-input" class="searchstax-search-input" placeholder="SEARCH FOR..." />
-          <button class="searchstax-spinner-icon" id="searchstax-search-input-action-button"></button>
+          <input type="text" id="searchstax-search-input" class="searchstax-search-input" placeholder="SEARCH FOR..." aria-label="Search" />
+          <button class="searchstax-spinner-icon" id="searchstax-search-input-action-button" aria-label="search"></button>
         </div>
       </div>
         `,
@@ -103,10 +107,10 @@ searchstax.addFacetsWidget("searchstax-facets-container", {
       template: `
       <div class="searchstax-facet-show-more-container">
       {{#showingAllFacets}}
-        <div class="searchstax-facet-show-less-button searchstax-facet-show-button">less</div>
+        <div class="searchstax-facet-show-less-button searchstax-facet-show-button" tabindex="0" role="button">less</div>
       {{/showingAllFacets}}
       {{^showingAllFacets}}
-        <div class="searchstax-facet-show-more-button  searchstax-facet-show-button">more {{onShowMoreLessClick}}</div>
+        <div class="searchstax-facet-show-more-button  searchstax-facet-show-button" tabindex="0" role="button">more {{onShowMoreLessClick}}</div>
       {{/showingAllFacets}}
     </div>
       `,
@@ -140,7 +144,7 @@ searchstax.addFacetsWidget("searchstax-facets-container", {
     facetItemTemplate: {
       template: `
       <div class="searchstax-facet-input">
-        <input type="checkbox" class="searchstax-facet-input-checkbox" {{#disabled}}disabled{{/disabled}} {{#isChecked}}checked{{/isChecked}}/>
+        <input type="checkbox" class="searchstax-facet-input-checkbox" {{#disabled}}disabled{{/disabled}} {{#isChecked}}checked{{/isChecked}} aria-label="{{value}} {{count}}" tabindex="0"/>
       </div>
       <div class="searchstax-facet-value-label">{{value}}</div>
       <div class="searchstax-facet-value-count">({{count}})</div>
@@ -178,7 +182,7 @@ searchstax.addSearchSortingWidget("search-sorting-container", {
         {{#searchExecuted}}
           {{#hasResultsOrExternalPromotions}}
           <div class="searchstax-sorting-container">
-              <label class="searchstax-sorting-label" for="sort-by">Sort By</label>
+              <label class="searchstax-sorting-label" for="searchstax-search-order-select">Sort By</label>
               <select id="searchstax-search-order-select" class="searchstax-search-order-select">
                 {{#sortOptions}}
                   <option value="{{key}}">
@@ -207,63 +211,69 @@ searchstax.addSearchResultsWidget("searchstax-results-container", {
     },
     searchResultTemplate: {
       template: `
-      <div class="searchstax-search-result {{#thumbnail}} has-thumbnail {{/thumbnail}}">
-        {{#url}}
-          <a href="{{url}}" data-searchstax-unique-result-id="{{uniqueId}}" class="searchstax-result-item-link"></a>
-        {{/url}}
+      <a href="{{url}}" data-searchstax-unique-result-id="{{uniqueId}}" class="searchstax-result-item-link searchstax-result-item-link-wrapping" tabindex="0">
+      <div class="searchstax-search-result searchstax-search-result-wrapping {{#thumbnail}} has-thumbnail {{/thumbnail}}">
+          {{#promoted}}
+              <div class="searchstax-search-result-promoted"></div>
+          {{/promoted}}
 
-        {{#unmappedFields}}
-          {{#isImage}}
-                        <div class="searchstax-search-result-image-container">
-                          <img src="{{value}}" class="searchstax-result-image">
-                        </div>
-          {{/isImage}}
-        {{/unmappedFields}}
+          {{#ribbon}}
+              <div class="searchstax-search-result-ribbon">
+              {{ribbon}}
+              </div>
+          {{/ribbon}}
 
-            <div class="searchstax-search-result-content">
+          {{#thumbnail}}
+              <img src="{{thumbnail}}" class="searchstax-thumbnail">
+          {{/thumbnail}}
+          <div class="searchstax-search-result-title-container">
+              <span class="searchstax-search-result-title">{{title}}</span>
+          </div>
 
-                <div class="searchstax-search-result-title-wrapper">
+          {{#paths}}
+              <p class="searchstax-search-result-common">
+                  {{paths}}
+              </p>
+          {{/paths}}
 
-                    <div class="searchstax-search-result-title-container">
-                        <h2 class="searchstax-search-result-title">{{title}}</h2>
-                    </div>
+          {{#description}}
+              <p class="searchstax-search-result-description searchstax-search-result-common">
+                  {{description}}
+              </p>
+          {{/description}}
 
-                    {{#ribbon}}
-                        <div class="searchstax-search-result-ribbon">
-                        <span class="pill">{{ribbon}}</span>
-                        {{#promoted}}
-                            <span> Promoted </span>
-                        {{/promoted}}
-                        </div>
-                    {{/ribbon}}
-                </div>
-
-
-                {{#description}}
-                    <p class="searchstax-search-result-description searchstax-search-result-common">
-                        {{description}}
-                    </p>
-                {{/description}}
-
-            </div>
-
-            </div>
+          {{#unmappedFields}}
+              {{#isImage}}
+                  <div class="searchstax-search-result-image-container">
+                  <img src="{{value}}" class="searchstax-result-image">
+                  </div>
+              {{/isImage}}
+              {{^isImage}}
+                  <p class="searchstax-search-result-common">
+                  {{value}}
+                  </p>
+              {{/isImage}}
+          {{/unmappedFields}}
+          </div>
+          </a>
               `,
       searchResultUniqueIdAttribute: `data-searchstax-unique-result-id`,
     },
     noSearchResultTemplate: {
       template: `
             {{#searchExecuted}}
-              <div class="searchstax-no-results">
-                  Showing <strong>no results</strong> for <strong>"{{ searchTerm }}"</strong>
-                  <br>
-                  {{#spellingSuggestion}}
-                      <span>&nbsp;Did you mean <a href="#" class="searchstax-suggestion-term">{{ spellingSuggestion }}</a>?</span>
-                  {{/spellingSuggestion}}
-              </div>
-              <div>
-                  <p>Try searching for search related terms or topics. We offer a wide variety of content to help you get the information you need.</p>
-                  <p>Lost? Click on the ‘X” in the Search Box to reset your search.</p>
+              <div class="searchstax-no-results-wrap">
+                <div class="searchstax-no-results">
+                    Showing <strong>no results</strong> for <strong>"{{ searchTerm }}"</strong>
+                    <br>
+                    {{#spellingSuggestion}}
+                        <span>&nbsp;Did you mean <a href="#" class="searchstax-suggestion-term" onclick="searchCallback('{{ spellingSuggestion }}')">{{ spellingSuggestion }}</a>?</span>
+                    {{/spellingSuggestion}}
+                </div>
+                <ul class="searchstax-no-results-list">
+                    <li>Try searching for search related terms or topics. We offer a wide variety of content to help you get the information you need.</li>
+                    <li>Lost? Click on the ‘X” in the Search Box to reset your search.</li>
+                </ul>
               </div>
             {{/searchExecuted}}
               `,
@@ -280,11 +290,11 @@ searchstax.addPaginationWidget("searchstax-pagination-container", {
         {{#results.length}}
           <div class="searchstax-pagination-container">
             <div class="searchstax-pagination-content">
-              <a class="searchstax-pagination-previous {{#isFirstPage}}disabled{{/isFirstPage}}" id="searchstax-pagination-previous">< Previous</a>
+              <a class="searchstax-pagination-previous {{#isFirstPage}}disabled{{/isFirstPage}}" id="searchstax-pagination-previous" tabindex="0">< Previous</a>
               <div class="searchstax-pagination-details">
                 {{startResultIndex}} - {{endResultIndex}} of {{totalResults}}
               </div>
-                <a class="searchstax-pagination-next {{#isLastPage}}disabled{{/isLastPage}}" id="searchstax-pagination-next">Next ></a>
+                <a class="searchstax-pagination-next {{#isLastPage}}disabled{{/isLastPage}}" id="searchstax-pagination-next" tabindex="0">Next ></a>
             </div>
           </div>
         {{/results.length}}
@@ -296,7 +306,7 @@ searchstax.addPaginationWidget("searchstax-pagination-container", {
       template: `
         {{#results.length}}
           {{^isLastPage}}
-            <a class="searchstax-pagination-load-more">Show More</a>
+            <a class="searchstax-pagination-load-more" tabindex="0">Show More</a>
           {{/isLastPage}}
         {{/results.length}}
         `,
@@ -317,10 +327,8 @@ searchstax.addRelatedSearchesWidget("searchstax-related-searches-container", {
               <div class="searchstax-related-searches-container" id="searchstax-related-searches-container">
                   Related searches: <span id="searchstax-related-searches"></span>
                   {{#relatedSearches}}
-                  <span class="searchstax-related-search">
-
-                  </span>
-              {{/relatedSearches}}
+                    <span class="searchstax-related-search"></span>
+                  {{/relatedSearches}}
               </div>
           {{/hasRelatedSearches}}
           `,
@@ -328,7 +336,7 @@ searchstax.addRelatedSearchesWidget("searchstax-related-searches-container", {
     },
     relatedSearch: {
       template: `
-          <span class="searchstax-related-search searchstax-related-search-item">
+          <span class="searchstax-related-search searchstax-related-search-item" tabindex="0" role="button">
               {{ related_search }}{{^last}}<span>,</span>{{/last}}
           </span>
           `,

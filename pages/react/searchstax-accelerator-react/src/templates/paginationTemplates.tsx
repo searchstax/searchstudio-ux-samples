@@ -14,11 +14,17 @@ export function paginationTemplate(
             <div className="searchstax-pagination-content">
               <a
                 className="searchstax-pagination-previous"
+                tabIndex={0}
                 style={
                   paginationData?.isFirstPage ? { pointerEvents: "none" } : {}
                 }
                 onClick={(e) => {
                   previousPage(e);
+                }}
+                onKeyDown={(e) => {
+                  if(e.key === 'Enter' || e.key === ' ') {
+                    previousPage(e as any);
+                  }
                 }}
                 id="searchstax-pagination-previous"
               >
@@ -33,11 +39,17 @@ export function paginationTemplate(
               </div>
               <a
                 className="searchstax-pagination-next"
+                tabIndex={0}
                 style={
                   paginationData?.isLastPage ? { pointerEvents: "none" } : {}
                 }
                 onClick={(e) => {
                   nextPage(e);
+                }}
+                onKeyDown={(e) => {
+                  if(e.key === 'Enter' || e.key === ' ') {
+                    nextPage(e as any);
+                  }
                 }}
                 id="searchstax-pagination-next"
               >
@@ -63,8 +75,14 @@ export function paginationTemplate(
             <div className="searchstax-pagination-container">
               <a
                 className="searchstax-pagination-load-more"
+                tabIndex={0}
                 onClick={(e) => {
                   nextPage(e);
+                }}
+                onKeyDown={(e) => {
+                  if(e.key === 'Enter' || e.key === ' ') {
+                    nextPage(e as any);
+                  }
                 }}
               >
                 Show More &gt;

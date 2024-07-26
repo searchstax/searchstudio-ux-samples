@@ -12,6 +12,7 @@
                 id="searchstax-search-input"
                 class="searchstax-search-input"
                 placeholder="SEARCH FOR..."
+                aria-label="search"
               />
               <div
                 class="searchstax-autosuggest-container"
@@ -26,6 +27,7 @@
                   <div
                     class="searchstax-autosuggest-item-term-container"
                     v-html="suggestion.term"
+                    tabindex="0"
                     @mouseover="onMouseOver(suggestion)"
                     @click.stop="onMouseClick()"
                   ></div>
@@ -34,6 +36,7 @@
               <button
                 class="searchstax-spinner-icon"
                 id="searchstax-search-input-action-button"
+                aria-label="search"
               >
               </button>
             </div>

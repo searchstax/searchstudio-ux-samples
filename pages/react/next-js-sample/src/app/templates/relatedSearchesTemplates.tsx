@@ -23,6 +23,12 @@ export function searchRelatedSearchesTemplate(
                       onClick={() => {
                         executeSearch(related);
                       }}
+                      onKeyDown={(e) => {
+                        if(e.key === 'Enter' || e.key === ' ') {
+                          executeSearch(related);
+                        }
+                      }}
+                      tabIndex={0}
                       className="searchstax-related-search searchstax-related-search-item"
                     >
                       {" "}

@@ -18,6 +18,9 @@
                       v-for="related in relatedData.relatedSearches"
                       :key="related.related_search"
                       @click="executeSearch(related)"
+                      @keyup.enter="executeSearch(related)"
+                      @keyup.space="executeSearch(related)"
+                      tabindex="0"
                       class="searchstax-related-search searchstax-related-search-item"
                     > {{ related.related_search }}<span v-if="!related.last">,</span>
                     </span>

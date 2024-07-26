@@ -24,7 +24,7 @@
                       </div>
                       <div class="searchstax-facet-values-container">
                         <div
-                          v-for="(facetValue, key) in facet.values"
+                          v-for="(facetValue) in facet.values"
                           :key="facetValue.value + facetValue.parentName"
                           class="searchstax-facet-value-container"
                           :class="{ 'searchstax-facet-value-disabled': facetValue.disabled }"
@@ -36,6 +36,7 @@
                               class="searchstax-facet-input-checkbox"
                               :checked="isChecked(facetValue)"
                               :disabled="facetValue.disabled"
+                              :aria-label="facetValue.value + ' ' + facetValue.count"
                               @click="selectFacet(facetValue.value + '-desktop', $event, facetValue, true)"
                             />
                           </div>
@@ -55,6 +56,9 @@
                           <div
                             class="searchstax-facet-show-more-container"
                             @click="showMoreLessDesktop($event, facet)"
+                            @keyup.space="$event.preventDefault(); showMoreLessDesktop($event, facet)"
+                            @keyup.enter="showMoreLessDesktop($event, facet)"
+                            tabindex="0"
                           >
                             <div
                               v-if="facet.showingAllFacets"
@@ -132,7 +136,7 @@
                           </div>
                           <div class="searchstax-facet-values-container">
                             <div
-                              v-for="(facetValue, key) in facet.values"
+                              v-for="(facetValue) in facet.values"
                               :key="facetValue.value + facetValue.parentName"
                               class="searchstax-facet-value-container"
                               :class="{ 'searchstax-facet-value-disabled': facetValue.disabled }"
@@ -144,6 +148,7 @@
                                   class="searchstax-facet-input-checkbox"
                                   :checked="isChecked(facetValue)"
                                   :disabled="facetValue.disabled"
+                                  :aria-label="facetValue.value + ' ' + facetValue.count"
                                   @click="selectFacet(facetValue.value + '-mobile', $event, facetValue, true)"
                                 />
                               </div>
@@ -162,7 +167,10 @@
                             >
                               <div
                                 class="searchstax-facet-show-more-container"
-                                @click="showMoreLessDesktop($event, facet)"
+                                 @click="showMoreLessDesktop($event, facet)"
+                                 @keyup.space="showMoreLessDesktop($event, facet)"
+                                 @keyup.enter="showMoreLessDesktop($event, facet)"
+                                tabindex="0"
                               >
                                 <div
                                   v-if="facet.showingAllFacets"

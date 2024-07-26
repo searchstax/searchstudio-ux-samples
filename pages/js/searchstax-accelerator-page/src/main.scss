@@ -99,16 +99,20 @@ h3{
         }
     }
 
+    &-related-searches{
+        padding-left: 10px;
+    }
+
     &-related-searches-container{
         margin-top: 40px;
+        display: flex;
     }
 
     &-related-search{
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        grid-gap: 20px;
-
         &-item{
+            display: block;
             color: #111;
             font-weight: 500;
             &:hover{

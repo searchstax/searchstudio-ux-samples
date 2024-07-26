@@ -2,7 +2,8 @@ import { ISearchstaxParsedResult, ISearchstaxSearchMetadata } from "@searchstax-
 
 export function noResultTemplate(
   searchTerm: string,
-  metaData: ISearchstaxSearchMetadata | null
+  metaData: ISearchstaxSearchMetadata | null,
+  executeSearch: (searchTerm: string) => void
 ): React.ReactElement {
   return (
     <div>
@@ -13,21 +14,24 @@ export function noResultTemplate(
         {metaData?.spellingSuggestion && (
           <span>
             &nbsp;Did you mean{" "}
-            <a href="#" className="searchstax-suggestion-term">
+            <a href="#" className="searchstax-suggestion-term" onClick={(e) => {
+                          e.preventDefault();
+                          executeSearch(metaData?.spellingSuggestion);
+                        }}>
               {metaData?.spellingSuggestion}
             </a>
             ?
           </span>
         )}
       </div>
-      <div>
-        <p>
+      <ul>
+        <li>
           {" "}
           Try searching for search related terms or topics. We offer a wide
           variety of content to help you get the information you need.{" "}
-        </p>
-        <p>Lost? Click on the ‘X” in the Search Box to reset your search.</p>
-      </div>
+        </li>
+        <li>Lost? Click on the ‘X” in the Search Box to reset your search.</li>
+      </ul>
     </div>
   );
 }
@@ -44,60 +48,89 @@ export function resultsTemplate(
       {searchResults && searchResults.length && (
 
       <div className="searchstax-search-results">
-      {searchResults &&
-        searchResults.length > 0 &&
-        searchResults.map(searchResult => (
-          <div
-            className={`searchstax-search-result ${searchResult.thumbnail ? "has-thumbnail" : ""}`}
-            key={searchResult.uniqueId}
-          >
-            {searchResult.unmappedFields.map(unmappedField => (
-              <div key={unmappedField.key}>
-                {unmappedField.isImage && typeof unmappedField.value === "string" ? (
-                  <div className="searchstax-search-result-image-container">
-                    <img src={unmappedField.value} className="searchstax-result-image" />
-                  </div>
-                ) : (
-                  <div>
-                    <p className="searchstax-search-result-common">{unmappedField.value}</p>
-                  </div>
-                )}
-              </div>
-            ))}
+       {searchResults !== null &&
+                    searchResults.map(function (searchResult) {
+                      return (
+                        <a href={searchResult.url ?? ''} onClick={event => {
+                          resultClicked(searchResult, event);
+                        }}
+                        onKeyDown={(e) => {
+                          if(e.key === 'Enter' || e.key === ' ') {
+                            resultClicked(searchResult, e);
+                          }
+                        }}
+                        data-searchstax-unique-result-id={ searchResult.uniqueId} key={searchResult.uniqueId} className="searchstax-result-item-link searchstax-result-item-link-wrapping" tabIndex={0}>
+                        <div
+                          className={`searchstax-search-result ${
+                            searchResult.thumbnail ? "has-thumbnail" : ""
+                          }`}
+                          key={searchResult.uniqueId}
+                        >
+                          {searchResult.promoted && (
+                            <div className="searchstax-search-result-promoted"></div>
+                          )}
 
-            <div className="searchstax-search-result-content">
-              <div className="searchstax-search-result-title-wrapper">
-                <div className="searchstax-search-result-title-container">
-                  <h2 className="searchstax-search-result-title">{searchResult.title}</h2>
-                </div>
 
-                {searchResult.ribbon && (
-                  <div className="searchstax-search-result-ribbon">
-                    <span className="pill">{searchResult.ribbon}</span>
-                    {searchResult.promoted && <div className="searchstax-search-result-promoted" />}
-                  </div>
-                )}
-              </div>
+                          {searchResult.ribbon && (
+                            <div className="searchstax-search-result-ribbon">
+                              {searchResult.ribbon}
+                            </div>
+                          )}
 
-              {searchResult.description && (
-                <p className="searchstax-search-result-description searchstax-search-result-common">
-                  {searchResult.description}
-                </p>
-              )}
-            </div>
+                          {searchResult.thumbnail && (
+                            <img
+                              src={searchResult.thumbnail}
+                              className="searchstax-thumbnail"
+                            />
+                          )}
 
-            {searchResult.url && (
-              <a
-                href={searchResult.url}
-                data-searchstax-unique-result-id={searchResult.uniqueId}
-                onClick={event => {
-                  resultClicked(searchResult, event);
-                }}
-                className="searchstax-result-item-link"
-              />
-            )}
-          </div>
-        ))}
+                          <div className="searchstax-search-result-title-container">
+                            <span className="searchstax-search-result-title">
+                              {searchResult.title}
+                            </span>
+                          </div>
+
+                          {searchResult.paths && (
+                            <p className="searchstax-search-result-common">
+                              {searchResult.paths}
+                            </p>
+                          )}
+
+                          {searchResult.description && (
+                            <p className="searchstax-search-result-description searchstax-search-result-common">
+                              {searchResult.description}
+                            </p>
+                          )}
+
+                          {searchResult.unmappedFields.map(function (
+                            unmappedField: any
+                          ) {
+                            return (
+                              <div key={unmappedField.key}>
+                                {unmappedField.isImage &&
+                                  typeof unmappedField.value === "string" && (
+                                    <div className="searchstax-search-result-image-container">
+                                      <img
+                                        src={unmappedField.value}
+                                        className="searchstax-result-image"
+                                      />
+                                    </div>
+                                  )}
+
+                                {!unmappedField.isImage && (
+                                  <div>
+                                    <p className="searchstax-search-result-common">
+                                      {unmappedField.value}
+                                    </p>
+                                  </div>
+                                )}
+                              </div>
+                            );
+                          })}
+                        </div>
+                        </a>
+                      );
+                    })}
     </div>
 
       )}

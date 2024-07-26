@@ -8,7 +8,7 @@
               >
                 <label
                   class="searchstax-sorting-label"
-                  for="sort-by"
+                  for="searchstax-search-order-select"
                 >Sort By</label>
                 <select
                   id="searchstax-search-order-select"

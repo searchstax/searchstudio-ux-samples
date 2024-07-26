@@ -11,7 +11,7 @@ export function searchSortingTemplate(
           sortingData?.searchExecuted &&
           sortingData?.hasResultsOrExternalPromotions && (
             <div className="searchstax-sorting-container">
-              <label className="searchstax-sorting-label" htmlFor="sort-by">
+              <label className="searchstax-sorting-label" htmlFor="searchstax-search-order-select">
                 Sort By
               </label>
               <select
