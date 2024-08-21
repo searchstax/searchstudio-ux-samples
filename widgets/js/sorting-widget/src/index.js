@@ -40,7 +40,7 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
       mainTemplate: {
       template: `
             <div class="searchstax-search-results-container">
-                <div class="searchstax-search-results" id="searchstax-search-results" aria-live="polite"></div>
+                <div class="searchstax-search-results" id="searchstax-search-results"></div>
             </div>
             `,
         searchResultsContainerId: "searchstax-search-results",

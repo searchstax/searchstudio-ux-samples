@@ -3,7 +3,7 @@
     <SearchstaxResultWidget>
       <template #results="{ searchResults, resultClicked }">
         <div
-          class="searchstax-search-results"  aria-live="polite"
+          class="searchstax-search-results"
           v-if="searchResults && searchResults.length"
         >
           <a

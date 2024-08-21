@@ -120,7 +120,7 @@ searchstax.addFacetsWidget("searchstax-facets-container", {
       template: `
       <div>
         <div class="searchstax-facet-title-container">
-            <div class="searchstax-facet-title">
+            <div class="searchstax-facet-title" aria-label="Facet group: {{label}}" tabindex="0">
             {{label}}
             </div>
             <div class="searchstax-facet-title-arrow active"></div>
@@ -204,7 +204,7 @@ searchstax.addSearchResultsWidget("searchstax-results-container", {
     mainTemplate: {
       template: `
               <div class="searchstax-search-results-container">
-                  <div class="searchstax-search-results" id="searchstax-search-results" aria-live="polite"></div>
+                  <div class="searchstax-search-results" id="searchstax-search-results"></div>
               </div>
               `,
       searchResultsContainerId: `searchstax-search-results`,
