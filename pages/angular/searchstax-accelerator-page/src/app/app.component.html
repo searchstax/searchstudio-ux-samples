@@ -55,6 +55,7 @@
             <button
               class="searchstax-spinner-icon"
               id="searchstax-search-input-action-button"
+              role="button"
               aria-label="search"
             ></button>
           </div>
@@ -68,7 +69,7 @@
             let-onOriginalQueryClick="onOriginalQueryClick"
             let-context="context"
           >
-            <div class="searchstax-feedback-container">
+            <h4 class="searchstax-feedback-container">
               Showing
               <b
                 >{{ searchFeedbackData!.startResultIndex }} -
@@ -90,7 +91,7 @@
                   >
                 </div>
               </div>
-            </div>
+            </h4>
           </ng-template>
         </app-searchstax-search-feedback>
         <app-searchstax-search-sorting
@@ -154,7 +155,7 @@
                       </div>
                       <div class="searchstax-facet-title-arrow active"></div>
                     </div>
-                    <div class="searchstax-facet-values-container">
+                    <div class="searchstax-facet-values-container" aria-live="polite">
                       <div
                         *ngFor="
                           let facetValue of facetValues(facet);
@@ -313,7 +314,7 @@
                             class="searchstax-facet-title-arrow active"
                           ></div>
                         </div>
-                        <div class="searchstax-facet-values-container">
+                        <div class="searchstax-facet-values-container" aria-live="polite">
                           <div
                             *ngFor="
                               let facetValue of facetValues(facet);
@@ -472,7 +473,7 @@
               let-isImage="isImage"
               let-context="context"
             >
-              <div class="searchstax-search-results">
+              <div class="searchstax-search-results" aria-live="polite">
                 <a
                 *ngFor="let searchResult of searchResults"
                 [href]="searchResult.url"

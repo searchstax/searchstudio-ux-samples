@@ -26,7 +26,7 @@ searchstax.addSearchFeedbackWidget("search-feedback-container", {
     main: {
       template: `
           {{#searchExecuted}}
-          <div class="searchstax-feedback-container">
+          <h4 class="searchstax-feedback-container">
             {{#hasResults}}
                 Showing <b>{{startResultIndex}} - {{endResultIndex}}</b> of <b>{{totalResults}}</b> results {{#searchTerm}} for "<b>{{searchTerm}}</b>" {{/searchTerm}}
                 <div class="searchstax-feedback-container-suggested">
@@ -35,7 +35,7 @@ searchstax.addSearchFeedbackWidget("search-feedback-container", {
                   {{/autoCorrectedQuery}}
                 </div>
               {{/hasResults}}
-          </div>
+          </h4>
       {{/searchExecuted}}
         `,
       originalQueryClass: `searchstax-feedback-original-query`,
@@ -51,7 +51,7 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
       <div class="searchstax-search-input-container">
         <div class="searchstax-search-input-wrapper">
           <input type="text" id="searchstax-search-input" class="searchstax-search-input" placeholder="SEARCH FOR..." aria-label="Search" />
-          <button class="searchstax-spinner-icon" id="searchstax-search-input-action-button" aria-label="search"></button>
+          <button class="searchstax-spinner-icon" id="searchstax-search-input-action-button" aria-label="search" role="button"></button>
         </div>
       </div>
         `,
@@ -125,7 +125,7 @@ searchstax.addFacetsWidget("searchstax-facets-container", {
             </div>
             <div class="searchstax-facet-title-arrow active"></div>
         </div>
-        <div class="searchstax-facet-values-container"></div>
+        <div class="searchstax-facet-values-container" aria-live="polite"></div>
       </div>
       `,
       facetListTitleContainerClass: `searchstax-facet-title-container`,
@@ -204,7 +204,7 @@ searchstax.addSearchResultsWidget("searchstax-results-container", {
     mainTemplate: {
       template: `
               <div class="searchstax-search-results-container">
-                  <div class="searchstax-search-results" id="searchstax-search-results"></div>
+                  <div class="searchstax-search-results" id="searchstax-search-results" aria-live="polite"></div>
               </div>
               `,
       searchResultsContainerId: `searchstax-search-results`,

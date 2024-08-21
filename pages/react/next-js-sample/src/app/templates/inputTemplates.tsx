@@ -46,6 +46,7 @@ export function InputTemplate(
         <button
           className="searchstax-spinner-icon"
           aria-label="search"
+          role="button"
           id="searchstax-search-input-action-button"
         ></button>
       </div>

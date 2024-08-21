@@ -11,7 +11,7 @@ const facetItemTemplate = {
         <div class="searchstax-facet-input">
             <input type="checkbox" class="searchstax-facet-input-checkbox" {{#disabled}}disabled{{/disabled}} {{#isChecked}}checked{{/isChecked}}/>
         </div>
-        
+
         <div class="searchstax-facet-value-label">{{value}}</div>
         <div class="searchstax-facet-value-count">({{count}})</div>
     `,
@@ -22,10 +22,10 @@ const facetItemContainerTemplate ={
     template: `
         <div>
             <div class="searchstax-facet-title-container">
-               
+
             </div>
-            <div class="searchstax-facet-values-container">
-                
+            <div class="searchstax-facet-values-container" aria-live="polite">
+
             </div>
         </div>
     `,

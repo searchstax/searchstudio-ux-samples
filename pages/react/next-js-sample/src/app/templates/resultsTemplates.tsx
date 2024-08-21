@@ -50,7 +50,7 @@ export function resultsTemplate(
   return (
     <>
       {searchResults && searchResults.length && (
-        <div className="searchstax-search-results">
+        <div className="searchstax-search-results" aria-live="polite">
           {searchResults &&
             searchResults.length > 0 &&
             searchResults.map((searchResult) => (

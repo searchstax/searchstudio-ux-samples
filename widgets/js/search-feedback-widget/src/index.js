@@ -21,7 +21,7 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
         <div class="searchstax-search-input-container">
             <div class="searchstax-search-input-wrapper">
                 <input type="text" id="searchstax-search-input" class="searchstax-search-input" placeholder="Search for... example: Drupal" />
-                <button class="searchstax-spinner-icon" id="searchstax-search-input-action-button"></button>
+                <button class="searchstax-spinner-icon" id="searchstax-search-input-action-button" role="button"></button>
             </div>
         </div>
         `,
@@ -40,14 +40,14 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
       main: {
           template: `
         {{#searchExecuted}}
-            <div class="searchstax-feedback-container">
+            <h4 class="searchstax-feedback-container">
                 Showing <b>{{startResultIndex}} - {{endResultIndex}}</b> of <b>{{totalResults}}</b> results {{#searchTerm}} for "<b>{{searchTerm}}</b>" {{/searchTerm}}
                 <div class="searchstax-feedback-container-suggested">
                   {{#autoCorrectedQuery}}
                     Search instead for <a href="#" class="searchstax-feedback-original-query">{{originalQuery}}</a>
                   {{/autoCorrectedQuery}}
                 </div>
-            </div>
+            </h4>
         {{/searchExecuted}}
         `,
           originalQueryClass: `searchstax-feedback-original-query`

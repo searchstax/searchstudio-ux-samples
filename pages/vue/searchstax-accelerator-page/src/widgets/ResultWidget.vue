@@ -2,7 +2,7 @@
   <div>
     <SearchstaxResultWidget :afterLinkClick="afterLinkClick" :resultsPerPage="renderConfig.resultsWidget.itemsPerPage" :renderMethod="renderConfig.resultsWidget.renderMethod">
       <template #results="{ searchResults, resultClicked }">
-        <div class="searchstax-search-results" v-if="searchResults && searchResults.length">
+        <div class="searchstax-search-results" v-if="searchResults && searchResults.length" aria-live="polite">
           <a
             :key="searchResult.uniqueId"
             v-for="searchResult in searchResults"
