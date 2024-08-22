@@ -229,7 +229,7 @@ searchstax.addSearchResultsWidget("searchstax-results-container", {
               <img src="{{thumbnail}}" class="searchstax-thumbnail">
           {{/thumbnail}}
           <div class="searchstax-search-result-title-container">
-              <span class="searchstax-search-result-title">{{title}}</span>
+              <h5 class="searchstax-search-result-title">{{title}}</h5>
           </div>
 
           {{#paths}}
@@ -292,11 +292,11 @@ searchstax.addPaginationWidget("searchstax-pagination-container", {
         {{#results.length}}
           <div class="searchstax-pagination-container">
             <div class="searchstax-pagination-content">
-              <a class="searchstax-pagination-previous {{#isFirstPage}}disabled{{/isFirstPage}}" id="searchstax-pagination-previous" tabindex="0">< Previous</a>
+              <a class="searchstax-pagination-previous {{#isFirstPage}}disabled{{/isFirstPage}}" id="searchstax-pagination-previous" tabindex="0" aria-label="previous page">< Previous</a>
               <div class="searchstax-pagination-details">
                 {{startResultIndex}} - {{endResultIndex}} of {{totalResults}}
               </div>
-                <a class="searchstax-pagination-next {{#isLastPage}}disabled{{/isLastPage}}" id="searchstax-pagination-next" tabindex="0">Next ></a>
+                <a class="searchstax-pagination-next {{#isLastPage}}disabled{{/isLastPage}}" id="searchstax-pagination-next" tabindex="0" aria-label="next page">Next ></a>
             </div>
           </div>
         {{/results.length}}
