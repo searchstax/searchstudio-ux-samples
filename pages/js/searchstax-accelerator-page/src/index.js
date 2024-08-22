@@ -26,6 +26,8 @@ searchstax.addSearchFeedbackWidget("search-feedback-container", {
     main: {
       template: `
           {{#searchExecuted}}
+          <a href="#searchstax-search-results" class="searchstax-skip">Skip to results section</a>
+
           <h4 class="searchstax-feedback-container">
             {{#hasResults}}
                 Showing <b>{{startResultIndex}} - {{endResultIndex}}</b> of <b>{{totalResults}}</b> results {{#searchTerm}} for "<b>{{searchTerm}}</b>" {{/searchTerm}}
