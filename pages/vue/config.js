@@ -7,7 +7,7 @@ const config = {
     authType: 'token',
     relatedSearchesURL: "https://app.searchstax.com/api/v1/1442/related-search/",
     relatedSearchesAPIKey: "fac98ad405cc50e0c0693331e8d2119de592f0e3",
-    analyticsBaseUrl: 'https://analytics-us-east.searchstax.com'
+    analyticsBaseUrl: 'https://analytics-us.searchstax.com'
 };
 
 const jobSearchConfig = {
