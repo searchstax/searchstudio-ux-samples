@@ -21,7 +21,7 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
         <div class="searchstax-search-input-container">
             <div class="searchstax-search-input-wrapper">
                 <input type="text" id="searchstax-search-input" class="searchstax-search-input" placeholder="Search for... example: Drupal" />
-                <button class="searchstax-spinner-icon" id="searchstax-search-input-action-button"></button>
+                <button class="searchstax-spinner-icon" id="searchstax-search-input-action-button" role="button"></button>
             </div>
         </div>
         `,
@@ -51,36 +51,36 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
                 {{#promoted}}
                     <div class="searchstax-search-result-promoted"></div>
                 {{/promoted}}
-  
+
                 {{#url}}
                     <a href="{{url}}" data-searchstax-unique-result-id="{{uniqueId}}" class="searchstax-result-item-link"></a>
                 {{/url}}
-  
+
                 {{#ribbon}}
                     <div class="searchstax-search-result-ribbon">
                     {{ribbon}}
                     </div>
                 {{/ribbon}}
-  
+
                 {{#thumbnail}}
                     <img src="{{thumbnail}}" class="searchstax-thumbnail">
                 {{/thumbnail}}
                 <div class="searchstax-search-result-title-container">
                     <span class="searchstax-search-result-title">{{title}}</span>
                 </div>
-  
+
                 {{#paths}}
                     <p class="searchstax-search-result-common">
                         {{paths}}
                     </p>
                 {{/paths}}
-  
+
                 {{#description}}
                     <p class="searchstax-search-result-description searchstax-search-result-common">
                         {{description}}
                     </p>
                 {{/description}}
-  
+
                 {{#unmappedFields}}
                     {{#isImage}}
                         <div class="searchstax-search-result-image-container">
@@ -171,7 +171,7 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
             </div>
             <div class="searchstax-facet-title-arrow active"></div>
         </div>
-        <div class="searchstax-facet-values-container"></div>
+        <div class="searchstax-facet-values-container" aria-live="polite"></div>
       </div>
       `,
             facetListTitleContainerClass: `searchstax-facet-title-container`,

@@ -113,7 +113,7 @@ searchstax.addFacetsWidget("searchstax-facets-container", {
             </div>
             <div class="searchstax-facet-title-arrow active"></div>
         </div>
-        <div class="searchstax-facet-values-container"></div>
+        <div class="searchstax-facet-values-container" aria-live="polite"></div>
       </div>
       `,
       facetListTitleContainerClass: `searchstax-facet-title-container`,

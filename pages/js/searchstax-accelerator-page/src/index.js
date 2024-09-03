@@ -26,7 +26,9 @@ searchstax.addSearchFeedbackWidget("search-feedback-container", {
     main: {
       template: `
           {{#searchExecuted}}
-          <div class="searchstax-feedback-container">
+          <a href="#searchstax-search-results" class="searchstax-skip">Skip to results section</a>
+
+          <h4 class="searchstax-feedback-container">
             {{#hasResults}}
                 Showing <b>{{startResultIndex}} - {{endResultIndex}}</b> of <b>{{totalResults}}</b> results {{#searchTerm}} for "<b>{{searchTerm}}</b>" {{/searchTerm}}
                 <div class="searchstax-feedback-container-suggested">
@@ -35,7 +37,7 @@ searchstax.addSearchFeedbackWidget("search-feedback-container", {
                   {{/autoCorrectedQuery}}
                 </div>
               {{/hasResults}}
-          </div>
+          </h4>
       {{/searchExecuted}}
         `,
       originalQueryClass: `searchstax-feedback-original-query`,
@@ -51,7 +53,7 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
       <div class="searchstax-search-input-container">
         <div class="searchstax-search-input-wrapper">
           <input type="text" id="searchstax-search-input" class="searchstax-search-input" placeholder="SEARCH FOR..." aria-label="Search" />
-          <button class="searchstax-spinner-icon" id="searchstax-search-input-action-button" aria-label="search"></button>
+          <button class="searchstax-spinner-icon" id="searchstax-search-input-action-button" aria-label="search" role="button"></button>
         </div>
       </div>
         `,
@@ -120,7 +122,7 @@ searchstax.addFacetsWidget("searchstax-facets-container", {
       template: `
       <div>
         <div class="searchstax-facet-title-container">
-            <div class="searchstax-facet-title">
+            <div class="searchstax-facet-title" aria-label="Facet group: {{label}}" tabindex="0">
             {{label}}
             </div>
             <div class="searchstax-facet-title-arrow active"></div>
@@ -227,7 +229,7 @@ searchstax.addSearchResultsWidget("searchstax-results-container", {
               <img src="{{thumbnail}}" class="searchstax-thumbnail">
           {{/thumbnail}}
           <div class="searchstax-search-result-title-container">
-              <span class="searchstax-search-result-title">{{title}}</span>
+              <h5 class="searchstax-search-result-title">{{title}}</h5>
           </div>
 
           {{#paths}}
@@ -290,11 +292,11 @@ searchstax.addPaginationWidget("searchstax-pagination-container", {
         {{#results.length}}
           <div class="searchstax-pagination-container">
             <div class="searchstax-pagination-content">
-              <a class="searchstax-pagination-previous {{#isFirstPage}}disabled{{/isFirstPage}}" id="searchstax-pagination-previous" tabindex="0">< Previous</a>
+              <a class="searchstax-pagination-previous {{#isFirstPage}}disabled{{/isFirstPage}}" id="searchstax-pagination-previous" tabindex="0" aria-label="previous page">< Previous</a>
               <div class="searchstax-pagination-details">
                 {{startResultIndex}} - {{endResultIndex}} of {{totalResults}}
               </div>
-                <a class="searchstax-pagination-next {{#isLastPage}}disabled{{/isLastPage}}" id="searchstax-pagination-next" tabindex="0">Next ></a>
+                <a class="searchstax-pagination-next {{#isLastPage}}disabled{{/isLastPage}}" id="searchstax-pagination-next" tabindex="0" aria-label="next page">Next ></a>
             </div>
           </div>
         {{/results.length}}

@@ -2,7 +2,7 @@
   <div>
     <SearchstaxSearchFeedbackWidget>
             <template #searchFeedback="{ searchFeedbackData, onOriginalQueryClick }">
-              <div
+              <h4
                 class="searchstax-feedback-container"
                 v-if="searchFeedbackData && searchFeedbackData?.searchExecuted && searchFeedbackData?.totalResults"
               > Showing <b>{{ searchFeedbackData.startResultIndex }} - {{ searchFeedbackData.endResultIndex }}</b> of
@@ -16,7 +16,7 @@
                     >{{ searchFeedbackData.originalQuery }}</a>
                   </div>
                 </div>
-              </div>
+              </h4>
             </template>
           </SearchstaxSearchFeedbackWidget>
   </div>

@@ -27,7 +27,7 @@
                 <h3 class="searchstax-facet-title">{{ facet.label }}</h3>
                 <div class="searchstax-facet-title-arrow active"></div>
               </div>
-              <div class="searchstax-facet-values-container">
+              <div class="searchstax-facet-values-container" aria-live="polite">
                 <div
                   v-for="(facetValue, key) in facet.values"
                   :key="facetValue.value + facetValue.parentName"
@@ -160,7 +160,7 @@
                     <div class="searchstax-facet-title">{{ facet.label }}</div>
                     <div class="searchstax-facet-title-arrow active"></div>
                   </div>
-                  <div class="searchstax-facet-values-container">
+                  <div class="searchstax-facet-values-container" aria-live="polite">
                     <div
                       v-for="(facetValue, key) in facet.values"
                       :key="facetValue.value + facetValue.parentName"

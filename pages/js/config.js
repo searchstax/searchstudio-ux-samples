@@ -11,7 +11,7 @@ const initConfig = {
     relatedSearchesURL:
       "https://app.searchstax.com/api/v1/1447/related-search/",
     relatedSearchesAPIKey: "3014f9d0276906ac17fff16c500e5ee75b20d73c",
-    analyticsBaseUrl: 'https://analytics-us-east.searchstax.com'
+    analyticsBaseUrl: 'https://analytics-us.searchstax.com'
   },
   acceleratorRelatedSearchSample: {
     relatedSearchesURL:
@@ -27,13 +27,13 @@ const initConfig = {
     searchAuth: "9c77f740418413b6701fe7a98cc7c640987a9af1",
     trackApiKey: "Cnpe2IL7uXaztPzavTIuDAiAmfydOa12f0iAGE0hLlY",
     authType: "token",
-    analyticsBaseUrl: 'https://analytics-us-east.searchstax.com'
+    analyticsBaseUrl: 'https://analytics-us.searchstax.com'
   },
   jobSearchRelatedSearchSample: {
     relatedSearchesURL:
       "https://app.searchstax.com/api/v1/1447/related-search/",
     relatedSearchesAPIKey: "3014f9d0276906ac17fff16c500e5ee75b20d73c",
-    analyticsBaseUrl: 'https://analytics-us-east.searchstax.com'
+    analyticsBaseUrl: 'https://analytics-us.searchstax.com'
   },
 };
 

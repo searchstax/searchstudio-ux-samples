@@ -48,7 +48,7 @@ export function facetsTemplateDesktop(
                 </div>
                 <div className="searchstax-facet-title-arrow active"></div>
               </div>
-              <div className="searchstax-facet-values-container">
+              <div className="searchstax-facet-values-container" aria-live="polite">
                 {facet.values.map(
                   //@ts-ignore
                   (facetValue: IFacetValueData, key) => {
@@ -248,7 +248,7 @@ export function facetsTemplateMobile(
                       </div>
                       <div className="searchstax-facet-title-arrow active"></div>
                     </div>
-                    <div className="searchstax-facet-values-container">
+                    <div className="searchstax-facet-values-container" aria-live="polite">
                       {facet.values.map(
                         //@ts-ignore
                         (facetValue: IFacetValueData, key) => {

@@ -47,7 +47,7 @@ export function resultsTemplate(
     <>
       {searchResults && searchResults.length && (
 
-      <div className="searchstax-search-results">
+      <div className="searchstax-search-results" aria-live="polite">
        {searchResults !== null &&
                     searchResults.map(function (searchResult) {
                       return (
