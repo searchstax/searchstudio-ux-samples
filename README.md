@@ -1,4 +1,4 @@
-![Searchstax](./images/banner.png)
+![Searchstax](./images/banner.jpg)
 # SiteSearch-UX-Samples
 
 
