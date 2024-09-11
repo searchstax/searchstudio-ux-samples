@@ -69,7 +69,7 @@
             let-onOriginalQueryClick="onOriginalQueryClick"
             let-context="context"
           >
-            <h4 class="searchstax-feedback-container">
+            <h2 class="searchstax-feedback-container">
               Showing
               <b
                 >{{ searchFeedbackData!.startResultIndex }} -
@@ -87,11 +87,12 @@
                     href="#"
                     (click)="onOriginalQueryClick($event, context)"
                     class="searchstax-feedback-original-query"
+                    [attr.aria-label]="'Search instead for: ' + searchFeedbackData!.originalQuery"
                     >{{ searchFeedbackData!.originalQuery }}</a
                   >
                 </div>
               </div>
-            </h4>
+            </h2>
           </ng-template>
         </app-searchstax-search-feedback>
         <app-searchstax-search-sorting
@@ -500,7 +501,7 @@
                     >
                       {{ searchResult.ribbon }}
                     </div>
-                    <img
+                    <img alt=""
                       *ngIf="searchResult.thumbnail"
                       [src]="searchResult.thumbnail"
                       class="searchstax-thumbnail"
@@ -524,7 +525,7 @@
                         *ngIf="isImage(unmappedField)"
                         class="searchstax-search-result-image-container"
                       >
-                        <img
+                        <img alt=""
                           [src]="unmappedField.value"
                           class="searchstax-result-image"
                         />
@@ -552,7 +553,7 @@
                 <br />
                 <span *ngIf="metadata?.spellingSuggestion"
                   >&nbsp;Did you mean
-                  <a href="#" class="searchstax-suggestion-term" (click)="executeSearch(metadata?.spellingSuggestion ?? '', $event, context)">{{
+                  <a href="#" [attr.aria-label]="'did you mean: ' + metadata?.spellingSuggestion" class="searchstax-suggestion-term" (click)="executeSearch(metadata?.spellingSuggestion ?? '', $event, context)">{{
                     metadata?.spellingSuggestion
                   }}</a
                   >?</span
@@ -598,6 +599,7 @@
                     (keyup.space)="executeSearch(related, context)"
                     tabindex="0"
                     class="searchstax-related-search searchstax-related-search-item"
+                    [attr.aria-label]="'Related search: ' + related.related_search"
                   >
                     {{ related.related_search
                     }}<span *ngIf="!related.last">,</span>

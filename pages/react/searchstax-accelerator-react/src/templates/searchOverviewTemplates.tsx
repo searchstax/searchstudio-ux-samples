@@ -35,6 +35,7 @@ export function searchOverviewTemplate(
                         onOriginalQueryClick(e);
                       }}
                       className="searchstax-feedback-original-query"
+                      aria-label={`Search instead for ${searchFeedbackData.originalQuery}`}
                     >
                       {searchFeedbackData.originalQuery}
                     </a>

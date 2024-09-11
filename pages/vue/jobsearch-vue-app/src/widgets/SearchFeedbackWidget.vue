@@ -2,7 +2,7 @@
   <div>
     <SearchstaxSearchFeedbackWidget>
             <template #searchFeedback="{ searchFeedbackData, onOriginalQueryClick }">
-              <h4
+              <h2
                 class="searchstax-feedback-container"
                 v-if="searchFeedbackData && searchFeedbackData?.searchExecuted && searchFeedbackData?.totalResults"
               > Showing <b>{{ searchFeedbackData.startResultIndex }} - {{ searchFeedbackData.endResultIndex }}</b> of
@@ -13,10 +13,11 @@
                       href="#"
                       @click.prevent="onOriginalQueryClick($event)"
                       class="searchstax-feedback-original-query"
+                      :aria-label="'Search instead for ' + searchFeedbackData.originalQuery"
                     >{{ searchFeedbackData.originalQuery }}</a>
                   </div>
                 </div>
-              </h4>
+              </h2>
             </template>
           </SearchstaxSearchFeedbackWidget>
   </div>

@@ -45,7 +45,7 @@ h3 {
 }
 .searchstax-search-result-ribbon {
   all: unset !important;
-  font-size: 10px !important;
+  font-size: 12px !important;
 }
 .searchstax-search-result-title-wrapper {
   display: flex;
@@ -142,3 +142,6 @@ h3 {
 }
 
 /*# sourceMappingURL=style.css.map */
+.searchstax-main-page-title{
+  display: none;
+}
