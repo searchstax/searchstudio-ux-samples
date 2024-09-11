@@ -75,7 +75,7 @@ export default function Home() {
   return (
     <>
     <main>
-    <h1 className="searchstax-main-page-title">Searchstax Search Page</h1>
+    <h1 style={{display: 'none'}} className="searchstax-main-page-title">Searchstax Search Page</h1>
       <SearchstaxWrapper
         searchURL={confTyped.searchURL}
         suggesterURL={confTyped.suggesterURL}
