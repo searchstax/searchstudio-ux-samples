@@ -52,7 +52,7 @@ h3{
 
             &-ribbon{
                 all: unset !important;
-                font-size: 10px !important;
+                font-size: 12px !important;
             }
 
             &-title-wrapper{
@@ -166,4 +166,8 @@ h3{
     .searchstax-search-input-container{
         width: 100%;
     }
+}
+
+.searchstax-main-page-title{
+    display: none;
 }

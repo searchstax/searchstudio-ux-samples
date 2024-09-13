@@ -63,7 +63,7 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
                 {{/ribbon}}
 
                 {{#thumbnail}}
-                    <img src="{{thumbnail}}" class="searchstax-thumbnail">
+                    <img alt="" src="{{thumbnail}}" class="searchstax-thumbnail">
                 {{/thumbnail}}
                 <div class="searchstax-search-result-title-container">
                     <span class="searchstax-search-result-title">{{title}}</span>
@@ -84,7 +84,7 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
                 {{#unmappedFields}}
                     {{#isImage}}
                         <div class="searchstax-search-result-image-container">
-                        <img src="{{value}}" class="searchstax-result-image">
+                        <img alt="" src="{{value}}" class="searchstax-result-image">
                         </div>
                     {{/isImage}}
                     {{^isImage}}
@@ -103,7 +103,7 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
                 Showing <strong>no results</strong> for <strong>"{{ searchTerm }}"</strong>
                 <br>
                 {{#spellingSuggestion}}
-                    <span>&nbsp;Did you mean <a href="#" class="searchstax-suggestion-term">{{ spellingSuggestion }}</a>?</span>
+                    <span>&nbsp;Did you mean <a href="#" aria-label="Did you mean: {{originalQuery}}" class="searchstax-suggestion-term">{{ spellingSuggestion }}</a>?</span>
                 {{/spellingSuggestion}}
             </div>
             <div>

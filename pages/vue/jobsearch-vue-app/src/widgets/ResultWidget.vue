@@ -35,6 +35,7 @@
                 {{ searchResult.ribbon }}
               </div>
               <img
+                alt=""
                 v-if="searchResult.thumbnail"
                 :src="searchResult.thumbnail"
                 class="searchstax-thumbnail"
@@ -68,6 +69,7 @@
                   class="searchstax-search-result-image-container"
                 >
                   <img
+                    alt=""
                     :src="unmappedField.value"
                     class="searchstax-result-image"
                   />

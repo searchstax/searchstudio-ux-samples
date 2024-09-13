@@ -53,7 +53,7 @@ h1 {
 
   .searchstax-search-result-ribbon {
     all: unset !important;
-    font-size: 10px !important;
+    font-size: 12px !important;
   }
 
   .searchstax-search-result-title-wrapper {
@@ -174,4 +174,8 @@ h1 {
   &-less-button {
     font-weight: 600;
   }
+}
+
+.searchstax-main-page-title{
+  display: none;
 }

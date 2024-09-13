@@ -18,10 +18,15 @@ export function noResultTemplate(
         {metaData?.spellingSuggestion && (
           <span>
             &nbsp;Did you mean{" "}
-            <a href="#" className="searchstax-suggestion-term" onClick={(e) => {
-                          e.preventDefault();
-                          executeSearch(metaData?.spellingSuggestion);
-                        }}>
+            <a
+              href="#"
+              className="searchstax-suggestion-term"
+              aria-label={`Did you mean ${metaData?.spellingSuggestion}`}
+              onClick={(e) => {
+                e.preventDefault();
+                executeSearch(metaData?.spellingSuggestion);
+              }}
+            >
               {metaData?.spellingSuggestion}
             </a>
             ?
@@ -60,7 +65,7 @@ export function resultsTemplate(
                   resultClicked(searchResult, event);
                 }}
                 onKeyDown={(e) => {
-                  if(e.key === 'Enter' || e.key === ' ') {
+                  if (e.key === "Enter" || e.key === " ") {
                     resultClicked(searchResult, e);
                   }
                 }}
@@ -87,6 +92,7 @@ export function resultsTemplate(
 
                   {searchResult.thumbnail && (
                     <img
+                      alt=""
                       src={searchResult.thumbnail}
                       className="searchstax-thumbnail"
                     />
@@ -119,6 +125,7 @@ export function resultsTemplate(
                           typeof unmappedField.value === "string" && (
                             <div className="searchstax-search-result-image-container">
                               <img
+                                alt=""
                                 src={unmappedField.value}
                                 className="searchstax-result-image"
                               />

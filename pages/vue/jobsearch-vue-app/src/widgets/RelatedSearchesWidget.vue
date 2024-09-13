@@ -22,6 +22,7 @@
                       @keyup.space="executeSearch(related, executeSearch)"
                       tabindex="0"
                       class="searchstax-related-search searchstax-related-search-item"
+                      :aria-label="'Related search: ' + related.related_search"
                     > {{ related.related_search }}
                     </span>
                   </span>
