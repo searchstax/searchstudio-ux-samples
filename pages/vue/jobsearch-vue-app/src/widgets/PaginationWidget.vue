@@ -9,6 +9,7 @@
                   <div class="searchstax-pagination-content">
                     <a
                       class="searchstax-pagination-previous"
+                      :class="paginationData.isFirstPage ? 'disabled' : ''"
                       tabindex="0"
                       :disabled="paginationData?.isFirstPage"
                       @click="previousPage"
@@ -20,6 +21,7 @@
                       paginationData?.endResultIndex }} of {{ paginationData?.totalResults }} </div>
                     <a
                       class="searchstax-pagination-next"
+                      :class="paginationData.isLastPage ? 'disabled' : ''"
                       tabindex="0"
                       :disabled="paginationData?.isLastPage"
                       @click="nextPage"

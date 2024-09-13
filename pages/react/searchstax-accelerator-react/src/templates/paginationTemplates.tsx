@@ -13,7 +13,7 @@ export function paginationTemplate(
           <div className="searchstax-pagination-container">
             <div className="searchstax-pagination-content">
               <a
-                className="searchstax-pagination-previous"
+                className={`searchstax-pagination-previous ${paginationData.isFirstPage ? "disabled" : ""}`}
                 tabIndex={0}
                 style={
                   paginationData?.isFirstPage ? { pointerEvents: "none" } : {}
@@ -38,7 +38,7 @@ export function paginationTemplate(
                 {paginationData?.totalResults}
               </div>
               <a
-                className="searchstax-pagination-next"
+                className={`searchstax-pagination-next ${paginationData.isLastPage ? "disabled" : ""}`}
                 tabIndex={0}
                 style={
                   paginationData?.isLastPage ? { pointerEvents: "none" } : {}

@@ -622,6 +622,7 @@
                 <div class="searchstax-pagination-content">
                   <a
                     class="searchstax-pagination-previous"
+                    [class]="paginationData.isFirstPage ? 'disabled' : ''"
                     (click)="previousPage($event, context)"
                     (keyup.enter)="previousPage($event, context)"
                     (keyup.space)="previousPage($event, context)"
@@ -637,6 +638,7 @@
                   </div>
                   <a
                     class="searchstax-pagination-next"
+                    [class]="paginationData.isLastPage ? 'disabled' : ''"
                     (click)="nextPage($event, context)"
                     (keyup.enter)="nextPage($event, context)"
                     (keyup.space)="nextPage($event, context)"
