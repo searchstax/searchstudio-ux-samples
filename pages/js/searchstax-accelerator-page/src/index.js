@@ -91,7 +91,7 @@ searchstax.addFacetsWidget("searchstax-facets-container", {
         <div class="searchstax-facets-mobile-overlay {{#overlayOpened}} searchstax-show{{/overlayOpened}}" >
           <div class="searchstax-facets-mobile-overlay-header">
             <div class="searchstax-facets-mobile-overlay-header-title">Filter By</div>
-            <div class="searchstax-search-close"></div>
+            <div class="searchstax-search-close" tabindex="0" aria-label="close overlay" role="button"></div>
           </div>
           <div class="searchstax-facets-container-mobile"></div>
           <button class="searchstax-facets-mobile-overlay-done">Done</button>
@@ -136,8 +136,8 @@ searchstax.addFacetsWidget("searchstax-facets-container", {
     clearFacetsTemplate: {
       template: `
       {{#shouldShow}}}
-        <div class="searchstax-facets-pill searchstax-clear-filters searchstax-facets-pill-clear-all">
-        <div class="searchstax-facets-pill-label">Clear Filters</div>
+        <div class="searchstax-facets-pill searchstax-clear-filters searchstax-facets-pill-clear-all" tabindex="0" role="button">
+        <div class="searchstax-facets-pill-label" >Clear Filters</div>
         </div>
       {{/shouldShow}}
       `,
@@ -159,7 +159,7 @@ searchstax.addFacetsWidget("searchstax-facets-container", {
     },
     filterByTemplate: {
       template: `
-      <div class="searchstax-facets-pill searchstax-facets-pill-filter-by">
+      <div class="searchstax-facets-pill searchstax-facets-pill-filter-by" tabindex="0" role="button">
         <div class="searchstax-facets-pill-label">Filter By</div>
       </div>
       `,
@@ -167,7 +167,7 @@ searchstax.addFacetsWidget("searchstax-facets-container", {
     },
     selectedFacetsTemplate: {
       template: `
-      <div class="searchstax-facets-pill searchstax-facets-pill-facets">
+      <div class="searchstax-facets-pill searchstax-facets-pill-facets" tabindex="0" role="button">
         <div class="searchstax-facets-pill-label">{{value}} ({{count}})</div>
         <div class="searchstax-facets-pill-icon-close"></div>
       </div>
