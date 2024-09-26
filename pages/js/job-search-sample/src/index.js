@@ -24,7 +24,7 @@ searchstax.addSearchFeedbackWidget("search-feedback-container", {
             <h3>{{totalResults}} Jobs found </b> {{#searchTerm}} for <b>{{searchTerm}}</b> {{/searchTerm}} </h3>
                 <div class="searchstax-feedback-container-suggested">
                   {{#autoCorrectedQuery}}
-                    Search instead for <a href="#" class="searchstax-feedback-original-query">{{originalQuery}}</a>
+                    Search instead for <a href="#" aria-label="Search instead for: {{originalQuery}}" class="searchstax-feedback-original-query">{{originalQuery}}</a>
                   {{/autoCorrectedQuery}}
                 </div>
             </div>
@@ -231,7 +231,7 @@ searchstax.addSearchResultsWidget("searchstax-results-container", {
                 We're sorry, we couldn't find any results for <strong>"{{ searchTerm }}"</strong>
                 <br>
                 {{#spellingSuggestion}}
-                    <span>&nbsp;Did you mean <a href="#" class="searchstax-suggestion-term" onclick="searchCallback('{{ spellingSuggestion }}')">{{ spellingSuggestion }}</a>?</span>
+                    <span>&nbsp;Did you mean <a href="#" aria-label="Did you mean: {{originalQuery}}" class="searchstax-suggestion-term" onclick="searchCallback('{{ spellingSuggestion }}')">{{ spellingSuggestion }}</a>?</span>
                 {{/spellingSuggestion}}
 
                 <br>
@@ -271,7 +271,7 @@ searchstax.addRelatedSearchesWidget("searchstax-related-searches-container", {
     },
     relatedSearch: {
       template: `
-       <p class="searchstax-related-search-item">
+       <p class="searchstax-related-search-item" aria-label="Related search: {{related_search}}">
            {{ related_search }}
        </p>
        `,

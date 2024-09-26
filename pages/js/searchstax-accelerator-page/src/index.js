@@ -28,16 +28,16 @@ searchstax.addSearchFeedbackWidget("search-feedback-container", {
           {{#searchExecuted}}
           <a href="#searchstax-search-results" class="searchstax-skip">Skip to results section</a>
 
-          <h4 class="searchstax-feedback-container">
+          <h2 class="searchstax-feedback-container" aria-live="polite">
             {{#hasResults}}
-                Showing <b>{{startResultIndex}} - {{endResultIndex}}</b> of <b>{{totalResults}}</b> results {{#searchTerm}} for "<b>{{searchTerm}}</b>" {{/searchTerm}}
+            <span aria-live="polite">Showing <b>{{startResultIndex}} - {{endResultIndex}}</b> </span> of <b>{{totalResults}}</b> results {{#searchTerm}} for "<b>{{searchTerm}}</b>" {{/searchTerm}}
                 <div class="searchstax-feedback-container-suggested">
                   {{#autoCorrectedQuery}}
-                    Search instead for <a href="#" class="searchstax-feedback-original-query">{{originalQuery}}</a>
+                    Search instead for <a href="#" aria-label="Search instead for: {{originalQuery}}" class="searchstax-feedback-original-query">{{originalQuery}}</a>
                   {{/autoCorrectedQuery}}
                 </div>
               {{/hasResults}}
-          </h4>
+          </h2>
       {{/searchExecuted}}
         `,
       originalQueryClass: `searchstax-feedback-original-query`,
@@ -91,7 +91,7 @@ searchstax.addFacetsWidget("searchstax-facets-container", {
         <div class="searchstax-facets-mobile-overlay {{#overlayOpened}} searchstax-show{{/overlayOpened}}" >
           <div class="searchstax-facets-mobile-overlay-header">
             <div class="searchstax-facets-mobile-overlay-header-title">Filter By</div>
-            <div class="searchstax-search-close"></div>
+            <div class="searchstax-search-close" tabindex="0" aria-label="close overlay" role="button"></div>
           </div>
           <div class="searchstax-facets-container-mobile"></div>
           <button class="searchstax-facets-mobile-overlay-done">Done</button>
@@ -136,8 +136,8 @@ searchstax.addFacetsWidget("searchstax-facets-container", {
     clearFacetsTemplate: {
       template: `
       {{#shouldShow}}}
-        <div class="searchstax-facets-pill searchstax-clear-filters searchstax-facets-pill-clear-all">
-        <div class="searchstax-facets-pill-label">Clear Filters</div>
+        <div class="searchstax-facets-pill searchstax-clear-filters searchstax-facets-pill-clear-all" tabindex="0" role="button">
+        <div class="searchstax-facets-pill-label" >Clear Filters</div>
         </div>
       {{/shouldShow}}
       `,
@@ -159,7 +159,7 @@ searchstax.addFacetsWidget("searchstax-facets-container", {
     },
     filterByTemplate: {
       template: `
-      <div class="searchstax-facets-pill searchstax-facets-pill-filter-by">
+      <div class="searchstax-facets-pill searchstax-facets-pill-filter-by" tabindex="0" role="button">
         <div class="searchstax-facets-pill-label">Filter By</div>
       </div>
       `,
@@ -167,7 +167,7 @@ searchstax.addFacetsWidget("searchstax-facets-container", {
     },
     selectedFacetsTemplate: {
       template: `
-      <div class="searchstax-facets-pill searchstax-facets-pill-facets">
+      <div class="searchstax-facets-pill searchstax-facets-pill-facets" tabindex="0" role="button">
         <div class="searchstax-facets-pill-label">{{value}} ({{count}})</div>
         <div class="searchstax-facets-pill-icon-close"></div>
       </div>
@@ -226,10 +226,10 @@ searchstax.addSearchResultsWidget("searchstax-results-container", {
           {{/ribbon}}
 
           {{#thumbnail}}
-              <img src="{{thumbnail}}" class="searchstax-thumbnail">
+              <img alt="" src="{{thumbnail}}" alt="image" class="searchstax-thumbnail">
           {{/thumbnail}}
           <div class="searchstax-search-result-title-container">
-              <h5 class="searchstax-search-result-title">{{title}}</h5>
+              <h3 class="searchstax-search-result-title">{{title}}</h3>
           </div>
 
           {{#paths}}
@@ -247,7 +247,7 @@ searchstax.addSearchResultsWidget("searchstax-results-container", {
           {{#unmappedFields}}
               {{#isImage}}
                   <div class="searchstax-search-result-image-container">
-                  <img src="{{value}}" class="searchstax-result-image">
+                  <img alt="" src="{{value}}" alt="image" class="searchstax-result-image">
                   </div>
               {{/isImage}}
               {{^isImage}}
@@ -269,7 +269,7 @@ searchstax.addSearchResultsWidget("searchstax-results-container", {
                     Showing <strong>no results</strong> for <strong>"{{ searchTerm }}"</strong>
                     <br>
                     {{#spellingSuggestion}}
-                        <span>&nbsp;Did you mean <a href="#" class="searchstax-suggestion-term" onclick="searchCallback('{{ spellingSuggestion }}')">{{ spellingSuggestion }}</a>?</span>
+                        <span>&nbsp;Did you mean <a href="#" aria-label="Did you mean: {{originalQuery}}" class="searchstax-suggestion-term" onclick="searchCallback('{{ spellingSuggestion }}')">{{ spellingSuggestion }}</a>?</span>
                     {{/spellingSuggestion}}
                 </div>
                 <ul class="searchstax-no-results-list">
@@ -338,7 +338,7 @@ searchstax.addRelatedSearchesWidget("searchstax-related-searches-container", {
     },
     relatedSearch: {
       template: `
-          <span class="searchstax-related-search searchstax-related-search-item" tabindex="0" role="button">
+          <span class="searchstax-related-search searchstax-related-search-item" aria-label="Related search: {{related_search}}" tabindex="0" role="button">
               {{ related_search }}{{^last}}<span>,</span>{{/last}}
           </span>
           `,

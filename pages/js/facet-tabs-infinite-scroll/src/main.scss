@@ -11,7 +11,7 @@
 ::-webkit-scrollbar {
     display: none;
 }
-  
+
 
 section {
     width: 70%;
@@ -74,7 +74,7 @@ section {
     &:hover {
         opacity: 1;
         border-bottom: 4px solid #0057AD;
-        
+
     }
 
     .searchstax-facet-value-label{
@@ -164,3 +164,6 @@ section {
     color: #0057AD !important;
 }
 
+.searchstax-main-page-title{
+    display: none;
+}

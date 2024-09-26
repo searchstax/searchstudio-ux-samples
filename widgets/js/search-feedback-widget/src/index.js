@@ -40,14 +40,14 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
       main: {
           template: `
         {{#searchExecuted}}
-            <h4 class="searchstax-feedback-container">
+            <h2 class="searchstax-feedback-container">
                 Showing <b>{{startResultIndex}} - {{endResultIndex}}</b> of <b>{{totalResults}}</b> results {{#searchTerm}} for "<b>{{searchTerm}}</b>" {{/searchTerm}}
                 <div class="searchstax-feedback-container-suggested">
                   {{#autoCorrectedQuery}}
-                    Search instead for <a href="#" class="searchstax-feedback-original-query">{{originalQuery}}</a>
+                    Search instead for <a href="#" aria-label="Search instead for: {{originalQuery}}" class="searchstax-feedback-original-query">{{originalQuery}}</a>
                   {{/autoCorrectedQuery}}
                 </div>
-            </h4>
+            </h2>
         {{/searchExecuted}}
         `,
           originalQueryClass: `searchstax-feedback-original-query`
