@@ -1,6 +1,6 @@
 <template>
   <div>
-    <SearchstaxResultWidget :afterLinkClick="afterLinkClick" :resultsPerPage="renderConfig.resultsWidget.itemsPerPage" :renderMethod="renderConfig.resultsWidget.renderMethod">
+    <SearchstaxResultWidget :afterLinkClick="afterLinkClick" :renderMethod="renderConfig.resultsWidget.renderMethod">
       <template #results="{ searchResults, resultClicked }">
         <div class="searchstax-search-results" v-if="searchResults && searchResults.length">
           <a

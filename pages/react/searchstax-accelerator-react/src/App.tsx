@@ -133,7 +133,6 @@ function App() {
               ></SearchstaxExternalPromotionsWidget>
               <SearchstaxResultWidget
                 afterLinkClick={afterLinkClick}
-                resultsPerPage={renderConfig.resultsWidget.itemsPerPage}
                 renderMethod={renderConfig.resultsWidget.renderMethod}
                 noResultTemplate={noResultTemplate}
                 resultsTemplate={resultsTemplate}

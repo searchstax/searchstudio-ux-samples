@@ -282,7 +282,6 @@ searchstax.addSearchResultsWidget("searchstax-results-container", {
     },
   },
   renderMethod: renderConfig.resultsWidget.renderMethod,
-  resultsPerPage: renderConfig.resultsWidget.itemsPerPage,
 });
 
 searchstax.addPaginationWidget("searchstax-pagination-container", {

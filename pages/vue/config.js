@@ -33,7 +33,6 @@ const renderConfig = {
     },
     resultsWidget: {
       renderMethod: "pagination", //'infiniteScroll' or 'pagination'
-      itemsPerPage: 10,
     },
   };
 
