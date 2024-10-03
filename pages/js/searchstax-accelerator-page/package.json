@@ -18,6 +18,6 @@
     "parcel": "^2.9.3"
   },
   "dependencies": {
-    "@searchstax-inc/searchstudio-ux-js": "npm:@searchstax-inc/searchstudio-ux-js-staging@^0.7.4"
+    "@searchstax-inc/searchstudio-ux-js": "npm:@searchstax-inc/searchstudio-ux-js-staging@^0.7.6"
   }
 }
