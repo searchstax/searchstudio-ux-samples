@@ -221,7 +221,7 @@ searchstax.addSearchResultsWidget("searchstax-results-container", {
 
           {{#ribbon}}
               <div class="searchstax-search-result-ribbon">
-              {{ribbon}}
+              {{{ribbon}}}
               </div>
           {{/ribbon}}
 
@@ -229,18 +229,18 @@ searchstax.addSearchResultsWidget("searchstax-results-container", {
               <img alt="" src="{{thumbnail}}" alt="image" class="searchstax-thumbnail">
           {{/thumbnail}}
           <div class="searchstax-search-result-title-container">
-              <h3 class="searchstax-search-result-title">{{title}}</h3>
+              <h3 class="searchstax-search-result-title">{{{title}}}</h3>
           </div>
 
           {{#paths}}
               <p class="searchstax-search-result-common">
-                  {{paths}}
+                  {{{paths}}}
               </p>
           {{/paths}}
 
           {{#description}}
               <p class="searchstax-search-result-description searchstax-search-result-common">
-                  {{description}}
+                  {{{description}}}
               </p>
           {{/description}}
 
@@ -252,7 +252,7 @@ searchstax.addSearchResultsWidget("searchstax-results-container", {
               {{/isImage}}
               {{^isImage}}
                   <p class="searchstax-search-result-common">
-                  {{value}}
+                  {{{value}}}
                   </p>
               {{/isImage}}
           {{/unmappedFields}}

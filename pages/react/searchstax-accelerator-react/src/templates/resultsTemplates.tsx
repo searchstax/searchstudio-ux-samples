@@ -72,8 +72,7 @@ export function resultsTemplate(
 
 
                           {searchResult.ribbon && (
-                            <div className="searchstax-search-result-ribbon">
-                              {searchResult.ribbon}
+                            <div className="searchstax-search-result-ribbon" dangerouslySetInnerHTML={{ __html: searchResult.ribbon}}>
                             </div>
                           )}
 
@@ -86,20 +85,17 @@ export function resultsTemplate(
                           )}
 
                           <div className="searchstax-search-result-title-container">
-                            <span className="searchstax-search-result-title">
-                              {searchResult.title}
+                            <span className="searchstax-search-result-title"  dangerouslySetInnerHTML={{ __html: searchResult.title ?? '' }}>
                             </span>
                           </div>
 
                           {searchResult.paths && (
-                            <p className="searchstax-search-result-common">
-                              {searchResult.paths}
+                            <p className="searchstax-search-result-common" dangerouslySetInnerHTML={{ __html: searchResult.paths }}>
                             </p>
                           )}
 
                           {searchResult.description && (
-                            <p className="searchstax-search-result-description searchstax-search-result-common">
-                              {searchResult.description}
+                            <p className="searchstax-search-result-description searchstax-search-result-common" dangerouslySetInnerHTML={{ __html: searchResult.description}}>
                             </p>
                           )}
 
@@ -121,8 +117,7 @@ export function resultsTemplate(
 
                                 {!unmappedField.isImage && (
                                   <div>
-                                    <p className="searchstax-search-result-common">
-                                      {unmappedField.value}
+                                    <p className="searchstax-search-result-common" dangerouslySetInnerHTML={{ __html: unmappedField.value}}>
                                     </p>
                                   </div>
                                 )}

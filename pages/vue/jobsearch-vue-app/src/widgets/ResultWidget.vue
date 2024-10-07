@@ -30,9 +30,9 @@
               ></div>
               <div
                 v-if="searchResult.ribbon"
+                v-html="searchResult.ribbon"
                 class="searchstax-search-result-ribbon"
               >
-                {{ searchResult.ribbon }}
               </div>
               <img
                 alt=""
@@ -41,21 +41,21 @@
                 class="searchstax-thumbnail"
               />
               <div class="searchstax-search-result-title-container">
-                <span class="searchstax-search-result-title">{{
-                  searchResult.title
-                }}</span>
+                <span class="searchstax-search-result-title"
+                      v-html="searchResult.title"
+                ></span>
               </div>
               <p
                 v-if="searchResult.paths"
+                v-html="searchResult.paths"
                 class="searchstax-search-result-common"
               >
-                {{ searchResult.paths }}
               </p>
               <p
                 v-if="searchResult.description"
                 class="searchstax-search-result-description searchstax-search-result-common"
+                v-html="searchResult.description"
               >
-                {{ searchResult.description }}
               </p>
               <div
                 :key="unmappedField.key"
@@ -75,8 +75,9 @@
                   />
                 </div>
                 <div v-else>
-                  <p class="searchstax-search-result-common">
-                    {{ unmappedField.value }}
+                  <p class="searchstax-search-result-common"
+                      v-html="unmappedField.value "
+                  >
                   </p>
                 </div>
               </div>
