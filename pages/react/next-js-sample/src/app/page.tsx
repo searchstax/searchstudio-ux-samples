@@ -130,7 +130,6 @@ export default function Home() {
               ></SearchstaxExternalPromotionsWidget>
               <SearchstaxResultWidget
                 afterLinkClick={afterLinkClick}
-                resultsPerPage={renderConfTyped.resultsWidget.itemsPerPage}
                 renderMethod={renderConfTyped.resultsWidget.renderMethod} // eslint-disable-line
                 noResultTemplate={noResultTemplate}
                 resultsTemplate={resultsTemplate}

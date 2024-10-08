@@ -463,7 +463,6 @@
           <app-searchstax-results
             [afterLinkClick]="afterLinkClick"
             [resultsTemplate]="resultsTemplate"
-            [resultsPerPage]="renderConfig.resultsWidget.resultsPerPage"
             [renderMethod]="renderConfig.resultsWidget.renderMethod"
             [noResultsTemplate]="noResultsTemplate"
           >
@@ -497,9 +496,9 @@
                     ></div>
                     <div
                       *ngIf="searchResult.ribbon"
+                      [innerHTML]="searchResult.ribbon"
                       class="searchstax-search-result-ribbon"
                     >
-                      {{ searchResult.ribbon }}
                     </div>
                     <img alt=""
                       *ngIf="searchResult.thumbnail"
@@ -507,18 +506,19 @@
                       class="searchstax-thumbnail"
                     />
                     <div class="searchstax-search-result-title-container">
-                      <span class="searchstax-search-result-title">{{
-                        searchResult.title
-                      }}</span>
+                      <span class="searchstax-search-result-title"
+                          [innerHTML]="searchResult.title"
+                      ></span>
                     </div>
-                    <p *ngIf="searchResult.paths" class="searchstax-search-result-common">
-                      {{ searchResult.paths }}
+                    <p *ngIf="searchResult.paths" class="searchstax-search-result-common"
+                      [innerHTML]="searchResult.paths"
+                    >
                     </p>
                     <p
                       *ngIf="searchResult.description"
+                      [innerHTML]="searchResult.description"
                       class="searchstax-search-result-description searchstax-search-result-common"
                     >
-                      {{ searchResult.description }}
                     </p>
                     <div *ngFor="let unmappedField of searchResult.unmappedFields">
                       <div
@@ -531,8 +531,9 @@
                         />
                       </div>
                       <div *ngIf="!isImage(unmappedField)">
-                        <p class="searchstax-search-result-common">
-                          {{ unmappedField.value }}
+                        <p class="searchstax-search-result-common"
+                          [innerHTML]="unmappedField.value"
+                        >
                         </p>
                       </div>
                     </div>

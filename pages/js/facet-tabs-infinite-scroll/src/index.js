@@ -70,7 +70,6 @@ searchstax.addSearchFeedbackWidget("search-feedback-container", {
   // Search Results Widget
   searchstax.addSearchResultsWidget("searchstax-results-container", {
     renderMethod: "infiniteScroll",
-    resultsPerPage: 9,
     templates: {
       mainTemplate: {
       template: `
