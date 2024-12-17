@@ -10,7 +10,6 @@ import {
   SearchstaxRelatedSearchesWidget,
   SearchstaxExternalPromotionsWidget,
   SearchstaxFacetsWidget,
-  //@ts-ignore
 } from "@searchstax-inc/searchstudio-ux-react";
 
 import type {
@@ -18,10 +17,8 @@ import type {
   ISearchstaxParsedResult,
   ISearchstaxSuggestProps,
   ISearchstaxSuggestResponse,
-  Searchstax,
 } from "@searchstax-inc/searchstudio-ux-js";
 
-//@ts-ignore
 import { config, renderConfig } from "./../../../config.js";
 import {
   noResultTemplate,
@@ -40,7 +37,6 @@ import {
 import { searchSortingTemplate } from "./../templates/sorting.templates";
 import { searchOverviewTemplate } from "./../templates/searchOverviewTemplates";
 import { InputTemplate } from "./../templates/inputTemplates";
-import Script from "next/script";
 function beforeSearch(props: ISearchObject) {
   const propsCopy = { ...props };
   return propsCopy;
@@ -49,7 +45,7 @@ function afterSearch(results: ISearchstaxParsedResult[]) {
   const copy = [...results];
   return copy;
 }
-function initialized(searchstax: Searchstax) {}
+function initialized() {}
 function afterAutosuggest(result: ISearchstaxSuggestResponse) {
   const copy = { ...result };
   return copy;
