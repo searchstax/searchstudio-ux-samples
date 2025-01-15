@@ -12,7 +12,7 @@ $ npm run dev
 
 ### HTML Structure
 
-The main HTML file is `src/index.html`. 
+The main HTML file is `src/index.html`.
 ![Facets as Tabs, Infinite Scroll using Show More](./screenshots/tabs-showmore.png "Facets as Tabs, Infinite Scroll using Show More")
 
 ### JavaScript Widgets
@@ -23,7 +23,7 @@ The main JavaScript file `src/index.js` imports and initializes several widgets 
 
 ```JS
 searchstax.addSearchInputWidget("searchstax-input-container", {
-    suggestAfterMinChars: 3,
+
     templates: {
     mainTemplate: {
         template: searchInput,
@@ -51,7 +51,7 @@ searchstax.addFacetsWidget("searchstax-facets-container", {
 
 });
 ```
-In `index.js`, the following custom codes adds an additional "All" tab to the facets 
+In `index.js`, the following custom codes adds an additional "All" tab to the facets
 ```JS
 searchstax.dataLayer.$facetsTemplateData.subscribe((facets) => {
     // console.log(`Facets: ${facets}`);
@@ -107,7 +107,7 @@ searchstax.addPaginationWidget("searchstax-pagination-container", {
                       </div>
                     </div>
                 {{/results.length}}
-                
+
                 `,
             loadMoreButtonClass: "searchstax-pagination-load-more"
         }

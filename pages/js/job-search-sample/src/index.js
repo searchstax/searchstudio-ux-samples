@@ -36,7 +36,7 @@ searchstax.addSearchFeedbackWidget("search-feedback-container", {
 });
 
 searchstax.addSearchInputWidget("searchstax-input-container", {
-  suggestAfterMinChars: 3,
+
   templates: {
     mainTemplate: {
       template: `
