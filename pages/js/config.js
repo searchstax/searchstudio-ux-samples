@@ -39,7 +39,7 @@ const initConfig = {
 
 const renderConfig = {
   inputWidget: {
-    suggestAfterMinChars: 3,
+
   },
   facetsWidget: {
     itemsPerPageDesktop: 3,

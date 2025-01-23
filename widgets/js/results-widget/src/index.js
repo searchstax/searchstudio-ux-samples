@@ -14,7 +14,7 @@ searchstax.initialize({
 });
 
 searchstax.addSearchInputWidget("searchstax-input-container", {
-    suggestAfterMinChars: 3,
+
     templates: {
     mainTemplate: {
         template: `

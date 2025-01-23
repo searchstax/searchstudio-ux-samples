@@ -23,7 +23,7 @@ const jobSearchConfig = {
 
 const renderConfig = {
     inputWidget: {
-      suggestAfterMinChars: 3,
+
     },
     facetsWidget: {
       itemsPerPageDesktop: 3,

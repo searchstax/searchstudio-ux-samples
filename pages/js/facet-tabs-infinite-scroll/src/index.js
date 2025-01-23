@@ -33,7 +33,7 @@ searchstax.initialize( {...initConfig.acceleratorSample, sessionId: makeId(25)} 
 
 // 1. Input Widget
 searchstax.addSearchInputWidget("searchstax-input-container", {
-    suggestAfterMinChars: 3,
+
     templates: {
     mainTemplate: {
         template: searchInput,

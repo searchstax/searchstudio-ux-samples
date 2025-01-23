@@ -12,7 +12,7 @@ const config = {
 
 const renderConfig = {
     inputWidget: {
-      suggestAfterMinChars: 3,
+      // suggestAfterMinChars: 3,
     },
     facetsWidget: {
       itemsPerPageDesktop: 3,
