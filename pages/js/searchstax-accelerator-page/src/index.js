@@ -20,7 +20,7 @@ searchstax.initialize({
   ...initConfig.acceleratorSample,
   sessionId: makeId(25),
 });
-
+searchstax.addAnswerWidget("searchstax-answer-container");
 searchstax.addSearchFeedbackWidget("search-feedback-container", {
   templates: {
     main: {
