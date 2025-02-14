@@ -18,7 +18,6 @@ function makeId(length) {
 
 searchstax.initialize({
   ...initConfig.acceleratorSample,
-  questionURL: "https://analytics-us-east.searchstax.co/api/v1/3182/answer",
   sessionId: makeId(25),
 });
 searchstax.addAnswerWidget("searchstax-answer-container");
