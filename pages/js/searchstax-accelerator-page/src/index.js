@@ -19,20 +19,47 @@ searchstax.initialize({
   ...initConfig.acceleratorSample,
   sessionId: makeId(25),
 });
-searchstax.addAnswerWidget("searchstax-answer-container", {templates: {
-  main: {
-    template: `
-        {{#shouldShowAnswer}}
-            <div class="searchstax-answer-container">
-                <div class="searchstax-answer-title">Answer</div>
-                <div class="searchstax-answer-description">
-                    {{answer}}
-                </div>
+searchstax.addAnswerWidget("searchstax-answer-container", {
+  showShowMoreAfterWordCount: 100,
+  templates: {
+    main: {
+      template: `
+    {{#shouldShowAnswer}}
+    <div>
+        <div class="searchstax-answer-container {{#showMoreButtonVisible}}show-more{{/showMoreButtonVisible}}">
+            <div class="searchstax-answer-title">Answer</div>
+            {{#showMoreButtonVisible}}
+            <div class="searchstax-answer-description">
+                {{answerTruncated}}
+                {{#answerLoading}}
+                    <div class="searchstax-answer-loading"></div>
+                {{/answerLoading}}
             </div>
-        {{/shouldShowAnswer}}
+            {{/showMoreButtonVisible}}
+
+
+            {{^showMoreButtonVisible}}
+            <div class="searchstax-answer-description">
+                {{answer}}
+                {{#answerLoading}}
+                    <div class="searchstax-answer-loading"></div>
+                {{/answerLoading}}
+            </div>
+            {{/showMoreButtonVisible}}
+            </div>
+
+
+            {{#showMoreButtonVisible}}
+                <div class="searchstax-answer-load-more-button-container">
+                    <button class="searchstax-answer-load-more-button">Show More...</button>
+                </div>
+            {{/showMoreButtonVisible}}
+        </div>
+    {{/shouldShowAnswer}}
         `,
+    },
   },
-}});
+});
 searchstax.addSearchFeedbackWidget("search-feedback-container", {
   templates: {
     main: {
