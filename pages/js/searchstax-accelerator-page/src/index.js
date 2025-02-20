@@ -15,12 +15,24 @@ function makeId(length) {
   }
   return result;
 }
-
 searchstax.initialize({
   ...initConfig.acceleratorSample,
   sessionId: makeId(25),
 });
-searchstax.addAnswerWidget("searchstax-answer-container");
+searchstax.addAnswerWidget("searchstax-answer-container", {templates: {
+  main: {
+    template: `
+        {{#shouldShowAnswer}}
+            <div class="searchstax-answer-container">
+                <div class="searchstax-answer-title">Answer</div>
+                <div class="searchstax-answer-description">
+                    {{answer}}
+                </div>
+            </div>
+        {{/shouldShowAnswer}}
+        `,
+  },
+}});
 searchstax.addSearchFeedbackWidget("search-feedback-container", {
   templates: {
     main: {
