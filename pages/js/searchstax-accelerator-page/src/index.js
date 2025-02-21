@@ -25,36 +25,30 @@ searchstax.addAnswerWidget("searchstax-answer-container", {
     main: {
       template: `
     {{#shouldShowAnswer}}
-    <div>
-        <div class="searchstax-answer-container {{#showMoreButtonVisible}}show-more{{/showMoreButtonVisible}}">
-            <div class="searchstax-answer-title">Answer</div>
+      <div>
+        <div class="searchstax-answer-container {{#showMoreButtonVisible}}searchstax-answer-show-more{{/showMoreButtonVisible}}">
+          <div class="searchstax-answer-title">Answer</div>
+          <div class="searchstax-answer-description">
             {{#showMoreButtonVisible}}
-            <div class="searchstax-answer-description">
-                {{answerTruncated}}
-                {{#answerLoading}}
-                    <div class="searchstax-answer-loading"></div>
-                {{/answerLoading}}
-            </div>
+              {{answerTruncated}}
             {{/showMoreButtonVisible}}
-
-
             {{^showMoreButtonVisible}}
-            <div class="searchstax-answer-description">
-                {{answer}}
-                {{#answerLoading}}
-                    <div class="searchstax-answer-loading"></div>
-                {{/answerLoading}}
-            </div>
+              {{answer}}
             {{/showMoreButtonVisible}}
-            </div>
 
-
-            {{#showMoreButtonVisible}}
-                <div class="searchstax-answer-load-more-button-container">
-                    <button class="searchstax-answer-load-more-button">Show More...</button>
-                </div>
-            {{/showMoreButtonVisible}}
+            {{#answerLoading}}
+               <div class="searchstax-answer-loading"></div>
+            {{/answerLoading}}
+          </div>
         </div>
+
+
+        {{#showMoreButtonVisible}}
+          <div class="searchstax-answer-load-more-button-container">
+            <button class="searchstax-answer-load-more-button">Show More...</button>
+          </div>
+        {{/showMoreButtonVisible}}
+      </div>
     {{/shouldShowAnswer}}
         `,
     },
