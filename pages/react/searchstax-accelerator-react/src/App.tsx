@@ -106,7 +106,9 @@ function App() {
             afterAutosuggest={afterAutosuggest}
             beforeAutosuggest={beforeAutosuggest}
           ></SearchstaxInputWidget>
-          <SearchstaxAnswerWidget searchAnswerTemplate={answerTemplate} showShowMoreAfterWordCount={100}></SearchstaxAnswerWidget>
+          <SearchstaxAnswerWidget searchAnswerTemplate={answerTemplate}
+                                  showShowMoreAfterWordCount={100}>
+          </SearchstaxAnswerWidget>
           <div className="search-details-container">
             <SearchstaxOverviewWidget
               searchOverviewTemplate={searchOverviewTemplate}
