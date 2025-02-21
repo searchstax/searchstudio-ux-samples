@@ -20,7 +20,7 @@ searchstax.initialize({
   sessionId: makeId(25),
 });
 searchstax.addAnswerWidget("searchstax-answer-container", {
-  showShowMoreAfterWordCount: 100,
+  showShowMoreAfterWordCount: 5,
   templates: {
     main: {
       template: `
