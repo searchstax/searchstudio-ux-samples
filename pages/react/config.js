@@ -7,7 +7,8 @@ const config = {
     authType: 'basic',
     relatedSearchesURL: "https://staging.searchstax.co/api/v1/3182/related-search/",
     relatedSearchesAPIKey: "055651fc679c8492ab98badd08ee6c6f2d8e25ce",
-    analyticsBaseUrl: 'https://analytics-us-west-staging.searchstax.co'
+    analyticsBaseUrl: 'https://analytics-us-west-staging.searchstax.co',
+    questionURL: "https://analytics-us-east.searchstax.co/api/v1/3182/answer",
 };
 
 const renderConfig = {

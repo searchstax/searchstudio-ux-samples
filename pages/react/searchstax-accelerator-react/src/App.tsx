@@ -10,6 +10,7 @@ import {
   SearchstaxRelatedSearchesWidget,
   SearchstaxExternalPromotionsWidget,
   SearchstaxFacetsWidget,
+  SearchstaxAnswerWidget
   //@ts-ignore
 } from "@searchstax-inc/searchstudio-ux-react";
 
@@ -23,6 +24,7 @@ import { Searchstax } from "@searchstax-inc/searchstudio-ux-js";
 //@ts-ignore
 import { config, renderConfig } from "../../config.js";
 import { noResultTemplate, resultsTemplate } from "./templates/resultsTemplates.js";
+import { answerTemplate } from "./templates/answerTemplates.js";
 import { infiniteScrollTemplate, paginationTemplate } from "./templates/paginationTemplates.js";
 import { searchRelatedSearchesTemplate } from "./templates/relatedSearchesTemplates.js";
 import { searchExternalPromotionsTemplate } from "./templates/externalPromotionsTemplates.js";
@@ -95,6 +97,7 @@ function App() {
         analyticsBaseUrl={config.analyticsBaseUrl}
         router={{ enabled: true }}
         language={config.language}
+        questionURL={config.questionURL}
       >
         <div className="searchstax-page-layout-container">
           <SearchstaxInputWidget
@@ -103,7 +106,7 @@ function App() {
             afterAutosuggest={afterAutosuggest}
             beforeAutosuggest={beforeAutosuggest}
           ></SearchstaxInputWidget>
-
+          <SearchstaxAnswerWidget searchAnswerTemplate={answerTemplate}></SearchstaxAnswerWidget>
           <div className="search-details-container">
             <SearchstaxOverviewWidget
               searchOverviewTemplate={searchOverviewTemplate}
