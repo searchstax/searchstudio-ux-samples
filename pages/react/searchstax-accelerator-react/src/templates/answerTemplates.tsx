@@ -14,7 +14,7 @@ export function answerTemplate(
             (answerData.showMoreButtonVisible === true ? "how-more" : "")
           }
         >
-          <div className="searchstax-answer-title">Answer Template</div>
+          <div className="searchstax-answer-title">Answer</div>
 
           {answerData.showMoreButtonVisible === true && (
             <div className="searchstax-answer-description">
