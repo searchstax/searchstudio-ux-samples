@@ -9,11 +9,13 @@
       :authType="config.authType"
       :sessionId="sessionId"
       :analyticsBaseUrl="config.analyticsBaseUrl"
+      :questionURL="config.questionURL"
     >
       <template #default>
         <div class="searchstax-page-layout-container">
           <SearchInputWidget />
           <!--- Search Input Widget -->
+          <SearchstaxAnswerWidget />
           <div class="search-details-container">
             <SearchFeedbackWidget />
             <!--- Search Feedback Widget -->
@@ -57,6 +59,7 @@ import SortingWidget from '@/widgets/SortingWidget.vue'
 import ExternalPromotionsWidget from '@/widgets/ExternalPromotionsWidget.vue'
 import PaginationWidget from '@/widgets/PaginationWidget.vue'
 import RelatedSearchesWidget from '@/widgets/RelatedSearchesWidget.vue'
+import SearchstaxAnswerWidget from '@/widgets/AnswerWidget.vue'
 
 function makeId(length) {
     let result = '';
