@@ -11,6 +11,7 @@ import {
   SearchstaxRelatedSearchesWidget,
   SearchstaxExternalPromotionsWidget,
   SearchstaxFacetsWidget,
+  SearchstaxAnswerWidget
   //@ts-ignore
 } from "@searchstax-inc/searchstudio-ux-react";
 
@@ -42,6 +43,7 @@ import { searchSortingTemplate } from "./templates/sorting.templates";
 import { searchOverviewTemplate } from "./templates/searchOverviewTemplates";
 import { InputTemplate } from "./templates/inputTemplates";
 import Script from "next/script";
+import { answerTemplate } from "./templates/answerTemplates";
 function beforeSearch(props: ISearchObject) {
   const propsCopy = { ...props };
   return propsCopy;
@@ -74,79 +76,89 @@ const confTyped = config as any;
 export default function Home() {
   return (
     <>
-    <main>
-    <h1 style={{display: 'none'}} className="searchstax-main-page-title">Searchstax Search Page</h1>
-      <SearchstaxWrapper
-        searchURL={confTyped.searchURL}
-        suggesterURL={confTyped.suggesterURL}
-        trackApiKey={confTyped.trackApiKey}
-        searchAuth={confTyped.searchAuth}
-        initialized={initialized}
-        beforeSearch={beforeSearch}
-        afterSearch={afterSearch}
-        authType={confTyped.authType as "token" | "basic" | undefined} // eslint-disable-line
-        analyticsBaseUrl={confTyped.analyticsBaseUrl}
-        router={{ enabled: true }}
-        language="en"
-      >
-        <div className="searchstax-page-layout-container">
-          <SearchstaxInputWidget
-            inputTemplate={InputTemplate}
-            suggestAfterMinChars={renderConfTyped.inputWidget.suggestAfterMinChars}
-            afterAutosuggest={afterAutosuggest}
-            beforeAutosuggest={beforeAutosuggest}
-          ></SearchstaxInputWidget>
+      <main>
+        <h1 style={{ display: "none" }} className="searchstax-main-page-title">
+          Searchstax Search Page
+        </h1>
+        <SearchstaxWrapper
+          searchURL={confTyped.searchURL}
+          suggesterURL={confTyped.suggesterURL}
+          trackApiKey={confTyped.trackApiKey}
+          searchAuth={confTyped.searchAuth}
+          initialized={initialized}
+          beforeSearch={beforeSearch}
+          afterSearch={afterSearch}
+          authType={confTyped.authType as "token" | "basic" | undefined} // eslint-disable-line
+          analyticsBaseUrl={confTyped.analyticsBaseUrl}
+          router={{ enabled: true }}
+          questionURL={config.questionURL}
+          language="en"
+        >
+          <div className="searchstax-page-layout-container">
+            <SearchstaxInputWidget
+              inputTemplate={InputTemplate}
+              suggestAfterMinChars={
+                renderConfTyped.inputWidget.suggestAfterMinChars
+              }
+              afterAutosuggest={afterAutosuggest}
+              beforeAutosuggest={beforeAutosuggest}
+            ></SearchstaxInputWidget>
 
-          <div className="search-details-container">
-            <SearchstaxOverviewWidget
-              searchOverviewTemplate={searchOverviewTemplate}
-            ></SearchstaxOverviewWidget>
-            <SearchstaxSortingWidget
-              searchSortingTemplate={searchSortingTemplate}
-            ></SearchstaxSortingWidget>
-          </div>
+            <SearchstaxAnswerWidget
+              searchAnswerTemplate={answerTemplate}
+              showShowMoreAfterWordCount={5}
+            ></SearchstaxAnswerWidget>
 
-          <div className="searchstax-page-layout-facet-result-container">
-            <div className="searchstax-page-layout-facet-container">
-              <SearchstaxFacetsWidget
-                facetingType={renderConfTyped.facetsWidget.facetingType} // eslint-disable-line
-                itemsPerPageDesktop={
-                  renderConfTyped.facetsWidget.itemsPerPageDesktop
-                }
-                itemsPerPageMobile={
-                  renderConfTyped.facetsWidget.itemsPerPageMobile
-                }
-                specificFacets={undefined}
-                facetsTemplateDesktop={facetsTemplateDesktop}
-                facetsTemplateMobile={facetsTemplateMobile}
-              ></SearchstaxFacetsWidget>
+            <div className="search-details-container">
+              <SearchstaxOverviewWidget
+                searchOverviewTemplate={searchOverviewTemplate}
+              ></SearchstaxOverviewWidget>
+              <SearchstaxSortingWidget
+                searchSortingTemplate={searchSortingTemplate}
+              ></SearchstaxSortingWidget>
             </div>
 
-            <div className="searchstax-page-layout-result-container">
-              <SearchstaxExternalPromotionsWidget
-                searchExternalPromotionsTemplate={
-                  searchExternalPromotionsTemplate
-                }
-              ></SearchstaxExternalPromotionsWidget>
-              <SearchstaxResultWidget
-                afterLinkClick={afterLinkClick}
-                renderMethod={renderConfTyped.resultsWidget.renderMethod} // eslint-disable-line
-                noResultTemplate={noResultTemplate}
-                resultsTemplate={resultsTemplate}
-              ></SearchstaxResultWidget>
-              <SearchstaxRelatedSearchesWidget
-                relatedSearchesURL={confTyped.relatedSearchesURL}
-                relatedSearchesAPIKey={confTyped.relatedSearchesAPIKey}
-                searchRelatedSearchesTemplate={searchRelatedSearchesTemplate}
-              ></SearchstaxRelatedSearchesWidget>
-              <SearchstaxPaginationWidget
-                infiniteScrollTemplate={infiniteScrollTemplate}
-                paginationTemplate={paginationTemplate}
-              ></SearchstaxPaginationWidget>
+            <div className="searchstax-page-layout-facet-result-container">
+              <div className="searchstax-page-layout-facet-container">
+                <SearchstaxFacetsWidget
+                  facetingType={renderConfTyped.facetsWidget.facetingType} // eslint-disable-line
+                  itemsPerPageDesktop={
+                    renderConfTyped.facetsWidget.itemsPerPageDesktop
+                  }
+                  itemsPerPageMobile={
+                    renderConfTyped.facetsWidget.itemsPerPageMobile
+                  }
+                  specificFacets={undefined}
+                  facetsTemplateDesktop={facetsTemplateDesktop}
+                  facetsTemplateMobile={facetsTemplateMobile}
+                ></SearchstaxFacetsWidget>
+              </div>
+
+              <div className="searchstax-page-layout-result-container">
+                <SearchstaxExternalPromotionsWidget
+                  searchExternalPromotionsTemplate={
+                    searchExternalPromotionsTemplate
+                  }
+                ></SearchstaxExternalPromotionsWidget>
+                <SearchstaxResultWidget
+                  afterLinkClick={afterLinkClick}
+                  renderMethod={renderConfTyped.resultsWidget.renderMethod} // eslint-disable-line
+                  noResultTemplate={noResultTemplate}
+                  resultsTemplate={resultsTemplate}
+                ></SearchstaxResultWidget>
+                <SearchstaxRelatedSearchesWidget
+                  relatedSearchesURL={confTyped.relatedSearchesURL}
+                  relatedSearchesAPIKey={confTyped.relatedSearchesAPIKey}
+                  searchRelatedSearchesTemplate={searchRelatedSearchesTemplate}
+                ></SearchstaxRelatedSearchesWidget>
+                <SearchstaxPaginationWidget
+                  infiniteScrollTemplate={infiniteScrollTemplate}
+                  paginationTemplate={paginationTemplate}
+                ></SearchstaxPaginationWidget>
+              </div>
             </div>
           </div>
-        </div>
-      </SearchstaxWrapper>
+        </SearchstaxWrapper>
       </main>
     </>
   );
