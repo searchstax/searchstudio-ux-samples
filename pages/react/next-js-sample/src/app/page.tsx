@@ -106,7 +106,7 @@ export default function Home() {
 
             <SearchstaxAnswerWidget
               searchAnswerTemplate={answerTemplate}
-              showShowMoreAfterWordCount={5}
+              showShowMoreAfterWordCount={100}
             ></SearchstaxAnswerWidget>
 
             <div className="search-details-container">
