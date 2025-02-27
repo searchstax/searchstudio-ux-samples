@@ -8,6 +8,7 @@
     [afterSearch]="afterSearch"
     [authType]="config.authType"
     [sessionId]="sessionId"
+    [questionURL]="config.questionURL"
     [analyticsBaseUrl]="config.analyticsBaseUrl"
     (initialized)="initialized($event)"
   >
@@ -61,6 +62,48 @@
           </div>
         </ng-template>
       </app-searchstax-input>
+      <app-searchstax-answer [showShowMoreAfterWordCount]="100" [templateOverride]="answerTemplate">
+        <ng-template
+            #answerTemplate
+            let-answerData="answerData"
+            let-showMore="showMore"
+            let-context="context"
+          >
+          <div>
+            <div
+              [class]="
+                'searchstax-answer-container' + answerData.showMoreButtonVisible
+                  ? 'searchstax-answer-show-more'
+                  : ''
+              "
+            >
+              <div class="searchstax-answer-title">Answer</div>
+              <div class="searchstax-answer-description">
+                {{
+                  answerData.showMoreButtonVisible
+                    ? answerData.answerTruncated
+                    : answerData.answer
+                }}
+                <div
+                  *ngIf="answerData.answerLoading"
+                  class="searchstax-answer-loading"
+                ></div>
+              </div>
+            </div>
+            <div
+              *ngIf="answerData.showMoreButtonVisible"
+              class="searchstax-answer-load-more-button-container"
+            >
+              <button
+                class="searchstax-answer-load-more-button"
+                (click)="showMore($event, context)"
+              >
+                Show More...
+              </button>
+            </div>
+          </div>
+        </ng-template>
+      </app-searchstax-answer>
       <div class="search-details-container">
         <app-searchstax-search-feedback [templateOverride]="feedbackTemplate">
           <ng-template

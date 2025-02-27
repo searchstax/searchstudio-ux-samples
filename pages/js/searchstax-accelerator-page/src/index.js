@@ -15,12 +15,45 @@ function makeId(length) {
   }
   return result;
 }
-
 searchstax.initialize({
   ...initConfig.acceleratorSample,
   sessionId: makeId(25),
 });
+searchstax.addAnswerWidget("searchstax-answer-container", {
+  showShowMoreAfterWordCount: 100,
+  templates: {
+    main: {
+      template: `
+    {{#shouldShowAnswer}}
+      <div>
+        <div class="searchstax-answer-container {{#showMoreButtonVisible}}searchstax-answer-show-more{{/showMoreButtonVisible}}">
+          <div class="searchstax-answer-title">Answer</div>
+          <div class="searchstax-answer-description">
+            {{#showMoreButtonVisible}}
+              {{answerTruncated}}
+            {{/showMoreButtonVisible}}
+            {{^showMoreButtonVisible}}
+              {{answer}}
+            {{/showMoreButtonVisible}}
 
+            {{#answerLoading}}
+               <div class="searchstax-answer-loading"></div>
+            {{/answerLoading}}
+          </div>
+        </div>
+
+
+        {{#showMoreButtonVisible}}
+          <div class="searchstax-answer-load-more-button-container">
+            <button class="searchstax-answer-load-more-button">Show More...</button>
+          </div>
+        {{/showMoreButtonVisible}}
+      </div>
+    {{/shouldShowAnswer}}
+        `,
+    },
+  },
+});
 searchstax.addSearchFeedbackWidget("search-feedback-container", {
   templates: {
     main: {

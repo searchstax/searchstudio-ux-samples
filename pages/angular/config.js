@@ -1,3 +1,4 @@
+
 const config = {
     language: 'en',
     searchURL: 'https://searchcloud-2-us-east-1.searchstax.com/29847/corpsiteuxsamples-1442/emselect',
@@ -7,7 +8,8 @@ const config = {
     authType: 'token',
     relatedSearchesURL: "https://app.searchstax.com/api/v1/1442/related-search/",
     relatedSearchesAPIKey: "fac98ad405cc50e0c0693331e8d2119de592f0e3",
-    analyticsBaseUrl: 'https://analytics-us.searchstax.com'
+    analyticsBaseUrl: 'https://analytics-us.searchstax.com',
+    questionURL: "https://search-ai-us.searchstax.com/api/v1/1442/answer/"
 };
 
 const renderConfig = {

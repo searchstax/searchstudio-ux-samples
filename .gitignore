@@ -3,3 +3,5 @@ dist/
 .parcel-cache
 .idea/
 .DS_Store
+createRelease.cjs
+prodConfig*
