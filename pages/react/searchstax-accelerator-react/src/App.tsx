@@ -71,7 +71,7 @@ function App() {
 
   function initializeWidget() {
     new SearchstaxFeedbackWidget({
-      analyticsKey: "someKey",
+      analyticsKey: config.trackApiKey,
       containerId: "feedbackWidgetContainer",
       lightweight: true,
       emailOverride: searchstaxEmailOverride,

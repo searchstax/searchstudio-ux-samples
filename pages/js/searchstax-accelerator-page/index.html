@@ -11,9 +11,10 @@
     <script type="module" src="/src/main.ts"></script>
     <script type="module">
       import SearchstaxFeedbackWidget from "https://static-staging.searchstax.co/studio-js/v4/js/feedbackWidget.mjs";
+      import {initConfig} from "./../config.js";
 
       new SearchstaxFeedbackWidget({
-        analyticsKey: "someKey",
+        analyticsKey: initConfig.acceleratorSample.trackApiKey,
         containerId: "feedbackWidgetContainer",
         lightweight: false,
       });
