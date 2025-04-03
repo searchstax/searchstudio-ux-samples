@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.scss";
 import {
   SearchstaxWrapper,
@@ -10,7 +10,7 @@ import {
   SearchstaxRelatedSearchesWidget,
   SearchstaxExternalPromotionsWidget,
   SearchstaxFacetsWidget,
-  SearchstaxAnswerWidget
+  SearchstaxAnswerWidget,
   //@ts-ignore
 } from "@searchstax-inc/searchstudio-ux-react";
 
@@ -23,25 +23,66 @@ import type {
 import { Searchstax } from "@searchstax-inc/searchstudio-ux-js";
 //@ts-ignore
 import { config, renderConfig } from "../../config.js";
-import { noResultTemplate, resultsTemplate } from "./templates/resultsTemplates.js";
+import {
+  noResultTemplate,
+  resultsTemplate,
+} from "./templates/resultsTemplates.js";
 import { answerTemplate } from "./templates/answerTemplates.js";
-import { infiniteScrollTemplate, paginationTemplate } from "./templates/paginationTemplates.js";
+import {
+  infiniteScrollTemplate,
+  paginationTemplate,
+} from "./templates/paginationTemplates.js";
 import { searchRelatedSearchesTemplate } from "./templates/relatedSearchesTemplates.js";
 import { searchExternalPromotionsTemplate } from "./templates/externalPromotionsTemplates.js";
-import { facetsTemplateDesktop, facetsTemplateMobile } from "./templates/facetTemplates.js";
+import {
+  facetsTemplateDesktop,
+  facetsTemplateMobile,
+} from "./templates/facetTemplates.js";
 import { searchSortingTemplate } from "./templates/sorting.templates.js";
 import { searchOverviewTemplate } from "./templates/searchOverviewTemplates.js";
 import { InputTemplate } from "./templates/inputTemplates.js";
+// @ts-ignore
+import SearchstaxFeedbackWidget from "https://static-staging.searchstax.co/studio-js/v4/js/feedbackWidget.mjs";
 
 function App() {
   //@ts-ignore
-  const [searchstaxInstance, setSearchstaxInstance] = useState(// eslint-disable-line
+  const [searchstaxInstance, setSearchstaxInstance] = useState(
+    // eslint-disable-line
     null as null | Searchstax
   );
 
+  useEffect(() => {
+    initializeWidget();
+  }, [searchstaxInstance]);
+  function searchstaxEmailOverride() {
+    return "testEmailOverride@gmail.com";
+  }
+
+  function searchstaxFeedbackTextAreaOverride() {
+    if (!searchstaxInstance) {
+      return "";
+    } else {
+      return (
+        (searchstaxInstance.dataLayer.searchObject.query === 'undefined' ? '' : searchstaxInstance.dataLayer.searchObject.query) +
+        searchstaxInstance.dataLayer.getAnswerData
+      );
+    }
+  }
+
+  function initializeWidget() {
+    new SearchstaxFeedbackWidget({
+      analyticsKey: "someKey",
+      containerId: "feedbackWidgetContainer",
+      lightweight: true,
+      emailOverride: searchstaxEmailOverride,
+      feedbackTextAreaOverride: searchstaxFeedbackTextAreaOverride,
+    });
+  }
+
   function makeId(length: number) {
-    let result = '';
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = "";
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     const charactersLength = characters.length;
     for (let i = 0; i < length; i++) {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
@@ -56,6 +97,7 @@ function App() {
     return propsCopy;
   }
   function afterSearch(results: ISearchstaxParsedResult[]) {
+    initializeWidget();
     const copy = [...results];
     return copy;
   }
@@ -84,6 +126,7 @@ function App() {
 
   return (
     <>
+      <div id="feedbackWidgetContainer"></div>
       <SearchstaxWrapper
         searchURL={config.searchURL}
         suggesterURL={config.suggesterURL}
@@ -106,9 +149,10 @@ function App() {
             afterAutosuggest={afterAutosuggest}
             beforeAutosuggest={beforeAutosuggest}
           ></SearchstaxInputWidget>
-          <SearchstaxAnswerWidget searchAnswerTemplate={answerTemplate}
-                                  showShowMoreAfterWordCount={100}>
-          </SearchstaxAnswerWidget>
+          <SearchstaxAnswerWidget
+            searchAnswerTemplate={answerTemplate}
+            showShowMoreAfterWordCount={100}
+          ></SearchstaxAnswerWidget>
           <div className="search-details-container">
             <SearchstaxOverviewWidget
               searchOverviewTemplate={searchOverviewTemplate}
@@ -122,8 +166,12 @@ function App() {
             <div className="searchstax-page-layout-facet-container">
               <SearchstaxFacetsWidget
                 facetingType={renderConfig.facetsWidget.facetingType}
-                itemsPerPageDesktop={renderConfig.facetsWidget.itemsPerPageDesktop}
-                itemsPerPageMobile={renderConfig.facetsWidget.itemsPerPageMobile}
+                itemsPerPageDesktop={
+                  renderConfig.facetsWidget.itemsPerPageDesktop
+                }
+                itemsPerPageMobile={
+                  renderConfig.facetsWidget.itemsPerPageMobile
+                }
                 specificFacets={undefined}
                 facetsTemplateDesktop={facetsTemplateDesktop}
                 facetsTemplateMobile={facetsTemplateMobile}

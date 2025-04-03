@@ -1,11 +1,9 @@
-import "@searchstax-inc/searchstudio-ux-js/dist/styles/mainTheme.css";
-import "./main.scss";
 import { Searchstax } from "@searchstax-inc/searchstudio-ux-js";
-import { initConfig, renderConfig } from "../../config";
-
+// @ts-ignore
+import { initConfig, renderConfig } from "./../../config.js";
 const searchstax = new Searchstax();
 
-function makeId(length) {
+function makeId(length: number) {
   let result = "";
   const characters =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -15,6 +13,7 @@ function makeId(length) {
   }
   return result;
 }
+
 searchstax.initialize({
   ...initConfig.acceleratorSample,
   sessionId: makeId(25),
@@ -422,6 +421,7 @@ searchstax.addExternalPromotionsWidget(
 );
 
 document.addEventListener("click", function (event) {
+  // @ts-ignore
   if (event.target.classList.contains("searchstax-related-search-item")) {
     scrollToTop();
   }

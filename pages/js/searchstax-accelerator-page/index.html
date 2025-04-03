@@ -3,15 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="index.js" type="module"></script>
     <title>Searchstax Seach Page</title>
+    <link
+      href="https://static-staging.searchstax.co/studio-js/v4/css/feedbackWidget.css"
+      rel="stylesheet"
+    />
+    <script type="module" src="/src/main.ts"></script>
+    <script type="module">
+      import SearchstaxFeedbackWidget from "https://static-staging.searchstax.co/studio-js/v4/js/feedbackWidget.mjs";
 
+      new SearchstaxFeedbackWidget({
+        analyticsKey: "someKey",
+        containerId: "feedbackWidgetContainer",
+        lightweight: false,
+      });
+    </script>
+    <style lang="scss">
+      @import 'main.scss';
+    </style>
 </head>
 <body>
 <main>
     <h1 style="display:none" class="searchstax-main-page-title">Searchstax Search Page</h1>
     <div class="container">
-
+        <div id="feedbackWidgetContainer"></div>
         <div class="searchstax-page-layout-container">
             <div id="searchstax-input-container"></div>
             <div id="searchstax-answer-container"></div>
