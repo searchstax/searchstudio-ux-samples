@@ -51,9 +51,6 @@ function App() {
     null as null | Searchstax
   );
 
-  useEffect(() => {
-    initializeWidget();
-  }, [searchstaxInstance]);
   function searchstaxEmailOverride() {
     return "testEmailOverride@gmail.com";
   }
@@ -63,20 +60,28 @@ function App() {
       return "";
     } else {
       return (
-        (searchstaxInstance.dataLayer.searchObject.query === 'undefined' ? '' : searchstaxInstance.dataLayer.searchObject.query) +
-        searchstaxInstance.dataLayer.getAnswerData
+        (searchstaxInstance.dataLayer.searchObject.query === "undefined"
+          ? ""
+          : searchstaxInstance.dataLayer.searchObject.query) + ' ' +
+        searchstaxInstance.dataLayer.parsedData.getAnswerData
       );
     }
   }
 
   function initializeWidget() {
-    new SearchstaxFeedbackWidget({
-      analyticsKey: config.trackApiKey,
-      containerId: "feedbackWidgetContainer",
-      lightweight: true,
-      emailOverride: searchstaxEmailOverride,
-      feedbackTextAreaOverride: searchstaxFeedbackTextAreaOverride,
-    });
+    // get the container element
+    const container = document.getElementById("feedbackWidgetContainer");
+    if (container) {
+      new SearchstaxFeedbackWidget({
+        analyticsKey: config.trackApiKey,
+        containerId: "feedbackWidgetContainer",
+        lightweight: true,
+        emailOverride: searchstaxEmailOverride,
+        feedbackTextAreaOverride: searchstaxFeedbackTextAreaOverride,
+        thumbsUpValue: 9,
+        thumbsDownValue: 1,
+      });
+    }
   }
 
   function makeId(length: number) {
@@ -97,13 +102,21 @@ function App() {
     return propsCopy;
   }
   function afterSearch(results: ISearchstaxParsedResult[]) {
-    initializeWidget();
     const copy = [...results];
     return copy;
   }
 
   function initialized(searchstax: Searchstax) {
     setSearchstaxInstance(searchstax);
+    if (searchstaxInstance) {
+      searchstaxInstance.dataLayer.$answer.subscribe((data) => {
+        if (data) {
+          setTimeout(() => {
+            initializeWidget();
+          }, 100);
+        }
+      });
+    }
   }
 
   function afterAutosuggest(result: ISearchstaxSuggestResponse) {
@@ -126,7 +139,6 @@ function App() {
 
   return (
     <>
-      <div id="feedbackWidgetContainer"></div>
       <SearchstaxWrapper
         searchURL={config.searchURL}
         suggesterURL={config.suggesterURL}
