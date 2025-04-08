@@ -1,4 +1,6 @@
-import { useState, useEffect } from "react";
+import {
+  useState,
+} from "react";
 import "./App.scss";
 import {
   SearchstaxWrapper,
@@ -62,7 +64,8 @@ function App() {
       return (
         (searchstaxInstance.dataLayer.searchObject.query === "undefined"
           ? ""
-          : searchstaxInstance.dataLayer.searchObject.query) + ' ' +
+          : searchstaxInstance.dataLayer.searchObject.query) +
+        " " +
         searchstaxInstance.dataLayer.parsedData.getAnswerData
       );
     }
@@ -80,6 +83,17 @@ function App() {
         feedbackTextAreaOverride: searchstaxFeedbackTextAreaOverride,
         thumbsUpValue: 9,
         thumbsDownValue: 1,
+      });
+    }
+  }
+
+  function initializeMainFeedbackWidget() {
+    // get the container element
+    const container = document.getElementById("searchstax-feedback-container");
+    if (container) {
+      new SearchstaxFeedbackWidget({
+        analyticsKey: config.trackApiKey,
+        containerId: "searchstax-feedback-container",
       });
     }
   }
@@ -113,9 +127,12 @@ function App() {
         if (data) {
           setTimeout(() => {
             initializeWidget();
-          }, 100);
+          }, 300);
         }
       });
+      setTimeout(() => {
+        initializeMainFeedbackWidget();
+      }, 300);
     }
   }
 
@@ -155,6 +172,7 @@ function App() {
         questionURL={config.questionURL}
       >
         <div className="searchstax-page-layout-container">
+          <div id="searchstax-feedback-container"></div>
           <SearchstaxInputWidget
             inputTemplate={InputTemplate}
             suggestAfterMinChars={renderConfig.inputWidget.suggestAfterMinChars}

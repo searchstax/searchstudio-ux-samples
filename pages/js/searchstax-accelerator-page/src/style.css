@@ -94,3 +94,15 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+#searchstax-feedback-container{
+  width: calc(50% + 40px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 767px) {
+  #searchstax-feedback-container{
+    width: calc(100% + 40px);
+  }
+}

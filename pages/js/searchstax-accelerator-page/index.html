@@ -15,9 +15,10 @@
 
       new SearchstaxFeedbackWidget({
         analyticsKey: initConfig.acceleratorSample.trackApiKey,
-        containerId: "feedbackWidgetContainer",
+        containerId: "searchstax-feedback-container",
         lightweight: false,
       });
+
     </script>
     <style lang="scss">
       @import 'main.scss';
@@ -27,7 +28,7 @@
 <main>
     <h1 style="display:none" class="searchstax-main-page-title">Searchstax Search Page</h1>
     <div class="container">
-        <div id="feedbackWidgetContainer"></div>
+        <div id="searchstax-feedback-container"></div>
         <div class="searchstax-page-layout-container">
             <div id="searchstax-input-container"></div>
             <div id="searchstax-answer-container"></div>

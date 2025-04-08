@@ -2,10 +2,10 @@ const initConfig = {
   acceleratorSample: {
     language: "en",
     searchURL:
-      "https://ss764687-aiypyk27-us-east-2-aws.searchstax.co/solr/accessibilityjuliatestdonotdelete-3182/emselect",
+      "https://ss128295-ag4l6w0z-us-west-1-aws.searchstax.co/solr/accessibilityjuliatestdonotdelete-3182/emselect",
     suggesterURL:
-      "https://ss764687-aiypyk27-us-east-2-aws.searchstax.co/solr/accessibilityjuliatestdonotdelete-3182-suggester/emsuggest",
-    searchAuth: "YXBwMzE4Mi1hcGk6U29sbmNlXzIy",
+      "https://ss128295-ag4l6w0z-us-west-1-aws.searchstax.co/solr/accessibilityjuliatestdonotdelete-3182-suggester/emsuggest",
+    searchAuth: "YXBwMzE4Mi1hcGk6VGVzdF8xMjM0",
     trackApiKey: "feqWatajyMvdrpvMyFIMwdHtRdkjPqqHMttUCnVpRss",
     authType: "basic",
     relatedSearchesURL:
@@ -22,10 +22,10 @@ const initConfig = {
   jobSearchSample: {
     language: "en",
     searchURL:
-      "https://ss764687-aiypyk27-us-east-2-aws.searchstax.co/solr/accessibilityjuliatestdonotdelete-3182/emselect",
+      "https://ss128295-ag4l6w0z-us-west-1-aws.searchstax.co/solr/accessibilityjuliatestdonotdelete-3182/emselect",
     suggesterURL:
-      "https://ss764687-aiypyk27-us-east-2-aws.searchstax.co/solr/accessibilityjuliatestdonotdelete-3182-suggester/emsuggest",
-    searchAuth: "YXBwMzE4Mi1hcGk6U29sbmNlXzIy",
+      "https://ss128295-ag4l6w0z-us-west-1-aws.searchstax.co/solr/accessibilityjuliatestdonotdelete-3182-suggester/emsuggest",
+    searchAuth: "YXBwMzE4Mi1hcGk6VGVzdF8xMjM0",
     trackApiKey: "feqWatajyMvdrpvMyFIMwdHtRdkjPqqHMttUCnVpRss",
     authType: "basic",
     analyticsBaseUrl: 'https://analytics-us-west-staging.searchstax.c'

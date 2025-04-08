@@ -13,3 +13,15 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+
+#searchstax-feedback-container{
+  width: calc(50% + 40px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 767px) {
+  #searchstax-feedback-container{
+    width: calc(100% + 40px);
+  }
+}

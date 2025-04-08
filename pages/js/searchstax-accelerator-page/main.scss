@@ -151,3 +151,10 @@ h3{
 .searchstax-main-page-title{
     display: none;
 }
+
+#searchstax-feedback-container{
+    width: calc(50% - 5px) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-bottom: 5px;
+  }

@@ -1,6 +1,9 @@
 import { Searchstax } from "@searchstax-inc/searchstudio-ux-js";
 // @ts-ignore
 import { initConfig, renderConfig } from "./../../config.js";
+//@ts-ignore
+import SearchstaxFeedbackWidget from "https://static-staging.searchstax.co/studio-js/v4/js/feedbackWidget.mjs";
+
 const searchstax = new Searchstax();
 
 function makeId(length: number) {
@@ -13,6 +16,41 @@ function makeId(length: number) {
   }
   return result;
 }
+
+function searchstaxEmailOverride() {
+  return "testEmailOverride@gmail.com";
+}
+
+function searchstaxFeedbackTextAreaOverride() {
+  if (!searchstax) {
+    return "";
+  } else {
+    return (
+      (searchstax.dataLayer.searchObject.query === "undefined"
+        ? ""
+        : searchstax.dataLayer.searchObject.query) +
+      " " +
+      searchstax.dataLayer.parsedData.getAnswerData
+    );
+  }
+}
+
+function initializeWidget() {
+  // get the container element
+  const container = document.getElementById("feedbackWidgetContainer");
+  if (container) {
+    new SearchstaxFeedbackWidget({
+      analyticsKey: initConfig.acceleratorSample.trackApiKey,
+      containerId: "feedbackWidgetContainer",
+      lightweight: true,
+      emailOverride: searchstaxEmailOverride,
+      feedbackTextAreaOverride: searchstaxFeedbackTextAreaOverride,
+      thumbsUpValue: 9,
+      thumbsDownValue: 1,
+    });
+  }
+}
+
 
 searchstax.initialize({
   ...initConfig.acceleratorSample,
@@ -39,6 +77,7 @@ searchstax.addAnswerWidget("searchstax-answer-container", {
                <div class="searchstax-answer-loading"></div>
             {{/answerLoading}}
           </div>
+          <div id="feedbackWidgetContainer"></div>
         </div>
 
 
@@ -52,6 +91,13 @@ searchstax.addAnswerWidget("searchstax-answer-container", {
         `,
     },
   },
+});
+searchstax.dataLayer.$answer.subscribe((data) => {
+  if (data) {
+    setTimeout(() => {
+      initializeWidget();
+    }, 300);
+  }
 });
 searchstax.addSearchFeedbackWidget("search-feedback-container", {
   templates: {

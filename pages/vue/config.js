@@ -1,9 +1,9 @@
 const config = {
     language: 'en',
-    searchURL: 'https://ss764687-aiypyk27-us-east-2-aws.searchstax.co/solr/accessibilityjuliatestdonotdelete-3182/emselect',
-    suggesterURL: 'https://ss764687-aiypyk27-us-east-2-aws.searchstax.co/solr/accessibilityjuliatestdonotdelete-3182-suggester/emsuggest',
+    searchURL: 'https://ss128295-ag4l6w0z-us-west-1-aws.searchstax.co/solr/accessibilityjuliatestdonotdelete-3182/emselect',
+    suggesterURL: 'https://ss128295-ag4l6w0z-us-west-1-aws.searchstax.co/solr/accessibilityjuliatestdonotdelete-3182-suggester/emsuggest',
     trackApiKey: 'feqWatajyMvdrpvMyFIMwdHtRdkjPqqHMttUCnVpRss',
-    searchAuth: 'YXBwMzE4Mi1hcGk6U29sbmNlXzIy',
+    searchAuth: 'YXBwMzE4Mi1hcGk6VGVzdF8xMjM0',
     authType: "basic",
     relatedSearchesURL: "https://staging.searchstax.co/api/v1/3182/related-search/",
     relatedSearchesAPIKey: "055651fc679c8492ab98badd08ee6c6f2d8e25ce",
@@ -13,9 +13,9 @@ const config = {
 
 const jobSearchConfig = {
     language: "en",
-    searchURL: "https://ss764687-aiypyk27-us-east-2-aws.searchstax.co/solr/accessibilityjuliatestdonotdelete-3182/emselect",
-    suggesterURL: "https://ss764687-aiypyk27-us-east-2-aws.searchstax.co/solr/accessibilityjuliatestdonotdelete-3182-suggester/emsuggest",
-    searchAuth: "YXBwMzE4Mi1hcGk6U29sbmNlXzIy",
+    searchURL: "https://ss128295-ag4l6w0z-us-west-1-aws.searchstax.co/solr/accessibilityjuliatestdonotdelete-3182/emselect",
+    suggesterURL: "https://ss128295-ag4l6w0z-us-west-1-aws.searchstax.co/solr/accessibilityjuliatestdonotdelete-3182-suggester/emsuggest",
+    searchAuth: "YXBwMzE4Mi1hcGk6VGVzdF8xMjM0",
     trackApiKey: "feqWatajyMvdrpvMyFIMwdHtRdkjPqqHMttUCnVpRss",
     authType: "basic",
     relatedSearchesURL: "https://staging.searchstax.co/api/v1/3182/related-search/",
