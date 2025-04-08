@@ -45,7 +45,7 @@ function initializeWidget() {
       lightweight: true,
       emailOverride: searchstaxEmailOverride,
       feedbackTextAreaOverride: searchstaxFeedbackTextAreaOverride,
-      thumbsUpValue: 9,
+      thumbsUpValue: 10,
       thumbsDownValue: 1,
     });
   }
