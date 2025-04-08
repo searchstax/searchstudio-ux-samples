@@ -25,6 +25,7 @@ export function answerTemplate(
                 <div className="searchstax-answer-loading"></div>
               )}
             </div>
+            <div id="feedbackWidgetContainer"></div>
           </div>
 
           {answerData.showMoreButtonVisible === true && (
