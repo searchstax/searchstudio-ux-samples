@@ -123,13 +123,19 @@ function makeId(length) {
 function initialized(searchstax) {
   searchstaxInstance = searchstax
   searchstaxInstance.dataLayer.$answer.subscribe((data) => {
-    console.log('data', data);
     if (data) {
       setTimeout(() => {
         initializeWidget()
       }, 300)
     }
   })
+  searchstaxInstance.dataLayer.$searchResults.subscribe((data) => {
+  if (data && searchstax.dataLayer.$answer.getValue()) {
+    setTimeout(() => {
+      initializeWidget();
+    }, 300);
+  }
+});
 }
 
 const sessionId = makeId(25)

@@ -130,6 +130,13 @@ function App() {
           }, 300);
         }
       });
+      searchstaxInstance.dataLayer.$searchResults.subscribe((data) => {
+        if (data && searchstax.dataLayer.$answer.getValue()) {
+          setTimeout(() => {
+            initializeWidget();
+          }, 300);
+        }
+      });
       setTimeout(() => {
         initializeMainFeedbackWidget();
       }, 300);

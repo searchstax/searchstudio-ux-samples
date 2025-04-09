@@ -82,7 +82,7 @@ export default function Home() {
     null as null | Searchstax
   );
   let feedbackModule: any = null;
-    // eslint-disable-line
+  // eslint-disable-line
   function searchstaxEmailOverride() {
     return "testEmailOverride@gmail.com";
   }
@@ -119,15 +119,14 @@ export default function Home() {
   }
 
   function initialized(searchstax: Searchstax) {
-
-     //@ts-ignore
-     import(/* webpackIgnore: true */ 'https://static-staging.searchstax.co/studio-js/v4/js/feedbackWidget.mjs').then((module) => {
+    //@ts-ignore
+    import(/* webpackIgnore: true */ "https://static-staging.searchstax.co/studio-js/v4/js/feedbackWidget.mjs").then((module) => {
       feedbackModule = module.default;
       setTimeout(() => {
         //@ts-ignore
         new feedbackModule({
           analyticsKey: config.trackApiKey,
-          containerId: 'searchstax-feedback-container',
+          containerId: "searchstax-feedback-container",
           lightweight: false,
         });
       }, 300);
@@ -138,6 +137,14 @@ export default function Home() {
     if (searchstaxInstance) {
       searchstaxInstance.dataLayer.$answer.subscribe((data) => {
         if (data) {
+          setTimeout(() => {
+            initializeWidget();
+          }, 300);
+        }
+      });
+
+      searchstaxInstance.dataLayer.$searchResults.subscribe((data) => {
+        if (data && searchstax.dataLayer.$answer.getValue()) {
           setTimeout(() => {
             initializeWidget();
           }, 300);

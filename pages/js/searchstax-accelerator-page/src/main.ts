@@ -99,6 +99,14 @@ searchstax.dataLayer.$answer.subscribe((data) => {
     }, 300);
   }
 });
+
+searchstax.dataLayer.$searchResults.subscribe((data) => {
+  if (data && searchstax.dataLayer.$answer.getValue()) {
+    setTimeout(() => {
+      initializeWidget();
+    }, 300);
+  }
+});
 searchstax.addSearchFeedbackWidget("search-feedback-container", {
   templates: {
     main: {

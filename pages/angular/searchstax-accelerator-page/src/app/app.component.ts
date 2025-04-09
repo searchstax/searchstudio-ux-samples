@@ -115,5 +115,13 @@ export class AppComponent implements OnInit {
         }, 300);
       }
     });
+
+    searchstax.dataLayer.$searchResults.subscribe((data) => {
+      if (data && searchstax.dataLayer.$answer.getValue()) {
+        setTimeout(() => {
+          this.initializeWidget();
+        }, 300);
+      }
+    });
   }
 }
