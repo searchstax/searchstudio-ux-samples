@@ -175,3 +175,19 @@ h1 {
 .searchstax-main-page-title{
   display: none;
 }
+
+#feedbackWidgetContainer{
+  margin-top: 5px;
+}
+
+#searchstax-feedback-container{
+  width: calc(50% + 40px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 767px) {
+  #searchstax-feedback-container{
+    width: calc(100% + 40px);
+  }
+}

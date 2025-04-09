@@ -14,6 +14,10 @@
   -webkit-text-size-adjust: 100%;
 }
 
+#feedbackWidgetContainer{
+  margin-top: 5px;
+}
+
 #searchstax-feedback-container{
   width: calc(50% + 40px);
   margin-left: auto;
