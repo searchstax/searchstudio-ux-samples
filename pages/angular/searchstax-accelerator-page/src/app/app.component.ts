@@ -58,7 +58,7 @@ export class AppComponent implements OnInit {
   initializeWidget() {
     // get the container element
     const container = document.getElementById('feedbackWidgetContainer');
-    if (container && this.feedbackInstance) {
+    if (container && this.feedbackInstance && !this.searchstaxInstance?.dataLayer.answerLoading) {
       new this.feedbackInstance({
         analyticsKey: config.trackApiKey,
         containerId: 'feedbackWidgetContainer',

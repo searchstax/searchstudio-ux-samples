@@ -104,7 +104,7 @@ export default function Home() {
   function initializeWidget() {
     // get the container element
     const container = document.getElementById("feedbackWidgetContainer");
-    if (container && feedbackModule) {
+    if (container && feedbackModule && !searchstaxInstance?.dataLayer.answerLoading) {
       //@ts-ignore
       new feedbackModule({
         analyticsKey: config.trackApiKey,

@@ -97,7 +97,7 @@ function searchstaxFeedbackTextAreaOverride() {
 function initializeWidget() {
   // get the container element
   const container = document.getElementById('feedbackWidgetContainer')
-  if (container) {
+  if (container && !searchstaxInstance?.dataLayer.answerLoading) {
     new SearchstaxFeedbackWidget({
       analyticsKey: config.trackApiKey,
       containerId: 'feedbackWidgetContainer',
