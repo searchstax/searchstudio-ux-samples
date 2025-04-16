@@ -2,7 +2,7 @@ import { Searchstax } from "@searchstax-inc/searchstudio-ux-js";
 // @ts-ignore
 import { initConfig, renderConfig } from "./../../config.js";
 //@ts-ignore
-import SearchstaxFeedbackWidget from "https://static-staging.searchstax.co/studio-js/v4/js/feedbackWidget.mjs";
+import SearchstaxFeedbackWidget from "https://static.searchstax.com/studio-js/v4/js/feedbackWidget.mjs";
 
 const searchstax = new Searchstax();
 
