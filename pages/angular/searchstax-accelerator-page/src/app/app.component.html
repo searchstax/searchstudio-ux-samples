@@ -13,6 +13,7 @@
     (initialized)="initialized($event)"
   >
     <div class="searchstax-page-layout-container">
+      <div id="searchstax-feedback-container"></div>
       <app-searchstax-input
         [afterAutosuggest]="afterAutosuggest"
         [beforeAutosuggest]="beforeAutosuggest"
@@ -89,6 +90,7 @@
                   class="searchstax-answer-loading"
                 ></div>
               </div>
+              <div id="feedbackWidgetContainer"></div>
             </div>
             <div
               *ngIf="answerData.showMoreButtonVisible"

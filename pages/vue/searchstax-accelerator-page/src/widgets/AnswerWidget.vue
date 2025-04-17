@@ -24,6 +24,7 @@
                 }}
                 <div v-if="answerData.answerLoading" class="searchstax-answer-loading"></div>
               </div>
+              <div id="feedbackWidgetContainer"></div>
             </div>
             <div
               v-if="answerData.showMoreButtonVisible"

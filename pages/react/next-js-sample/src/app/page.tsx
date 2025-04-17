@@ -11,7 +11,7 @@ import {
   SearchstaxRelatedSearchesWidget,
   SearchstaxExternalPromotionsWidget,
   SearchstaxFacetsWidget,
-  SearchstaxAnswerWidget
+  SearchstaxAnswerWidget,
   //@ts-ignore
 } from "@searchstax-inc/searchstudio-ux-react";
 
@@ -42,17 +42,20 @@ import {
 import { searchSortingTemplate } from "./templates/sorting.templates";
 import { searchOverviewTemplate } from "./templates/searchOverviewTemplates";
 import { InputTemplate } from "./templates/inputTemplates";
-import Script from "next/script";
 import { answerTemplate } from "./templates/answerTemplates";
+import { useState } from "react";
+// @ts-ignore
+
 function beforeSearch(props: ISearchObject) {
   const propsCopy = { ...props };
   return propsCopy;
 }
+
 function afterSearch(results: ISearchstaxParsedResult[]) {
   const copy = [...results];
   return copy;
 }
-function initialized(searchstax: Searchstax) {}
+
 function afterAutosuggest(result: ISearchstaxSuggestResponse) {
   const copy = { ...result };
   return copy;
@@ -74,6 +77,81 @@ const renderConfTyped = renderConfig as any;
 const confTyped = config as any;
 
 export default function Home() {
+  const [searchstaxInstance, setSearchstaxInstance] = useState(
+    // eslint-disable-line
+    null as null | Searchstax
+  );
+  let feedbackModule: any = null;
+  // eslint-disable-line
+  function searchstaxEmailOverride() {
+    return "testEmailOverride@gmail.com";
+  }
+
+  function searchstaxFeedbackTextAreaOverride() {
+    if (!searchstaxInstance) {
+      return "";
+    } else {
+      return (
+        (searchstaxInstance.dataLayer.searchObject.query === "undefined"
+          ? ""
+          : searchstaxInstance.dataLayer.searchObject.query) +
+        " " +
+        searchstaxInstance.dataLayer.parsedData.getAnswerData
+      );
+    }
+  }
+
+  function initializeWidget() {
+    // get the container element
+    const container = document.getElementById("feedbackWidgetContainer");
+    if (container && feedbackModule && !searchstaxInstance?.dataLayer.answerLoading) {
+      //@ts-ignore
+      new feedbackModule({
+        analyticsKey: config.trackApiKey,
+        containerId: "feedbackWidgetContainer",
+        lightweight: true,
+        emailOverride: searchstaxEmailOverride,
+        feedbackTextAreaOverride: searchstaxFeedbackTextAreaOverride,
+        thumbsUpValue: 10,
+        thumbsDownValue: 1,
+      });
+    }
+  }
+
+  function initialized(searchstax: Searchstax) {
+    //@ts-ignore
+    import(/* webpackIgnore: true */ "https://static.searchstax.com/studio-js/v4/js/feedbackWidget.mjs").then((module) => {
+      feedbackModule = module.default;
+      setTimeout(() => {
+        //@ts-ignore
+        new feedbackModule({
+          analyticsKey: config.trackApiKey,
+          containerId: "searchstax-feedback-container",
+          lightweight: false,
+        });
+      }, 300);
+    });
+
+    setSearchstaxInstance(searchstax);
+
+    if (searchstaxInstance) {
+      searchstaxInstance.dataLayer.$answer.subscribe((data) => {
+        if (data) {
+          setTimeout(() => {
+            initializeWidget();
+          }, 300);
+        }
+      });
+
+      searchstaxInstance.dataLayer.$searchResults.subscribe((data) => {
+        if (data && searchstax.dataLayer.$answer.getValue()) {
+          setTimeout(() => {
+            initializeWidget();
+          }, 300);
+        }
+      });
+    }
+  }
   return (
     <>
       <main>
@@ -95,6 +173,7 @@ export default function Home() {
           language="en"
         >
           <div className="searchstax-page-layout-container">
+            <div id="searchstax-feedback-container"></div>
             <SearchstaxInputWidget
               inputTemplate={InputTemplate}
               suggestAfterMinChars={

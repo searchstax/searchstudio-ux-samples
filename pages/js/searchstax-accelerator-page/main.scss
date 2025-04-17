@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100;300;600&display=swap');
-@import "./../node_modules/@searchstax-inc/searchstudio-ux-js/dist/styles/mainTheme.css";
+@import "./node_modules/@searchstax-inc/searchstudio-ux-js/dist/styles/mainTheme.css";
 
 *, html{
     font-family: 'Barlow', sans-serif !important;
@@ -151,3 +151,14 @@ h3{
 .searchstax-main-page-title{
     display: none;
 }
+
+#searchstax-feedback-container{
+    width: calc(50% - 5px) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-bottom: 5px;
+  }
+
+  #feedbackWidgetContainer{
+    margin-top: 20px;
+  }
