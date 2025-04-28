@@ -5,8 +5,8 @@ const initConfig = {
       "https://ss128295-ag4l6w0z-us-west-1-aws.searchstax.co/solr/accessibilityjuliatestdonotdelete-3182/emselect",
     suggesterURL:
       "https://ss128295-ag4l6w0z-us-west-1-aws.searchstax.co/solr/accessibilityjuliatestdonotdelete-3182-suggester/emsuggest",
-    searchAuth: "YXBwMzE4Mi1hcGk6VGVzdF8xMjM0",
-    trackApiKey: "feqWatajyMvdrpvMyFIMwdHtRdkjPqqHMttUCnVpRss",
+    searchAuth: "YXBwMzE4Mi1hcGk6V2VsY29tZTEhIQ==",
+    trackApiKey: "",
     authType: "basic",
     relatedSearchesURL:
       "https://staging.searchstax.co/api/v1/3182/related-search/",
@@ -25,7 +25,7 @@ const initConfig = {
       "https://ss128295-ag4l6w0z-us-west-1-aws.searchstax.co/solr/accessibilityjuliatestdonotdelete-3182/emselect",
     suggesterURL:
       "https://ss128295-ag4l6w0z-us-west-1-aws.searchstax.co/solr/accessibilityjuliatestdonotdelete-3182-suggester/emsuggest",
-    searchAuth: "YXBwMzE4Mi1hcGk6VGVzdF8xMjM0",
+    searchAuth: "YXBwMzE4Mi1hcGk6V2VsY29tZTEhIQ==",
     trackApiKey: "feqWatajyMvdrpvMyFIMwdHtRdkjPqqHMttUCnVpRss",
     authType: "basic",
     analyticsBaseUrl: 'https://analytics-us-west-staging.searchstax.c'
