@@ -66,7 +66,7 @@ export class AppComponent implements OnInit {
         emailOverride: this.searchstaxEmailOverride.bind(this),
         feedbackTextAreaOverride: this.searchstaxFeedbackTextAreaOverride.bind(this),
         thumbsUpValue: 10,
-        thumbsDownValue: 1,
+        thumbsDownValue: 0,
       });
     }
   }
