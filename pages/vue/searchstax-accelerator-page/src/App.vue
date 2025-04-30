@@ -63,7 +63,7 @@ import ExternalPromotionsWidget from '@/widgets/ExternalPromotionsWidget.vue'
 import PaginationWidget from '@/widgets/PaginationWidget.vue'
 import RelatedSearchesWidget from '@/widgets/RelatedSearchesWidget.vue'
 import SearchstaxAnswerWidget from '@/widgets/AnswerWidget.vue'
-import SearchstaxFeedbackWidget from 'https://static-staging.searchstax.co/studio-js/v4/js/feedbackWidget.mjs'
+import SearchstaxFeedbackWidget from 'https://static.searchstax.com/studio-js/v4/js/feedbackWidget.mjs'
 
 let searchstaxInstance = null
 onMounted(() => {
