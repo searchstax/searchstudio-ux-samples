@@ -46,7 +46,7 @@ function initializeWidget() {
       emailOverride: searchstaxEmailOverride,
       feedbackTextAreaOverride: searchstaxFeedbackTextAreaOverride,
       thumbsUpValue: 10,
-      thumbsDownValue: 1,
+      thumbsDownValue: 0,
       lightweightTemplateOverride: `
      <div class="searchstax-lightweight-widget-container">
      <div class="searchstax-lightweight-widget-thumbs-up {{#thumbsUpActive}}active{{/thumbsUpActive}}">

@@ -82,7 +82,7 @@ function App() {
         emailOverride: searchstaxEmailOverride,
         feedbackTextAreaOverride: searchstaxFeedbackTextAreaOverride,
         thumbsUpValue: 10,
-        thumbsDownValue: 1,
+        thumbsDownValue: 0,
       });
     }
   }
