@@ -84,7 +84,7 @@ export default function Home() {
   let feedbackModule: any = null;
   // eslint-disable-line
   function searchstaxEmailOverride() {
-    return "testEmailOverride@gmail.com";
+    return "";
   }
 
   function searchstaxFeedbackTextAreaOverride() {

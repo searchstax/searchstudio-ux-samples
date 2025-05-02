@@ -65,7 +65,6 @@ import RelatedSearchesWidget from '@/widgets/RelatedSearchesWidget.vue'
 import SearchstaxAnswerWidget from '@/widgets/AnswerWidget.vue'
 import SearchstaxFeedbackWidget from 'https://static-staging.searchstax.co/studio-js/v4/js/feedbackWidget.mjs'
 
-let searchstaxInstance = null
 onMounted(() => {
   setTimeout(() => {
     new SearchstaxFeedbackWidget({
@@ -75,40 +74,6 @@ onMounted(() => {
     })
   }, 300)
 })
-
-function searchstaxEmailOverride() {
-  return 'testEmailOverride@gmail.com'
-}
-
-function searchstaxFeedbackTextAreaOverride() {
-  if (!searchstaxInstance) {
-    return ''
-  } else {
-    return (
-      (searchstaxInstance.dataLayer.searchObject.query === 'undefined'
-        ? ''
-        : searchstaxInstance.dataLayer.searchObject.query) +
-      ' ' +
-      searchstaxInstance.dataLayer.parsedData.getAnswerData
-    )
-  }
-}
-
-function initializeWidget() {
-  // get the container element
-  const container = document.getElementById('feedbackWidgetContainer')
-  if (container && !searchstaxInstance?.dataLayer.answerLoading) {
-    new SearchstaxFeedbackWidget({
-      analyticsKey: config.trackApiKey,
-      containerId: 'feedbackWidgetContainer',
-      lightweight: true,
-      emailOverride: searchstaxEmailOverride,
-      feedbackTextAreaOverride: searchstaxFeedbackTextAreaOverride,
-      thumbsUpValue: 10,
-      thumbsDownValue: 0
-    })
-  }
-}
 
 function makeId(length) {
   let result = ''
@@ -121,21 +86,7 @@ function makeId(length) {
 }
 
 function initialized(searchstax) {
-  searchstaxInstance = searchstax
-  searchstaxInstance.dataLayer.$answer.subscribe((data) => {
-    if (data) {
-      setTimeout(() => {
-        initializeWidget()
-      }, 300)
-    }
-  })
-  searchstaxInstance.dataLayer.$searchResults.subscribe((data) => {
-  if (data && searchstax.dataLayer.$answer.getValue()) {
-    setTimeout(() => {
-      initializeWidget();
-    }, 300);
-  }
-});
+  console.log('searchstax', searchstax);
 }
 
 const sessionId = makeId(25)
