@@ -7,25 +7,21 @@ export function answerTemplate(
   return (
     <>
       {answerData && (
+        <div className="searchstax-answer-wrap">
+        <div className="searchstax-answer-icon"></div>
         <div>
           <div
             className={
               "searchstax-answer-container" +
-              (answerData.showMoreButtonVisible === true ? "how-more" : "")
+              (answerData.showMoreButtonVisible === true ? "searchstax-answer-show-more" : "")
             }
           >
             <div className="searchstax-answer-title">Answer</div>
-
-            <div className="searchstax-answer-description">
-              {answerData.showMoreButtonVisible === true
-                ? answerData.answerTruncated
-                : answerData.answer}
-
-              {answerData.answerLoading && (
-                <div className="searchstax-answer-loading"></div>
-              )}
-            </div>
-            <div id="feedbackWidgetContainer"></div>
+              <div className="searchstax-answer-description" dangerouslySetInnerHTML={{__html:answerData.fullAnswerFormatted}}>
+              </div>
+                {answerData.answerLoading && (
+                  <div className="searchstax-answer-loading"></div>
+                )}
           </div>
 
           {answerData.showMoreButtonVisible === true && (
@@ -40,6 +36,12 @@ export function answerTemplate(
               </button>
             </div>
           )}
+        </div>
+        <div className="searchstax-answer-footer">
+            <div id="feedbackWidgetContainer"></div>
+            <div className="searchstax-lightweight-widget-separator-inline"></div>
+            <p className="searchstax-disclaimer">Generative AI is Experimental</p>
+        </div>
         </div>
       )}
     </>

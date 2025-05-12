@@ -28,33 +28,37 @@ searchstax.addAnswerWidget("searchstax-answer-container", {
   templates: {
     main: {
       template: `
-    {{#shouldShowAnswer}}
-      <div>
-        <div class="searchstax-answer-container {{#showMoreButtonVisible}}searchstax-answer-show-more{{/showMoreButtonVisible}}">
-          <div class="searchstax-answer-title">Answer</div>
-          <div class="searchstax-answer-description">
-            {{#showMoreButtonVisible}}
-              {{answerTruncated}}
-            {{/showMoreButtonVisible}}
-            {{^showMoreButtonVisible}}
-              {{answer}}
-            {{/showMoreButtonVisible}}
+        {{#shouldShowAnswer}}
+        <div class="searchstax-answer-wrap">
+        <div class="searchstax-answer-icon"></div>
+            <div>
+                <div class="searchstax-answer-container {{#showMoreButtonVisible}}searchstax-answer-show-more{{/showMoreButtonVisible}}">
+                    <div class="searchstax-answer-title">Smart Answers</div>
+                    <div class="searchstax-answer-description">
+                        {{{fullAnswerFormatted}}}
+                        {{#answerLoading}}
+                            <div class="searchstax-answer-loading"></div>
+                        {{/answerLoading}}
+                    </div>
 
-            {{#answerLoading}}
-               <div class="searchstax-answer-loading"></div>
-            {{/answerLoading}}
-          </div>
-          <div id="feedbackWidgetContainer"></div>
-        </div>
+                </div>
 
-
-        {{#showMoreButtonVisible}}
-          <div class="searchstax-answer-load-more-button-container">
-            <button class="searchstax-answer-load-more-button">Show More...</button>
-          </div>
-        {{/showMoreButtonVisible}}
-      </div>
-    {{/shouldShowAnswer}}
+                {{#showMoreButtonVisible}}
+                    <div class="searchstax-answer-load-more-button-container">
+                        {{#answerLoading}}
+                            <div class="searchstax-answer-loading"></div>
+                        {{/answerLoading}}
+                        <button class="searchstax-answer-load-more-button">Read More</button>
+                    </div>
+                {{/showMoreButtonVisible}}
+            </div>
+            <div class="searchstax-answer-footer">
+                <div id="feedbackWidgetContainer"></div>
+                <div class="searchstax-lightweight-widget-separator-inline"></div>
+                <p class="searchstax-disclaimer">Generative AI is Experimental</p>
+            </div>
+            </div>
+        {{/shouldShowAnswer}}
         `,
     },
   },

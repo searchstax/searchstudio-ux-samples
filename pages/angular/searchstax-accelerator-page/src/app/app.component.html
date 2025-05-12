@@ -70,38 +70,42 @@
             let-showMore="showMore"
             let-context="context"
           >
-          <div>
-            <div
-              [class]="
-                'searchstax-answer-container' + answerData.showMoreButtonVisible
-                  ? 'searchstax-answer-show-more'
-                  : ''
-              "
-            >
-              <div class="searchstax-answer-title">Answer</div>
-              <div class="searchstax-answer-description">
-                {{
-                  answerData.showMoreButtonVisible
-                    ? answerData.answerTruncated
-                    : answerData.answer
-                }}
+          <div class="searchstax-answer-wrap">
+            <div class="searchstax-answer-icon"></div>
+            <div>
+              <div
+                [class]="
+                  'searchstax-answer-container' + answerData.showMoreButtonVisible
+                    ? 'searchstax-answer-show-more'
+                    : ''
+                "
+              >
+                <div class="searchstax-answer-title">Answer</div>
+                <div
+                  class="searchstax-answer-description"
+                  [innerHTML]="answerData.fullAnswerFormatted"
+                ></div>
                 <div
                   *ngIf="answerData.answerLoading"
                   class="searchstax-answer-loading"
                 ></div>
               </div>
-              <div id="feedbackWidgetContainer"></div>
-            </div>
-            <div
-              *ngIf="answerData.showMoreButtonVisible"
-              class="searchstax-answer-load-more-button-container"
-            >
-              <button
-                class="searchstax-answer-load-more-button"
-                (click)="showMore($event, context)"
+              <div
+                *ngIf="answerData.showMoreButtonVisible"
+                class="searchstax-answer-load-more-button-container"
               >
-                Show More...
-              </button>
+                <button
+                  class="searchstax-answer-load-more-button"
+                  (click)="showMore($event, context)"
+                >
+                  Show More...
+                </button>
+              </div>
+            </div>
+            <div class="searchstax-answer-footer">
+              <div id="feedbackWidgetContainer"></div>
+              <div class="searchstax-lightweight-widget-separator-inline"></div>
+              <p class="searchstax-disclaimer">Generative AI is Experimental</p>
             </div>
           </div>
         </ng-template>

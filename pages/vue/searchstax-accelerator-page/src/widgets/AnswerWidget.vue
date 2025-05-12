@@ -3,30 +3,36 @@
     <SearchstaxAnswerWidget :showShowMoreAfterWordCount="100" :feedbackwidget="feedbackConfig">
       <template #answer="{ answerData, showMore }">
         <div v-if="answerData && answerData?.searchExecuted && answerData.shouldShowAnswer">
-          <div>
-            <div
-              :class="
-                'searchstax-answer-container' + answerData.showMoreButtonVisible
-                  ? 'searchstax-answer-show-more'
-                  : ''
-              "
-            >
-              <div class="searchstax-answer-title">Answer</div>
-              <div class="searchstax-answer-description">
-                {{
-                  answerData.showMoreButtonVisible ? answerData.answerTruncated : answerData.answer
-                }}
+          <div class="searchstax-answer-wrap">
+            <div class="searchstax-answer-icon"></div>
+            <div>
+              <div
+                :class="
+                  'searchstax-answer-container' + answerData.showMoreButtonVisible
+                    ? 'searchstax-answer-show-more'
+                    : ''
+                "
+              >
+                <div class="searchstax-answer-title">Answer</div>
+                <div
+                  class="searchstax-answer-description"
+                  v-html="answerData.fullAnswerFormatted"
+                ></div>
                 <div v-if="answerData.answerLoading" class="searchstax-answer-loading"></div>
               </div>
-              <div id="feedbackWidgetContainer"></div>
+              <div
+                v-if="answerData.showMoreButtonVisible"
+                class="searchstax-answer-load-more-button-container"
+              >
+                <button class="searchstax-answer-load-more-button" @click="showMore">
+                  Show More...
+                </button>
+              </div>
             </div>
-            <div
-              v-if="answerData.showMoreButtonVisible"
-              class="searchstax-answer-load-more-button-container"
-            >
-              <button class="searchstax-answer-load-more-button" @click="showMore">
-                Show More...
-              </button>
+            <div class="searchstax-answer-footer">
+              <div id="feedbackWidgetContainer"></div>
+              <div class="searchstax-lightweight-widget-separator-inline"></div>
+              <p class="searchstax-disclaimer">Generative AI is Experimental</p>
             </div>
           </div>
         </div>
