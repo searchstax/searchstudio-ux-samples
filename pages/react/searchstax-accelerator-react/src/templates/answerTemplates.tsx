@@ -16,7 +16,7 @@ export function answerTemplate(
               (answerData.showMoreButtonVisible === true ? "searchstax-answer-show-more" : "")
             }
           >
-            <div className="searchstax-answer-title">Answer</div>
+            <div className="searchstax-answer-title">Smart Answers</div>
               <div className="searchstax-answer-description" dangerouslySetInnerHTML={{__html:answerData.fullAnswerFormatted}}>
               </div>
                 {answerData.answerLoading && (

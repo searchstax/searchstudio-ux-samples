@@ -13,7 +13,7 @@
                     : ''
                 "
               >
-                <div class="searchstax-answer-title">Answer</div>
+                <div class="searchstax-answer-title">Smart Answers</div>
                 <div
                   class="searchstax-answer-description"
                   v-html="answerData.fullAnswerFormatted"
