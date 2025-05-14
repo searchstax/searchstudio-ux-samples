@@ -12,6 +12,8 @@ import {
   SearchstaxAnswerWidget,
   //@ts-ignore
 } from "@searchstax-inc/searchstudio-ux-react";
+// @ts-ignore
+import SearchstaxFeedbackWidget from "https://static-staging.searchstax.co/studio-js/v4/js/feedbackWidget.mjs";
 
 import type {
   ISearchObject,
@@ -65,6 +67,17 @@ function App() {
       `,
   }
 
+  function initializeMainFeedbackWidget() {
+    // get the container element
+    const container = document.getElementById("searchstax-feedback-container");
+    if (container) {
+      new SearchstaxFeedbackWidget({
+        analyticsKey: config.trackApiKey,
+        containerId: "searchstax-feedback-container",
+      });
+    }
+  }
+
   function searchstaxEmailOverride() {
     return "";
   }
@@ -94,6 +107,9 @@ function App() {
   function initialized(searchstax: Searchstax) {
     console.log(searchstax);
 
+    setTimeout(() => {
+      initializeMainFeedbackWidget();
+    }, 300);
   }
 
   function afterAutosuggest(result: ISearchstaxSuggestResponse) {
