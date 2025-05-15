@@ -14,6 +14,7 @@
     "vite": "^6.2.0"
   },
   "dependencies": {
-    "@searchstax-inc/searchstudio-ux-js": "npm:@searchstax-inc/searchstudio-ux-js@^1.0.29"
+    "@searchstax-inc/searchstudio-ux-js": "npm:@searchstax-inc/searchstudio-ux-js@^1.0.42",
+    "dompurify": "^3.2.5"
   }
 }

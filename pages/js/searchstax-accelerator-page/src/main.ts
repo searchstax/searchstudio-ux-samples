@@ -1,8 +1,6 @@
 import { Searchstax } from "@searchstax-inc/searchstudio-ux-js";
 // @ts-ignore
 import { initConfig, renderConfig } from "./../../config.js";
-//@ts-ignore
-import SearchstaxFeedbackWidget from "https://static.searchstax.com/studio-js/v4/js/feedbackWidget.mjs";
 
 const searchstax = new Searchstax();
 
@@ -18,36 +16,58 @@ function makeId(length: number) {
 }
 
 function searchstaxEmailOverride() {
-  return "testEmailOverride@gmail.com";
+  return "";
 }
 
-function searchstaxFeedbackTextAreaOverride() {
-  if (!searchstax) {
-    return "";
-  } else {
-    return (
-      (searchstax.dataLayer.searchObject.query === "undefined"
-        ? ""
-        : searchstax.dataLayer.searchObject.query) +
-      " " +
-      searchstax.dataLayer.parsedData.getAnswerData
-    );
-  }
-}
+searchstax.initialize({
+  ...initConfig.acceleratorSample,
+  sessionId: makeId(25),
+});
+searchstax.addAnswerWidget("searchstax-answer-container", {
+  showShowMoreAfterWordCount: 100,
+  templates: {
+    main: {
+      template: `
+        {{#shouldShowAnswer}}
+        <div class="searchstax-answer-wrap">
+        <div class="searchstax-answer-icon"></div>
+            <div>
+                <div class="searchstax-answer-container {{#showMoreButtonVisible}}searchstax-answer-show-more{{/showMoreButtonVisible}}">
+                    <div class="searchstax-answer-title">Smart Answers</div>
+                    <div class="searchstax-answer-description">
+                        {{{fullAnswerFormatted}}}
+                        {{#answerLoading}}
+                            <div class="searchstax-answer-loading"></div>
+                        {{/answerLoading}}
+                    </div>
 
-function initializeWidget() {
-  // get the container element
-  const container = document.getElementById("feedbackWidgetContainer");
-  if (container && !searchstax.dataLayer.answerLoading) {
-    new SearchstaxFeedbackWidget({
-      analyticsKey: initConfig.acceleratorSample.trackApiKey,
-      containerId: "feedbackWidgetContainer",
-      lightweight: true,
-      emailOverride: searchstaxEmailOverride,
-      feedbackTextAreaOverride: searchstaxFeedbackTextAreaOverride,
-      thumbsUpValue: 10,
-      thumbsDownValue: 0,
-      lightweightTemplateOverride: `
+                </div>
+
+                {{#showMoreButtonVisible}}
+                    <div class="searchstax-answer-load-more-button-container">
+                        {{#answerLoading}}
+                            <div class="searchstax-answer-loading"></div>
+                        {{/answerLoading}}
+                        <button class="searchstax-answer-load-more-button">Read More</button>
+                    </div>
+                {{/showMoreButtonVisible}}
+            </div>
+            <div class="searchstax-answer-footer">
+                <div id="feedbackWidgetContainer"></div>
+                <div class="searchstax-lightweight-widget-separator-inline"></div>
+                <p class="searchstax-disclaimer">Generative AI is Experimental</p>
+            </div>
+            </div>
+        {{/shouldShowAnswer}}
+        `,
+    },
+  },
+  feedbackwidget: {
+    renderFeedbackWidget: true,
+    emailOverride: searchstaxEmailOverride,
+    thumbsUpValue: 10,
+    thumbsDownValue: 0,
+    lightweightTemplateOverride: `
      <div class="searchstax-lightweight-widget-container">
      <div class="searchstax-lightweight-widget-thumbs-up {{#thumbsUpActive}}active{{/thumbsUpActive}}">
      <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -62,66 +82,8 @@ function initializeWidget() {
 
      </div>
      </div>
-      `
-    });
-  }
-}
-
-
-searchstax.initialize({
-  ...initConfig.acceleratorSample,
-  sessionId: makeId(25),
-});
-searchstax.addAnswerWidget("searchstax-answer-container", {
-  showShowMoreAfterWordCount: 100,
-  templates: {
-    main: {
-      template: `
-    {{#shouldShowAnswer}}
-      <div>
-        <div class="searchstax-answer-container {{#showMoreButtonVisible}}searchstax-answer-show-more{{/showMoreButtonVisible}}">
-          <div class="searchstax-answer-title">Answer</div>
-          <div class="searchstax-answer-description">
-            {{#showMoreButtonVisible}}
-              {{answerTruncated}}
-            {{/showMoreButtonVisible}}
-            {{^showMoreButtonVisible}}
-              {{answer}}
-            {{/showMoreButtonVisible}}
-
-            {{#answerLoading}}
-               <div class="searchstax-answer-loading"></div>
-            {{/answerLoading}}
-          </div>
-          <div id="feedbackWidgetContainer"></div>
-        </div>
-
-
-        {{#showMoreButtonVisible}}
-          <div class="searchstax-answer-load-more-button-container">
-            <button class="searchstax-answer-load-more-button">Show More...</button>
-          </div>
-        {{/showMoreButtonVisible}}
-      </div>
-    {{/shouldShowAnswer}}
-        `,
-    },
+      `,
   },
-});
-searchstax.dataLayer.$answer.subscribe((data) => {
-  if (data) {
-    setTimeout(() => {
-      initializeWidget();
-    }, 300);
-  }
-});
-
-searchstax.dataLayer.$searchResults.subscribe((data) => {
-  if (data && searchstax.dataLayer.$answer.getValue()) {
-    setTimeout(() => {
-      initializeWidget();
-    }, 300);
-  }
 });
 searchstax.addSearchFeedbackWidget("search-feedback-container", {
   templates: {
