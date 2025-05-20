@@ -14,6 +14,7 @@
                 "
               >
                 <div class="searchstax-answer-title">Smart Answers</div>
+                <div class="searchstax-answer-error" v-if="answerData.shouldShowAnswerError" v-html="answerData.answerErrorMessage"></div>
                 <div
                   class="searchstax-answer-description"
                   v-html="answerData.fullAnswerFormatted"

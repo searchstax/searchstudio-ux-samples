@@ -81,6 +81,7 @@
                 "
               >
                 <div class="searchstax-answer-title">Smart Answers</div>
+                <div class="searchstax-answer-error" *ngIf="answerData.shouldShowAnswerError" [innerHTML]="answerData.answerErrorMessage"></div>
                 <div
                   class="searchstax-answer-description"
                   [innerHTML]="answerData.fullAnswerFormatted"

@@ -34,6 +34,9 @@ searchstax.addAnswerWidget("searchstax-answer-container", {
             <div>
                 <div class="searchstax-answer-container {{#showMoreButtonVisible}}searchstax-answer-show-more{{/showMoreButtonVisible}}">
                     <div class="searchstax-answer-title">Smart Answers</div>
+                    {{#shouldShowAnswerError}}
+                        <div class="searchstax-answer-error">{{{answerErrorMessage}}}</div>
+                    {{/shouldShowAnswerError}}
                     <div class="searchstax-answer-description">
                         {{{fullAnswerFormatted}}}
                         {{#answerLoading}}

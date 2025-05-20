@@ -17,6 +17,9 @@ export function answerTemplate(
             }
           >
             <div className="searchstax-answer-title">Smart Answers</div>
+              {answerData.shouldShowAnswerError && (
+                <div className="searchstax-answer-error" dangerouslySetInnerHTML={{__html:answerData.answerErrorMessage}}></div>
+              )}
               <div className="searchstax-answer-description" dangerouslySetInnerHTML={{__html:answerData.fullAnswerFormatted}}>
               </div>
                 {answerData.answerLoading && (
