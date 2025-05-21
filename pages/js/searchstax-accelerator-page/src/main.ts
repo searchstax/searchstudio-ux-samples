@@ -39,9 +39,11 @@ searchstax.addAnswerWidget("searchstax-answer-container", {
                     {{/shouldShowAnswerError}}
                     <div class="searchstax-answer-description">
                         {{{fullAnswerFormatted}}}
-                        {{#answerLoading}}
-                            <div class="searchstax-answer-loading"></div>
-                        {{/answerLoading}}
+                        {{^showMoreButtonVisible}}
+                          {{#answerLoading}}
+                              <div class="searchstax-answer-loading"></div>
+                          {{/answerLoading}}
+                        {{/showMoreButtonVisible}}
                     </div>
 
                 </div>
