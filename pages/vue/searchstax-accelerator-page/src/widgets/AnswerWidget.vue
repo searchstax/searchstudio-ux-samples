@@ -1,6 +1,6 @@
 <template>
   <div>
-    <SearchstaxAnswerWidget :showShowMoreAfterWordCount="100" :feedbackwidget="feedbackConfig">
+    <SearchstaxAnswerWidget :showShowMoreAfterWordCount="10" :feedbackwidget="feedbackConfig">
       <template #answer="{ answerData, showMore }">
         <div v-if="answerData && answerData?.searchExecuted && answerData.shouldShowAnswer">
           <div class="searchstax-answer-wrap">
@@ -8,7 +8,7 @@
             <div>
               <div
                 :class="
-                  'searchstax-answer-container' + answerData.showMoreButtonVisible
+                  'searchstax-answer-container ' + answerData.showMoreButtonVisible
                     ? 'searchstax-answer-show-more'
                     : ''
                 "
@@ -26,7 +26,7 @@
                 class="searchstax-answer-load-more-button-container"
               >
                 <button class="searchstax-answer-load-more-button" @click="showMore">
-                  Show More...
+                  Read More
                 </button>
               </div>
             </div>
@@ -76,3 +76,9 @@ export default {
   }
 }
 </script>
+<style>
+
+.searchstax-answer-load-more-button{
+  width: 125px;
+}
+</style>

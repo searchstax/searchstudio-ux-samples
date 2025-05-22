@@ -12,7 +12,7 @@ export function answerTemplate(
         <div>
           <div
             className={
-              "searchstax-answer-container" +
+              "searchstax-answer-container " +
               (answerData.showMoreButtonVisible === true ? "searchstax-answer-show-more" : "")
             }
           >
@@ -35,7 +35,7 @@ export function answerTemplate(
                   showMore(e);
                 }}
               >
-                Show More...
+                Read more
               </button>
             </div>
           )}
