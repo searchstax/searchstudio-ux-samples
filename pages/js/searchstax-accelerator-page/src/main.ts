@@ -22,6 +22,16 @@ function searchstaxEmailOverride() {
 searchstax.initialize({
   ...initConfig.acceleratorSample,
   sessionId: makeId(25),
+  hooks: {
+    beforeSearch: (props) => {
+      const propsCopy = { ...props };
+      return propsCopy;
+    },
+    afterSearch: (results) => {
+      const copy = [...results];
+      return copy;
+    },
+  }
 });
 searchstax.addAnswerWidget("searchstax-answer-container", {
   showShowMoreAfterWordCount: 100,
