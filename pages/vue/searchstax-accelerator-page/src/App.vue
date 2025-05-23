@@ -8,6 +8,8 @@
       :searchAuth="config.searchAuth"
       :authType="config.authType"
       :sessionId="sessionId"
+      :beforeSearch="beforeSearch"
+      :afterSearch="afterSearch"
       :analyticsBaseUrl="config.analyticsBaseUrl"
       @initialized="initialized"
       :questionURL="config.questionURL"
@@ -75,6 +77,16 @@ onMounted(() => {
   }, 300)
 })
 
+function beforeSearch(props) {
+  const propsCopy = { ...props }
+  return propsCopy
+}
+
+function afterSearch(results) {
+  const copy = [...results]
+  return copy
+}
+
 function makeId(length) {
   let result = ''
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
@@ -86,7 +98,7 @@ function makeId(length) {
 }
 
 function initialized(searchstax) {
-  console.log('searchstax', searchstax);
+  console.log('searchstax', searchstax)
 }
 
 const sessionId = makeId(25)
