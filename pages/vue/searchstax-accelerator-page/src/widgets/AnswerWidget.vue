@@ -1,17 +1,13 @@
 <template>
   <div>
-    <SearchstaxAnswerWidget :showShowMoreAfterWordCount="10" :feedbackwidget="feedbackConfig">
+    <SearchstaxAnswerWidget :showShowMoreAfterWordCount="100" :feedbackwidget="feedbackConfig">
       <template #answer="{ answerData, showMore }">
         <div v-if="answerData && answerData?.searchExecuted && answerData.shouldShowAnswer">
           <div class="searchstax-answer-wrap">
             <div class="searchstax-answer-icon"></div>
             <div>
               <div
-                :class="
-                  'searchstax-answer-container ' + answerData.showMoreButtonVisible
-                    ? 'searchstax-answer-show-more'
-                    : ''
-                "
+                :class="{'searchstax-answer-container': true, 'searchstax-answer-show-more': answerData.showMoreButtonVisible}"
               >
                 <div class="searchstax-answer-title">Smart Answers</div>
                 <div class="searchstax-answer-error" v-if="answerData.shouldShowAnswerError" v-html="answerData.answerErrorMessage"></div>
