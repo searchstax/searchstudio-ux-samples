@@ -22,6 +22,16 @@ function searchstaxEmailOverride() {
 searchstax.initialize({
   ...initConfig.acceleratorSample,
   sessionId: makeId(25),
+  hooks: {
+    beforeSearch: (props) => {
+      const propsCopy = { ...props };
+      return propsCopy;
+    },
+    afterSearch: (results) => {
+      const copy = [...results];
+      return copy;
+    },
+  }
 });
 searchstax.addAnswerWidget("searchstax-answer-container", {
   showShowMoreAfterWordCount: 100,
@@ -34,11 +44,16 @@ searchstax.addAnswerWidget("searchstax-answer-container", {
             <div>
                 <div class="searchstax-answer-container {{#showMoreButtonVisible}}searchstax-answer-show-more{{/showMoreButtonVisible}}">
                     <div class="searchstax-answer-title">Smart Answers</div>
+                    {{#shouldShowAnswerError}}
+                        <div class="searchstax-answer-error">{{{answerErrorMessage}}}</div>
+                    {{/shouldShowAnswerError}}
                     <div class="searchstax-answer-description">
                         {{{fullAnswerFormatted}}}
-                        {{#answerLoading}}
-                            <div class="searchstax-answer-loading"></div>
-                        {{/answerLoading}}
+                        {{^showMoreButtonVisible}}
+                          {{#answerLoading}}
+                              <div class="searchstax-answer-loading"></div>
+                          {{/answerLoading}}
+                        {{/showMoreButtonVisible}}
                     </div>
 
                 </div>

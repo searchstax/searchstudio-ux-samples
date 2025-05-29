@@ -191,3 +191,7 @@ h1 {
     width: calc(100% + 40px);
   }
 }
+
+.searchstax-answer-load-more-button{
+  width: 125px;
+}

@@ -7,13 +7,10 @@
             <div class="searchstax-answer-icon"></div>
             <div>
               <div
-                :class="
-                  'searchstax-answer-container' + answerData.showMoreButtonVisible
-                    ? 'searchstax-answer-show-more'
-                    : ''
-                "
+                :class="{'searchstax-answer-container': true, 'searchstax-answer-show-more': answerData.showMoreButtonVisible}"
               >
                 <div class="searchstax-answer-title">Smart Answers</div>
+                <div class="searchstax-answer-error" v-if="answerData.shouldShowAnswerError" v-html="answerData.answerErrorMessage"></div>
                 <div
                   class="searchstax-answer-description"
                   v-html="answerData.fullAnswerFormatted"
@@ -25,7 +22,7 @@
                 class="searchstax-answer-load-more-button-container"
               >
                 <button class="searchstax-answer-load-more-button" @click="showMore">
-                  Show More...
+                  Read More
                 </button>
               </div>
             </div>
@@ -75,3 +72,9 @@ export default {
   }
 }
 </script>
+<style>
+
+.searchstax-answer-load-more-button{
+  width: 125px;
+}
+</style>

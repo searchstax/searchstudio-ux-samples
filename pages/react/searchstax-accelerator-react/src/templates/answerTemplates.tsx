@@ -12,11 +12,14 @@ export function answerTemplate(
         <div>
           <div
             className={
-              "searchstax-answer-container" +
+              "searchstax-answer-container " +
               (answerData.showMoreButtonVisible === true ? "searchstax-answer-show-more" : "")
             }
           >
             <div className="searchstax-answer-title">Smart Answers</div>
+              {answerData.shouldShowAnswerError && (
+                <div className="searchstax-answer-error" dangerouslySetInnerHTML={{__html:answerData.answerErrorMessage}}></div>
+              )}
               <div className="searchstax-answer-description" dangerouslySetInnerHTML={{__html:answerData.fullAnswerFormatted}}>
               </div>
                 {answerData.answerLoading && (
@@ -32,7 +35,7 @@ export function answerTemplate(
                   showMore(e);
                 }}
               >
-                Show More...
+                Read more
               </button>
             </div>
           )}
