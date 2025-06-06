@@ -379,6 +379,11 @@ searchstax.addSearchResultsWidget("searchstax-results-container", {
                   </p>
               {{/isImage}}
           {{/unmappedFields}}
+          {{#distance}}
+            <p class="searchstax-search-result-distance searchstax-search-result-common" data-test-id="searchstax-search-result-distance">
+                {{distance}} {{unit}}
+            </p>
+        {{/distance}}
           </div>
           </a>
               `,
