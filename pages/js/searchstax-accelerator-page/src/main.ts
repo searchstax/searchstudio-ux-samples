@@ -31,7 +31,7 @@ searchstax.initialize({
       const copy = [...results];
       return copy;
     },
-  }
+  },
 });
 searchstax.addAnswerWidget("searchstax-answer-container", {
   showShowMoreAfterWordCount: 100,
@@ -129,12 +129,13 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
   templates: {
     mainTemplate: {
       template: `
-      <div class="searchstax-search-input-container">
-        <div class="searchstax-search-input-wrapper">
-          <input type="text" id="searchstax-search-input" class="searchstax-search-input" placeholder="SEARCH FOR..." aria-label="Search" />
+      <div class="searchstax-search-input-container searchstax-search-input-container-new {{#locationEnabled}}searchstax-alternative-render{{/locationEnabled}}">
+          <div class="searchstax-search-input-wrapper">
+            <input type="text" id="searchstax-search-input" class="searchstax-search-input" placeholder="SEARCH FOR..." aria-label="Search" />
+          </div>
+          <div id="searchstax-location-container" class="searchstax-location-container"></div>
           <button class="searchstax-spinner-icon" id="searchstax-search-input-action-button" aria-label="search" role="button"></button>
         </div>
-      </div>
         `,
       searchInputId: "searchstax-search-input",
     },
@@ -142,6 +143,49 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
       template: `
         <div class="searchstax-autosuggest-item-term-container">{{{term}}}</div>
         `,
+    },
+  },
+});
+
+searchstax.addSearchLocationWidget("searchstax-location-container", {
+  hooks: {
+    locationDecode: (term) => {
+        return new Promise((resolve) => {
+          // make a request to google geocoding API to retrieve lat, lon and address
+
+          const geocodingAPIKey = "AIzaSyDK5wQQaz7kmP60_DViAto5rTQ301eVBFs";
+          const geocodingURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
+            term
+          )}&key=${geocodingAPIKey}`;
+          fetch(geocodingURL)
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.status === "OK" && data.results.length > 0) {
+                const result = data.results[0];
+                const location = {
+                  lat: result.geometry.location.lat,
+                  lon: result.geometry.location.lng,
+                  address: result.formatted_address,
+                };
+                resolve(location);
+              } else {
+                resolve({
+                  address: undefined,
+                  lat: undefined,
+                  lon: undefined,
+                  error: true
+                });
+              }
+            })
+            .catch(() => {
+              resolve({
+                address: undefined,
+                lat: undefined,
+                lon: undefined,
+                error: true
+              });
+            });
+        });
     },
   },
 });
