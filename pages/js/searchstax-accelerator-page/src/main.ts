@@ -148,6 +148,29 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
 });
 
 searchstax.addSearchLocationWidget("searchstax-location-container", {
+  templates:{
+    mainTemplate: {
+      template:
+`
+      <div class="searchstax-location-input-container" data-test-id="searchstax-location-input-container">
+            <div class="searchstax-location-input-wrapper">
+                <span class="searchstax-location-input-label">NEAR</span>
+                <input type="text" id="searchstax-location-input" class="searchstax-location-input" placeholder="Zip, Postal Code or City..." aria-label="Search Location Input" data-test-id="searchstax-location-input" />
+                {{#shouldShowLocationDistanceDropdown}}
+                  <span class="searchstax-location-input-label">WITHIN</span>
+                  <select id="searchstax-location-radius-select" class="searchstax-location-radius-select" aria-label="Search Location Radius Select" data-test-id="searchstax-location-radius-select">
+                    {{#locationSearchDistanceValues}}
+                      <option value="{{value}}" {{#isSelected}}selected{{/isSelected}}>{{label}}</option>
+                    {{/locationSearchDistanceValues}}
+                  </select>
+                {{/shouldShowLocationDistanceDropdown}}
+            </div>
+        </div>
+      `,
+      locationInputId: "searchstax-location-input",
+      radiusInputId: "searchstax-location-radius-select"
+    },
+  },
   hooks: {
     locationDecode: (term) => {
         return new Promise((resolve) => {
