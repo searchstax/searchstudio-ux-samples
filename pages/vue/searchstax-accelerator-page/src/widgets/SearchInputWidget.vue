@@ -33,15 +33,15 @@
                   ></div>
                 </div>
               </div>
-              <SearchstaxLocationWidget />
-              <button
-                class="searchstax-spinner-icon"
-                id="searchstax-search-input-action-button"
-                aria-label="search"
-                role="button"
-              >
-              </button>
             </div>
+            <SearchstaxLocationWidget />
+            <button
+              class="searchstax-spinner-icon"
+              id="searchstax-search-input-action-button"
+              aria-label="search"
+              role="button"
+            >
+            </button>
           </template>
     </SearchstaxInputWidget>
   </div>
