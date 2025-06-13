@@ -104,7 +104,8 @@ function initialized(searchstax) {
 const sessionId = makeId(25)
 </script>
 
-<style scoped>
+<style lang="scss">
+@import './assets/style.scss';
 #searchstax-feedback-container {
   width: calc(50% - 5px) !important;
   margin-left: auto !important;
@@ -117,4 +118,5 @@ const sessionId = makeId(25)
     width: calc(100%) !important;
   }
 }
+
 </style>
