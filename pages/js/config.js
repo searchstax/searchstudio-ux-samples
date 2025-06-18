@@ -1,6 +1,7 @@
 const initConfig = {
   acceleratorSample: {
-        language: 'en',
+    language: 'en',
+    model: 'test_model',
     searchURL: 'https://searchcloud-django5-staging-27-us-east-1.searchstax.co/138/corpsiteappdonotdelete-4588/emselect',
     suggesterURL: 'https://searchcloud-django5-staging-27-us-east-1.searchstax.co/138/corpsiteappdonotdelete-4588_suggester/emsuggest',
     trackApiKey: 'ynDxQycRAG5NKtztf9LURH15uPEWA8BN7XV24bybe1k',
