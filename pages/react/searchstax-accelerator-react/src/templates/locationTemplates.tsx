@@ -7,6 +7,7 @@ export function LocationTemplate(
     locationChange: (value: string) => void,
     locationBlur: (value: string) => void,
     radiusChange: (value: string | number) => void,
+    getCurrentLocation: () => void,
     inputValue?: string | null,
     selectValue?: string | number | undefined
   ): React.ReactElement {
