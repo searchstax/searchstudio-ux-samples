@@ -59,7 +59,17 @@
             [locationDecode]="locationDecode"
             [templateOverride]="locationTemplate"
           >
-            <ng-template #locationTemplate let-context="context" let-locationData="locationData" let-inputValue="inputValue" let-selectValue="selectValue" let-radiusChange="radiusChange" let-inputChange="inputChange" let-locationBlur="locationBlur">
+            <ng-template
+              #locationTemplate
+              let-context="context"
+              let-locationData="locationData"
+              let-inputValue="inputValue"
+              let-selectValue="selectValue"
+              let-radiusChange="radiusChange"
+              let-inputChange="inputChange"
+              let-locationBlur="locationBlur"
+              let-locationError="locationError"
+            >
               <div
                 class="searchstax-location-input-container"
                 data-test-id="searchstax-location-input-container"
@@ -71,6 +81,9 @@
                     type="text"
                     id="searchstax-location-input"
                     class="searchstax-location-input"
+                    [ngClass]="{
+                      'searchstax-input-location-error': locationError
+                    }"
                     placeholder="Zip, Postal Code or City..."
                     aria-label="Search Location Input"
                     data-test-id="searchstax-location-input"

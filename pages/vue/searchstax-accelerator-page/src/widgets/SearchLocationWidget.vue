@@ -2,7 +2,7 @@
     <SearchstaxLocationWidget
       :locationDecode="renderConfig.locationWidget.locationDecode"
     >
-    <template #input="{ inputValue, locationBlur, radiusChange, selectValue, inputChange }">
+    <template #location="{ locationData, inputValue, locationBlur, radiusChange, selectValue, inputChange, locationError }">
             <div
       class="searchstax-location-input-container"
       data-test-id="searchstax-location-input-container"
@@ -13,6 +13,7 @@
           type="text"
           id="searchstax-location-input"
           class="searchstax-location-input"
+          :class="{'searchstax-input-location-error': locationError}"
           placeholder="Zip, Postal Code or City..."
           aria-label="Search Location Input"
           data-test-id="searchstax-location-input"
