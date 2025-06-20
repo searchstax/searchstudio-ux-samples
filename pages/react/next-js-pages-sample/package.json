@@ -9,8 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@searchstax-inc/searchstudio-ux-js": "npm:@searchstax-inc/searchstudio-ux-js-staging@^1.1.21",
-    "@searchstax-inc/searchstudio-ux-react": "npm:@searchstax-inc/searchstudio-ux-react-staging@^1.0.35",
+    "@searchstax-inc/searchstudio-ux-js": "npm:@searchstax-inc/searchstudio-ux-js-staging@^1.1.22",
+    "@searchstax-inc/searchstudio-ux-react": "npm:@searchstax-inc/searchstudio-ux-react-staging@^1.0.36",
     "react": "^18",
     "react-dom": "^18",
     "next": "14.2.4"
