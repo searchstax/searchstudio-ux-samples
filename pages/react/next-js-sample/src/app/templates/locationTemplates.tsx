@@ -1,14 +1,12 @@
-import { ISearchstaxLocationRenderData } from "@searchstax-inc/searchstudio-ux-js";
-
-
-
 export function LocationTemplate(
     locationData: null | ISearchstaxLocationRenderData,
     locationChange: (value: string) => void,
     locationBlur: (value: string) => void,
     radiusChange: (value: string | number) => void,
+    getCurrentLocation: () => void,
     inputValue?: string | null,
-    selectValue?: string | number | undefined
+    selectValue?: string | number | undefined,
+    locationError?: boolean
   ): React.ReactElement {
     return (
      <>
@@ -22,7 +20,7 @@ export function LocationTemplate(
               <input
                 type="text"
                 id="searchstax-location-input"
-                className="searchstax-location-input"
+                className={"searchstax-location-input" + (locationError ? " searchstax-input-location-error" : "")}
                 placeholder="Zip, Postal Code or City..."
                 aria-label="Search Location Input"
                 data-test-id="searchstax-location-input"
