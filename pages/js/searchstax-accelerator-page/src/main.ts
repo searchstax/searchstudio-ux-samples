@@ -469,9 +469,9 @@ searchstax.addPaginationWidget("searchstax-pagination-container", {
 
 searchstax.addRelatedSearchesWidget("searchstax-related-searches-container", {
   relatedSearchesURL:
-    initConfig.acceleratorRelatedSearchSample.relatedSearchesURL,
+    initConfig.acceleratorSample.relatedSearchesURL,
   relatedSearchesAPIKey:
-    initConfig.acceleratorRelatedSearchSample.relatedSearchesAPIKey,
+    initConfig.acceleratorSample.relatedSearchesAPIKey,
   templates: {
     main: {
       template: `
