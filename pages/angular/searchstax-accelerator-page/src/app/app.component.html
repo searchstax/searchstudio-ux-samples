@@ -69,6 +69,7 @@
               let-inputChange="inputChange"
               let-locationBlur="locationBlur"
               let-locationError="locationError"
+              let-getCurrentLocation="getCurrentLocation"
             >
               <div
                 class="searchstax-location-input-container"
@@ -77,20 +78,28 @@
               >
                 <div class="searchstax-location-input-wrapper">
                   <span class="searchstax-location-input-label">NEAR</span>
-                  <input
-                    type="text"
-                    id="searchstax-location-input"
-                    class="searchstax-location-input"
-                    [ngClass]="{
-                      'searchstax-input-location-error': locationError
-                    }"
-                    placeholder="Zip, Postal Code or City..."
-                    aria-label="Search Location Input"
-                    data-test-id="searchstax-location-input"
-                    [value]="inputValue"
-                    (change)="inputChange($event, context)"
-                    (blur)="locationBlur(context)"
-                  />
+                  <div class="searchstax-location-input-wrapper-inner">
+                    <input
+                      type="text"
+                      id="searchstax-location-input"
+                      class="searchstax-location-input"
+                      [ngClass]="{
+                        'searchstax-input-location-error': locationError
+                      }"
+                      placeholder="Zip, Postal Code or City..."
+                      aria-label="Search Location Input"
+                      data-test-id="searchstax-location-input"
+                      [value]="inputValue"
+                      (change)="inputChange($event, context)"
+                      (blur)="locationBlur(context)"
+                    />
+                    <button
+                      (click)="getCurrentLocation(context)"
+                      class="searchstax-get-current-location-button"
+                    >
+                      Use my current location
+                    </button>
+                  </div>
                   <span
                     *ngIf="locationData.shouldShowLocationDistanceDropdown"
                     class="searchstax-location-input-label"
