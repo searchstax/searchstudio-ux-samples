@@ -155,7 +155,10 @@ searchstax.addSearchLocationWidget("searchstax-location-container", {
       <div class="searchstax-location-input-container" data-test-id="searchstax-location-input-container">
             <div class="searchstax-location-input-wrapper">
                 <span class="searchstax-location-input-label">NEAR</span>
-                <input type="text" id="searchstax-location-input" class="searchstax-location-input" placeholder="Zip, Postal Code or City..." aria-label="Search Location Input" data-test-id="searchstax-location-input" />
+                <div class="searchstax-location-input-wrapper-inner">
+                  <input type="text" id="searchstax-location-input" class="searchstax-location-input" placeholder="Zip, Postal Code or City..." aria-label="Search Location Input" data-test-id="searchstax-location-input" />
+                  <button id="searchstax-location-get-current-location" class="searchstax-get-current-location-button">Use my current location</button>
+                </div>
                 {{#shouldShowLocationDistanceDropdown}}
                   <span class="searchstax-location-input-label">WITHIN</span>
                   <select id="searchstax-location-radius-select" class="searchstax-location-radius-select" aria-label="Search Location Radius Select" data-test-id="searchstax-location-radius-select">
