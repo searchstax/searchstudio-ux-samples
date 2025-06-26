@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {
   ISearchObject,
+  ISearchstaxLocation,
   ISearchstaxParsedResult,
   ISearchstaxSuggestProps,
   ISearchstaxSuggestResponse,
@@ -92,6 +93,45 @@ export class AppComponent implements OnInit {
   afterLinkClick(results: ISearchstaxParsedResult): ISearchstaxParsedResult {
     const copy = { ...results };
     return copy;
+  }
+
+  locationDecode(term: string): Promise<ISearchstaxLocation> {
+    return new Promise((resolve) => {
+      // make a request to google geocoding API to retrieve lat, lon and address
+
+      const geocodingAPIKey = "AIzaSyDK5wQQaz7kmP60_DViAto5rTQ301eVBFs";
+      const geocodingURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
+        term
+      )}&key=${geocodingAPIKey}`;
+      fetch(geocodingURL)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.status === "OK" && data.results.length > 0) {
+            const result = data.results[0];
+            const location = {
+              lat: result.geometry.location.lat,
+              lon: result.geometry.location.lng,
+              address: result.formatted_address,
+            };
+            resolve(location);
+          } else {
+            resolve({
+              address: undefined,
+              lat: undefined,
+              lon: undefined,
+              error: true,
+            });
+          }
+        })
+        .catch(() => {
+          resolve({
+            address: undefined,
+            lat: undefined,
+            lon: undefined,
+            error: true,
+          });
+        });
+    });
   }
 
   initialized(searchstax: Searchstax) {

@@ -33,14 +33,15 @@
                   ></div>
                 </div>
               </div>
-              <button
-                class="searchstax-spinner-icon"
-                id="searchstax-search-input-action-button"
-                aria-label="search"
-                role="button"
-              >
-              </button>
             </div>
+            <SearchstaxLocationWidget />
+            <button
+              class="searchstax-spinner-icon"
+              id="searchstax-search-input-action-button"
+              aria-label="search"
+              role="button"
+            >
+            </button>
           </template>
     </SearchstaxInputWidget>
   </div>
@@ -48,12 +49,14 @@
 
 <script>
 import { SearchstaxInputWidget } from '@searchstax-inc/searchstudio-ux-vue'
+import SearchstaxLocationWidget from '@/widgets/SearchLocationWidget.vue';
 import {renderConfig} from '../../../config';
 
 
 export default {
   components: {
-    SearchstaxInputWidget
+    SearchstaxInputWidget,
+    SearchstaxLocationWidget
   },
   data(){
     return{

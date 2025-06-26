@@ -54,13 +54,85 @@
                 ></div>
               </div>
             </div>
-            <button
-              class="searchstax-spinner-icon"
-              id="searchstax-search-input-action-button"
-              role="button"
-              aria-label="search"
-            ></button>
           </div>
+          <app-searchstax-search-location
+            [locationDecode]="locationDecode"
+            [templateOverride]="locationTemplate"
+          >
+            <ng-template
+              #locationTemplate
+              let-context="context"
+              let-locationData="locationData"
+              let-inputValue="inputValue"
+              let-selectValue="selectValue"
+              let-radiusChange="radiusChange"
+              let-inputChange="inputChange"
+              let-locationBlur="locationBlur"
+              let-locationError="locationError"
+              let-getCurrentLocation="getCurrentLocation"
+            >
+              <div
+                class="searchstax-location-input-container"
+                data-test-id="searchstax-location-input-container"
+                *ngIf="locationData"
+              >
+                <div class="searchstax-location-input-wrapper">
+                  <span class="searchstax-location-input-label">NEAR</span>
+                  <div class="searchstax-location-input-wrapper-inner">
+                    <input
+                      type="text"
+                      id="searchstax-location-input"
+                      class="searchstax-location-input"
+                      [ngClass]="{
+                        'searchstax-input-location-error': locationError
+                      }"
+                      placeholder="Zip, Postal Code or City..."
+                      aria-label="Search Location Input"
+                      data-test-id="searchstax-location-input"
+                      [value]="inputValue"
+                      (change)="inputChange($event, context)"
+                      (blur)="locationBlur(context)"
+                    />
+                    <button
+                      (click)="getCurrentLocation(context)"
+                      class="searchstax-get-current-location-button"
+                    >
+                      Use my current location
+                    </button>
+                  </div>
+                  <span
+                    *ngIf="locationData.shouldShowLocationDistanceDropdown"
+                    class="searchstax-location-input-label"
+                    >WITHIN</span
+                  >
+                  <select
+                    *ngIf="locationData.shouldShowLocationDistanceDropdown"
+                    id="searchstax-location-radius-select"
+                    class="searchstax-location-radius-select"
+                    aria-label="Search Location Radius Select"
+                    data-test-id="searchstax-location-radius-select"
+                    (change)="radiusChange($event, context)"
+                    [(ngModel)]="context.selectValue"
+                  >
+                    <option
+                      *ngFor="
+                        let value of locationData.locationSearchDistanceValues
+                      "
+                      [value]="value.value"
+                    >
+                      {{ value.label }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </ng-template>
+          </app-searchstax-search-location>
+          <button
+            class="searchstax-spinner-icon"
+            id="searchstax-search-input-action-button"
+            role="button"
+            aria-label="search"
+          ></button>
         </ng-template>
       </app-searchstax-input>
       <app-searchstax-answer
