@@ -10,7 +10,7 @@ const initConfig = {
       trackApiKey: "DPAOKNB9c5chZZDwN1Il9dLUCLMGF1ggehy0dWewZwk",
       authType: "token",
       relatedSearchesURL:
-        "https://app.searchstax.com/api/v1/1447/related-search/",
+        "https://app.searchstax.com/api/v1/1442/related-search/",
       relatedSearchesAPIKey: "3014f9d0276906ac17fff16c500e5ee75b20d73c",
       analyticsBaseUrl: 'https://analytics-us.searchstax.com',
       questionURL: "https://search-ai-us.searchstax.com/api/v1/1442/answer/",
