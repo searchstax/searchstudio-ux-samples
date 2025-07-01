@@ -11,7 +11,7 @@ const initConfig = {
       authType: "token",
       relatedSearchesURL:
         "https://app.searchstax.com/api/v1/1442/related-search/",
-      relatedSearchesAPIKey: "3014f9d0276906ac17fff16c500e5ee75b20d73c",
+      relatedSearchesAPIKey: "fac98ad405cc50e0c0693331e8d2119de592f0e3",
       analyticsBaseUrl: 'https://analytics-us.searchstax.com',
       questionURL: "https://search-ai-us.searchstax.com/api/v1/1442/answer/",
     },
