@@ -175,86 +175,12 @@ searchstax.addSearchLocationWidget("searchstax-location-container", {
     },
   },
   hooks: {
-    locationDecode: (term) => {
-      return new Promise((resolve) => {
-        // make a request to google geocoding API to retrieve lat, lon and address
-
-        const geocodingAPIKey = "AIzaSyDK5wQQaz7kmP60_DViAto5rTQ301eVBFs";
-        const geocodingURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
-          term
-        )}&key=${geocodingAPIKey}`;
-        fetch(geocodingURL)
-          .then((response) => response.json())
-          .then((data) => {
-            if (data.status === "OK" && data.results.length > 0) {
-              const result = data.results[0];
-              const location = {
-                lat: result.geometry.location.lat,
-                lon: result.geometry.location.lng,
-                address: result.formatted_address,
-              };
-              resolve(location);
-            } else {
-              resolve({
-                address: undefined,
-                lat: undefined,
-                lon: undefined,
-                error: true,
-              });
-            }
-          })
-          .catch(() => {
-            resolve({
-              address: undefined,
-              lat: undefined,
-              lon: undefined,
-              error: true,
-            });
-          });
-      });
-    },
-    locationDecodeCoordinatesToAddress: (lat, lon) => {
-      return new Promise((resolve) => {
-        fetch(
-          `http://geocoding-staging.searchstax.co/reverse?location=${lat},${lon}&components=country:US&app_id=${initConfig.acceleratorSample.appId}`,
-          {
-            method: "GET",
-            headers: {
-              Authorization: `Token ${initConfig.acceleratorSample.relatedSearchesAPIKey}`,
-            },
-          }
-        )
-          .then((response) => response.json())
-          .then((data) => {
-            if (data.status === "OK" && data.results.length > 0) {
-              const result = data.results[0];
-              resolve({
-                address: result.formatted_address,
-                lat: lat,
-                lon: lon,
-                error: false,
-              });
-            } else {
-              resolve({
-                address: undefined,
-                lat: lat,
-                lon: lon,
-                error: true,
-              });
-            }
-          })
-          .catch(() => {
-            resolve({
-              address: undefined,
-              lat: lat,
-              lon: lon,
-              error: true,
-            });
-          });
-      });
-    },
+    locationDecode: renderConfig.locationWidget.locationDecode,
+    locationDecodeCoordinatesToAddress: renderConfig.locationWidget.locationDecodeCoordinatesToAddress,
   },
 });
+
+console.log(renderConfig.locationWidget)
 
 searchstax.addFacetsWidget("searchstax-facets-container", {
   facetingType: renderConfig.facetsWidget.facetingType,

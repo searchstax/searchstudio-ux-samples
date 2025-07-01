@@ -1,5 +1,5 @@
 <template>
-  <SearchstaxLocationWidget :locationDecode="renderConfig.locationWidget.locationDecode">
+  <SearchstaxLocationWidget :locationDecode="renderConfig.locationWidget.locationDecode" :locationDecodeCoordinatesToAddress="renderConfig.locationWidget.locationDecodeCoordinatesToAddress">
     <template
       #location="{
         locationData,
