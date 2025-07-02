@@ -37,6 +37,22 @@ const initConfig = {
       relatedSearchesAPIKey: "3014f9d0276906ac17fff16c500e5ee75b20d73c",
       analyticsBaseUrl: 'https://analytics-us.searchstax.com'
     },
+    locationSearchSample: {
+      language: "en",
+      searchURL:
+        "https://searchcloud-2-us-east-1.searchstax.com/29847/fiveguyslocationsdemo-4848/emselect",
+      suggesterURL:
+        "https://searchcloud-2-us-east-1.searchstax.com/29847/fiveguyslocationsdemo-4848_suggester/emsuggest",
+      searchAuth: "1641be461786e5b311905176ea67bcb8416c442d",
+      trackApiKey: "qYQh2M9XAE3sfBX2uUbNQ6UPTRK9zEoxptZ9tkfluVU",
+      authType: "token",
+      relatedSearchesURL:
+        "https://app.searchstax.com/api/v1/4848/related-search/",
+      relatedSearchesAPIKey: "9f755acd4eb7ba0935c318e7cb08f43cd0751257",
+      analyticsBaseUrl: 'https://analytics-us.searchstax.com',
+      questionURL: "https://search-ai-us.searchstax.com/api/v1/4848/answer/",
+      googleMapsApiKey: "AIzaSyDK5wQQaz7kmP60_DViAto5rTQ301eVBFs",
+    }
   };
 
   const renderConfig = {
