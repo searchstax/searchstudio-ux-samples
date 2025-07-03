@@ -93,7 +93,7 @@ const renderConfig = {
     locationDecodeCoordinatesToAddress: (lat, lon) => {
       return new Promise((resolve) => {
         fetch(
-          `http://geocoding-staging.searchstax.co/reverse?location=${lat},${lon}&components=country:US&app_id=${initConfig.acceleratorSample.appId}`,
+          `https://geocoding-staging.searchstax.co/reverse?location=${lat},${lon}&components=country:US&app_id=${initConfig.acceleratorSample.appId}`,
           {
             method: "GET",
             headers: {
