@@ -125,6 +125,7 @@ const renderConfig = {
       locationDistanceEnabled: true,
       filterValues: ["any", "1000"],
       filterUnit: "miles",
+      locationFilterDefaultValue: "any"
     },
   },
 };
