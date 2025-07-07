@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
   title = 'searchstax-accelerator-page';
   config = config;
   renderConfig = renderConfig;
+  selectValue = '';
   sessionId = this.makeId(25);
   searchstaxInstance: Searchstax | null = null;
   feedbackInstance: any = null;
@@ -27,6 +28,18 @@ export class AppComponent implements OnInit {
   locationDecode = renderConfig.locationWidget.locationDecode;
   // @ts-ignore
   locationDecodeCoordinatesToAddress = renderConfig.locationWidget.locationDecodeCoordinatesToAddress;
+  // @ts-ignore
+  locationSearchEnabled = renderConfig.locationWidget.locationSearchEnabled;
+  locationValuesOverride: {
+    locationDistanceEnabled: boolean; // if set to true location distance dropdown will be shown
+    filterValues: string[]; // array of location filter values to override the default ones
+    filterUnit: string; // unit of the location filter to override the default one
+  } = renderConfig.locationWidget.locationValuesOverride as {
+    locationDistanceEnabled: boolean; // if set to true location distance dropdown will be shown
+    filterValues: string[]; // array of location filter values to override the default ones
+    filterUnit: string; // unit of the location filter to override the default one
+  };
+
   feedbackConfig = {
     renderFeedbackWidget: true,
     emailOverride: () => '',

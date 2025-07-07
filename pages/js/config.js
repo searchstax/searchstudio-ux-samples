@@ -130,6 +130,12 @@ const renderConfig = {
           });
       });
     },
+    locationSearchEnabled: true,
+    locationValuesOverride: {
+      locationDistanceEnabled: true,
+      filterValues: ["any", "1000"],
+      filterUnit: "miles",
+    },
   },
 };
 

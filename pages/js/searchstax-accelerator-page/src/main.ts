@@ -174,6 +174,8 @@ searchstax.addSearchLocationWidget("searchstax-location-container", {
       currentLocationActionButtonId: "searchstax-location-get-current-location",
     },
   },
+  locationSearchEnabled: renderConfig.locationWidget.locationSearchEnabled,
+  locationValuesOverride: renderConfig.locationWidget.locationValuesOverride,
   hooks: {
     locationDecode: renderConfig.locationWidget.locationDecode,
     locationDecodeCoordinatesToAddress: renderConfig.locationWidget.locationDecodeCoordinatesToAddress,

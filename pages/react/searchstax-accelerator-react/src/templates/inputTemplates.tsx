@@ -1,6 +1,4 @@
-import {
-  ISearchstaxSuggestion,
-} from "@searchstax-inc/searchstudio-ux-js";
+import { ISearchstaxSuggestion } from "@searchstax-inc/searchstudio-ux-js";
 import {
   SearchstaxLocationWidget,
   //@ts-ignore
@@ -8,7 +6,6 @@ import {
 import { LocationTemplate } from "./locationTemplates";
 //@ts-ignore
 import { renderConfig } from "./../../../config.js";
-
 
 export function InputTemplate(
   suggestions: ISearchstaxSuggestion[],
@@ -58,8 +55,15 @@ export function InputTemplate(
         searchLocationTemplate={LocationTemplate}
         hooks={{
           locationDecode: renderConfig.locationWidget.locationDecode,
-          locationDecodeCoordinatesToAddress: renderConfig.locationWidget.locationDecodeCoordinatesToAddress,
+          locationDecodeCoordinatesToAddress:
+            renderConfig.locationWidget.locationDecodeCoordinatesToAddress,
         }}
+        locationSearchEnabled={
+          renderConfig.locationWidget.locationSearchEnabled
+        }
+        locationValuesOverride={
+          renderConfig.locationWidget.locationValuesOverride
+        }
       />
       <button
         className="searchstax-spinner-icon"

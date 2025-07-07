@@ -52,7 +52,7 @@ export function InputTemplate(
                 </div>
               </div>
               <SearchstaxLocationWidget searchLocationTemplate={LocationTemplate} hooks={ {locationDecode: renderConfig.locationWidget.locationDecode,
-          locationDecodeCoordinatesToAddress: renderConfig.locationWidget.locationDecodeCoordinatesToAddress,} } />
+          locationDecodeCoordinatesToAddress: renderConfig.locationWidget.locationDecodeCoordinatesToAddress,} } locationSearchEnabled={renderConfig.locationWidget.locationSearchEnabled} locationValuesOverride={renderConfig.locationWidget.locationValuesOverride} />
               <button
                 className="searchstax-spinner-icon"
                 id="searchstax-search-input-action-button"
