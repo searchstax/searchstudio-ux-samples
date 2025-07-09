@@ -142,7 +142,7 @@ export default function Home() {
           analyticsBaseUrl={confTyped.analyticsBaseUrl}
           router={{ enabled: true }}
           questionURL={config.questionURL}
-          language="en"
+          language={confTyped.language}
         >
           <div className="searchstax-page-layout-container">
             <div id="searchstax-feedback-container"></div>
