@@ -4,6 +4,7 @@
     [suggesterURL]="config.suggesterURL"
     [trackApiKey]="config.trackApiKey"
     [searchAuth]="config.searchAuth"
+    [language]="config.language"
     [beforeSearch]="beforeSearch"
     [afterSearch]="afterSearch"
     [authType]="config.authType"
@@ -57,6 +58,9 @@
           </div>
           <app-searchstax-search-location
             [locationDecode]="locationDecode"
+            [locationDecodeCoordinatesToAddress]="locationDecodeCoordinatesToAddress"
+            [locationSearchEnabled]="locationSearchEnabled"
+            [locationValuesOverride]="locationValuesOverride"
             [templateOverride]="locationTemplate"
           >
             <ng-template

@@ -12,8 +12,8 @@
     "react": "^18",
     "react-dom": "^18",
     "next": "14.2.4",
-    "@searchstax-inc/searchstudio-ux-js": "npm:@searchstax-inc/searchstudio-ux-js@^1.1.24",
-    "@searchstax-inc/searchstudio-ux-react": "npm:@searchstax-inc/searchstudio-ux-react@^1.0.38"
+    "@searchstax-inc/searchstudio-ux-js": "npm:@searchstax-inc/searchstudio-ux-js@^1.1.36",
+    "@searchstax-inc/searchstudio-ux-react": "npm:@searchstax-inc/searchstudio-ux-react@^1.0.46"
   },
   "devDependencies": {
     "typescript": "^5",
