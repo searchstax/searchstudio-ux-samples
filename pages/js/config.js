@@ -91,14 +91,14 @@ const renderConfig = {
     locationDecodeCoordinatesToAddress: (lat, lon) => {
       return new Promise((resolve) => {
         fetch(
-          `https://geocoding.searchstax.com/reverse?location=${lat},${lon}&components=country:US&app_id=${config.appId}`,
-          {
-            method: "GET",
-            headers: {
-              Authorization: `Token ${config.relatedSearchesAPIKey}`,
-            },
-          }
-        )
+                  `https://geocoding.searchstax.com/reverse?location=${lat},${lon}&components=country:US&app_id=${initConfig.acceleratorSample.appId}`,
+                  {
+                    method: "GET",
+                    headers: {
+                      Authorization: `Token ${initConfig.acceleratorSample.relatedSearchesAPIKey}`,
+                    },
+                  }
+                )
           .then((response) => response.json())
           .then((data) => {
             if (data.status === "OK" && data.results.length > 0) {
