@@ -1,19 +1,17 @@
 const config = {
   language: "en",
   searchURL:
-    "https://searchcloud-django5-staging-27-us-east-1.searchstax.co/138/corpsiteappdonotdelete-4588/emselect",
+    "https://searchcloud-2-us-east-1.searchstax.com/29847/corpsiteuxsamples-1442/emselect",
   suggesterURL:
-    "https://searchcloud-django5-staging-27-us-east-1.searchstax.co/138/corpsiteappdonotdelete-4588_suggester/emsuggest",
-  trackApiKey: "ynDxQycRAG5NKtztf9LURH15uPEWA8BN7XV24bybe1k",
-  searchAuth: "a1cede71fad5ae41dc8efc99f96c647e3dbdd38d",
+    "https://searchcloud-2-us-east-1.searchstax.com/29847/corpsiteuxsamples-1442_suggester/emsuggest",
+  trackApiKey: "DPAOKNB9c5chZZDwN1Il9dLUCLMGF1ggehy0dWewZwk",
+  searchAuth: "b065448ad1484e205f4851f0ce89d128e704e2f4",
   authType: "token",
-  relatedSearchesURL:
-    "https://staging.searchstax.co/api/v1/4588/related-search/",
-  relatedSearchesAPIKey: "e514efc3776ab13bda2ce5984085010073078009",
-  analyticsBaseUrl: "https://analytics-us-west-staging.searchstax.co",
-  questionURL:
-    "https://search-ai-us-west-staging.searchstax.co/api/v1/4588/answer/",
-  appId: "4588",
+  relatedSearchesURL: "https://app.searchstax.com/api/v1/1442/related-search/",
+  relatedSearchesAPIKey: "fac98ad405cc50e0c0693331e8d2119de592f0e3",
+  analyticsBaseUrl: "https://analytics-us.searchstax.com",
+  questionURL: "https://search-ai-us.searchstax.com/api/v1/1442/answer/",
+  appId: "1442",
 };
 
 const renderConfig = {
@@ -70,7 +68,7 @@ const renderConfig = {
     locationDecodeCoordinatesToAddress: (lat, lon) => {
       return new Promise((resolve) => {
         fetch(
-          `https://geocoding-staging.searchstax.co/reverse?location=${lat},${lon}&components=country:US&app_id=${config.appId}`,
+          `https://geocoding.searchstax.com/reverse?location=${lat},${lon}&components=country:US&app_id=${config.appId}`,
           {
             method: "GET",
             headers: {
