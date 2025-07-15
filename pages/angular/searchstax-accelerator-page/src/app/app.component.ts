@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {
   ISearchObject,
-  ISearchstaxLocation,
   ISearchstaxParsedResult,
   ISearchstaxSuggestProps,
   ISearchstaxSuggestResponse,
   Searchstax,
 } from '@searchstax-inc/searchstudio-ux-js';
 // @ts-ignore
-import { config, renderConfig } from './../../../config.js';
+import { config, renderConfig } from '../../../config';
+
 // @ts-ignore
 
 @Component({
@@ -70,6 +70,7 @@ export class AppComponent implements OnInit {
       setTimeout(() => {
         new this.feedbackInstance({
           analyticsKey: config.trackApiKey,
+          model: config.model,
           containerId: 'searchstax-feedback-container',
           lightweight: false,
         });
@@ -78,8 +79,7 @@ export class AppComponent implements OnInit {
   }
 
   beforeSearch(props: ISearchObject) {
-    const propsCopy = { ...props };
-    return propsCopy;
+    return { ...props };
   }
   afterSearch(results: ISearchstaxParsedResult[]) {
     const copy = [...results];
@@ -98,18 +98,15 @@ export class AppComponent implements OnInit {
   }
 
   afterAutosuggest(result: ISearchstaxSuggestResponse) {
-    const copy = { ...result };
-    return copy;
+    return { ...result };
   }
 
   beforeAutosuggest(props: ISearchstaxSuggestProps) {
-    const propsCopy = { ...props };
-    return propsCopy;
+    return { ...props };
   }
 
   afterLinkClick(results: ISearchstaxParsedResult): ISearchstaxParsedResult {
-    const copy = { ...results };
-    return copy;
+    return { ...results };
   }
 
   initialized(searchstax: Searchstax) {

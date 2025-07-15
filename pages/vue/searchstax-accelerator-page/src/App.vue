@@ -2,6 +2,7 @@
   <div>
     <SearchstaxWrapper
       :language="config.language"
+      :model="config.model"
       :searchURL="config.searchURL"
       :suggesterURL="config.suggesterURL"
       :trackApiKey="config.trackApiKey"
@@ -71,6 +72,7 @@ onMounted(() => {
   setTimeout(() => {
     new SearchstaxFeedbackWidget({
       analyticsKey: config.trackApiKey,
+      model: config.model,
       containerId: 'searchstax-feedback-container',
       lightweight: false
     })
@@ -78,13 +80,11 @@ onMounted(() => {
 })
 
 function beforeSearch(props) {
-  const propsCopy = { ...props }
-  return propsCopy
+  return { ...props }
 }
 
 function afterSearch(results) {
-  const copy = [...results]
-  return copy
+  return [...results]
 }
 
 function makeId(length) {
