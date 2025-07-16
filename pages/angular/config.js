@@ -1,5 +1,6 @@
 const config = {
   language: "en",
+  model: "Main Profile",
   searchURL:
     "https://searchcloud-django5-staging-27-us-east-1.searchstax.co/138/corpsiteappdonotdelete-4588/emselect",
   suggesterURL:
