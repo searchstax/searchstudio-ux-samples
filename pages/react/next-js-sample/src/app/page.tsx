@@ -144,6 +144,7 @@ export default function Home() {
           router={{ enabled: true }}
           questionURL={config.questionURL}
           language={confTyped.language}
+          model={confTyped.model}
         >
           <div className="searchstax-page-layout-container">
             <div id="searchstax-feedback-container"></div>
