@@ -64,6 +64,7 @@ function App() {
     if (container) {
       new SearchstaxFeedbackWidget({
         analyticsKey: config.trackApiKey,
+        model: config.model,
         containerId: "searchstax-feedback-container",
       });
     }
