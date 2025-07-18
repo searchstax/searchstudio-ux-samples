@@ -116,6 +116,7 @@ export default function Home() {
         //@ts-ignore
         new feedbackModule({
           analyticsKey: config.trackApiKey,
+          model: config.model,
           containerId: "searchstax-feedback-container",
           lightweight: false,
         });
