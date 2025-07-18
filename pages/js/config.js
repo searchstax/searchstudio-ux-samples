@@ -51,7 +51,8 @@ const initConfig = {
       relatedSearchesAPIKey: "9f755acd4eb7ba0935c318e7cb08f43cd0751257",
       analyticsBaseUrl: 'https://analytics-us.searchstax.com',
       questionURL: "https://search-ai-us.searchstax.com/api/v1/4848/answer/",
-      googleMapsApiKey: "AIzaSyDK5wQQaz7kmP60_DViAto5rTQ301eVBFs",
+      geocodingAPIKey: "**__add_your_own_**",
+      googleMapsApiKey: "**__add_your_own_**",
     }
   };
 

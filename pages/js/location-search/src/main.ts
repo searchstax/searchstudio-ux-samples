@@ -285,7 +285,7 @@ searchstax.addSearchLocationWidget("searchstax-location-container", {
 
           const geocodingURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
             term
-          )}&key=${initConfig.locationSearchSample.googleMapsApiKey}`;
+          )}&key=${initConfig.locationSearchSample.geocodingAPIKey}`;
           fetch(geocodingURL)
             .then((response) => response.json())
             .then((data) => {
