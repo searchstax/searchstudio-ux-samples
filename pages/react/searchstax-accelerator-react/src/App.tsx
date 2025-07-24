@@ -1,16 +1,15 @@
 import "./App.scss";
 import {
-  SearchstaxWrapper,
-  SearchstaxInputWidget,
-  SearchstaxResultWidget,
-  SearchstaxPaginationWidget,
-  SearchstaxOverviewWidget,
-  SearchstaxSortingWidget,
-  SearchstaxRelatedSearchesWidget,
+  SearchstaxAnswerWidget,
   SearchstaxExternalPromotionsWidget,
   SearchstaxFacetsWidget,
-  SearchstaxAnswerWidget,
-  //@ts-ignore
+  SearchstaxInputWidget,
+  SearchstaxOverviewWidget,
+  SearchstaxPaginationWidget,
+  SearchstaxRelatedSearchesWidget,
+  SearchstaxResultWidget,
+  SearchstaxSortingWidget,
+  SearchstaxWrapper,
 } from "@searchstax-inc/searchstudio-ux-react";
 // @ts-ignore
 import SearchstaxFeedbackWidget from "https://static.searchstax.com/studio-js/v4/js/feedbackWidget.mjs";
@@ -24,21 +23,12 @@ import type {
 import { Searchstax } from "@searchstax-inc/searchstudio-ux-js";
 //@ts-ignore
 import { config, renderConfig } from "../../config.js";
-import {
-  noResultTemplate,
-  resultsTemplate,
-} from "./templates/resultsTemplates.js";
+import { noResultTemplate, resultsTemplate, } from "./templates/resultsTemplates.js";
 import { answerTemplate } from "./templates/answerTemplates.js";
-import {
-  infiniteScrollTemplate,
-  paginationTemplate,
-} from "./templates/paginationTemplates.js";
+import { infiniteScrollTemplate, paginationTemplate, } from "./templates/paginationTemplates.js";
 import { searchRelatedSearchesTemplate } from "./templates/relatedSearchesTemplates.js";
 import { searchExternalPromotionsTemplate } from "./templates/externalPromotionsTemplates.js";
-import {
-  facetsTemplateDesktop,
-  facetsTemplateMobile,
-} from "./templates/facetTemplates.js";
+import { facetsTemplateDesktop, facetsTemplateMobile, } from "./templates/facetTemplates.js";
 import { searchSortingTemplate } from "./templates/sorting.templates.js";
 import { searchOverviewTemplate } from "./templates/searchOverviewTemplates.js";
 import { InputTemplate } from "./templates/inputTemplates.js";
@@ -46,6 +36,7 @@ import { InputTemplate } from "./templates/inputTemplates.js";
 function App() {
   const feedbackConfig = {
     renderFeedbackWidget: true,
+    model: renderConfig.model,
     emailOverride: searchstaxEmailOverride,
     thumbsUpValue: 10,
     thumbsDownValue: 0,
@@ -73,6 +64,7 @@ function App() {
     if (container) {
       new SearchstaxFeedbackWidget({
         analyticsKey: config.trackApiKey,
+        model: config.model,
         containerId: "searchstax-feedback-container",
       });
     }
@@ -96,12 +88,10 @@ function App() {
   const sessionId = makeId(25);
 
   function beforeSearch(props: ISearchObject) {
-    const propsCopy = { ...props };
-    return propsCopy;
+    return { ...props };
   }
   function afterSearch(results: ISearchstaxParsedResult[]) {
-    const copy = [...results];
-    return copy;
+    return [...results];
   }
 
   function initialized(searchstax: Searchstax) {
@@ -113,21 +103,17 @@ function App() {
   }
 
   function afterAutosuggest(result: ISearchstaxSuggestResponse) {
-    const copy = { ...result };
-    return copy;
+    return { ...result };
   }
   function beforeAutosuggest(props: ISearchstaxSuggestProps) {
     // gets suggestProps, if passed along further autosuggest will execute, if null then event gets canceled
     // props can be modified and passed along
-    const propsCopy = { ...props };
-    return propsCopy;
+    return { ...props };
   }
 
   function afterLinkClick(result: ISearchstaxParsedResult) {
     // gets result that was clicked, if passed along further functions will execute, if null then event gets canceled
-    const resultCopy = { ...result };
-
-    return resultCopy;
+    return { ...result };
   }
 
   return (
@@ -145,6 +131,7 @@ function App() {
         analyticsBaseUrl={config.analyticsBaseUrl}
         router={{ enabled: true }}
         language={config.language}
+        model={config.model}
         questionURL={config.questionURL}
       >
         <div className="searchstax-page-layout-container">

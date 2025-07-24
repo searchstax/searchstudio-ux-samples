@@ -13,12 +13,14 @@ const initConfig = {
     relatedSearchesAPIKey: "fac98ad405cc50e0c0693331e8d2119de592f0e3",
     analyticsBaseUrl: "https://analytics-us.searchstax.com",
     questionURL: "https://search-ai-us.searchstax.com/api/v1/1442/answer/",
+    model: "Default",
     appId: "1442",
   },
   acceleratorRelatedSearchSample: {
     relatedSearchesURL:
       "https://app.searchstax.com/api/v1/1442/related-search/",
     relatedSearchesAPIKey: "fac98ad405cc50e0c0693331e8d2119de592f0e3",
+    model: "Default",
   },
   jobSearchSample: {
     language: "en",
@@ -30,12 +32,14 @@ const initConfig = {
     trackApiKey: "Cnpe2IL7uXaztPzavTIuDAiAmfydOa12f0iAGE0hLlY",
     authType: "token",
     analyticsBaseUrl: "https://analytics-us.searchstax.com",
+    model: "Default",
   },
   jobSearchRelatedSearchSample: {
     relatedSearchesURL:
       "https://app.searchstax.com/api/v1/1447/related-search/",
     relatedSearchesAPIKey: "3014f9d0276906ac17fff16c500e5ee75b20d73c",
     analyticsBaseUrl: "https://analytics-us.searchstax.com",
+    model: "Default",
   },
 };
 
@@ -54,7 +58,7 @@ const renderConfig = {
       return new Promise((resolve) => {
         // make a request to google geocoding API to retrieve lat, lon and address
 
-        const geocodingAPIKey = "AIzaSyDK5wQQaz7kmP60_DViAto5rTQ301eVBFs";
+        const geocodingAPIKey = "AIzaSyDK5wQQaz7kmP60_DViAto5rTQ301eVBFs";// Replace with your actual API key
         const geocodingURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
           term
         )}&key=${geocodingAPIKey}`;

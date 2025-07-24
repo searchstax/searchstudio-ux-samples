@@ -11,6 +11,7 @@ const config = {
   relatedSearchesAPIKey: "fac98ad405cc50e0c0693331e8d2119de592f0e3",
   analyticsBaseUrl: "https://analytics-us.searchstax.com",
   questionURL: "https://search-ai-us.searchstax.com/api/v1/1442/answer/",
+  model: "Default",
   appId: "1442",
 };
 
@@ -42,7 +43,7 @@ const renderConfig = {
       return new Promise((resolve) => {
         // make a request to google geocoding API to retrieve lat, lon and address
 
-        const geocodingAPIKey = "AIzaSyDK5wQQaz7kmP60_DViAto5rTQ301eVBFs";
+        const geocodingAPIKey = "AIzaSyDK5wQQaz7kmP60_DViAto5rTQ301eVBFs";// Replace with your actual API key
         const geocodingURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
           term
         )}&key=${geocodingAPIKey}`;
