@@ -73,9 +73,11 @@ searchstax.addSearchFeedbackWidget("search-feedback-container", {
     templates: {
       mainTemplate: {
       template: `
-            <div class="searchstax-search-results-container">
+            <section aria-label="search results container" tabindex="0">
+            <div class="searchstax-search-results-container" id="searchstax-search-results-container">
                 <div class="searchstax-search-results" id="searchstax-search-results"></div>
             </div>
+            </section>
             `,
         searchResultsContainerId: "searchstax-search-results",
       },
