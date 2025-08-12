@@ -159,7 +159,7 @@ export default function Home() {
 
             <SearchstaxAnswerWidget
               searchAnswerTemplate={answerTemplate}
-              showShowMoreAfterWordCount={100}
+              showMoreAfterWordCount={100}
               feedbackwidget={feedbackConfig}
             ></SearchstaxAnswerWidget>
 

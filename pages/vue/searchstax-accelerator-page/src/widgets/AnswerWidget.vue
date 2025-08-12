@@ -1,6 +1,6 @@
 <template>
   <div>
-    <SearchstaxAnswerWidget :showShowMoreAfterWordCount="100" :feedbackwidget="feedbackConfig">
+    <SearchstaxAnswerWidget :showMoreAfterWordCount="100" :feedbackwidget="feedbackConfig">
       <template #answer="{ answerData, showMore }">
         <div v-if="answerData && answerData?.searchExecuted && answerData.shouldShowAnswer">
           <div class="searchstax-answer-wrap">

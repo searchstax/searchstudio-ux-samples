@@ -144,7 +144,7 @@ function App() {
           ></SearchstaxInputWidget>
           <SearchstaxAnswerWidget
             searchAnswerTemplate={answerTemplate}
-            showShowMoreAfterWordCount={100}
+            showMoreAfterWordCount={100}
             feedbackwidget={feedbackConfig}
           ></SearchstaxAnswerWidget>
           <div className="search-details-container">
