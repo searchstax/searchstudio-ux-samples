@@ -10,7 +10,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "@searchstax-inc/searchstudio-ux-vue": "npm:@searchstax-inc/searchstudio-ux-vue-staging@^2.0.1",
+    "@searchstax-inc/searchstudio-ux-vue": "npm:@searchstax-inc/searchstudio-ux-vue-staging@^2.0.2",
     "vue": "^3.3.4",
     "vue-router": "^4.2.4"
   },
