@@ -13,7 +13,7 @@
     "@searchstax-inc/searchstudio-ux-react": "npm:@searchstax-inc/searchstudio-ux-react-staging@^2.0.4",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "next": "14.2.4"
+    "next": "15.4.6"
   },
   "devDependencies": {
     "typescript": "^5",
