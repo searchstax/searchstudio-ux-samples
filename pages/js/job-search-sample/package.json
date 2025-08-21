@@ -1,12 +1,14 @@
 {
   "name": "job-search-sample",
-  "version": "1.0.0",
+  "version": "4.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "parcel src/index.html"
   },
-  "keywords": ["Job Search App"],
+  "keywords": [
+    "Job Search App"
+  ],
   "author": "@SearchStax Inc.",
   "license": "ISC",
   "devDependencies": {
@@ -14,6 +16,6 @@
     "parcel": "^2.9.3"
   },
   "dependencies": {
-    "@searchstax-inc/searchstudio-ux-js": "npm:@searchstax-inc/searchstudio-ux-js@^2.0.0"
+    "@searchstax-inc/searchstudio-ux-js": "npm:@searchstax-inc/searchstudio-ux-js@^4.1.0"
   }
 }

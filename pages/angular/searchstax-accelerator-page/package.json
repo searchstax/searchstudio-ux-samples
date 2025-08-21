@@ -1,6 +1,6 @@
 {
   "name": "searchstax-accelerator-page",
-  "version": "0.0.0",
+  "version": "4.1.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -18,8 +18,8 @@
     "@angular/platform-browser": "^16.2.0",
     "@angular/platform-browser-dynamic": "^16.2.0",
     "@angular/router": "^16.2.0",
-    "@searchstax-inc/searchstudio-ux-angular": "npm:@searchstax-inc/searchstudio-ux-angular@^2.0.0",
-    "@searchstax-inc/searchstudio-ux-js": "npm:@searchstax-inc/searchstudio-ux-js@^2.0.0",
+    "@searchstax-inc/searchstudio-ux-angular": "npm:@searchstax-inc/searchstudio-ux-angular@^4.1.0",
+    "@searchstax-inc/searchstudio-ux-js": "npm:@searchstax-inc/searchstudio-ux-js@^4.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"

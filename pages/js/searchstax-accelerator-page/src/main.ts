@@ -34,7 +34,7 @@ searchstax.initialize({
   },
 });
 searchstax.addAnswerWidget("searchstax-answer-container", {
-  showShowMoreAfterWordCount: 100,
+  showMoreAfterWordCount: 100,
   templates: {
     main: {
       template: `
@@ -332,7 +332,7 @@ searchstax.addSearchResultsWidget("searchstax-results-container", {
     },
     searchResultTemplate: {
       template: `
-      <a href="{{url}}" data-searchstax-unique-result-id="{{uniqueId}}" class="searchstax-result-item-link searchstax-result-item-link-wrapping" tabindex="0">
+      <a href="{{url}}" data-searchstax-unique-result-id="{{uniqueId}}" class="searchstax-result-item-link searchstax-result-item-link-wrapping" tabindex="0"  aria-labelledby="title-{{uniqueId}}">
       <div class="searchstax-search-result searchstax-search-result-wrapping {{#thumbnail}} has-thumbnail {{/thumbnail}}">
           {{#promoted}}
               <div class="searchstax-search-result-promoted"></div>
@@ -348,7 +348,7 @@ searchstax.addSearchResultsWidget("searchstax-results-container", {
               <img alt="" src="{{thumbnail}}" alt="image" class="searchstax-thumbnail">
           {{/thumbnail}}
           <div class="searchstax-search-result-title-container">
-              <h3 class="searchstax-search-result-title">{{{title}}}</h3>
+              <h3 class="searchstax-search-result-title" id="title-{{uniqueId}}">{{{title}}}</h3>
           </div>
 
           {{#paths}}
