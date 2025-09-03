@@ -1,6 +1,6 @@
 {
   "name": "searchstax-accelerator-page",
-  "version": "4.1.4",
+  "version": "4.1.5",
   "private": true,
   "scripts": {
     "dev": "vite",
@@ -10,7 +10,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "@searchstax-inc/searchstudio-ux-vue": "npm:@searchstax-inc/searchstudio-ux-vue-staging@^4.1.4",
+    "@searchstax-inc/searchstudio-ux-vue": "npm:@searchstax-inc/searchstudio-ux-vue-staging@^4.1.5",
     "vue": "^3.3.4",
     "vue-router": "^4.2.4"
   },
