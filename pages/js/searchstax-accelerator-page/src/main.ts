@@ -415,11 +415,11 @@ searchstax.addPaginationWidget("searchstax-pagination-container", {
         {{#results.length}}
         <div class="searchstax-pagination-container" data-test-id="searchstax-pagination-container">
           <div class="searchstax-pagination-content">
-            <a class="searchstax-pagination-previous {{#isFirstPage}}disabled{{/isFirstPage}}" {{#isFirstPage}} disabled="disabled" {{/isFirstPage}}  id="searchstax-pagination-previous" data-test-id="searchstax-pagination-previous" {{^isFirstPage}} tabindex="0" {{/isFirstPage}} aria-label="Previous Page">< Previous</a>
+            <a role="link" class="searchstax-pagination-previous {{#isFirstPage}}disabled{{/isFirstPage}}" {{#isFirstPage}} disabled="disabled" {{/isFirstPage}}  id="searchstax-pagination-previous" data-test-id="searchstax-pagination-previous" {{^isFirstPage}} tabindex="0" {{/isFirstPage}} aria-label="Previous Page">< Previous</a>
             <div class="searchstax-pagination-details" data-test-id="searchstax-pagination-details">
               {{startResultIndex}} - {{endResultIndex}} of {{totalResults}}
             </div>
-              <a class="searchstax-pagination-next {{#isLastPage}}disabled{{/isLastPage}}" {{#isLastPage}}disabled="disabled"{{/isLastPage}} data-test-id="searchstax-pagination-next" id="searchstax-pagination-next" {{^isLastPage}} tabindex="0" {{/isLastPage}} aria-label="Next Page">Next ></a>
+              <a role="link" class="searchstax-pagination-next {{#isLastPage}}disabled{{/isLastPage}}" {{#isLastPage}}disabled="disabled"{{/isLastPage}} data-test-id="searchstax-pagination-next" id="searchstax-pagination-next" {{^isLastPage}} tabindex="0" {{/isLastPage}} aria-label="Next Page">Next ></a>
           </div>
         </div>
       {{/results.length}}
