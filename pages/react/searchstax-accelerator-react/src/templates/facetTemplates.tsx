@@ -336,6 +336,7 @@ export function facetsTemplateMobile(
                             }
                           }}
                           tabIndex={0}
+                          role="button"
                         >
                           {facet.showingAllFacets && (
                             <div className="searchstax-facet-show-less-button searchstax-facet-show-button">

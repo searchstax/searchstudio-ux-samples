@@ -1,6 +1,6 @@
 {
   "name": "jobsearch-vue-app",
-  "version": "4.1.5",
+  "version": "4.1.6",
   "private": true,
   "scripts": {
     "dev": "vite",
@@ -10,7 +10,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "@searchstax-inc/searchstudio-ux-vue": "npm:@searchstax-inc/searchstudio-ux-vue-staging@^4.1.5",
+    "@searchstax-inc/searchstudio-ux-vue": "npm:@searchstax-inc/searchstudio-ux-vue-staging@^4.1.6",
     "vue": "^3.3.4",
     "vue-router": "^4.2.4"
   },
