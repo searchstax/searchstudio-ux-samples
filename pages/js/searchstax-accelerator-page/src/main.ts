@@ -1,4 +1,4 @@
-import { Searchstax } from "@searchstax-inc/searchstudio-ux-js";
+import { Searchstax } from "./../node_modules/@searchstax-inc/searchstudio-ux-js-staging/dist/@searchstax-inc/searchstudio-ux-js-staging.mjs";
 // @ts-ignore
 import { initConfig, renderConfig } from "./../../config.js";
 
