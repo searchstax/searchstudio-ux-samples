@@ -248,6 +248,7 @@ searchstax.addFacetsWidget("searchstax-facets-container", {
       </div>
       `,
       facetListTitleContainerClass: `searchstax-facet-title-container`,
+      facetListTitleContainerInner: `searchstax-facet-title`,
       facetListContainerClass: `searchstax-facet-values-container`,
     },
     clearFacetsTemplate: {
