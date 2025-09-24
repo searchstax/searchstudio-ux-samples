@@ -226,10 +226,10 @@ searchstax.addFacetsWidget("searchstax-facets-container", {
       template: `
       <div class="searchstax-facet-show-more-container">
       {{#showingAllFacets}}
-        <div class="searchstax-facet-show-less-button searchstax-facet-show-button" tabindex="0" role="button">less</div>
+        <div class="searchstax-facet-show-less-button searchstax-facet-show-button" data-focus="{{focusId}}" tabindex="0" role="button">less</div>
       {{/showingAllFacets}}
       {{^showingAllFacets}}
-        <div class="searchstax-facet-show-more-button  searchstax-facet-show-button" tabindex="0" role="button">more {{onShowMoreLessClick}}</div>
+        <div class="searchstax-facet-show-more-button  searchstax-facet-show-button" data-focus="{{focusId}}" tabindex="0" role="button">more {{onShowMoreLessClick}}</div>
       {{/showingAllFacets}}
     </div>
       `,
@@ -239,7 +239,7 @@ searchstax.addFacetsWidget("searchstax-facets-container", {
       template: `
       <div>
         <div class="searchstax-facet-title-container">
-            <div class="searchstax-facet-title" aria-label="Facet group: {{label}}" tabindex="0">
+            <div class="searchstax-facet-title" aria-label="Facet group: {{label}}" tabindex="0" role="button">
             {{label}}
             </div>
             <div class="searchstax-facet-title-arrow active"></div>

@@ -1,7 +1,7 @@
 {
   "name": "vite-test",
   "private": true,
-  "version": "4.1.9",
+  "version": "4.1.10",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -14,7 +14,7 @@
     "vite": "^6.2.0"
   },
   "dependencies": {
-    "@searchstax-inc/searchstudio-ux-js": "npm:@searchstax-inc/searchstudio-ux-js-staging@^4.1.9",
+    "@searchstax-inc/searchstudio-ux-js": "npm:@searchstax-inc/searchstudio-ux-js-staging@^4.1.10",
     "dompurify": "^3.2.5"
   }
 }
