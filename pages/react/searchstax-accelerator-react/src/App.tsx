@@ -12,7 +12,7 @@ import {
   SearchstaxWrapper,
 } from "@searchstax-inc/searchstudio-ux-react";
 // @ts-ignore
-import SearchstaxFeedbackWidget from "https://static-staging.searchstax.co/studio-js/v4/js/feedbackWidget.mjs";
+import SearchstaxFeedbackWidget from "https://static.searchstax.com/studio-js/v4/js/feedbackWidget.mjs";
 
 import type {
   ISearchObject,
