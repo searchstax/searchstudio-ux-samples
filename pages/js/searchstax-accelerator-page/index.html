@@ -74,7 +74,13 @@
           <span class="sf-btn sf-btn-sent sf-btn-success" aria-disabled="true">&check; Sent</span>
           {{/submitted}}
           {{^submitted}}
-          <button class="sf-btn sf-btn-primary js-send-feedback" type="button" tabindex="0">Send</button>
+           <button class="sf-btn sf-btn-primary js-send-feedback" type="button" tabindex="0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 100 100" class="sf-checkmark hidden">
+                <circle class="sf-circle" cx="50" cy="50" r="46"/>
+                <polyline class="sf-tick" points="25,55 45,70 75,33" pathLength="48"/>
+           </svg>
+           <span class="sf-btn-text">Send</span>
+          </button>
           {{/submitted}}
         </div>
       </form>
