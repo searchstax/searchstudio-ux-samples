@@ -13,6 +13,7 @@ const initConfig = {
       "https://staging.searchstax.co/api/v1/4588/related-search/",
     relatedSearchesAPIKey: "e514efc3776ab13bda2ce5984085010073078009",
     analyticsBaseUrl: "https://analytics-us-west-staging.searchstax.co",
+    analyticsSrc: "https://static-staging.searchstax.co/studio-js/v4/js/studio-analytics.js",
     questionURL:
       "https://search-ai-us-west-staging.searchstax.co/api/v1/4588/answer/",
     appId: "4588",

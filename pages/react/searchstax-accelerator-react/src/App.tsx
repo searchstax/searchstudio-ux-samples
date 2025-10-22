@@ -66,6 +66,7 @@ function App() {
         analyticsKey: config.trackApiKey,
         model: config.model,
         containerId: "searchstax-feedback-container",
+        analyticsSrc: 'https://static-staging.searchstax.co/studio-js/v4/js/studio-analytics.js'
       });
     }
   }
