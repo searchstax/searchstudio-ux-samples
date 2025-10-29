@@ -110,7 +110,7 @@ export default function Home() {
 
   function initialized(searchstax: Searchstax) {
     //@ts-ignore
-    import(/* webpackIgnore: true */ "https://static-staging.searchstax.co/studio-js/v4/js/feedbackWidget.mjs").then((module) => {
+    import(/* webpackIgnore: true */ "https://static.searchstax.com/studio-js/v4/js/feedbackWidget.mjs").then((module) => {
       feedbackModule = module.default;
       setTimeout(() => {
         //@ts-ignore

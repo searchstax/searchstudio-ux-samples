@@ -12,7 +12,7 @@ import {
   SearchstaxWrapper,
 } from "@searchstax-inc/searchstudio-ux-react";
 // @ts-ignore
-import SearchstaxFeedbackWidget from "https://static-staging.searchstax.co/studio-js/v4/js/feedbackWidget.mjs";
+import SearchstaxFeedbackWidget from "https://static.searchstax.com/studio-js/v4/js/feedbackWidget.mjs";
 
 import type {
   ISearchObject,
@@ -66,7 +66,7 @@ function App() {
         analyticsKey: config.trackApiKey,
         model: config.model,
         containerId: "searchstax-feedback-container",
-        analyticsSrc: 'https://static-staging.searchstax.co/studio-js/v4/js/studio-analytics.js'
+        analyticsSrc: 'https://static.searchstax.com/studio-js/v4/js/studio-analytics.js'
       });
     }
   }
