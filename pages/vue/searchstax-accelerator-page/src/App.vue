@@ -74,7 +74,8 @@ onMounted(() => {
       analyticsKey: config.trackApiKey,
       model: config.model,
       containerId: 'searchstax-feedback-container',
-      lightweight: false
+      lightweight: false,
+      analyticsSrc: 'https://static.searchstax.com/studio-js/v4/js/studio-analytics.js'
     })
   }, 300)
 })
