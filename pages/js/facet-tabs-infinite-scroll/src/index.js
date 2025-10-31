@@ -57,6 +57,43 @@ searchstax.addFacetsWidget("searchstax-facets-container", {
 
 });
 
+searchstax.addFacetsWidget("searchstax-facets-container2", {
+  facetingType: "or",
+  specificFacets: ["content_type"],
+  itemsPerPageDesktop: 99999,
+  itemsPerPageMobile: 99,
+  templates: {
+    mainTemplateDesktop: {
+      template: `
+      {{#hasResultsOrExternalPromotions}}
+        OR
+        <br />
+        <br />
+        <div class="searchstax-facets-container-desktop"></div>
+      {{/hasResultsOrExternalPromotions}}
+      `,
+      facetsContainerClass: `searchstax-facets-container-desktop`,
+      selectedFacetsContainerClass: `searchstax-facets-pills-selected`,
+    },
+    facetItemContainerTemplate: {
+      template: `
+      <div>
+        <div class="searchstax-facet-title-container2">
+            <div class="searchstax-facet-title" aria-label="Facet group: {{label}}" tabindex="0" role="button">
+            {{label}}
+            </div>
+            <div class="searchstax-facet-title-arrow active"></div>
+        </div>
+        <div class="searchstax-facet-values-container searchstax-facet-values-container2"></div>
+      </div>
+      `,
+      facetListTitleContainerClass: `searchstax-facet-title-container`,
+      facetListTitleContainerInner: `searchstax-facet-title`,
+      facetListContainerClass: `searchstax-facet-values-container`,
+    },
+  }
+});
+
 // 3. Search Feedback Widget
 searchstax.addSearchFeedbackWidget("search-feedback-container", {
     templates: {

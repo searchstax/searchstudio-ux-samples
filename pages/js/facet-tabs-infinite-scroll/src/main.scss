@@ -18,7 +18,10 @@ section {
 }
 .wrapper{
     padding: 20px 40px 0px;
+    display: flex;
     margin: 0 auto;
+    //add gap
+    gap: 20px;
 }
 
 .container {
@@ -48,55 +51,56 @@ section {
     opacity: 0.5;
 }
 
-.searchstax-facets-container-desktop {
-    margin-top: 60px;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    white-space: nowrap;
-}
 
-.searchstax-facet-container{
-    padding-bottom: 0 !important;
-}
+.searchstax-facet-values-container:not(.searchstax-facet-values-container2) {
+    .searchstax-facets-container-desktop {
+        margin-top: 60px;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        white-space: nowrap;
+    }
 
-.searchstax-facet-values-container {
+    .searchstax-facet-container{
+        padding-bottom: 0 !important;
+    }
     display: flex !important;
     gap: 20px;
-}
-
-.searchstax-facet-value-container {
-    cursor: pointer;
-    padding-bottom: 20px;
-    opacity: 0.7;
-    transition: opacity 0.3s ease, border-bottom 0.3s ease;
-    border-bottom: 4px solid transparent;
-
-    &:hover {
-        opacity: 1;
-        border-bottom: 4px solid #0057AD;
-
-    }
-
-    .searchstax-facet-value-label{
-        font-weight: 600 !important;
-    }
-    .searchstax-facet-value-count{
-        font-weight: 300 !important;
-    }
-
-    .searchstax-facet-value-label,
-    .searchstax-facet-value-count {
+    .searchstax-facet-value-container {
+        cursor: pointer;
+        padding-bottom: 20px;
         opacity: 0.7;
-        text-transform: capitalize !important;
+        transition: opacity 0.3s ease, border-bottom 0.3s ease;
+        border-bottom: 4px solid transparent;
+
         &:hover {
             opacity: 1;
+            border-bottom: 4px solid #0057AD;
+
         }
+
+        .searchstax-facet-value-label{
+            font-weight: 600 !important;
+        }
+        .searchstax-facet-value-count{
+            font-weight: 300 !important;
+        }
+
+        .searchstax-facet-value-label,
+        .searchstax-facet-value-count {
+            opacity: 0.7;
+            text-transform: capitalize !important;
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+    .searchstax-facet-input {
+        display: none;
     }
 }
 
-.searchstax-facet-input {
-    display: none;
-}
+// not searchstax-facet-values-container2
+
 
 .searchstax-search-results{
     display: grid;

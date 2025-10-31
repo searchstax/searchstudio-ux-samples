@@ -353,13 +353,13 @@ searchstax.addSearchResultsWidget("searchstax-results-container", {
           </div>
 
           {{#paths}}
-              <p class="searchstax-search-result-common">
+              <p tabindex="0" class="searchstax-search-result-common">
                   {{{paths}}}
               </p>
           {{/paths}}
 
           {{#description}}
-              <p class="searchstax-search-result-description searchstax-search-result-common">
+              <p tabindex="0" class="searchstax-search-result-description searchstax-search-result-common">
                   {{{description}}}
               </p>
           {{/description}}
@@ -371,7 +371,7 @@ searchstax.addSearchResultsWidget("searchstax-results-container", {
                   </div>
               {{/isImage}}
               {{^isImage}}
-                  <p class="searchstax-search-result-common">
+                  <p tabindex="0" class="searchstax-search-result-common">
                   {{{value}}}
                   </p>
               {{/isImage}}
@@ -416,11 +416,11 @@ searchstax.addPaginationWidget("searchstax-pagination-container", {
         {{#results.length}}
         <div class="searchstax-pagination-container" data-test-id="searchstax-pagination-container">
           <div class="searchstax-pagination-content">
-            <a role="link" class="searchstax-pagination-previous {{#isFirstPage}}disabled{{/isFirstPage}}" {{#isFirstPage}} disabled="disabled" {{/isFirstPage}}  id="searchstax-pagination-previous" data-test-id="searchstax-pagination-previous" {{^isFirstPage}} tabindex="0" {{/isFirstPage}} aria-label="Previous Page">< Previous</a>
+            <a role="link" class="searchstax-pagination-previous {{#isFirstPage}}disabled{{/isFirstPage}}" {{#isFirstPage}} disabled="disabled" {{/isFirstPage}} aria-disabled="{{#isFirstPage}}true{{/isFirstPage}}{{^isFirstPage}}false{{/isFirstPage}}"  id="searchstax-pagination-previous" data-test-id="searchstax-pagination-previous" {{^isFirstPage}} tabindex="0" {{/isFirstPage}} aria-label="Previous Page">< Previous</a>
             <div class="searchstax-pagination-details" data-test-id="searchstax-pagination-details">
               {{startResultIndex}} - {{endResultIndex}} of {{totalResults}}
             </div>
-              <a role="link" class="searchstax-pagination-next {{#isLastPage}}disabled{{/isLastPage}}" {{#isLastPage}}disabled="disabled"{{/isLastPage}} data-test-id="searchstax-pagination-next" id="searchstax-pagination-next" {{^isLastPage}} tabindex="0" {{/isLastPage}} aria-label="Next Page">Next ></a>
+              <a role="link" class="searchstax-pagination-next {{#isLastPage}}disabled{{/isLastPage}}" {{#isLastPage}}disabled="disabled"{{/isLastPage}} aria-disabled="{{#isLastPage}}true{{/isLastPage}}{{^isLastPage}}false{{/isLastPage}}" data-test-id="searchstax-pagination-next" id="searchstax-pagination-next" {{^isLastPage}} tabindex="0" {{/isLastPage}} aria-label="Next Page">Next ></a>
           </div>
         </div>
       {{/results.length}}
