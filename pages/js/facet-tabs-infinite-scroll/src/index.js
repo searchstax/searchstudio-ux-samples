@@ -45,6 +45,7 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
 // 2. Facets Widget
 searchstax.addFacetsWidget("searchstax-facets-container", {
     facetingType: "tabs", // and, or,
+    specificFacets: ["content_type"],
     itemsPerPageDesktop: 99999,
     itemsPerPageMobile: 99,
     templates: {
@@ -59,7 +60,7 @@ searchstax.addFacetsWidget("searchstax-facets-container", {
 
 searchstax.addFacetsWidget("searchstax-facets-container2", {
   facetingType: "or",
-  specificFacets: ["content_type"],
+  specificFacets: ["meta_keywords"],
   itemsPerPageDesktop: 99999,
   itemsPerPageMobile: 99,
   templates: {
@@ -151,8 +152,7 @@ searchstax.addPaginationWidget("searchstax-pagination-container", {
 
   //After we get the facet values, process them to add a "All" value
   searchstax.dataLayer.$facetsTemplateData.subscribe((facets) => {
-    // console.log(`Facets: ${facets}`);
-    if(facets) {
+    if(facets && facets.facets && facets.facets.length > 0 && facets.facets[0].name === 'content_type') {
       let data = facets.facets[0].values;
       let sum = data.reduce((acc, item) => acc + item.count, 0);
       // form a similar object as the data with sum as the count and value as 'All'
