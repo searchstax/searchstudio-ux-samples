@@ -45,7 +45,7 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
 // 2. Facets Widget
 searchstax.addFacetsWidget("searchstax-facets-container", {
     facetingType: "tabs", // and, or,
-    specificFacets: ["content_type"],
+    specificFacets: ["content_type_ss"],
     itemsPerPageDesktop: 99999,
     itemsPerPageMobile: 99,
     templates: {
@@ -60,7 +60,7 @@ searchstax.addFacetsWidget("searchstax-facets-container", {
 
 searchstax.addFacetsWidget("searchstax-facets-container2", {
   facetingType: "or",
-  specificFacets: ["meta_keywords"],
+  specificFacets: ["title_keywords_ss", "partner_specialties_ss", "partner_types_ss"],
   itemsPerPageDesktop: 99999,
   itemsPerPageMobile: 99,
   templates: {
@@ -152,14 +152,14 @@ searchstax.addPaginationWidget("searchstax-pagination-container", {
 
   //After we get the facet values, process them to add a "All" value
   searchstax.dataLayer.$facetsTemplateData.subscribe((facets) => {
-    if(facets && facets.facets && facets.facets.length > 0 && facets.facets[0].name === 'content_type') {
+    if(facets && facets.facets && facets.facets.length > 0 && facets.facets[0].name === 'content_type_ss') {
       let data = facets.facets[0].values;
       let sum = data.reduce((acc, item) => acc + item.count, 0);
       // form a similar object as the data with sum as the count and value as 'All'
       let allObj = {
           count: sum,
           value: 'All',
-          parentName: 'content_type',
+          parentName: 'content_type_ss',
           type: 'checkbox',
       };
       //push the all object to the front of data
