@@ -12,6 +12,11 @@
     display: none;
 }
 
+//highlight .searchstax-facet-values-container when child input is checked
+.searchstax-facet-value-container:has(input:checked)  {
+    border-bottom: 4px solid #0057AD !important;
+    opacity: 1;
+}
 
 section {
     width: 70%;
