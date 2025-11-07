@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@searchstax-inc/searchstudio-ux-js": "npm:@searchstax-inc/searchstudio-ux-js-staging@^4.1.43",
-    "dompurify": "^3.2.5"
+    "dompurify": "^3.2.5",
+    "patch-package": "^8.0.1"
   }
 }
