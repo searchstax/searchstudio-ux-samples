@@ -1,24 +1,33 @@
 // Import SearchStax UX JS
-import { Searchstax } from '@searchstax-inc/searchstudio-ux-js';
+import { Searchstax } from "@searchstax-inc/searchstudio-ux-js";
 
 // Config required with Endpoints and API Keys
-import { initConfig } from './config';
+import { initConfig } from "./config";
 
 // Widgets Import
-import { searchInput } from './templates/searchInput';
-import { facetsTemplate, facetItemTemplate, facetItemContainerTemplate } from './templates/facets';
-import { searchFeedback } from './templates/searchFeedback';
-import { searchResultsTemplate, noSearchResultsTemplate } from './templates/results'
+import { searchInput } from "./templates/searchInput";
+import {
+  facetsTemplate,
+  facetItemTemplate,
+  facetItemContainerTemplate,
+} from "./templates/facets";
+import { searchFeedback } from "./templates/searchFeedback";
+import {
+  searchResultsTemplate,
+  noSearchResultsTemplate,
+} from "./templates/results";
 // Styling Imports
-import '@searchstax-inc/searchstudio-ux-js/dist/styles/mainTheme.css'
-import './main.scss'
+import "@searchstax-inc/searchstudio-ux-js/dist/styles/mainTheme.css";
+import "./main.scss";
 
 // Initialize SearchStax with config
 const searchstax = new Searchstax();
-
+let firstSearch = true;
+let allTabs = "";
 function makeId(length) {
-  let result = '';
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let result = "";
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
   const charactersLength = characters.length;
   for (let i = 0; i < length; i++) {
     result += characters.charAt(Math.floor(Math.random() * charactersLength));
@@ -26,41 +35,70 @@ function makeId(length) {
   return result;
 }
 
-searchstax.initialize( {...initConfig.acceleratorSample, sessionId: makeId(25)} );
+function beforeSearch(props) {
+  const propsCopy = { ...props };
+  //When "All" Facet Value is clicked, we can just remove the facets as everything needs to be shown
+  if (!firstSearch) {
+    let newTabs = "";
+    for (const facet of propsCopy.facets) {
+      if (facet.type === "tabs") {
+        newTabs += facet.value;
+      }
+    }
+    if (allTabs !== newTabs) {
+      allTabs = newTabs;
+      propsCopy.facets = propsCopy.facets.filter(
+        (facet) => facet.value === allTabs
+      );
+    }
+    if (propsCopy.facets.length > 0 && propsCopy.facets[0].value == "All") {
+      propsCopy.facets = [];
+    }
+  }
+  firstSearch = false;
+  return propsCopy;
+}
 
+searchstax.initialize({
+  ...initConfig.acceleratorSample,
+  sessionId: makeId(25),
+  hooks: { beforeSearch },
+});
 
 // Add Widgets
 
 // 1. Input Widget
 searchstax.addSearchInputWidget("searchstax-input-container", {
-
-    templates: {
+  templates: {
     mainTemplate: {
-        template: searchInput,
-        searchInputId: "searchstax-search-input"
+      template: searchInput,
+      searchInputId: "searchstax-search-input",
     },
-    },
-  });
+  },
+});
 
 // 2. Facets Widget
 searchstax.addFacetsWidget("searchstax-facets-container", {
-    facetingType: "tabs", // and, or,
-    specificFacets: ["content_type_ss"],
-    itemsPerPageDesktop: 99999,
-    itemsPerPageMobile: 99,
-    templates: {
-        mainTemplateDesktop: {
-            template: facetsTemplate,
-        },
-        facetItemTemplate: facetItemTemplate,
-        facetItemContainerTemplate: facetItemContainerTemplate
+  facetingType: "tabs", // and, or,
+  specificFacets: ["content_type_ss"],
+  itemsPerPageDesktop: 99999,
+  itemsPerPageMobile: 99,
+  templates: {
+    mainTemplateDesktop: {
+      template: facetsTemplate,
     },
-
+    facetItemTemplate: facetItemTemplate,
+    facetItemContainerTemplate: facetItemContainerTemplate,
+  },
 });
 
 searchstax.addFacetsWidget("searchstax-facets-container2", {
   facetingType: "or",
-  specificFacets: ["title_keywords_ss", "partner_specialties_ss", "partner_types_ss"],
+  specificFacets: [
+    "title_keywords_ss",
+    "partner_specialties_ss",
+    "partner_types_ss",
+  ],
   itemsPerPageDesktop: 99999,
   itemsPerPageMobile: 99,
   templates: {
@@ -92,24 +130,24 @@ searchstax.addFacetsWidget("searchstax-facets-container2", {
       facetListTitleContainerInner: `searchstax-facet-title`,
       facetListContainerClass: `searchstax-facet-values-container`,
     },
-  }
+  },
 });
 
 // 3. Search Feedback Widget
 searchstax.addSearchFeedbackWidget("search-feedback-container", {
-    templates: {
-      main: {
-         template: searchFeedback,
-          originalQueryClass: `searchstax-feedback-original-query`
-      }
+  templates: {
+    main: {
+      template: searchFeedback,
+      originalQueryClass: `searchstax-feedback-original-query`,
     },
-  });
+  },
+});
 
-  // Search Results Widget
-  searchstax.addSearchResultsWidget("searchstax-results-container", {
-    renderMethod: "infiniteScroll",
-    templates: {
-      mainTemplate: {
+// Search Results Widget
+searchstax.addSearchResultsWidget("searchstax-results-container", {
+  renderMethod: "infiniteScroll",
+  templates: {
+    mainTemplate: {
       template: `
             <section aria-label="search results container" tabindex="0">
             <div class="searchstax-search-results-container" id="searchstax-search-results-container">
@@ -117,24 +155,23 @@ searchstax.addSearchFeedbackWidget("search-feedback-container", {
             </div>
             </section>
             `,
-        searchResultsContainerId: "searchstax-search-results",
-      },
-      searchResultTemplate: {
-        template: searchResultsTemplate,
-        searchResultUniqueIdAttribute: "data-searchstax-unique-result-id"
-      },
-      noSearchResultTemplate: {
-        template: noSearchResultsTemplate
-      }
+      searchResultsContainerId: "searchstax-search-results",
     },
-
-  });
+    searchResultTemplate: {
+      template: searchResultsTemplate,
+      searchResultUniqueIdAttribute: "data-searchstax-unique-result-id",
+    },
+    noSearchResultTemplate: {
+      template: noSearchResultsTemplate,
+    },
+  },
+});
 
 // 4. Pagination Widget
 searchstax.addPaginationWidget("searchstax-pagination-container", {
-    templates: {
-        infiniteScrollTemplate: {
-            template: `
+  templates: {
+    infiniteScrollTemplate: {
+      template: `
                 {{#results.length}}
                     <div class="searchstax-pagination-container">
                       <div class="searchstax-pagination-content">
@@ -145,29 +182,33 @@ searchstax.addPaginationWidget("searchstax-pagination-container", {
                 {{/results.length}}
 
                 `,
-            loadMoreButtonClass: "searchstax-pagination-load-more"
-        }
+      loadMoreButtonClass: "searchstax-pagination-load-more",
     },
-  });
+  },
+});
 
-  //After we get the facet values, process them to add a "All" value
-  searchstax.dataLayer.$facetsTemplateData.subscribe((facets) => {
-    if(facets && facets.facets && facets.facets.length > 0 && facets.facets[0].name === 'content_type_ss') {
-      let data = facets.facets[0].values;
-      let sum = data.reduce((acc, item) => acc + item.count, 0);
-      // form a similar object as the data with sum as the count and value as 'All'
-      let allObj = {
-          count: sum,
-          value: 'All',
-          parentName: 'content_type_ss',
-          type: 'checkbox',
-      };
-      //push the all object to the front of data
-      data.unshift(allObj);
+//After we get the facet values, process them to add a "All" value
+searchstax.dataLayer.$facetsTemplateData.subscribe((facets) => {
+  if (
+    facets &&
+    facets.facets &&
+    facets.facets.length > 0 &&
+    facets.facets[0].name === "content_type_ss"
+  ) {
+    let data = facets.facets[0].values;
+    let sum = data.reduce((acc, item) => acc + item.count, 0);
+    // form a similar object as the data with sum as the count and value as 'All'
+    let allObj = {
+      count: sum,
+      value: "All",
+      parentName: "content_type_ss",
+      type: "checkbox",
+    };
+    //push the all object to the front of data
+    data.unshift(allObj);
 
-      // replace facets with the new data
-      facets.facets[0].values = data;
-    }
-    // console.log(data);
-  });
-
+    // replace facets with the new data
+    facets.facets[0].values = data;
+  }
+  // console.log(data);
+});
