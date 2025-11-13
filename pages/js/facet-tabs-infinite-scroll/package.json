@@ -1,8 +1,7 @@
 {
   "name": "facets-demo",
-  "version": "4.1.39",
+  "version": "4.1.46",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "dev": "parcel src/index.html"
   },
@@ -16,6 +15,6 @@
     "parcel": "^2.9.3"
   },
   "dependencies": {
-    "@searchstax-inc/searchstudio-ux-js": "npm:@searchstax-inc/searchstudio-ux-js@^4.1.39"
+    "@searchstax-inc/searchstudio-ux-js": "npm:@searchstax-inc/searchstudio-ux-js@^4.1.46"
   }
 }
