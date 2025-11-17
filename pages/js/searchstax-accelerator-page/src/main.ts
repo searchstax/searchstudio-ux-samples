@@ -418,9 +418,9 @@ searchstax.addPaginationWidget("searchstax-pagination-container", {
           <div class="searchstax-pagination-content">
             <a role="link" class="searchstax-pagination-previous {{#isFirstPage}}disabled{{/isFirstPage}}" aria-disabled="{{#isFirstPage}}true{{/isFirstPage}}{{^isFirstPage}}false{{/isFirstPage}}"  id="searchstax-pagination-previous" data-test-id="searchstax-pagination-previous" tabindex="0" aria-label="Previous Page">< Previous</a>
             <div class="searchstax-pagination-details" data-test-id="searchstax-pagination-details">
-              {{startResultIndex}} - {{endResultIndex}} of {{totalResults}}
+              {{startResultIndex}} - {{endResultIndex}} of {{totalResults}} / Page {{currentPage}} of {{totalPages}}
             </div>
-              <a role="link" class="searchstax-pagination-next {{#isLastPage}}disabled{{/isLastPage}}" aria-disabled="{{#isLastPage}}true{{/isLastPage}}{{^isLastPage}}false{{/isLastPage}}" data-test-id="searchstax-pagination-next" id="searchstax-pagination-next" tabindex="0" aria-label="Next Page">Next ></a>
+            <a role="link" class="searchstax-pagination-next {{#isLastPage}}disabled{{/isLastPage}}" aria-disabled="{{#isLastPage}}true{{/isLastPage}}{{^isLastPage}}false{{/isLastPage}}" data-test-id="searchstax-pagination-next" id="searchstax-pagination-next" tabindex="0" aria-label="Next Page">Next ></a>
           </div>
         </div>
       {{/results.length}}

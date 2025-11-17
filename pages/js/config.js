@@ -13,7 +13,8 @@ const initConfig = {
       "https://staging.searchstax.co/api/v1/4588/related-search/",
     relatedSearchesAPIKey: "e514efc3776ab13bda2ce5984085010073078009",
     analyticsBaseUrl: "https://analytics-us-west-staging.searchstax.co",
-    analyticsSrc: "https://static-staging.searchstax.co/studio-js/v4/js/studio-analytics.js",
+    analyticsSrc:
+      "https://static-staging.searchstax.co/studio-js/v4/js/studio-analytics.js",
     questionURL:
       "https://search-ai-us-west-staging.searchstax.co/api/v1/4588/answer/",
     appId: "4588",
@@ -39,6 +40,24 @@ const initConfig = {
       "https://staging.searchstax.co/api/v1/3182/related-search/",
     relatedSearchesAPIKey: "055651fc679c8492ab98badd08ee6c6f2d8e25ce",
     analyticsBaseUrl: "https://analytics-us-west-staging.searchstax.c",
+  },
+  searchStandaloneSearchSample: {
+    language: "en",
+    model: "Main Profile",
+    searchURL: "",
+    suggesterURL: "",
+    trackApiKey: "ynDxQycRAG5NKtztf9LURH15uPEWA8BN7XV24bybe1k",
+    searchAuth: "",
+    authType: "token",
+    analyticsBaseUrl: "https://analytics-us-west-staging.searchstax.co",
+    analyticsSrc:
+      "https://static-staging.searchstax.co/studio-js/v4/js/studio-analytics.js",
+    questionURL:
+      "https://search-ai-us-west-staging.searchstax.co/api/v1/4588/answer/",
+    router: { enabled: false },
+    relatedSearchesURL:
+      "https://staging.searchstax.co/api/v1/4588/related-search/",
+    relatedSearchesAPIKey: "e514efc3776ab13bda2ce5984085010073078009",
   },
 };
 
@@ -137,7 +156,7 @@ const renderConfig = {
       locationDistanceEnabled: true,
       filterValues: ["any", "1000"],
       filterUnit: "miles",
-      locationFilterDefaultValue: "any"
+      locationFilterDefaultValue: "any",
     },
   },
 };

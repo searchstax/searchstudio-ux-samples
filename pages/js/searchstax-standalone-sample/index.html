@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Searchstax Seach Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link
+      href="https://static-staging.searchstax.co/studio-js/v4/css/feedbackWidget.css"
+      rel="stylesheet"
+    />
+    <script type="module" src="/src/main.ts"></script>
+
+    <style lang="scss">
+      @import "main.scss";
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1 style="display: none" class="searchstax-main-page-title">
+        Searchstax Search Page
+      </h1>
+      <div class="container">
+        <div id="searchstax-feedback-container"></div>
+        <div class="searchstax-page-layout-container">
+          <div id="searchstax-input-container">
+            <input id="custom-query-input"></input>
+            <input id="custom-page-input" type="number" min="1" value="1"></input>
+            <button id="custom-search-button">Search</button>
+          </div>
+          <div id="searchstax-answer-container"></div>
+          <div class="search-details-container">
+            <div id="search-feedback-container"></div>
+            <div id="search-sorting-container"></div>
+          </div>
+
+          <div class="searchstax-page-layout-facet-result-container">
+            <div class="searchstax-page-layout-facet-container">
+              <div id="searchstax-facets-container"></div>
+            </div>
+
+            <div class="searchstax-page-layout-result-container">
+              <div id="searchstax-external-promotions-layout-container"></div>
+              <div id="searchstax-results-container"></div>
+              <div id="searchstax-pagination-container"></div>
+              <div id="searchstax-related-searches-container"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
