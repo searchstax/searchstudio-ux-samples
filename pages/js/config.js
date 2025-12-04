@@ -41,6 +41,23 @@ const initConfig = {
     analyticsBaseUrl: "https://analytics-us.searchstax.com",
     model: "Default",
   },
+  searchStandaloneSearchSample: {
+    language: "en",
+    searchURL:
+      "",
+    suggesterURL:
+      "",
+    searchAuth: "",
+    trackApiKey: "DPAOKNB9c5chZZDwN1Il9dLUCLMGF1ggehy0dWewZwk",
+    authType: "token",
+    relatedSearchesURL:
+      "https://app.searchstax.com/api/v1/1442/related-search/",
+    relatedSearchesAPIKey: "fac98ad405cc50e0c0693331e8d2119de592f0e3",
+    analyticsBaseUrl: "https://analytics-us.searchstax.com",
+    questionURL: "https://search-ai-us.searchstax.com/api/v1/1442/answer/",
+    model: "Default",
+    appId: "1442",
+  },
 };
 
 const renderConfig = {
