@@ -7,11 +7,11 @@ This repository contains the code examples for the Site Search UX libraries.
 
 # Installation
 
-|            |                                                                                     |  
+|            |                                                                                     |
 |------------|-------------------------------------------------------------------------------------|
 | JavaScript | ![npm version](https://badge.fury.io/js/%40searchstax-inc%2Fsearchstudio-ux-js.svg) |
-| VueJS      | ![npm version](https://badge.fury.io/js/@searchstax-inc%2Fsearchstudio-ux-vue.svg) | 
-| React      | ![npm version](https://badge.fury.io/js/@searchstax-inc%2Fsearchstudio-ux-react.svg) | 
+| VueJS      | ![npm version](https://badge.fury.io/js/@searchstax-inc%2Fsearchstudio-ux-vue.svg) |
+| React      | ![npm version](https://badge.fury.io/js/@searchstax-inc%2Fsearchstudio-ux-react.svg) |
 | Angular    | ![npm version](https://badge.fury.io/js/@searchstax-inc%2Fsearchstudio-ux-angular.svg) |
 
 
@@ -43,7 +43,23 @@ The "widgets" directory contains implementations for individual widgets that can
 | ---------------- | ---------------------------------------------- | ----------------------------------------------- | ------------------------------------------------- | -------------------------------------------------- |
 | Accelerator Page | [Link](./pages/js/searchstax-accelerator-page) | [Link](./pages/vue/searchstax-accelerator-page) | [Link](.pages/react/searchstax-accelerator-react) | [Link](.pages/angular/searchstax-accelerator-page) |
 | Job Search App   | [Link](./pages/js/job-search-sample)           | [Link](./pages/vue/jobsearch-vue-app)           |                                                   |                                                    |
+| Standalone Samples App   | [Link](./pages/js/searchstax-standalone-sample)           |            |                                                   |                                                    |
 
+
+## Standalone Samples
+
+To run locally go to [Link](./pages/js/searchstax-standalone-sample) and run these commands: "npm install" "npm run dev".
+
+[index.html](./pages/js/searchstax-standalone-sample/index.html) has the following block of custom implementation of search input that does not fire search just imitates custom implementations:
+```
+<input id="custom-query-input"></input>
+            <input id="custom-page-input" type="number" min="1" value="1"></input>
+            <button id="custom-search-button">Search</button>
+```
+
+in [main.ts](./pages/js/searchstax-standalone-sample/src/main.ts)  there are window.onload function which adds custom implementation for these elements and triggerReload function which connects those inputs to trigger reload on answers wigget and related searches widget.
+
+Sample config for this app is stored in [this config](./pages/js/config.js) under searchStandaloneSearchSample
 
 ---
 ## Happy coding!
