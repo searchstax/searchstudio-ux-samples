@@ -121,9 +121,6 @@ h1 {
   .searchstax-related-search-item {
     color: #111 !important;
     font-weight: 500;
-    .searchstax-related-search:hover {
-      color: #EB3500 !important;
-    }
   }
 }
 .searchstax-facets-pill-filter-by {

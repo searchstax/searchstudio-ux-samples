@@ -101,9 +101,6 @@ h3 {
   display: block;
   font-weight: 500;
 }
-.searchstax-related-search-item:hover {
-  color: #EB3500 !important;
-}
 
 .searchstax-facets-pill-filter-by {
   height: auto !important;
