@@ -113,8 +113,10 @@ h3 {
   }
 
   &-related-search {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    // grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    padding-left: 5px;
     &-item {
       display: block;
       color: #111;

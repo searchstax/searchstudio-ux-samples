@@ -92,9 +92,10 @@ h3 {
   display: flex;
 }
 .searchstax-related-search {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  margin: 0px 0 20px 10px;
+  display: flex;
+  /* grid-template-columns: repeat(3, 1fr); */
+  gap: 5px;
+  margin: 0px 0 20px 5px;
 }
 .searchstax-related-search-item {
   color: #111 !important;

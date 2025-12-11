@@ -113,10 +113,11 @@ h1 {
 }
 
 .searchstax-related-search {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
-  margin: 10px 0 20px 0;
+  display: flex;
+  /* grid-template-columns: repeat(3, 1fr); */
+  gap: 5px;
+  /* grid-gap: 20px; */
+  margin: 10px 0 20px 5px;
 
   .searchstax-related-search-item {
     color: #111 !important;

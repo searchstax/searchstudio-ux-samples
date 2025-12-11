@@ -115,10 +115,10 @@ h1 {
 }
 
 .searchstax-related-search {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 0px;
-  margin: 0px 0 20px 10px;
+  display: flex;
+  // grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  margin: 0px 0 20px 5px;
 
   .searchstax-related-search-item {
     display: block;
