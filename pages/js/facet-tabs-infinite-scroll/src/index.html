@@ -1,57 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="index.js" type="module"></script>
     <title>Facet Values as Tabs Example</title>
 
     <script type="text/javascript">
       var _msq = _msq || []; //declare object
-      var analyticsBaseUrl = 'https://analytics-us.searchstax.com';
+      var analyticsBaseUrl = "https://analytics-us.searchstax.com";
       (function () {
-        var ms = document.createElement('script');
-        ms.type = 'text/javascript';
-        ms.src = 'https://static.searchstax.com/studio-js/v3/js/studio-analytics.js';
-        var s = document.getElementsByTagName('script')[0];
+        var ms = document.createElement("script");
+        ms.type = "text/javascript";
+        ms.src =
+          "https://static.searchstax.com/studio-js/v3/js/studio-analytics.js";
+        var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(ms, s);
       })();
     </script>
-
-</head>
-<body>
+  </head>
+  <body>
     <main>
-        <h1 style="display:none" class="searchstax-main-page-title">Searchstax Search Page</h1>
+      <h1 style="display: none" class="searchstax-main-page-title">
+        Searchstax Search Page
+      </h1>
 
-    <!-- SEARCHSTAX WIDGETS LAYOUT -->
+      <!-- SEARCHSTAX WIDGETS LAYOUT -->
 
-     <div class="container">
+      <div class="container">
         <section class="wrapper">
-            <div class="searchstax-page-layout-container">
-                <div id="searchstax-input-container"></div>
-                <div class="searchstax-page-layout-result-container">
-                <div class="feedback-container">
-                    <div id="search-feedback-container"></div>
-                    <div id="search-sorting-container"></div>
-                </div>
-                <div id="searchstax-facets-container"></div>
-                    </div>
+          <div class="searchstax-page-layout-container">
+            <div id="searchstax-input-container"></div>
+            <div class="searchstax-page-layout-result-container">
+              <div class="feedback-container">
+                <div id="search-feedback-container"></div>
+                <div id="search-sorting-container"></div>
+              </div>
+              <div id="searchstax-facets-container"></div>
             </div>
+          </div>
         </section>
-    </div>
-    <div class="wrapper">
+      </div>
+      <div class="wrapper">
         <div>
-            <div id="searchstax-facets-container2"></div>
+          <div id="searchstax-facets-container2"></div>
         </div>
         <div>
-            <div id="searchstax-external-promotions-layout-container"></div>
-            <div id="searchstax-results-container"></div>
-            <div id="searchstax-pagination-container"></div>
-            <div id="searchstax-related-searches-container"></div>
+          <div id="searchstax-external-promotions-layout-container"></div>
+          <div id="searchstax-results-container"></div>
+          <div id="searchstax-related-searches-container"></div>
+          <div id="searchstax-pagination-container"></div>
         </div>
-    </div>
+      </div>
 
-    <!-- END OF SEARCHSTAX WIDGETS LAYOUT -->
-</main>
-</body>
+      <!-- END OF SEARCHSTAX WIDGETS LAYOUT -->
+    </main>
+  </body>
 </html>
