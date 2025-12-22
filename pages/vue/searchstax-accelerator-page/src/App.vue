@@ -75,7 +75,7 @@ onMounted(() => {
       model: config.model,
       containerId: 'searchstax-feedback-container',
       lightweight: false,
-      analyticsSrc: 'https://static-staging.searchstax.co/studio-js/v4/js/studio-analytics.js'
+      analyticsSrc: 'https://static-staging.searchstax.co/studio-js/v4.1.52/js/studio-analytics.js'
     })
   }, 300)
 })
@@ -98,9 +98,7 @@ function makeId(length) {
   return result
 }
 
-function initialized(searchstax) {
-  console.log('searchstax', searchstax)
-}
+function initialized() {}
 
 const sessionId = makeId(25)
 </script>

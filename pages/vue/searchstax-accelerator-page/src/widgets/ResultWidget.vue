@@ -91,6 +91,12 @@ export default {
     return {
       renderConfig
     }
+  },
+  methods: {
+    afterLinkClick(result) {
+      const copy = { ...result }
+      return copy
+    }
   }
 }
 </script>

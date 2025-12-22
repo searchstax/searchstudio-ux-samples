@@ -178,11 +178,10 @@ searchstax.addSearchLocationWidget("searchstax-location-container", {
   locationValuesOverride: renderConfig.locationWidget.locationValuesOverride,
   hooks: {
     locationDecode: renderConfig.locationWidget.locationDecode,
-    locationDecodeCoordinatesToAddress: renderConfig.locationWidget.locationDecodeCoordinatesToAddress,
+    locationDecodeCoordinatesToAddress:
+      renderConfig.locationWidget.locationDecodeCoordinatesToAddress,
   },
 });
-
-console.log(renderConfig.locationWidget)
 
 searchstax.addFacetsWidget("searchstax-facets-container", {
   facetingType: renderConfig.facetsWidget.facetingType,
