@@ -18,7 +18,7 @@ export function searchExternalPromotionsTemplate(
         externalPromotionsData.externalPromotions.map((externalPromotion) => (
           <div
             className="searchstax-external-promotion searchstax-search-result"
-            key={externalPromotion.id}
+            key={externalPromotion.id || externalPromotion.url}
           >
             <div className="icon-elevated"></div>
             {externalPromotion.url && (
