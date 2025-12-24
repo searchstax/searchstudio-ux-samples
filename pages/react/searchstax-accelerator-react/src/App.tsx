@@ -76,7 +76,7 @@ function App() {
         model: config.model,
         containerId: "searchstax-feedback-container",
         analyticsSrc:
-          "https://static-staging.searchstax.co/studio-js/v4.1.52/js/studio-analytics.js",
+          "https://static-staging.searchstax.co/studio-js/v4.1.53/js/studio-analytics.js",
       });
     }
   }

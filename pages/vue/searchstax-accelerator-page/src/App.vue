@@ -75,7 +75,7 @@ onMounted(() => {
       model: config.model,
       containerId: 'searchstax-feedback-container',
       lightweight: false,
-      analyticsSrc: 'https://static-staging.searchstax.co/studio-js/v4.1.52/js/studio-analytics.js'
+      analyticsSrc: 'https://static-staging.searchstax.co/studio-js/v4.1.53/js/studio-analytics.js'
     })
   }, 300)
 })
