@@ -1,0 +1,195 @@
+name: Create Release Branch
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch_prefix:
+        description: 'Branch prefix (default: RC)'
+        required: false
+        default: 'RC'
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Setup Git
+      run: |
+        git config --global user.name "github-actions[create-release]"
+        git config --global user.email "github-actions[create-release]@create.release.github.com"
+
+    - name: Prepare branches and create release branch
+      id: create_branch
+      run: |
+        # Fetch latest changes
+        git fetch origin master
+        git fetch origin staging
+
+        # Switch to master and pull latest
+        git checkout master
+        git pull origin master
+
+        # Switch to staging and pull latest
+        git checkout staging
+        git pull origin staging
+
+        # Create new release branch with date
+        BRANCH_NAME="${{ inputs.branch_prefix }}-$(date +'%Y-%m-%d')"
+        echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_OUTPUT
+        git checkout -b "$BRANCH_NAME"
+
+    - name: Update feedback URLs from staging to production
+      run: |
+        # Files containing feedback URLs
+        FILES=(
+          "pages/angular/searchstax-accelerator-page/src/app/app.component.ts"
+          "pages/js/searchstax-accelerator-page/index.html"
+          "pages/js/searchstax-accelerator-page/src/main.ts"
+          "pages/react/next-js-sample/src/app/page.tsx"
+          "pages/react/searchstax-accelerator-react/src/App.tsx"
+          "pages/vue/searchstax-accelerator-page/src/App.vue"
+          "pages/angular/searchstax-accelerator-page/src/index.html"
+          "pages/react/next-js-sample/src/app/layout.tsx"
+          "pages/react/searchstax-accelerator-react/index.html"
+          "pages/vue/searchstax-accelerator-page/index.html"
+        )
+
+        for file in "${FILES[@]}"; do
+          if [ -f "$file" ]; then
+            sed -i 's/static-staging\.searchstax\.co/static.searchstax.com/g' "$file"
+            echo "Updated feedback URLs in $file"
+          else
+            echo "Warning: File $file not found"
+          fi
+        done
+
+    - name: Remove staging from package.json files
+      run: |
+        # Package.json files
+        PACKAGE_FILES=(
+          "pages/angular/searchstax-accelerator-page/package.json"
+          "pages/js/searchstax-accelerator-page/package.json"
+          "pages/js/job-search-sample/package.json"
+          "pages/js/facet-tabs-infinite-scroll/package.json"
+          "pages/react/searchstax-accelerator-react/package.json"
+          "pages/react/next-js-sample/package.json"
+          "pages/react/next-js-pages-sample/package.json"
+          "pages/vue/searchstax-accelerator-page/package.json"
+          "pages/vue/jobsearch-vue-app/package.json"
+        )
+
+        for file in "${PACKAGE_FILES[@]}"; do
+          if [ -f "$file" ]; then
+            sed -i 's/-staging//g' "$file"
+            echo "Removed staging from $file"
+          else
+            echo "Warning: File $file not found"
+          fi
+        done
+
+    - name: Update config files to production
+      run: |
+        # Update Angular config
+        if [ -f "prodConfigAngular.js" ] && [ -f "pages/angular/config.js" ]; then
+          cp prodConfigAngular.js pages/angular/config.js
+          echo "Updated Angular config to production"
+        fi
+
+        # Update React config
+        if [ -f "prodConfigReact.js" ] && [ -f "pages/react/config.js" ]; then
+          cp prodConfigReact.js pages/react/config.js
+          echo "Updated React config to production"
+        fi
+
+        # Update JS config
+        if [ -f "prodConfigJS.js" ] && [ -f "pages/js/config.js" ]; then
+          cp prodConfigJS.js pages/js/config.js
+          echo "Updated JS config to production"
+        fi
+
+        # Update Vue config
+        if [ -f "prodConfigVue.js" ] && [ -f "pages/vue/config.js" ]; then
+          cp prodConfigVue.js pages/vue/config.js
+          echo "Updated Vue config to production"
+        fi
+
+    - name: Stage and commit changes
+      run: |
+        # Add all modified files
+        git add pages/angular/searchstax-accelerator-page/package.json || true
+        git add pages/js/searchstax-accelerator-page/package.json || true
+        git add pages/js/job-search-sample/package.json || true
+        git add pages/js/facet-tabs-infinite-scroll/package.json || true
+        git add pages/react/searchstax-accelerator-react/package.json || true
+        git add pages/react/next-js-sample/package.json || true
+        git add pages/react/next-js-pages-sample/package.json || true
+        git add pages/vue/searchstax-accelerator-page/package.json || true
+        git add pages/vue/jobsearch-vue-app/package.json || true
+        git add pages/js/config.js || true
+        git add pages/angular/config.js || true
+        git add pages/react/config.js || true
+        git add pages/vue/config.js || true
+        git add pages/angular/searchstax-accelerator-page/src/app/app.component.ts || true
+        git add pages/js/searchstax-accelerator-page/index.html || true
+        git add pages/js/searchstax-accelerator-page/src/main.ts || true
+        git add pages/react/next-js-sample/src/app/page.tsx || true
+        git add pages/react/searchstax-accelerator-react/src/App.tsx || true
+        git add pages/vue/searchstax-accelerator-page/src/App.vue || true
+        git add pages/angular/searchstax-accelerator-page/src/index.html || true
+        git add pages/react/next-js-sample/src/app/layout.tsx || true
+        git add pages/react/searchstax-accelerator-react/index.html || true
+        git add pages/vue/searchstax-accelerator-page/index.html || true
+
+        # Check if there are changes to commit
+        if git diff --cached --quiet; then
+          echo "No changes to commit"
+          exit 1
+        fi
+
+        git commit -m "remove staging from package.json and update configs to production"
+
+    - name: Merge master branch
+      run: |
+        git merge master --strategy=ours --no-edit
+
+    - name: Push release branch
+      run: |
+        git push origin ${{ steps.create_branch.outputs.BRANCH_NAME }}
+
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v6
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ steps.create_branch.outputs.BRANCH_NAME }}
+        base: master
+        title: "Release ${{ steps.create_branch.outputs.BRANCH_NAME }}"
+        body: |
+          ## Release Branch: ${{ steps.create_branch.outputs.BRANCH_NAME }}
+
+          This PR contains the release changes for ${{ steps.create_branch.outputs.BRANCH_NAME }}.
+
+          ### Changes made:
+          - ✅ Updated feedback URLs from staging to production
+          - ✅ Removed `-staging` suffix from package.json files
+          - ✅ Updated config files to production versions
+          - ✅ Merged master branch with ours strategy
+
+          ### Files modified:
+          - Package.json files across Angular, React, Vue, and JS projects
+          - Config files for each framework
+          - Files containing feedback URLs
+
+          **Note**: This release branch was automatically created from the staging branch.
+        draft: false
+        delete-branch: false
