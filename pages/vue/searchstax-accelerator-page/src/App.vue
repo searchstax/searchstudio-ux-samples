@@ -66,7 +66,7 @@ import ExternalPromotionsWidget from '@/widgets/ExternalPromotionsWidget.vue'
 import PaginationWidget from '@/widgets/PaginationWidget.vue'
 import RelatedSearchesWidget from '@/widgets/RelatedSearchesWidget.vue'
 import SearchstaxAnswerWidget from '@/widgets/AnswerWidget.vue'
-import SearchstaxFeedbackWidget from 'https://static-staging.searchstax.co/studio-js/v4/js/feedbackWidget.mjs'
+import SearchstaxFeedbackWidget from 'https://static.searchstax.com/studio-js/v4/js/feedbackWidget.mjs'
 
 onMounted(() => {
   setTimeout(() => {
@@ -75,7 +75,7 @@ onMounted(() => {
       model: config.model,
       containerId: 'searchstax-feedback-container',
       lightweight: false,
-      analyticsSrc: 'https://static-staging.searchstax.co/studio-js/v4.1.53/js/studio-analytics.js'
+      analyticsSrc: 'https://static.searchstax.com/studio-js/v4.1.53/js/studio-analytics.js'
     })
   }, 300)
 })
