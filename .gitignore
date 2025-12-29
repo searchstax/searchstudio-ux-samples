@@ -4,5 +4,4 @@ dist/
 .idea/
 .DS_Store
 createRelease.cjs
-prodConfig*
 **/package-lock.json
