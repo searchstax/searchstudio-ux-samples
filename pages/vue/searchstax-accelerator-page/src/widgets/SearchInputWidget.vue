@@ -65,7 +65,8 @@ export default {
   },
   methods: {
     afterAutosuggest(result) {
-      return result
+      const copy = { ...result }
+      return copy
     },
     beforeAutosuggest(query) {
       return query
