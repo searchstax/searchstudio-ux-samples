@@ -27,7 +27,8 @@ export class AppComponent implements OnInit {
   // @ts-ignore
   locationDecode = renderConfig.locationWidget.locationDecode;
   // @ts-ignore
-  locationDecodeCoordinatesToAddress = renderConfig.locationWidget.locationDecodeCoordinatesToAddress;
+  locationDecodeCoordinatesToAddress =
+    renderConfig.locationWidget.locationDecodeCoordinatesToAddress;
   // @ts-ignore
   locationSearchEnabled = renderConfig.locationWidget.locationSearchEnabled;
   locationValuesOverride: {
@@ -60,8 +61,8 @@ export class AppComponent implements OnInit {
 
  </div>
  </div>
-  `
-  }
+  `,
+  };
 
   ngOnInit() {
     //@ts-ignore

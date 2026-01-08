@@ -23,12 +23,21 @@ import type {
 import { Searchstax } from "@searchstax-inc/searchstudio-ux-js";
 //@ts-ignore
 import { config, renderConfig } from "../../config.js";
-import { noResultTemplate, resultsTemplate, } from "./templates/resultsTemplates.js";
+import {
+  noResultTemplate,
+  resultsTemplate,
+} from "./templates/resultsTemplates.js";
 import { answerTemplate } from "./templates/answerTemplates.js";
-import { infiniteScrollTemplate, paginationTemplate, } from "./templates/paginationTemplates.js";
+import {
+  infiniteScrollTemplate,
+  paginationTemplate,
+} from "./templates/paginationTemplates.js";
 import { searchRelatedSearchesTemplate } from "./templates/relatedSearchesTemplates.js";
 import { searchExternalPromotionsTemplate } from "./templates/externalPromotionsTemplates.js";
-import { facetsTemplateDesktop, facetsTemplateMobile, } from "./templates/facetTemplates.js";
+import {
+  facetsTemplateDesktop,
+  facetsTemplateMobile,
+} from "./templates/facetTemplates.js";
 import { searchSortingTemplate } from "./templates/sorting.templates.js";
 import { searchOverviewTemplate } from "./templates/searchOverviewTemplates.js";
 import { InputTemplate } from "./templates/inputTemplates.js";
@@ -56,7 +65,7 @@ function App() {
      </div>
      </div>
       `,
-  }
+  };
 
   function initializeMainFeedbackWidget() {
     // get the container element
@@ -66,7 +75,8 @@ function App() {
         analyticsKey: config.trackApiKey,
         model: config.model,
         containerId: "searchstax-feedback-container",
-        analyticsSrc: 'https://static.searchstax.com/studio-js/v4/js/studio-analytics.js'
+        analyticsSrc:
+          "https://static.searchstax.com/studio-js/v4.1.53/js/studio-analytics.js",
       });
     }
   }
@@ -96,8 +106,6 @@ function App() {
   }
 
   function initialized(searchstax: Searchstax) {
-    console.log(searchstax);
-
     setTimeout(() => {
       initializeMainFeedbackWidget();
     }, 300);

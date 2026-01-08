@@ -16,6 +16,7 @@
     <script type="module">
       import SearchstaxFeedbackWidget from "https://static.searchstax.com/studio-js/v4/js/feedbackWidget.mjs";
       import { initConfig } from "./../config.js";
+      setTimeout(() => {
 
       new SearchstaxFeedbackWidget({
         analyticsKey: initConfig.acceleratorSample.trackApiKey,
@@ -94,6 +95,8 @@
         analyticsSrc:
           "https://static.searchstax.com/studio-js/v4/js/studio-analytics.js",
       });
+      }, 100);
+
     </script>
     <style lang="scss">
       @import "main.scss";

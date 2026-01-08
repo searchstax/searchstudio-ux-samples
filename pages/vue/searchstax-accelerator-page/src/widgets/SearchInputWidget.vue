@@ -63,6 +63,15 @@ export default {
       renderConfig
     }
   },
+  methods: {
+    afterAutosuggest(result) {
+      const copy = { ...result }
+      return copy
+    },
+    beforeAutosuggest(query) {
+      return query
+    }
+  }
 }
 </script>
 
