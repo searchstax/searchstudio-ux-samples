@@ -70,7 +70,6 @@ export function resultsTemplate(
                   }}
                   data-searchstax-unique-result-id={searchResult.uniqueId}
                   key={searchResult.uniqueId}
-                  aria-labelledby={`title-${searchResult.uniqueId}`}
                   className="searchstax-result-item-link searchstax-result-item-link-wrapping"
                   tabIndex={0}
                 >

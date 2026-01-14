@@ -18,7 +18,7 @@ export function searchRelatedSearchesTemplate(
               {relatedData.relatedSearches && (
                 <span className="searchstax-related-search">
                   {relatedData.relatedSearches.map((related) => (
-                    <span
+                    <span  role="link"
                       key={related.related_search}
                       onClick={() => {
                         executeSearch(related);
