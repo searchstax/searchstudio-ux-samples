@@ -11,7 +11,7 @@ const initConfig = {
     authType: "token",
     relatedSearchesURL:
       "https://staging.searchstax.co/api/v1/6246/related-search/",
-    relatedSearchesAPIKey: "https://staging.searchstax.co/api/v1/6246/related-search/",
+    relatedSearchesAPIKey: "0302d21778dbd2d6ff1b01b39169303bdcaad3a7",
     analyticsBaseUrl: "https://analytics-us-west-staging.searchstax.co",
     analyticsSrc:
       "https://static-staging.searchstax.co/studio-js/v4/js/studio-analytics.js",
