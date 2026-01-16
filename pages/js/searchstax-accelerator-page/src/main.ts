@@ -334,7 +334,7 @@ searchstax.addSearchResultsWidget("searchstax-results-container", {
     },
     searchResultTemplate: {
       template: `
-      <a href="{{url}}" data-searchstax-unique-result-id="{{uniqueId}}" class="searchstax-result-item-link searchstax-result-item-link-wrapping" tabindex="0"  aria-labelledby="title-{{uniqueId}}">
+      <a href="{{url}}" data-searchstax-unique-result-id="{{uniqueId}}" class="searchstax-result-item-link searchstax-result-item-link-wrapping" tabindex="0">
       <div class="searchstax-search-result searchstax-search-result-wrapping {{#thumbnail}} has-thumbnail {{/thumbnail}}">
           {{#promoted}}
               <div class="searchstax-search-result-promoted"></div>
