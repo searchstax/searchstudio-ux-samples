@@ -60,7 +60,7 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
      },
      relatedSearch: {
          template: `
-       <span class="searchstax-related-search searchstax-related-search-item" aria-label="Related search: {{related_search}}">
+       <span class="searchstax-related-search searchstax-related-search-item" aria-label="Related search: {{related_search}}" role="link">
            {{ related_search }}{{^last}}<span>,</span>{{/last}}
        </span>
        `,

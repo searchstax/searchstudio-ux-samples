@@ -34,6 +34,7 @@ export function searchRelatedSearchesTemplate(
                     }}
                     tabIndex={0}
                     className="searchstax-related-search searchstax-related-search-item"
+                    role="link"
                     aria-label={"Related search: " + related.related_search}
                   >
                     {" "}
