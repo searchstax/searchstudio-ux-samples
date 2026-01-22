@@ -300,6 +300,7 @@ searchstax.addSearchSortingWidget("search-sorting-container", {
       template: `
         {{#searchExecuted}}
           {{#hasResultsOrExternalPromotions}}
+          {{#sortOptions.length}}
           <div class="searchstax-sorting-container">
               <label class="searchstax-sorting-label" for="searchstax-search-order-select">Sort By</label>
               <select id="searchstax-search-order-select" class="searchstax-search-order-select">
@@ -310,6 +311,7 @@ searchstax.addSearchSortingWidget("search-sorting-container", {
                 {{/sortOptions}}
               </select>
           </div>
+        {{/sortOptions.length}}
           {{/hasResultsOrExternalPromotions}}
         {{/searchExecuted}}
         `,
@@ -332,7 +334,7 @@ searchstax.addSearchResultsWidget("searchstax-results-container", {
     },
     searchResultTemplate: {
       template: `
-      <a href="{{url}}" data-searchstax-unique-result-id="{{uniqueId}}" class="searchstax-result-item-link searchstax-result-item-link-wrapping" tabindex="0"  aria-labelledby="title-{{uniqueId}}">
+      <a href="{{url}}" data-searchstax-unique-result-id="{{uniqueId}}" class="searchstax-result-item-link searchstax-result-item-link-wrapping" tabindex="0">
       <div class="searchstax-search-result searchstax-search-result-wrapping {{#thumbnail}} has-thumbnail {{/thumbnail}}">
           {{#promoted}}
               <div class="searchstax-search-result-promoted"></div>
@@ -352,13 +354,13 @@ searchstax.addSearchResultsWidget("searchstax-results-container", {
           </div>
 
           {{#paths}}
-              <p tabindex="0" class="searchstax-search-result-common">
+              <p class="searchstax-search-result-common">
                   {{{paths}}}
               </p>
           {{/paths}}
 
           {{#description}}
-              <p tabindex="0" class="searchstax-search-result-description searchstax-search-result-common">
+              <p class="searchstax-search-result-description searchstax-search-result-common">
                   {{{description}}}
               </p>
           {{/description}}
@@ -370,7 +372,7 @@ searchstax.addSearchResultsWidget("searchstax-results-container", {
                   </div>
               {{/isImage}}
               {{^isImage}}
-                  <p tabindex="0" class="searchstax-search-result-common">
+                  <p class="searchstax-search-result-common">
                   {{{value}}}
                   </p>
               {{/isImage}}
@@ -459,7 +461,7 @@ searchstax.addRelatedSearchesWidget("searchstax-related-searches-container", {
     },
     relatedSearch: {
       template: `
-          <span class="searchstax-related-search searchstax-related-search-item" aria-label="Related search: {{related_search}}" tabindex="0" role="button">
+          <span class="searchstax-related-search searchstax-related-search-item" aria-label="Related search: {{related_search}}" tabindex="0" role="link">
               {{ related_search }}{{^last}}<span>,</span>{{/last}}
           </span>
           `,

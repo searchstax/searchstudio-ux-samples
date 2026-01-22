@@ -169,6 +169,7 @@ searchstax.addSearchSortingWidget("search-sorting-container", {
       template: `
       {{#searchExecuted}}
         {{#hasResultsOrExternalPromotions}}
+        {{#sortOptions.length}}
         <div class="searchstax-sorting-container">
             <label class="searchstax-sorting-label" for="sort-by">Sort By</label>
             <select id="searchstax-search-order-select" class="searchstax-search-order-select">
@@ -179,6 +180,7 @@ searchstax.addSearchSortingWidget("search-sorting-container", {
           {{/sortOptions}}
             </select>
         </div>
+        {{/sortOptions.length}}
         {{/hasResultsOrExternalPromotions}}
       {{/searchExecuted}}
       `,

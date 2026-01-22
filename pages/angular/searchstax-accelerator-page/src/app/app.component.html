@@ -243,7 +243,7 @@
             let-orderChange="orderChange"
             let-context="context"
           >
-            <div class="searchstax-sorting-container">
+            <div class="searchstax-sorting-container" *ngIf="context.sortingData.sortOptions.length > 0">
               <label
                 class="searchstax-sorting-label"
                 for="searchstax-search-order-select"
@@ -794,6 +794,7 @@
                     (keyup.space)="executeSearch(related, context)"
                     tabindex="0"
                     class="searchstax-related-search searchstax-related-search-item"
+                    role="link"
                     [attr.aria-label]="
                       'Related search: ' + related.related_search
                     "

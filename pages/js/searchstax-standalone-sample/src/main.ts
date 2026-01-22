@@ -110,7 +110,7 @@ searchstax.addRelatedSearchesWidget("searchstax-related-searches-container", {
     },
     relatedSearch: {
       template: `
-          <span class="searchstax-related-search searchstax-related-search-item" aria-label="Related search: {{related_search}}" tabindex="0" role="button">
+          <span class="searchstax-related-search searchstax-related-search-item" aria-label="Related search: {{related_search}}" tabindex="0" role="link">
               {{ related_search }}{{^last}}<span>,</span>{{/last}}
           </span>
           `,
