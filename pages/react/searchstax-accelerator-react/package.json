@@ -1,7 +1,7 @@
 {
   "name": "searchstax-accelerator-react",
   "private": true,
-  "version": "4.1.55",
+  "version": "4.1.59",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,8 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@searchstax-inc/searchstudio-ux-js": "npm:@searchstax-inc/searchstudio-ux-js@^4.1.55",
-    "@searchstax-inc/searchstudio-ux-react": "npm:@searchstax-inc/searchstudio-ux-react@^4.1.55",
+    "@searchstax-inc/searchstudio-ux-js": "npm:@searchstax-inc/searchstudio-ux-js@^4.1.59",
+    "@searchstax-inc/searchstudio-ux-react": "npm:@searchstax-inc/searchstudio-ux-react@^4.1.59",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
