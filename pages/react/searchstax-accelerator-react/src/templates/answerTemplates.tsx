@@ -35,7 +35,7 @@ export function answerTemplate(
                   showMore(e);
                 }}
               >
-                Read more
+                Show More
               </button>
             </div>
           )}

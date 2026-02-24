@@ -22,7 +22,7 @@
                 class="searchstax-answer-load-more-button-container"
               >
                 <button class="searchstax-answer-load-more-button" @click="showMore">
-                  Read More
+                  Show More
                 </button>
               </div>
             </div>
