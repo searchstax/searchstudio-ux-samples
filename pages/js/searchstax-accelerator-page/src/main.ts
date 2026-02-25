@@ -63,7 +63,7 @@ searchstax.addAnswerWidget("searchstax-answer-container", {
                         {{#answerLoading}}
                             <div class="searchstax-answer-loading"></div>
                         {{/answerLoading}}
-                        <button class="searchstax-answer-load-more-button">Read More</button>
+                        <button class="searchstax-answer-load-more-button">Show More</button>
                     </div>
                 {{/showMoreButtonVisible}}
             </div>
