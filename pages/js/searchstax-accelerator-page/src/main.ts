@@ -400,7 +400,6 @@ searchstax.addSearchResultsWidget("searchstax-results-container", {
                 </div>
                 <ul class="searchstax-no-results-list">
                     <li>Try searching for search related terms or topics. We offer a wide variety of content to help you get the information you need.</li>
-                    <li>Lost? Click on the ‘X” in the Search Box to reset your search.</li>
                 </ul>
               </div>
             {{/searchExecuted}}

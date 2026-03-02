@@ -110,7 +110,6 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
             </div>
             <div>
                 <p>Try searching for search related terms or topics. We offer a wide variety of content to help you get the information you need.</p>
-                <p>Lost? Click on the ‘X” in the Search Box to reset your search.</p>
             </div>
             `
       }
