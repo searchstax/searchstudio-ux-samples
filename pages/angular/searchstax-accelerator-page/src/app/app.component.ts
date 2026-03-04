@@ -66,7 +66,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     //@ts-ignore
-    import(/* webpackIgnore: true */ 'https://static-staging.searchstax.co/studio-js/v4/js/feedbackWidget.mjs').then((module) => {
+    import(/* webpackIgnore: true */ 'https://static.searchstax.com/studio-js/v4/js/feedbackWidget.mjs').then((module) => {
       this.feedbackInstance = module.default;
       setTimeout(() => {
         new this.feedbackInstance({
