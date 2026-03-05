@@ -175,6 +175,7 @@ jobs:
           --base master \
           --head ${{ steps.create_branch.outputs.BRANCH_NAME }} \
           --title "Release ${{ steps.create_branch.outputs.BRANCH_NAME }}" \
+          --label "Production Release" \
           --body "## Release Branch: ${{ steps.create_branch.outputs.BRANCH_NAME }}
 
         This PR contains the release changes for ${{ steps.create_branch.outputs.BRANCH_NAME }}.
