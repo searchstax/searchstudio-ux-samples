@@ -17,6 +17,7 @@ import type {
   ISearchstaxParsedResult,
   ISearchstaxSuggestProps,
   ISearchstaxSuggestResponse,
+  ISearchstaxSearchResponse,
 } from "@searchstax-inc/searchstudio-ux-js";
 
 import { config, renderConfig } from "./../../../../config.js";
@@ -41,7 +42,7 @@ function beforeSearch(props: ISearchObject) {
   const propsCopy = { ...props };
   return propsCopy;
 }
-function afterSearch(results: ISearchstaxParsedResult[]) {
+function afterSearch(results: ISearchstaxParsedResult[], unparsedResponse?: ISearchstaxSearchResponse) {
   const copy = [...results];
   return copy;
 }

@@ -84,7 +84,8 @@ function beforeSearch(props) {
   return { ...props }
 }
 
-function afterSearch(results) {
+function afterSearch(results, unparsedResponse) {
+  console.log(unparsedResponse);
   return [...results]
 }
 
