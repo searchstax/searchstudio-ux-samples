@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {
   ISearchObject,
   ISearchstaxParsedResult,
+  ISearchstaxSearchResponse,
   ISearchstaxSuggestProps,
   ISearchstaxSuggestResponse,
   Searchstax,
@@ -82,7 +83,7 @@ export class AppComponent implements OnInit {
   beforeSearch(props: ISearchObject) {
     return { ...props };
   }
-  afterSearch(results: ISearchstaxParsedResult[]) {
+  afterSearch(results: ISearchstaxParsedResult[], unparsedResponse?: ISearchstaxSearchResponse) {
     const copy = [...results];
     return copy;
   }

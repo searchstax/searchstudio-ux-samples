@@ -17,6 +17,7 @@ import SearchstaxFeedbackWidget from "https://static.searchstax.com/studio-js/v4
 import type {
   ISearchObject,
   ISearchstaxParsedResult,
+  ISearchstaxSearchResponse,
   ISearchstaxSuggestProps,
   ISearchstaxSuggestResponse,
 } from "@searchstax-inc/searchstudio-ux-js";
@@ -101,7 +102,7 @@ function App() {
   function beforeSearch(props: ISearchObject) {
     return { ...props };
   }
-  function afterSearch(results: ISearchstaxParsedResult[]) {
+  function afterSearch(results: ISearchstaxParsedResult[], unparsedResponse?: ISearchstaxSearchResponse) {
     return [...results];
   }
 

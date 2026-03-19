@@ -1,4 +1,4 @@
-import { Searchstax } from "@searchstax-inc/searchstudio-ux-js";
+import { ISearchstaxParsedResult, ISearchstaxSearchResponse, Searchstax } from "@searchstax-inc/searchstudio-ux-js";
 // @ts-ignore
 import { initConfig, renderConfig } from "./../../config.js";
 
@@ -27,7 +27,8 @@ searchstax.initialize({
       const propsCopy = { ...props };
       return propsCopy;
     },
-    afterSearch: (results) => {
+    afterSearch: (results: ISearchstaxParsedResult[], unparsedResponse: ISearchstaxSearchResponse) => {
+      console.log(unparsedResponse);
       const copy = [...results];
       return copy;
     },

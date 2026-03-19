@@ -18,6 +18,7 @@ import {
 import type {
   ISearchObject,
   ISearchstaxParsedResult,
+  ISearchstaxSearchResponse,
   ISearchstaxSuggestProps,
   ISearchstaxSuggestResponse,
   Searchstax,
@@ -76,7 +77,7 @@ function beforeSearch(props: ISearchObject) {
   return propsCopy;
 }
 
-function afterSearch(results: ISearchstaxParsedResult[]) {
+function afterSearch(results: ISearchstaxParsedResult[], unparsedResponse?: ISearchstaxSearchResponse) {
   const copy = [...results];
   return copy;
 }
