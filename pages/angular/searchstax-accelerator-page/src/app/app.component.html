@@ -43,10 +43,8 @@
               [ngClass]="{ hidden: suggestions.length === 0 }"
               (mouseleave)="onMouseLeave(context)"
             >
-              <div
-                class="searchstax-autosuggest-item"
-                *ngFor="let suggestion of suggestions"
-              >
+              @for (suggestion of suggestions; track $index) {
+              <div class="searchstax-autosuggest-item">
                 <div
                   class="searchstax-autosuggest-item-term-container"
                   [innerHtml]="suggestion.term"
@@ -55,6 +53,7 @@
                   (click)="onMouseClick($event, context)"
                 ></div>
               </div>
+              }
             </div>
           </div>
           <app-searchstax-search-location
@@ -78,10 +77,10 @@
               let-locationError="locationError"
               let-getCurrentLocation="getCurrentLocation"
             >
+              @if (locationData) {
               <div
                 class="searchstax-location-input-container"
                 data-test-id="searchstax-location-input-container"
-                *ngIf="locationData"
               >
                 <div class="searchstax-location-input-wrapper">
                   <span class="searchstax-location-input-label">NEAR</span>
@@ -107,13 +106,9 @@
                       Use my current location
                     </button>
                   </div>
-                  <span
-                    *ngIf="locationData.shouldShowLocationDistanceDropdown"
-                    class="searchstax-location-input-label"
-                    >WITHIN</span
-                  >
+                  @if (locationData.shouldShowLocationDistanceDropdown) {
+                  <span class="searchstax-location-input-label">WITHIN</span>
                   <select
-                    *ngIf="locationData.shouldShowLocationDistanceDropdown"
                     id="searchstax-location-radius-select"
                     class="searchstax-location-radius-select"
                     aria-label="Search Location Radius Select"
@@ -121,17 +116,19 @@
                     (change)="radiusChange($event, context)"
                     [(ngModel)]="context.selectValue"
                   >
-                    <option
-                      *ngFor="
-                        let value of locationData.locationSearchDistanceValues
-                      "
-                      [value]="value.value"
-                    >
+                    @for (
+                      value of locationData.locationSearchDistanceValues;
+                      track value.value
+                    ) {
+                    <option [value]="value.value">
                       {{ value.label }}
                     </option>
+                    }
                   </select>
+                  }
                 </div>
               </div>
+              }
             </ng-template>
           </app-searchstax-search-location>
           <button
@@ -164,24 +161,22 @@
                 }"
               >
                 <div class="searchstax-answer-title">Smart Answers</div>
+                @if (answerData.shouldShowAnswerError) {
                 <div
                   class="searchstax-answer-error"
-                  *ngIf="answerData.shouldShowAnswerError"
                   [innerHTML]="answerData.answerErrorMessage"
                 ></div>
+                }
                 <div
                   class="searchstax-answer-description"
                   [innerHTML]="answerData.fullAnswerFormatted"
                 ></div>
-                <div
-                  *ngIf="answerData.answerLoading"
-                  class="searchstax-answer-loading"
-                ></div>
+                @if (answerData.answerLoading) {
+                <div class="searchstax-answer-loading"></div>
+                }
               </div>
-              <div
-                *ngIf="answerData.showMoreButtonVisible"
-                class="searchstax-answer-load-more-button-container"
-              >
+              @if (answerData.showMoreButtonVisible) {
+              <div class="searchstax-answer-load-more-button-container">
                 <button
                   class="searchstax-answer-load-more-button"
                   (click)="showMore($event, context)"
@@ -189,6 +184,7 @@
                   Show More
                 </button>
               </div>
+              }
             </div>
             <div class="searchstax-answer-footer">
               <div id="feedbackWidgetContainer"></div>
@@ -213,12 +209,15 @@
                 {{ searchFeedbackData!.endResultIndex }}</b
               >
               of <b>{{ searchFeedbackData!.totalResults }}</b> results
-              <span *ngIf="searchFeedbackData.searchTerm"
+              @if (searchFeedbackData.searchTerm) {
+              <span
                 >for "<b>{{ searchFeedbackData!.searchTerm }}</b
                 >"
               </span>
+              }
               <div class="searchstax-feedback-container-suggested">
-                <div *ngIf="searchFeedbackData.autoCorrectedQuery">
+                @if (searchFeedbackData.autoCorrectedQuery) {
+                <div>
                   Search instead for
                   <a
                     href="#"
@@ -230,6 +229,7 @@
                     >{{ searchFeedbackData!.originalQuery }}</a
                   >
                 </div>
+                }
               </div>
             </h2>
           </ng-template>
@@ -243,7 +243,8 @@
             let-orderChange="orderChange"
             let-context="context"
           >
-            <div class="searchstax-sorting-container" *ngIf="context.sortingData.sortOptions.length > 0">
+            @if (context.sortingData.sortOptions.length > 0) {
+            <div class="searchstax-sorting-container">
               <label
                 class="searchstax-sorting-label"
                 for="searchstax-search-order-select"
@@ -255,14 +256,17 @@
                 [(ngModel)]="context.selectedSorting"
                 (change)="orderChange($event, context)"
               >
-                <option
-                  *ngFor="let sortOption of context.sortingData.sortOptions"
-                  [value]="sortOption.key"
-                >
+                @for (
+                  sortOption of context.sortingData.sortOptions;
+                  track sortOption.key
+                ) {
+                <option [value]="sortOption.key">
                   {{ sortOption.value }}
                 </option>
+                }
               </select>
             </div>
+            }
           </ng-template>
         </app-searchstax-search-sorting>
       </div>
@@ -289,9 +293,12 @@
               let-showMoreLessDesktop="showMoreLessDesktop"
             >
               <div class="searchstax-facets-container-desktop">
+                @for (
+                  facet of facetsTemplateDataDesktop?.facets ?? [];
+                  track facet.name
+                ) {
                 <div
                   class="searchstax-facet-container"
-                  *ngFor="let facet of facetsTemplateDataDesktop?.facets"
                   [class]="{ active: isNotDeactivated(facet.name, context) }"
                 >
                   <div>
@@ -308,11 +315,11 @@
                       class="searchstax-facet-values-container"
                       aria-live="polite"
                     >
+                      @for (
+                        facetValue of facetValues(facet);
+                        track facetValue.value + ':' + facetValue.count + ':' + $index
+                      ) {
                       <div
-                        *ngFor="
-                          let facetValue of facetValues(facet);
-                          index as key
-                        "
                         class="searchstax-facet-value-container"
                         [class]="{
                           'searchstax-facet-value-disabled': facetValue.disabled
@@ -356,10 +363,9 @@
                           ({{ facetValue.count }})
                         </div>
                       </div>
-                      <div
-                        class="searchstax-facet-show-more-container"
-                        *ngIf="facet.hasMoreFacets"
-                      >
+                      }
+                      @if (facet.hasMoreFacets) {
+                      <div class="searchstax-facet-show-more-container">
                         <div
                           class="searchstax-facet-show-more-container"
                           (click)="showMoreLessDesktop($event, facet, context)"
@@ -372,23 +378,27 @@
                           tabindex="0"
                           role="button"
                         >
+                          @if (facet.showingAllFacets) {
                           <div
-                            *ngIf="facet.showingAllFacets"
                             class="searchstax-facet-show-less-button searchstax-facet-show-button"
                           >
                             less
                           </div>
+                          }
+                          @if (!facet.showingAllFacets) {
                           <div
-                            *ngIf="!facet.showingAllFacets"
                             class="searchstax-facet-show-more-button searchstax-facet-show-button"
                           >
                             more
                           </div>
+                          }
                         </div>
                       </div>
+                      }
                     </div>
                   </div>
                 </div>
+                }
               </div>
             </ng-template>
             <ng-template
@@ -418,9 +428,12 @@
                     <div class="searchstax-facets-pill-label">Filter By</div>
                   </div>
                   <div class="searchstax-facets-pills-selected">
+                    @for (
+                      facet of selectedFacetsCheckboxes;
+                      track facet.value + ':' + facet.count + ':' + $index
+                    ) {
                     <div
                       class="searchstax-facets-pill searchstax-facets-pill-facets"
-                      *ngFor="let facet of selectedFacetsCheckboxes"
                       (click)="unselectFacet(facet, context)"
                     >
                       <div class="searchstax-facets-pill-label">
@@ -428,16 +441,18 @@
                       </div>
                       <div class="searchstax-facets-pill-icon-close"></div>
                     </div>
+                    }
                   </div>
+                  @if (selectedFacetsCheckboxes.length) {
                   <div
                     class="searchstax-facets-pill searchstax-clear-filters searchstax-facets-pill-clear-all"
-                    *ngIf="selectedFacetsCheckboxes.length"
                     (click)="unselectAll(context)"
                   >
                     <div class="searchstax-facets-pill-label">
                       Clear Filters
                     </div>
                   </div>
+                  }
                 </div>
                 <div
                   class="searchstax-facets-mobile-overlay"
@@ -456,8 +471,11 @@
                     ></div>
                   </div>
                   <div class="searchstax-facets-container-mobile">
+                    @for (
+                      facet of facetsTemplateDataMobile?.facets ?? [];
+                      track facet.name
+                    ) {
                     <div
-                      *ngFor="let facet of facetsTemplateDataMobile?.facets"
                       class="searchstax-facet-container"
                       [class]="{
                         active: isNotDeactivated(facet.name, context)
@@ -479,11 +497,11 @@
                           class="searchstax-facet-values-container"
                           aria-live="polite"
                         >
+                          @for (
+                            facetValue of facetValues(facet);
+                            track facetValue.value + ':' + facetValue.count + ':' + $index
+                          ) {
                           <div
-                            *ngFor="
-                              let facetValue of facetValues(facet);
-                              index as key
-                            "
                             class="searchstax-facet-value-container"
                             [class]="{
                               'searchstax-facet-value-disabled':
@@ -540,10 +558,9 @@
                               ({{ facetValue.count }})
                             </div>
                           </div>
-                          <div
-                            class="searchstax-facet-show-more-container"
-                            *ngIf="facet.hasMoreFacets"
-                          >
+                          }
+                          @if (facet.hasMoreFacets) {
+                          <div class="searchstax-facet-show-more-container">
                             <div
                               class="searchstax-facet-show-more-container"
                               (click)="
@@ -557,23 +574,27 @@
                               "
                               tabindex="0"
                             >
+                              @if (facet.showingAllFacets) {
                               <div
-                                *ngIf="facet.showingAllFacets"
                                 class="searchstax-facet-show-less-button searchstax-facet-show-button"
                               >
                                 less
                               </div>
+                              }
+                              @if (!facet.showingAllFacets) {
                               <div
-                                *ngIf="!facet.showingAllFacets"
                                 class="searchstax-facet-show-more-button searchstax-facet-show-button"
                               >
                                 more
                               </div>
+                              }
                             </div>
                           </div>
+                          }
                         </div>
                       </div>
                     </div>
+                    }
                   </div>
                   <button
                     class="searchstax-facets-mobile-overlay-done"
@@ -600,37 +621,42 @@
                 class="searchstax-external-promotions-container"
                 id="searchstax-external-promotions-container"
               >
+                @for (
+                  externalPromotion of externalPromotionsData.externalPromotions;
+                  track $index
+                ) {
                 <div
                   class="searchstax-external-promotion searchstax-search-result"
-                  *ngFor="
-                    let externalPromotion of externalPromotionsData.externalPromotions
-                  "
                 >
                   <div class="icon-elevated"></div>
+                  @if (externalPromotion.url) {
                   <a
-                    *ngIf="externalPromotion.url"
                     [href]="externalPromotion.url"
                     (click)="trackClick(externalPromotion, $event, context)"
                     class="searchstax-result-item-link"
                   ></a>
+                  }
                   <div class="searchstax-search-result-title-container">
                     <span class="searchstax-search-result-title">{{
                       externalPromotion.name
                     }}</span>
                   </div>
+                  @if (externalPromotion.description) {
                   <p
-                    *ngIf="externalPromotion.description"
                     class="searchstax-search-result-description searchstax-search-result-common"
                   >
                     {{ externalPromotion.description }}
                   </p>
+                  }
+                  @if (externalPromotion.url) {
                   <p
-                    *ngIf="externalPromotion.url"
                     class="searchstax-search-result-description searchstax-search-result-common"
                   >
                     {{ externalPromotion.url }}
                   </p>
+                  }
                 </div>
+                }
               </div>
             </ng-template>
           </app-searchstax-external-promotions>
@@ -648,8 +674,8 @@
               let-context="context"
             >
               <div class="searchstax-search-results">
+                @for (searchResult of searchResults; track searchResult.uniqueId) {
                 <a
-                  *ngFor="let searchResult of searchResults"
                   [href]="searchResult.url"
                   [attr.data-searchstax-unique-result-id]="
                     searchResult.uniqueId
@@ -665,21 +691,22 @@
                     class="searchstax-search-result"
                     [ngClass]="{ 'has-thumbnail': searchResult.thumbnail }"
                   >
+                    @if (searchResult.promoted) {
+                    <div class="searchstax-search-result-promoted"></div>
+                    }
+                    @if (searchResult.ribbon) {
                     <div
-                      *ngIf="searchResult.promoted"
-                      class="searchstax-search-result-promoted"
-                    ></div>
-                    <div
-                      *ngIf="searchResult.ribbon"
                       [innerHTML]="searchResult.ribbon"
                       class="searchstax-search-result-ribbon"
                     ></div>
+                    }
+                    @if (searchResult.thumbnail) {
                     <img
                       alt=""
-                      *ngIf="searchResult.thumbnail"
                       [src]="searchResult.thumbnail"
                       class="searchstax-thumbnail"
                     />
+                    }
                     <div class="searchstax-search-result-title-container">
                       <span
                         class="searchstax-search-result-title"
@@ -687,41 +714,48 @@
                         [innerHTML]="searchResult.title"
                       ></span>
                     </div>
+                    @if (searchResult.paths) {
                     <p
                       tabindex="0"
-                      *ngIf="searchResult.paths"
                       class="searchstax-search-result-common"
                       [innerHTML]="searchResult.paths"
                     ></p>
+                    }
+                    @if (searchResult.description) {
                     <p
                       tabindex="0"
-                      *ngIf="searchResult.description"
                       [innerHTML]="searchResult.description"
                       class="searchstax-search-result-description searchstax-search-result-common"
                     ></p>
-                    <div
-                      *ngFor="let unmappedField of searchResult.unmappedFields"
-                    >
-                      <div
-                        *ngIf="isImage(unmappedField)"
-                        class="searchstax-search-result-image-container"
-                      >
+                    }
+                    @for (
+                      unmappedField of searchResult.unmappedFields;
+                      track $index
+                    ) {
+                    <div>
+                      @if (isImage(unmappedField)) {
+                      <div class="searchstax-search-result-image-container">
                         <img
                           alt=""
                           [src]="unmappedField.value"
                           class="searchstax-result-image"
                         />
                       </div>
-                      <div *ngIf="!isImage(unmappedField)">
+                      }
+                      @if (!isImage(unmappedField)) {
+                      <div>
                         <p
                           tabindex="0"
                           class="searchstax-search-result-common"
                           [innerHTML]="unmappedField.value"
                         ></p>
                       </div>
+                      }
                     </div>
+                    }
                   </div>
                 </a>
+                }
               </div>
             </ng-template>
             <ng-template
@@ -735,7 +769,8 @@
                 Showing <strong>no results</strong> for
                 <strong>"{{ searchTerm }}"</strong>
                 <br />
-                <span *ngIf="metadata?.spellingSuggestion"
+                @if (metadata?.spellingSuggestion) {
+                <span
                   >&nbsp;Did you mean
                   <a
                     href="#"
@@ -753,6 +788,7 @@
                     >{{ metadata?.spellingSuggestion }}</a
                   >?</span
                 >
+                }
               </div>
               <ul>
                 <li>
@@ -780,12 +816,13 @@
                 [id]="'searchstax-related-searches-container' + rand"
               >
                 Related searches: <span id="searchstax-related-searches"></span>
-                <span
-                  class="searchstax-related-search"
-                  *ngIf="relatedData.relatedSearches"
-                >
+                @if (relatedData.relatedSearches) {
+                <span class="searchstax-related-search">
+                  @for (
+                    related of relatedData.relatedSearches;
+                    track $index
+                  ) {
                   <span
-                    *ngFor="let related of relatedData.relatedSearches"
                     (click)="executeSearch(related, context)"
                     (keyup.enter)="executeSearch(related, context)"
                     (keyup.space)="executeSearch(related, context)"
@@ -797,9 +834,11 @@
                     "
                   >
                     {{ related.related_search
-                    }}<span *ngIf="!related.last">,</span>
+                    }}@if (!related.last) {<span>,</span>}
                   </span>
+                  }
                 </span>
+                }
               </div>
             </ng-template>
           </app-searchstax-related-searches>

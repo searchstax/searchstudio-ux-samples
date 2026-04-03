@@ -14,6 +14,7 @@ import { config, renderConfig } from '../../../config';
 
 @Component({
   selector: 'app-root',
+  standalone: false,
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
