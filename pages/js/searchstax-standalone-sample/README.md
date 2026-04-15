@@ -20,7 +20,7 @@ The main HTML file is `src/index.html`.
 You will at a minimum need to include the `searchstax-page-layout-container` div and then based on which component you are including, include the container for that Widget.
 For Smart Answers, you would include the `searchstax-answer-container` within the `searchstax-page-layout-container`.
 
-You would also want to include the CSS included in index.html. Since SearchStax uses its own custom nested classes, they would not interfere with your styles.
+You would also want to include the CSS `https://static.searchstax.com/studio-js/v4/css/search-ux.css` in your custom UX. Since SearchStax uses its own custom nested classes, they would not interfere with your styles.
 
 ### JavaScript Code
 The main JavaScript file is `src/main.js`. You can see how you need to initialize the `SearchStax` class
