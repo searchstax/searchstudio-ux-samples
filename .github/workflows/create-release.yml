@@ -82,6 +82,7 @@ jobs:
           "pages/js/searchstax-accelerator-page/package.json"
           "pages/js/job-search-sample/package.json"
           "pages/js/facet-tabs-infinite-scroll/package.json"
+          "pages/js/searchstax-standalone-sample/package.json"
           "pages/react/searchstax-accelerator-react/package.json"
           "pages/react/next-js-sample/package.json"
           "pages/react/next-js-pages-sample/package.json"
@@ -136,6 +137,7 @@ jobs:
         git add pages/react/next-js-pages-sample/package.json || true
         git add pages/vue/searchstax-accelerator-page/package.json || true
         git add pages/vue/jobsearch-vue-app/package.json || true
+        git add pages/js/searchstax-standalone-sample/package.json || true
         git add pages/js/config.js || true
         git add pages/angular/config.js || true
         git add pages/react/config.js || true
