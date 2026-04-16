@@ -21,8 +21,9 @@ The main file `src/main.ts` imports and initializes several widgets from the `@s
 
 This template uses the searchstax-accelerator-page template as its base, meaning everything included in that template is also available in this one, along with a few modifications to display one of the facets as tabs. This allows users to navigate using the tabs at the top, in addition to normal filtering interactions for the remaining facet categories.
 
+Here are the customizations made on top of the base template:
 
-2. Facets Widget: This widget provides a way to filter search results based on certain criteria. It is added to the `searchstax-facet-tabs-container` div in the HTML file.
+1. Facets Widget: This widget provides a way to filter search results based on certain criteria. It is added to the `searchstax-facet-tabs-container` div in the HTML file.
 The property `facetingType: "tabs"` allows to see the facets as Tabs
 
 ```JS
@@ -40,7 +41,8 @@ searchstax.addFacetsWidget("searchstax-facet-tabs-container", {
 
 });
 ```
-In `main.ts`, the following custom codes adds an additional "All" tab to the facets
+
+2. In `main.ts`, the following custom codes adds an additional "All" tab to the facets
 ```JS
 searchstax.dataLayer.$facetsTemplateData.subscribe((facets) => {
   if (
