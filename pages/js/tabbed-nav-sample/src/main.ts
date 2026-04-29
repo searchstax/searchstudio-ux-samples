@@ -64,7 +64,6 @@ searchstax.initialize({
       results: ISearchstaxParsedResult[],
       unparsedResponse: ISearchstaxSearchResponse,
     ) => {
-      console.log(unparsedResponse);
       const copy = [...results];
       return copy;
     },
