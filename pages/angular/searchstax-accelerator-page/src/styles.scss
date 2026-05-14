@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+@import './app/app.component.scss';
+.searchstax-main-page-title{
+  display: none;
+}
+
+.searchstax-answer-icon{
+  top: 5px !important;
+}
+
+.searchstax-answer-wrap{
+  padding-top: 10px !important;
+}

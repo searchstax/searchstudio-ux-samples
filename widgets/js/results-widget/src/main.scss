@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100;300;600&display=swap');
+
+*, html{
+    font-family: 'Barlow', sans-serif !important;
+}
+
+.container{
+    width: 80%;
+    margin: 120px auto;
+}
+
+.searchstax-page-layout-result-container{
+    margin-top: 40px;
+}
+
+.searchstax-search-result{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px !important;
+}

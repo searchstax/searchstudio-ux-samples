@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.parcel-cache
+.idea/
+.DS_Store
+createRelease.cjs
+**/package-lock.json

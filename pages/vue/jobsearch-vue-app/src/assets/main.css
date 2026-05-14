@@ -1,0 +1,13 @@
+@import './base.css';
+@import '../../node_modules/@searchstax-inc/searchstudio-ux-js/dist/styles/mainTheme.css';
+@import './style.css';
+
+*,
+html {
+  padding: 0;
+  margin: 0;
+}
+
+#app {
+  font-weight: normal;
+}
