@@ -5,7 +5,7 @@
       :beforeAutosuggest="beforeAutosuggest"
       :suggestAfterMinChars="renderConfig.inputWidget.suggestAfterMinChars"
     >
-    <template #input="{ suggestions, onMouseLeave, onMouseOver, onMouseClick }">
+    <template #input="{ suggestions, onMouseLeave, onMouseOver, onMouseClick, onClearClick, hasInputValue }">
             <div class="searchstax-search-input-wrapper">
               <input
                 type="text"
@@ -14,6 +14,8 @@
                 placeholder="SEARCH FOR..."
                 aria-label="search"
               />
+              <button v-if="hasInputValue" @click="onClearClick" @keyup.enter="onClearClick" id="searchstax-clear-input-action-button" class="searchstax-cross-icon " aria-label="clear input" role="button"></button>
+              <span v-if="hasInputValue" id="searchstax-separator-icon" class="searchstax-separator "></span>
               <div
                 class="searchstax-autosuggest-container"
                 :class="{ 'hidden': suggestions.length === 0 }"
