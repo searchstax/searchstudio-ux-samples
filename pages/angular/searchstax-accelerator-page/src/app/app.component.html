@@ -38,6 +38,16 @@
               placeholder="SEARCH FOR..."
               aria-label="search"
             />
+            @if (hasInputValue) {
+              <button
+                      (click)="onClearClick($event, context)"
+                      id="searchstax-clear-input-action-button"
+                      class="searchstax-cross-icon hidden"
+                      aria-label="clear input"
+                      role="button">
+              </button>
+              <span id="searchstax-separator-icon" class="searchstax-separator hidden"></span>
+            }
             <div
               class="searchstax-autosuggest-container"
               [ngClass]="{ hidden: suggestions.length === 0 }"
