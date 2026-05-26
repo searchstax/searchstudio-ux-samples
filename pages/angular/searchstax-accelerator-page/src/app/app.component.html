@@ -25,9 +25,11 @@
         <ng-template
           #inputTemplate
           let-suggestions="suggestions"
+          let-templateData="templateData"
           let-onMouseLeave="onMouseLeave"
           let-onMouseOver="onMouseOver"
           let-onMouseClick="onMouseClick"
+          let-onClearClick="onClearClick"
           let-context="context"
         >
           <div class="searchstax-search-input-wrapper">
@@ -38,15 +40,15 @@
               placeholder="SEARCH FOR..."
               aria-label="search"
             />
-            @if (hasInputValue) {
+            @if (templateData?.hasInputValue) {
               <button
                       (click)="onClearClick($event, context)"
                       id="searchstax-clear-input-action-button"
-                      class="searchstax-cross-icon hidden"
+                      class="searchstax-cross-icon"
                       aria-label="clear input"
                       role="button">
               </button>
-              <span id="searchstax-separator-icon" class="searchstax-separator hidden"></span>
+              <span id="searchstax-separator-icon" class="searchstax-separator"></span>
             }
             <div
               class="searchstax-autosuggest-container"
