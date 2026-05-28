@@ -133,6 +133,8 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
       <div class="searchstax-search-input-container searchstax-search-input-container-new {{#locationEnabled}}searchstax-alternative-render{{/locationEnabled}}">
           <div class="searchstax-search-input-wrapper">
             <input type="text" id="searchstax-search-input" class="searchstax-search-input" placeholder="SEARCH FOR..." aria-label="Search" />
+            <button id="searchstax-clear-input-action-button" class="searchstax-cross-icon hidden" aria-label="clear input" role="button"></button>
+            <span id="searchstax-separator-icon" class="searchstax-separator hidden"></span>
           </div>
           <div id="searchstax-location-container" class="searchstax-location-container"></div>
           <button class="searchstax-spinner-icon" id="searchstax-search-input-action-button" aria-label="search" role="button"></button>
