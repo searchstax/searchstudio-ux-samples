@@ -15,6 +15,9 @@
     "@parcel/transformer-sass": "^2.9.3",
     "parcel": "^2.9.3"
   },
+  "overrides": {
+    "svgo": "^3.3.3"
+  },
   "dependencies": {
     "@searchstax-inc/searchstudio-ux-js": "npm:@searchstax-inc/searchstudio-ux-js-staging@^4.2.10"
   }
