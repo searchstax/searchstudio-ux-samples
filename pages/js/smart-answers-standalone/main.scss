@@ -19,3 +19,31 @@ h3 {
 #feedbackWidgetContainer {
   margin-top: 20px;
 }
+
+.searchstax-lightweight-widget-container {
+  display: flex;
+}
+.searchstax-lightweight-widget-container .searchstax-lightweight-widget-thumbs-up {
+  cursor: pointer;
+}
+.searchstax-lightweight-widget-container .searchstax-lightweight-widget-thumbs-up svg {
+  stroke: #969696;
+}
+.searchstax-lightweight-widget-container .searchstax-lightweight-widget-thumbs-up:hover svg, .searchstax-lightweight-widget-container .searchstax-lightweight-widget-thumbs-up.active svg {
+  stroke: #333333;
+}
+.searchstax-lightweight-widget-container .searchstax-lightweight-widget-separator {
+  margin: 0 5px;
+  width: 1px;
+  height: 17px;
+  background-color: #dcdcdc;
+}
+.searchstax-lightweight-widget-container .searchstax-lightweight-widget-thumbs-down {
+  cursor: pointer;
+}
+.searchstax-lightweight-widget-container .searchstax-lightweight-widget-thumbs-down svg {
+  stroke: #969696;
+}
+.searchstax-lightweight-widget-container .searchstax-lightweight-widget-thumbs-down:hover svg, .searchstax-lightweight-widget-container .searchstax-lightweight-widget-thumbs-down.active svg {
+  stroke: #333333;
+}
