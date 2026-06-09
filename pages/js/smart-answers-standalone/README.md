@@ -62,7 +62,7 @@ npm run preview
 
 ## How the sample works
 
-The main HTML file is [index.html](./index.html). It has the following block of custom implementation of search input that does not fire search just imitates custom implementations:
+The main HTML file is [index.html](./index.html). It has the following block of custom implementation of search input that does not fire search, just imitates custom implementations where `custom-query-input` is the input search box and search is fired on the click of `custom-search-button`.
 ```html
 <input id="custom-query-input"></input>
 <button id="custom-search-button">Search</button>
@@ -78,7 +78,15 @@ It creates a SearchStax instance and initializes it using the standalone sample 
 const searchstax = new Searchstax();
 
 searchstax.initialize({
-  ...initConfig.searchStandaloneSearchSample,
+  searchURL: "",
+  suggesterURL: "",
+  language: "en",
+  questionURL: "https://search-ai-us.searchstax.com/api/v1/XXXX/answer/",
+  searchAuth: "XXXXXXXXXXXXXXXXXXXXXXXXXXX",
+  authType: "token",
+  analyticsBaseUrl: "https://analytics-us.searchstax.com",
+  trackApiKey: "XXXXXXXXXXXXXXXXXXXXXXXXXXX",
+  model: "Default",
   sessionId: makeId(25),
 });
 
@@ -93,16 +101,13 @@ searchstax.addAnswerWidget("searchstax-answer-container", {
   },
   feedbackwidget: {
     renderFeedbackWidget: true,
-    emailOverride: () => {
-      return "";
-    },
     thumbsUpValue: 10,
     thumbsDownValue: 0,
   },
 });
 ```
 
-in [main.ts](./src/main.ts)  there is `window.onload` function which adds custom implementation for these elements and `triggerSearchStaxReload` function which connects those inputs to trigger reload on answers wigget.
+in [main.ts](./src/main.ts)  there is a `window.onload` function which adds custom implementation for these elements and `triggerSearchStaxReload` function which connects those inputs to trigger reload on answers wigget.
 ```typescript
 function triggerSearchStaxReload(query: string) {
   searchstax.dataLayer.setSearchObject({
