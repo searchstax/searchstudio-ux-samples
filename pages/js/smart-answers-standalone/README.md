@@ -6,10 +6,10 @@ Smart Answers lets visitors ask natural-language questions and receive AI-genera
 
 
 ### Smart Answers 
-![Smart Answers](./screenshots/smart-answers-standalone1.png "Smart Answers")
+![Smart Answers](./screenshots/smart-answers-standalone-expanded.png "Smart Answers")
 
 ### Smart Answers with Show More
-![Smart Answers](./screenshots/smart-answers-standalone.png "Smart Answers with Show More") |
+![Smart Answers](./screenshots/smart-answers-standalone-showmore.png "Smart Answers with Show More") |
 
 
 ## When to use this sample
