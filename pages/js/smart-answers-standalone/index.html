@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Searchstax Seach Page</title>
+    <title>Searchstax Smart Answers Standalone Page</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link
       href="https://static-staging.searchstax.co/studio-js/v4/css/feedbackWidget.css"
@@ -16,16 +16,14 @@
     </style>
   </head>
   <body>
-    <main>
-      <h1 style="display: none" class="searchstax-main-page-title">
-        Searchstax Search Page
+      <h1>
+        Smart Answers Widget in Custom UI App
       </h1>
+      <h4>This sample shows how Smart Answers can be integrated into your Custom UI. <br/>The input box below would implment your Search functionality.</h4>
       <div class="container">
-        <div id="searchstax-feedback-container"></div>
         <div class="searchstax-page-layout-container">
           <div id="searchstax-input-container">
-            <input id="custom-query-input"></input>
-            <input id="custom-page-input" type="number" min="1" value="1"></input>
+            <input id="custom-query-input" style="width:80%"></input>
             <button id="custom-search-button">Search</button>
           </div>
           <div id="searchstax-answer-container"></div>
@@ -33,21 +31,6 @@
             <div id="search-feedback-container"></div>
             <div id="search-sorting-container"></div>
           </div>
-
-          <div class="searchstax-page-layout-facet-result-container">
-            <div class="searchstax-page-layout-facet-container">
-              <div id="searchstax-facets-container"></div>
-            </div>
-
-            <div class="searchstax-page-layout-result-container">
-              <div id="searchstax-external-promotions-layout-container"></div>
-              <div id="searchstax-results-container"></div>
-              <div id="searchstax-related-searches-container"></div>
-              <div id="searchstax-pagination-container"></div>
-            </div>
-          </div>
-        </div>
       </div>
-    </main>
   </body>
 </html>
