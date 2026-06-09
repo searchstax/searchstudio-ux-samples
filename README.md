@@ -39,11 +39,11 @@ The "widgets" directory contains implementations for individual widgets that can
 - This directory contains example applications that demonstrate how to use the various widgets together to build real apps.
 - Each page is an application that implements one or more of the available widgets.
 
-| App              | JavaScript                                     | Vue                                             | React                                             | Angular                                            |
-| ---------------- | ---------------------------------------------- | ----------------------------------------------- | ------------------------------------------------- | -------------------------------------------------- |
-| Accelerator Page | [Link](./pages/js/searchstax-accelerator-page) | [Link](./pages/vue/searchstax-accelerator-page) | [Link](.pages/react/searchstax-accelerator-react) | [Link](.pages/angular/searchstax-accelerator-page) |
-| Job Search App   | [Link](./pages/js/job-search-sample)           | [Link](./pages/vue/jobsearch-vue-app)           |                                                   |                                                    |
-| Standalone Samples App   | [Link](./pages/js/searchstax-standalone-sample)           |            |                                                   |                                                    |
+| App              | JavaScript                                     | Vue                                             | React                                             | Angular                                            | Next JS                                            |
+| ---------------- | ---------------------------------------------- | ----------------------------------------------- | ------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| Accelerator Page | [Link](./pages/js/searchstax-accelerator-page) | [Link](./pages/vue/searchstax-accelerator-page) | [Link](./pages/react/searchstax-accelerator-react) | [Link](./pages/angular/searchstax-accelerator-page) | [Link](./pages/react/next-js-pages-sample)          |
+| Job Search App   | [Link](./pages/js/job-search-sample)           | [Link](./pages/vue/jobsearch-vue-app)           |                                                   |                                                    |                                                    |
+| Standalone Samples App   | [Link](./pages/js/searchstax-standalone-sample)           |            |                                                   |                                                    |                                                    |
 
 
 ## Standalone Samples
