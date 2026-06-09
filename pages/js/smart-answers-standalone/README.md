@@ -4,8 +4,13 @@ This sample shows how to add the SearchStax Smart Answers widget to a custom sea
 
 Smart Answers lets visitors ask natural-language questions and receive AI-generated answers based on the site’s indexed content. The answer appears above the standard search results and can include citations and visitor feedback controls.
 
-![Smart Answers](./screenshots/smart-answers-standalone.png "Smart Answers with Show More")
+
+### Smart Answers 
 ![Smart Answers](./screenshots/smart-answers-standalone1.png "Smart Answers")
+
+### Smart Answers with Show More
+![Smart Answers](./screenshots/smart-answers-standalone.png "Smart Answers with Show More") |
+
 
 ## When to use this sample
 
@@ -57,10 +62,7 @@ npm run preview
 
 ## How the sample works
 
-The main HTML file is `src/index.html`.
-![Searchstax Smart Answers Standalone Page](./screenshots/smart-answers-standalone.png "Searchstax Smart Answers Standalone Page")
-
-[index.html](./index.html) has the following block of custom implementation of search input that does not fire search just imitates custom implementations:
+The main HTML file is [index.html](./index.html). It has the following block of custom implementation of search input that does not fire search just imitates custom implementations:
 ```html
 <input id="custom-query-input"></input>
 <button id="custom-search-button">Search</button>
