@@ -89,9 +89,10 @@ searchstax.initialize({
   model: "Default",
   sessionId: makeId(25),
 });
-
+```
 The Smart Answers widget is then attached to an HTML container:
 
+```typescript
 searchstax.addAnswerWidget("searchstax-answer-container", {
   showMoreAfterWordCount: 100,
   templates: {
