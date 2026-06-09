@@ -39,27 +39,13 @@ The "widgets" directory contains implementations for individual widgets that can
 - This directory contains example applications that demonstrate how to use the various widgets together to build real apps.
 - Each page is an application that implements one or more of the available widgets.
 
-| App              | JavaScript                                     | Vue                                             | React                                             | Angular                                            | Next JS                                            |
-| ---------------- | ---------------------------------------------- | ----------------------------------------------- | ------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| Accelerator Page | [Link](./pages/js/searchstax-accelerator-page) | [Link](./pages/vue/searchstax-accelerator-page) | [Link](./pages/react/searchstax-accelerator-react) | [Link](./pages/angular/searchstax-accelerator-page) | [Link](./pages/react/next-js-pages-sample)          |
-| Job Search App   | [Link](./pages/js/job-search-sample)           | [Link](./pages/vue/jobsearch-vue-app)           |                                                   |                                                    |                                                    |
-| Standalone Samples App   | [Link](./pages/js/searchstax-standalone-sample)           |            |                                                   |                                                    |                                                    |
-
-
-## Standalone Samples
-
-To run locally go to [Link](./pages/js/searchstax-standalone-sample) and run these commands: "npm install" "npm run dev".
-
-[index.html](./pages/js/searchstax-standalone-sample/index.html) has the following block of custom implementation of search input that does not fire search just imitates custom implementations:
-```
-<input id="custom-query-input"></input>
-            <input id="custom-page-input" type="number" min="1" value="1"></input>
-            <button id="custom-search-button">Search</button>
-```
-
-in [main.ts](./pages/js/searchstax-standalone-sample/src/main.ts)  there are window.onload function which adds custom implementation for these elements and triggerReload function which connects those inputs to trigger reload on answers wigget and related searches widget.
-
-Sample config for this app is stored in [this config](./pages/js/config.js) under searchStandaloneSearchSample
+| App              | Description                    | JavaScript                                     | Vue                                             | React                                             | Angular                                            | Next JS                                            |
+| ---------------- | ---------------------------------------------- | ---------------------------------------------- | ----------------------------------------------- | ------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| Accelerator Page | Headless Default SearchStax implementation of Hosted Search Experience | [Link](./pages/js/searchstax-accelerator-page) | [Link](./pages/vue/searchstax-accelerator-page) | [Link](./pages/react/searchstax-accelerator-react) | [Link](./pages/angular/searchstax-accelerator-page) | [Link](./pages/react/next-js-pages-sample)          |
+| Job Search App   | Sample Search Page for a Job Search Application | [Link](./pages/js/job-search-sample)           | [Link](./pages/vue/jobsearch-vue-app)           |                                                   |                                                    |                                                    |
+| Tabbed Navigation & Facets App   | Sample showing tabbed navigation on the top and facets on the left | [Link](./pages/js/tabbed-nav-sample)           |                       |                                                   |                                                    |                                                    |
+| Tabbed Navigation & Infinite Scroll App   | Sample with Tabbed navigation at the top and results shown using infinite scroll for next pages | [Link](./pages/js/facet-tabs-infinite-scroll)           |                       |                                                   |                                                    |                                                    |
+| Smart Answers Standalone App   | App showing how to use Smart Answers Widget on your Custom Search Page | [Link](./pages/js/smart-answers-standalone)           |            |                                                   |                                                    |                                                    |
 
 ---
 ## Happy coding!
