@@ -103,7 +103,6 @@ The Smart Answers widget is then attached to the HTML container:
 
 ```typescript
 searchstax.addAnswerWidget("searchstax-answer-container", {
-  showMoreAfterWordCount: 100,
   templates: {
     main: {
       template: `...`,
