@@ -68,12 +68,21 @@ The main HTML file is [index.html](./index.html). It has the following block of 
 <button id="custom-search-button">Search</button>
 ```
 
-The sample imports the SearchStax JavaScript UX library:
+The Smart Answers Widget and Feedback Widget can be included in your Custom App by including this minimal HTML:
+```html
+<div id="searchstax-answer-container"></div>
+<div class="search-details-container">
+   <div id="search-feedback-container"></div>
+   <div id="search-sorting-container"></div>
+</div>
+```
+
+On Javascript side, you would need to import the SearchStax JavaScript UX library:
 ```typescript
 import { Searchstax } from "@searchstax-inc/searchstudio-ux-js";
 ```
 
-It creates a SearchStax instance and initializes it using the standalone sample configuration:
+You then create a SearchStax instance and initializes it using for Answers and Analytics to track the Answers as shown below:
 ```typescript
 const searchstax = new Searchstax();
 
@@ -90,7 +99,7 @@ searchstax.initialize({
   sessionId: makeId(25),
 });
 ```
-The Smart Answers widget is then attached to an HTML container:
+The Smart Answers widget is then attached to the HTML container:
 
 ```typescript
 searchstax.addAnswerWidget("searchstax-answer-container", {
@@ -108,7 +117,7 @@ searchstax.addAnswerWidget("searchstax-answer-container", {
 });
 ```
 
-in [main.ts](./src/main.ts)  there is a `window.onload` function which adds custom implementation for these elements and `triggerSearchStaxReload` function which connects those inputs to trigger reload on answers wigget.
+Above code is all included in [main.ts](./src/main.ts).  There is a `window.onload` function which adds custom implementation for these elements and `triggerSearchStaxReload` function which connects your Search Input to trigger reload on answers wigget.
 ```typescript
 function triggerSearchStaxReload(query: string) {
   searchstax.dataLayer.setSearchObject({
