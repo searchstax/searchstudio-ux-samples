@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@100;300;600&display=swap");
+@import "./node_modules/@searchstax-inc/searchstudio-ux-js/dist/styles/mainTheme.css";
+
+*,
+html {
+  font-family: "Barlow", sans-serif !important;
+}
+
+.container {
+  width: 100%;
+  margin: 20px auto;
+}
+
+h3 {
+  font-size: 22px;
+  font-weight: 400;
+}
+
+#feedbackWidgetContainer {
+  margin-top: 20px;
+}
+
+.searchstax-lightweight-widget-container {
+  display: flex;
+}
+.searchstax-lightweight-widget-container .searchstax-lightweight-widget-thumbs-up {
+  cursor: pointer;
+}
+.searchstax-lightweight-widget-container .searchstax-lightweight-widget-thumbs-up svg {
+  stroke: #969696;
+}
+.searchstax-lightweight-widget-container .searchstax-lightweight-widget-thumbs-up:hover svg, .searchstax-lightweight-widget-container .searchstax-lightweight-widget-thumbs-up.active svg {
+  stroke: #333333;
+}
+.searchstax-lightweight-widget-container .searchstax-lightweight-widget-separator {
+  margin: 0 5px;
+  width: 1px;
+  height: 17px;
+  background-color: #dcdcdc;
+}
+.searchstax-lightweight-widget-container .searchstax-lightweight-widget-thumbs-down {
+  cursor: pointer;
+}
+.searchstax-lightweight-widget-container .searchstax-lightweight-widget-thumbs-down svg {
+  stroke: #969696;
+}
+.searchstax-lightweight-widget-container .searchstax-lightweight-widget-thumbs-down:hover svg, .searchstax-lightweight-widget-container .searchstax-lightweight-widget-thumbs-down.active svg {
+  stroke: #333333;
+}

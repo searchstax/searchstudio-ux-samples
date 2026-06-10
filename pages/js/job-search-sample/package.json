@@ -1,24 +1,24 @@
 {
   "name": "job-search-sample",
+  "private": true,
   "version": "4.2.10",
-  "description": "",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "dev": "parcel src/index.html"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
-  "keywords": [
-    "Job Search App"
-  ],
-  "author": "@SearchStax Inc.",
-  "license": "ISC",
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.9.3",
-    "parcel": "^2.9.3"
+    "sass-embedded": "^1.86.2",
+    "typescript": "~5.7.2",
+    "vite": "^6.2.0"
   },
   "overrides": {
     "svgo": "^3.3.3"
   },
   "dependencies": {
-    "@searchstax-inc/searchstudio-ux-js": "npm:@searchstax-inc/searchstudio-ux-js-staging@^4.2.10"
+    "@searchstax-inc/searchstudio-ux-js": "npm:@searchstax-inc/searchstudio-ux-js-staging@^4.2.10",
+    "dompurify": "^3.2.5",
+    "patch-package": "^8.0.1"
   }
 }
