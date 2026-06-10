@@ -71,9 +71,6 @@ searchstax.addAnswerWidget("searchstax-answer-container", {
   },
   feedbackwidget: {
     renderFeedbackWidget: true,
-    emailOverride: () => {
-      return "";
-    },
     thumbsUpValue: 10,
     thumbsDownValue: 0,
     lightweightTemplateOverride: `
