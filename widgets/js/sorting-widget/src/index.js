@@ -39,9 +39,11 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
     templates: {
       mainTemplate: {
       template: `
-            <div class="searchstax-search-results-container">
+            <section aria-label="search results container" tabindex="0">
+            <div class="searchstax-search-results-container" id="searchstax-search-results-container">
                 <div class="searchstax-search-results" id="searchstax-search-results"></div>
             </div>
+            </section>
             `,
         searchResultsContainerId: "searchstax-search-results",
       },
@@ -108,7 +110,6 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
             </div>
             <div>
                 <p>Try searching for search related terms or topics. We offer a wide variety of content to help you get the information you need.</p>
-                <p>Lost? Click on the ‘X” in the Search Box to reset your search.</p>
             </div>
             `
       }
@@ -121,6 +122,7 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
           template: `
       {{#searchExecuted}}
         {{#hasResultsOrExternalPromotions}}
+        {{#sortOptions.length}}
         <div class="searchstax-sorting-container">
             <label class="searchstax-sorting-label" for="sort-by">Sort By</label>
             <select id="searchstax-search-order-select" class="searchstax-search-order-select">
@@ -135,6 +137,7 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
                 </option>
             </select>
         </div>
+        {{/sortOptions.length}}
         {{/hasResultsOrExternalPromotions}}
       {{/searchExecuted}}
       `,

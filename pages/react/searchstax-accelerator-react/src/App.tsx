@@ -1,16 +1,15 @@
 import "./App.scss";
 import {
-  SearchstaxWrapper,
-  SearchstaxInputWidget,
-  SearchstaxResultWidget,
-  SearchstaxPaginationWidget,
-  SearchstaxOverviewWidget,
-  SearchstaxSortingWidget,
-  SearchstaxRelatedSearchesWidget,
+  SearchstaxAnswerWidget,
   SearchstaxExternalPromotionsWidget,
   SearchstaxFacetsWidget,
-  SearchstaxAnswerWidget,
-  //@ts-ignore
+  SearchstaxInputWidget,
+  SearchstaxOverviewWidget,
+  SearchstaxPaginationWidget,
+  SearchstaxRelatedSearchesWidget,
+  SearchstaxResultWidget,
+  SearchstaxSortingWidget,
+  SearchstaxWrapper,
 } from "@searchstax-inc/searchstudio-ux-react";
 // @ts-ignore
 import SearchstaxFeedbackWidget from "https://static.searchstax.com/studio-js/v4/js/feedbackWidget.mjs";
@@ -18,6 +17,7 @@ import SearchstaxFeedbackWidget from "https://static.searchstax.com/studio-js/v4
 import type {
   ISearchObject,
   ISearchstaxParsedResult,
+  ISearchstaxSearchResponse,
   ISearchstaxSuggestProps,
   ISearchstaxSuggestResponse,
 } from "@searchstax-inc/searchstudio-ux-js";
@@ -46,6 +46,7 @@ import { InputTemplate } from "./templates/inputTemplates.js";
 function App() {
   const feedbackConfig = {
     renderFeedbackWidget: true,
+    model: renderConfig.model,
     emailOverride: searchstaxEmailOverride,
     thumbsUpValue: 10,
     thumbsDownValue: 0,
@@ -65,7 +66,7 @@ function App() {
      </div>
      </div>
       `,
-  }
+  };
 
   function initializeMainFeedbackWidget() {
     // get the container element
@@ -73,7 +74,10 @@ function App() {
     if (container) {
       new SearchstaxFeedbackWidget({
         analyticsKey: config.trackApiKey,
+        model: config.model,
         containerId: "searchstax-feedback-container",
+        analyticsSrc:
+          "https://static.searchstax.com/studio-js/v4.1.53/js/studio-analytics.js",
       });
     }
   }
@@ -96,38 +100,30 @@ function App() {
   const sessionId = makeId(25);
 
   function beforeSearch(props: ISearchObject) {
-    const propsCopy = { ...props };
-    return propsCopy;
+    return { ...props };
   }
-  function afterSearch(results: ISearchstaxParsedResult[]) {
-    const copy = [...results];
-    return copy;
+  function afterSearch(results: ISearchstaxParsedResult[], unparsedResponse?: ISearchstaxSearchResponse) {
+    return [...results];
   }
 
   function initialized(searchstax: Searchstax) {
-    console.log(searchstax);
-
     setTimeout(() => {
       initializeMainFeedbackWidget();
     }, 300);
   }
 
   function afterAutosuggest(result: ISearchstaxSuggestResponse) {
-    const copy = { ...result };
-    return copy;
+    return { ...result };
   }
   function beforeAutosuggest(props: ISearchstaxSuggestProps) {
     // gets suggestProps, if passed along further autosuggest will execute, if null then event gets canceled
     // props can be modified and passed along
-    const propsCopy = { ...props };
-    return propsCopy;
+    return { ...props };
   }
 
   function afterLinkClick(result: ISearchstaxParsedResult) {
     // gets result that was clicked, if passed along further functions will execute, if null then event gets canceled
-    const resultCopy = { ...result };
-
-    return resultCopy;
+    return { ...result };
   }
 
   return (
@@ -145,6 +141,7 @@ function App() {
         analyticsBaseUrl={config.analyticsBaseUrl}
         router={{ enabled: true }}
         language={config.language}
+        model={config.model}
         questionURL={config.questionURL}
       >
         <div className="searchstax-page-layout-container">
@@ -157,7 +154,7 @@ function App() {
           ></SearchstaxInputWidget>
           <SearchstaxAnswerWidget
             searchAnswerTemplate={answerTemplate}
-            showShowMoreAfterWordCount={100}
+            showMoreAfterWordCount={100}
             feedbackwidget={feedbackConfig}
           ></SearchstaxAnswerWidget>
           <div className="search-details-container">

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Searchstax Smart Answers Standalone Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <script type="module" src="/src/main.ts"></script>
+
+    <style lang="scss">
+      @import "main.scss";
+    </style>
+  </head>
+  <body>
+      <h1>
+        Smart Answers Widget in Custom UI App
+      </h1>
+      <h4>This sample shows how Smart Answers can be integrated into your Custom UI. <br/>The input box below would implment your Search functionality.</h4>
+      <div class="container">
+        <div class="searchstax-page-layout-container">
+          <div id="searchstax-input-container">
+            <input id="custom-query-input" style="width:80%"></input>
+            <button id="custom-search-button">Search</button>
+          </div>
+          <div id="searchstax-answer-container"></div>
+      </div>
+  </body>
+</html>

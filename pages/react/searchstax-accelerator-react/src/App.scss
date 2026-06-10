@@ -24,8 +24,8 @@ h1 {
   box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.35) !important;
   border-radius: 6px !important;
   &.searchstax-alternative-render {
-        width: 65%;
-      }
+    width: 65%;
+  }
 }
 .searchstax-search-result {
   display: flex;
@@ -115,18 +115,15 @@ h1 {
 }
 
 .searchstax-related-search {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 0px;
-  margin: 0px 0 20px 10px;
+  display: flex;
+  // grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  margin: 0px 0 20px 5px;
 
   .searchstax-related-search-item {
     display: block;
     color: #111 !important;
     font-weight: 500;
-    .searchstax-related-search:hover {
-      color: #EB3500 !important;
-    }
   }
 }
 .searchstax-facets-pill-filter-by {
@@ -175,11 +172,11 @@ h1 {
   }
 }
 
-.searchstax-main-page-title{
+.searchstax-main-page-title {
   display: none;
 }
 
-.searchstax-answer-load-more-button{
+.searchstax-answer-load-more-button {
   width: 125px;
 }
 

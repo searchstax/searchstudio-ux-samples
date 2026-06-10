@@ -4,7 +4,7 @@
       <template #sorting="{ sortingData, orderChange, selectedSorting }">
               <div
                 class="searchstax-sorting-container"
-                v-if="sortingData && sortingData?.searchExecuted && sortingData?.hasResultsOrExternalPromotions"
+                v-if="sortingData && sortingData?.searchExecuted && sortingData?.hasResultsOrExternalPromotions && sortingData?.sortOptions.length > 0"
               >
                 <label
                   class="searchstax-sorting-label"

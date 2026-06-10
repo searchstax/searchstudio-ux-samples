@@ -18,6 +18,7 @@ import {
 import type {
   ISearchObject,
   ISearchstaxParsedResult,
+  ISearchstaxSearchResponse,
   ISearchstaxSuggestProps,
   ISearchstaxSuggestResponse,
   Searchstax,
@@ -76,7 +77,7 @@ function beforeSearch(props: ISearchObject) {
   return propsCopy;
 }
 
-function afterSearch(results: ISearchstaxParsedResult[]) {
+function afterSearch(results: ISearchstaxParsedResult[], unparsedResponse?: ISearchstaxSearchResponse) {
   const copy = [...results];
   return copy;
 }
@@ -116,6 +117,7 @@ export default function Home() {
         //@ts-ignore
         new feedbackModule({
           analyticsKey: config.trackApiKey,
+          model: config.model,
           containerId: "searchstax-feedback-container",
           lightweight: false,
         });
@@ -142,7 +144,8 @@ export default function Home() {
           analyticsBaseUrl={confTyped.analyticsBaseUrl}
           router={{ enabled: true }}
           questionURL={config.questionURL}
-          language="en"
+          language={confTyped.language}
+          model={confTyped.model}
         >
           <div className="searchstax-page-layout-container">
             <div id="searchstax-feedback-container"></div>
@@ -157,7 +160,7 @@ export default function Home() {
 
             <SearchstaxAnswerWidget
               searchAnswerTemplate={answerTemplate}
-              showShowMoreAfterWordCount={100}
+              showMoreAfterWordCount={100}
               feedbackwidget={feedbackConfig}
             ></SearchstaxAnswerWidget>
 

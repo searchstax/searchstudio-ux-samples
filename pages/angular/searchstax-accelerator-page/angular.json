@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "searchstax-accelerator-page:build:production"
+              "buildTarget": "searchstax-accelerator-page:build:production"
             },
             "development": {
-              "browserTarget": "searchstax-accelerator-page:build:development"
+              "buildTarget": "searchstax-accelerator-page:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "searchstax-accelerator-page:build"
+            "buildTarget": "searchstax-accelerator-page:build"
           }
         },
         "test": {

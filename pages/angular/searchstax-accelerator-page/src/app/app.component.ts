@@ -1,18 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import {
   ISearchObject,
-  ISearchstaxLocation,
   ISearchstaxParsedResult,
+  ISearchstaxSearchResponse,
   ISearchstaxSuggestProps,
   ISearchstaxSuggestResponse,
   Searchstax,
 } from '@searchstax-inc/searchstudio-ux-js';
 // @ts-ignore
-import { config, renderConfig } from './../../../config.js';
+import { config, renderConfig } from '../../../config';
+
 // @ts-ignore
 
 @Component({
   selector: 'app-root',
+  standalone: false,
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
@@ -20,9 +22,27 @@ export class AppComponent implements OnInit {
   title = 'searchstax-accelerator-page';
   config = config;
   renderConfig = renderConfig;
+  selectValue = '';
   sessionId = this.makeId(25);
   searchstaxInstance: Searchstax | null = null;
   feedbackInstance: any = null;
+  // @ts-ignore
+  locationDecode = renderConfig.locationWidget.locationDecode;
+  // @ts-ignore
+  locationDecodeCoordinatesToAddress =
+    renderConfig.locationWidget.locationDecodeCoordinatesToAddress;
+  // @ts-ignore
+  locationSearchEnabled = renderConfig.locationWidget.locationSearchEnabled;
+  locationValuesOverride: {
+    locationDistanceEnabled: boolean; // if set to true location distance dropdown will be shown
+    filterValues: string[]; // array of location filter values to override the default ones
+    filterUnit: string; // unit of the location filter to override the default one
+  } = renderConfig.locationWidget.locationValuesOverride as {
+    locationDistanceEnabled: boolean; // if set to true location distance dropdown will be shown
+    filterValues: string[]; // array of location filter values to override the default ones
+    filterUnit: string; // unit of the location filter to override the default one
+  };
+
   feedbackConfig = {
     renderFeedbackWidget: true,
     emailOverride: () => '',
@@ -43,8 +63,8 @@ export class AppComponent implements OnInit {
 
  </div>
  </div>
-  `
-  }
+  `,
+  };
 
   ngOnInit() {
     //@ts-ignore
@@ -53,6 +73,7 @@ export class AppComponent implements OnInit {
       setTimeout(() => {
         new this.feedbackInstance({
           analyticsKey: config.trackApiKey,
+          model: config.model,
           containerId: 'searchstax-feedback-container',
           lightweight: false,
         });
@@ -61,10 +82,9 @@ export class AppComponent implements OnInit {
   }
 
   beforeSearch(props: ISearchObject) {
-    const propsCopy = { ...props };
-    return propsCopy;
+    return { ...props };
   }
-  afterSearch(results: ISearchstaxParsedResult[]) {
+  afterSearch(results: ISearchstaxParsedResult[], unparsedResponse?: ISearchstaxSearchResponse) {
     const copy = [...results];
     return copy;
   }
@@ -81,57 +101,15 @@ export class AppComponent implements OnInit {
   }
 
   afterAutosuggest(result: ISearchstaxSuggestResponse) {
-    const copy = { ...result };
-    return copy;
+    return { ...result };
   }
 
   beforeAutosuggest(props: ISearchstaxSuggestProps) {
-    const propsCopy = { ...props };
-    return propsCopy;
+    return { ...props };
   }
 
   afterLinkClick(results: ISearchstaxParsedResult): ISearchstaxParsedResult {
-    const copy = { ...results };
-    return copy;
-  }
-
-  locationDecode(term: string): Promise<ISearchstaxLocation> {
-    return new Promise((resolve) => {
-      // make a request to google geocoding API to retrieve lat, lon and address
-
-      const geocodingAPIKey = "AIzaSyDK5wQQaz7kmP60_DViAto5rTQ301eVBFs";
-      const geocodingURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
-        term
-      )}&key=${geocodingAPIKey}`;
-      fetch(geocodingURL)
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.status === "OK" && data.results.length > 0) {
-            const result = data.results[0];
-            const location = {
-              lat: result.geometry.location.lat,
-              lon: result.geometry.location.lng,
-              address: result.formatted_address,
-            };
-            resolve(location);
-          } else {
-            resolve({
-              address: undefined,
-              lat: undefined,
-              lon: undefined,
-              error: true,
-            });
-          }
-        })
-        .catch(() => {
-          resolve({
-            address: undefined,
-            lat: undefined,
-            lon: undefined,
-            error: true,
-          });
-        });
-    });
+    return { ...results };
   }
 
   initialized(searchstax: Searchstax) {

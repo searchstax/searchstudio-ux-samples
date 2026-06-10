@@ -1,4 +1,4 @@
-import { Searchstax } from "@searchstax-inc/searchstudio-ux-js";
+import { ISearchstaxParsedResult, ISearchstaxSearchResponse, Searchstax } from "@searchstax-inc/searchstudio-ux-js";
 // @ts-ignore
 import { initConfig, renderConfig } from "./../../config.js";
 
@@ -27,14 +27,15 @@ searchstax.initialize({
       const propsCopy = { ...props };
       return propsCopy;
     },
-    afterSearch: (results) => {
+    afterSearch: (results: ISearchstaxParsedResult[], unparsedResponse: ISearchstaxSearchResponse) => {
+      console.log(unparsedResponse);
       const copy = [...results];
       return copy;
     },
   },
 });
 searchstax.addAnswerWidget("searchstax-answer-container", {
-  showShowMoreAfterWordCount: 100,
+  showMoreAfterWordCount: 100,
   templates: {
     main: {
       template: `
@@ -63,7 +64,7 @@ searchstax.addAnswerWidget("searchstax-answer-container", {
                         {{#answerLoading}}
                             <div class="searchstax-answer-loading"></div>
                         {{/answerLoading}}
-                        <button class="searchstax-answer-load-more-button">Read More</button>
+                        <button class="searchstax-answer-load-more-button">Show More</button>
                     </div>
                 {{/showMoreButtonVisible}}
             </div>
@@ -132,6 +133,8 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
       <div class="searchstax-search-input-container searchstax-search-input-container-new {{#locationEnabled}}searchstax-alternative-render{{/locationEnabled}}">
           <div class="searchstax-search-input-wrapper">
             <input type="text" id="searchstax-search-input" class="searchstax-search-input" placeholder="SEARCH FOR..." aria-label="Search" />
+            <button id="searchstax-clear-input-action-button" class="searchstax-cross-icon hidden" aria-label="clear input" role="button"></button>
+            <span id="searchstax-separator-icon" class="searchstax-separator hidden"></span>
           </div>
           <div id="searchstax-location-container" class="searchstax-location-container"></div>
           <button class="searchstax-spinner-icon" id="searchstax-search-input-action-button" aria-label="search" role="button"></button>
@@ -148,10 +151,9 @@ searchstax.addSearchInputWidget("searchstax-input-container", {
 });
 
 searchstax.addSearchLocationWidget("searchstax-location-container", {
-  templates:{
+  templates: {
     mainTemplate: {
-      template:
-`
+      template: `
       <div class="searchstax-location-input-container" data-test-id="searchstax-location-input-container">
             <div class="searchstax-location-input-wrapper">
                 <span class="searchstax-location-input-label">NEAR</span>
@@ -171,48 +173,16 @@ searchstax.addSearchLocationWidget("searchstax-location-container", {
         </div>
       `,
       locationInputId: "searchstax-location-input",
-      radiusInputId: "searchstax-location-radius-select"
+      radiusInputId: "searchstax-location-radius-select",
+      currentLocationActionButtonId: "searchstax-location-get-current-location",
     },
   },
+  locationSearchEnabled: renderConfig.locationWidget.locationSearchEnabled,
+  locationValuesOverride: renderConfig.locationWidget.locationValuesOverride,
   hooks: {
-    locationDecode: (term) => {
-        return new Promise((resolve) => {
-          // make a request to google geocoding API to retrieve lat, lon and address
-
-          const geocodingAPIKey = "AIzaSyDK5wQQaz7kmP60_DViAto5rTQ301eVBFs";
-          const geocodingURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
-            term
-          )}&key=${geocodingAPIKey}`;
-          fetch(geocodingURL)
-            .then((response) => response.json())
-            .then((data) => {
-              if (data.status === "OK" && data.results.length > 0) {
-                const result = data.results[0];
-                const location = {
-                  lat: result.geometry.location.lat,
-                  lon: result.geometry.location.lng,
-                  address: result.formatted_address,
-                };
-                resolve(location);
-              } else {
-                resolve({
-                  address: undefined,
-                  lat: undefined,
-                  lon: undefined,
-                  error: true
-                });
-              }
-            })
-            .catch(() => {
-              resolve({
-                address: undefined,
-                lat: undefined,
-                lon: undefined,
-                error: true
-              });
-            });
-        });
-    },
+    locationDecode: renderConfig.locationWidget.locationDecode,
+    locationDecodeCoordinatesToAddress:
+      renderConfig.locationWidget.locationDecodeCoordinatesToAddress,
   },
 });
 
@@ -258,10 +228,10 @@ searchstax.addFacetsWidget("searchstax-facets-container", {
       template: `
       <div class="searchstax-facet-show-more-container">
       {{#showingAllFacets}}
-        <div class="searchstax-facet-show-less-button searchstax-facet-show-button" tabindex="0" role="button">less</div>
+        <div class="searchstax-facet-show-less-button searchstax-facet-show-button" data-focus="{{focusId}}" tabindex="0" role="button">less</div>
       {{/showingAllFacets}}
       {{^showingAllFacets}}
-        <div class="searchstax-facet-show-more-button  searchstax-facet-show-button" tabindex="0" role="button">more {{onShowMoreLessClick}}</div>
+        <div class="searchstax-facet-show-more-button  searchstax-facet-show-button" data-focus="{{focusId}}" tabindex="0" role="button">more {{onShowMoreLessClick}}</div>
       {{/showingAllFacets}}
     </div>
       `,
@@ -271,7 +241,7 @@ searchstax.addFacetsWidget("searchstax-facets-container", {
       template: `
       <div>
         <div class="searchstax-facet-title-container">
-            <div class="searchstax-facet-title" aria-label="Facet group: {{label}}" tabindex="0">
+            <div class="searchstax-facet-title" aria-label="Facet group: {{label}}" tabindex="0" role="button">
             {{label}}
             </div>
             <div class="searchstax-facet-title-arrow active"></div>
@@ -280,6 +250,7 @@ searchstax.addFacetsWidget("searchstax-facets-container", {
       </div>
       `,
       facetListTitleContainerClass: `searchstax-facet-title-container`,
+      facetListTitleContainerInner: `searchstax-facet-title`,
       facetListContainerClass: `searchstax-facet-values-container`,
     },
     clearFacetsTemplate: {
@@ -332,6 +303,7 @@ searchstax.addSearchSortingWidget("search-sorting-container", {
       template: `
         {{#searchExecuted}}
           {{#hasResultsOrExternalPromotions}}
+          {{#sortOptions.length}}
           <div class="searchstax-sorting-container">
               <label class="searchstax-sorting-label" for="searchstax-search-order-select">Sort By</label>
               <select id="searchstax-search-order-select" class="searchstax-search-order-select">
@@ -342,6 +314,7 @@ searchstax.addSearchSortingWidget("search-sorting-container", {
                 {{/sortOptions}}
               </select>
           </div>
+        {{/sortOptions.length}}
           {{/hasResultsOrExternalPromotions}}
         {{/searchExecuted}}
         `,
@@ -354,9 +327,11 @@ searchstax.addSearchResultsWidget("searchstax-results-container", {
   templates: {
     mainTemplate: {
       template: `
-              <div class="searchstax-search-results-container">
+              <section aria-label="search results container" tabindex="0">
+              <div class="searchstax-search-results-container" id="searchstax-search-results-container">
                   <div class="searchstax-search-results" id="searchstax-search-results"></div>
               </div>
+              </section>
               `,
       searchResultsContainerId: `searchstax-search-results`,
     },
@@ -378,7 +353,7 @@ searchstax.addSearchResultsWidget("searchstax-results-container", {
               <img alt="" src="{{thumbnail}}" alt="image" class="searchstax-thumbnail">
           {{/thumbnail}}
           <div class="searchstax-search-result-title-container">
-              <h3 class="searchstax-search-result-title">{{{title}}}</h3>
+              <h3 class="searchstax-search-result-title" id="title-{{uniqueId}}">{{{title}}}</h3>
           </div>
 
           {{#paths}}
@@ -428,7 +403,6 @@ searchstax.addSearchResultsWidget("searchstax-results-container", {
                 </div>
                 <ul class="searchstax-no-results-list">
                     <li>Try searching for search related terms or topics. We offer a wide variety of content to help you get the information you need.</li>
-                    <li>Lost? Click on the ‘X” in the Search Box to reset your search.</li>
                 </ul>
               </div>
             {{/searchExecuted}}
@@ -443,16 +417,16 @@ searchstax.addPaginationWidget("searchstax-pagination-container", {
     mainTemplate: {
       template: `
         {{#results.length}}
-          <div class="searchstax-pagination-container">
-            <div class="searchstax-pagination-content">
-              <a class="searchstax-pagination-previous {{#isFirstPage}}disabled{{/isFirstPage}}" id="searchstax-pagination-previous" tabindex="0" aria-label="previous page">< Previous</a>
-              <div class="searchstax-pagination-details">
-                {{startResultIndex}} - {{endResultIndex}} of {{totalResults}}
-              </div>
-                <a class="searchstax-pagination-next {{#isLastPage}}disabled{{/isLastPage}}" id="searchstax-pagination-next" tabindex="0" aria-label="next page">Next ></a>
+        <div class="searchstax-pagination-container" data-test-id="searchstax-pagination-container">
+          <div class="searchstax-pagination-content">
+            <a role="link" class="searchstax-pagination-previous {{#isFirstPage}}disabled{{/isFirstPage}}" aria-disabled="{{#isFirstPage}}true{{/isFirstPage}}{{^isFirstPage}}false{{/isFirstPage}}"  id="searchstax-pagination-previous" data-test-id="searchstax-pagination-previous" tabindex="0" aria-label="Previous Page">< Previous</a>
+            <div class="searchstax-pagination-details" data-test-id="searchstax-pagination-details">
+              {{startResultIndex}} - {{endResultIndex}} of {{totalResults}} / Page {{currentPage}} of {{totalPages}}
             </div>
+            <a role="link" class="searchstax-pagination-next {{#isLastPage}}disabled{{/isLastPage}}" aria-disabled="{{#isLastPage}}true{{/isLastPage}}{{^isLastPage}}false{{/isLastPage}}" data-test-id="searchstax-pagination-next" id="searchstax-pagination-next" tabindex="0" aria-label="Next Page">Next ></a>
           </div>
-        {{/results.length}}
+        </div>
+      {{/results.length}}
         `,
       nextButtonClass: `searchstax-pagination-next`,
       previousButtonClass: `searchstax-pagination-previous`,
@@ -471,10 +445,8 @@ searchstax.addPaginationWidget("searchstax-pagination-container", {
 });
 
 searchstax.addRelatedSearchesWidget("searchstax-related-searches-container", {
-  relatedSearchesURL:
-    initConfig.acceleratorSample.relatedSearchesURL,
-  relatedSearchesAPIKey:
-    initConfig.acceleratorSample.relatedSearchesAPIKey,
+  relatedSearchesURL: initConfig.acceleratorSample.relatedSearchesURL,
+  relatedSearchesAPIKey: initConfig.acceleratorSample.relatedSearchesAPIKey,
   templates: {
     main: {
       template: `
@@ -491,7 +463,7 @@ searchstax.addRelatedSearchesWidget("searchstax-related-searches-container", {
     },
     relatedSearch: {
       template: `
-          <span class="searchstax-related-search searchstax-related-search-item" aria-label="Related search: {{related_search}}" tabindex="0" role="button">
+          <span class="searchstax-related-search searchstax-related-search-item" aria-label="Related search: {{related_search}}" tabindex="0" role="link">
               {{ related_search }}{{^last}}<span>,</span>{{/last}}
           </span>
           `,

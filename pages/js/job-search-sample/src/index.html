@@ -1,68 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="index.js" type="module"></script>
+    <title>Job Search App</title>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="index.js" type="module"></script>
-  <title>Job Search App</title>
+    <script type="text/javascript">
+      var _msq = _msq || []; //declare object
+      var analyticsBaseUrl = "https://analytics-us.searchstax.com";
+      (function () {
+        var ms = document.createElement("script");
+        ms.type = "text/javascript";
+        ms.src =
+          "https://static.searchstax.com/studio-js/v3/js/studio-analytics.js";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(ms, s);
+      })();
+    </script>
+  </head>
 
-  <script type="text/javascript">
-    var _msq = _msq || []; //declare object
-    var analyticsBaseUrl = 'https://analytics-us.searchstax.com';
-    (function () {
-      var ms = document.createElement('script');
-      ms.type = 'text/javascript';
-      ms.src = 'https://static.searchstax.com/studio-js/v3/js/studio-analytics.js';
-      var s = document.getElementsByTagName('script')[0];
-      s.parentNode.insertBefore(ms, s);
-    })();
-  </script>
+  <body>
+    <nav>
+      <div>
+        <img src="../images/logo.png" />
+      </div>
+      <div>
+        <div id="searchstax-input-container"></div>
+      </div>
+      <div></div>
+    </nav>
+    <main>
+      <h1 style="display: none" class="searchstax-main-page-title">
+        Searchstax Search Page
+      </h1>
+      <div class="container">
+        <div class="searchstax-page-layout-container">
+          <div class="searchstax-page-layout-facet-result-container">
+            <div class="searchstax-page-layout-facet-container">
+              <h3>Filters</h3>
+              <div id="searchstax-facets-container"></div>
+            </div>
 
-</head>
+            <div class="searchstax-page-layout-result-container">
+              <div class="feedback-container">
+                <div id="search-feedback-container"></div>
+                <div id="search-sorting-container"></div>
+              </div>
 
-<body>
-
-  <nav>
-    <div>
-      <img src="../images/logo.png">
-    </div>
-    <div>
-      <div id="searchstax-input-container"></div>
-    </div>
-    <div></div>
-  </nav>
-  <main>
-    <h1 style="display:none" class="searchstax-main-page-title">Searchstax Search Page</h1>
-  <div class="container">
-
-    <div class="searchstax-page-layout-container">
-
-      <div class="searchstax-page-layout-facet-result-container">
-        <div class="searchstax-page-layout-facet-container">
-          <h3>Filters</h3>
-          <div id="searchstax-facets-container"></div>
-        </div>
-
-        <div class="searchstax-page-layout-result-container">
-          <div class="feedback-container">
-            <div id="search-feedback-container"></div>
-            <div id="search-sorting-container"></div>
+              <div id="searchstax-results-container"></div>
+              <div id="searchstax-related-searches-container"></div>
+              <div id="searchstax-pagination-container"></div>
+            </div>
           </div>
-
-
-          <div id="searchstax-related-searches-container"></div>
-          <div id="searchstax-results-container"></div>
-          <div id="searchstax-pagination-container"></div>
         </div>
       </div>
-    </div>
-
-  </div>
-  </main>
-
-
-
-</body>
-
+    </main>
+  </body>
 </html>

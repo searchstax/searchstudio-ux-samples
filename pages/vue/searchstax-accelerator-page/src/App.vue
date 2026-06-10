@@ -2,6 +2,7 @@
   <div>
     <SearchstaxWrapper
       :language="config.language"
+      :model="config.model"
       :searchURL="config.searchURL"
       :suggesterURL="config.suggesterURL"
       :trackApiKey="config.trackApiKey"
@@ -32,12 +33,12 @@
               <!--- Facets Widget -->
             </div>
             <div class="searchstax-page-layout-result-container">
-              <ResultWidget />
-              <!--- Results Widget -->
               <div id="searchstax-external-promotions-layout-container">
                 <ExternalPromotionsWidget />
                 <!--- External Promotion Widget -->
               </div>
+              <ResultWidget />
+              <!--- Results Widget -->
               <div id="searchstax-related-searches-container">
                 <RelatedSearchesWidget />
                 <!---Related Searches Widget -->
@@ -71,20 +72,21 @@ onMounted(() => {
   setTimeout(() => {
     new SearchstaxFeedbackWidget({
       analyticsKey: config.trackApiKey,
+      model: config.model,
       containerId: 'searchstax-feedback-container',
-      lightweight: false
+      lightweight: false,
+      analyticsSrc: 'https://static.searchstax.com/studio-js/v4.1.53/js/studio-analytics.js'
     })
   }, 300)
 })
 
 function beforeSearch(props) {
-  const propsCopy = { ...props }
-  return propsCopy
+  return { ...props }
 }
 
-function afterSearch(results) {
-  const copy = [...results]
-  return copy
+function afterSearch(results, unparsedResponse) {
+  console.log(unparsedResponse);
+  return [...results]
 }
 
 function makeId(length) {
@@ -97,9 +99,7 @@ function makeId(length) {
   return result
 }
 
-function initialized(searchstax) {
-  console.log('searchstax', searchstax)
-}
+function initialized() {}
 
 const sessionId = makeId(25)
 </script>
@@ -118,5 +118,4 @@ const sessionId = makeId(25)
     width: calc(100%) !important;
   }
 }
-
 </style>

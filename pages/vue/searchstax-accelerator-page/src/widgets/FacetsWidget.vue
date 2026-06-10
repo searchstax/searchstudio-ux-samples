@@ -171,6 +171,7 @@
                                  @keyup.space="showMoreLessDesktop($event, facet)"
                                  @keyup.enter="showMoreLessDesktop($event, facet)"
                                 tabindex="0"
+                                role="button"
                               >
                                 <div
                                   v-if="facet.showingAllFacets"

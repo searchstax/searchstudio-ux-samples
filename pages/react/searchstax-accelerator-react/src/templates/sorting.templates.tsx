@@ -9,6 +9,7 @@ export function searchSortingTemplate(
       <>
         {sortingData &&
           sortingData?.searchExecuted &&
+          sortingData?.sortOptions.length > 0 &&
           sortingData?.hasResultsOrExternalPromotions && (
             <div className="searchstax-sorting-container">
               <label className="searchstax-sorting-label" htmlFor="searchstax-search-order-select">

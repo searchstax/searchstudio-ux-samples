@@ -7,14 +7,26 @@ This repository contains the code examples for the Site Search UX libraries.
 
 # Installation
 
-|            |                                                                                     |  
+|            |                                                                                     |
 |------------|-------------------------------------------------------------------------------------|
 | JavaScript | ![npm version](https://badge.fury.io/js/%40searchstax-inc%2Fsearchstudio-ux-js.svg) |
-| VueJS      | ![npm version](https://badge.fury.io/js/@searchstax-inc%2Fsearchstudio-ux-vue.svg) | 
-| React      | ![npm version](https://badge.fury.io/js/@searchstax-inc%2Fsearchstudio-ux-react.svg) | 
+| VueJS      | ![npm version](https://badge.fury.io/js/@searchstax-inc%2Fsearchstudio-ux-vue.svg) |
+| React      | ![npm version](https://badge.fury.io/js/@searchstax-inc%2Fsearchstudio-ux-react.svg) |
 | Angular    | ![npm version](https://badge.fury.io/js/@searchstax-inc%2Fsearchstudio-ux-angular.svg) |
 
 
+## Pages Directory
+
+- This directory contains example applications that demonstrate how to use the various widgets together to build real apps.
+- Each page is an application that implements one or more of the available widgets.
+
+| App              | Description                    | JavaScript                                     | Vue                                             | React                                             | Angular                                            | Next JS                                            |
+| ---------------- | ---------------------------------------------- | ---------------------------------------------- | ----------------------------------------------- | ------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| Accelerator Page | Headless Default SearchStax implementation of Hosted Search Experience | [Link](./pages/js/searchstax-accelerator-page) | [Link](./pages/vue/searchstax-accelerator-page) | [Link](./pages/react/searchstax-accelerator-react) | [Link](./pages/angular/searchstax-accelerator-page) | [Link](./pages/react/next-js-pages-sample)          |
+| Job Search App   | Sample Search Page for a Job Search Application | [Link](./pages/js/job-search-sample)           | [Link](./pages/vue/jobsearch-vue-app)           |                                                   |                                                    |                                                    |
+| Tabbed Navigation & Facets App   | Sample showing tabbed navigation on the top and facets on the left | [Link](./pages/js/tabbed-nav-sample)           |                       |                                                   |                                                    |                                                    |
+| Tabbed Navigation & Infinite Scroll App   | Sample with Tabbed navigation at the top and results shown using infinite scroll for next pages | [Link](./pages/js/facet-tabs-infinite-scroll)           |                       |                                                   |                                                    |                                                    |
+| Smart Answers Standalone App   | App showing how to use Smart Answers Widget on your Custom Search Page | [Link](./pages/js/smart-answers-standalone)           |            |                                                   |                                                    |                                                    |
 
 ## Widgets Directory
 
@@ -31,18 +43,6 @@ The "widgets" directory contains implementations for individual widgets that can
 | ExternalPromotions Widget | [Link](https://www.npmjs.com/package/@searchstax-inc/searchstudio-ux-js#externalpromotions-widget) | [Link](https://www.npmjs.com/package/@searchstax-inc/searchstudio-ux-vue#externalpromotions-widget) | [Link](https://www.npmjs.com/package/@searchstax-inc/searchstudio-ux-react#externalpromotions-widget) | [Link](https://www.npmjs.com/package/@searchstax-inc/searchstudio-ux-angular#externalpromotions-widget) |
 | Sorting Widget            | [Link](https://www.npmjs.com/package/@searchstax-inc/searchstudio-ux-js#sorting-widget)            | [Link](https://www.npmjs.com/package/@searchstax-inc/searchstudio-ux-vue#sorting-widget)            | [Link](https://www.npmjs.com/package/@searchstax-inc/searchstudio-ux-react#sorting-widget)            | [Link](https://www.npmjs.com/package/@searchstax-inc/searchstudio-ux-angular#sorting-widget)            |
 
-
-
-
-## Pages Directory
-
-- This directory contains example applications that demonstrate how to use the various widgets together to build real apps.
-- Each page is an application that implements one or more of the available widgets.
-
-| App              | JavaScript                                     | Vue                                             | React                                             | Angular                                            |
-| ---------------- | ---------------------------------------------- | ----------------------------------------------- | ------------------------------------------------- | -------------------------------------------------- |
-| Accelerator Page | [Link](./pages/js/searchstax-accelerator-page) | [Link](./pages/vue/searchstax-accelerator-page) | [Link](.pages/react/searchstax-accelerator-react) | [Link](.pages/angular/searchstax-accelerator-page) |
-| Job Search App   | [Link](./pages/js/job-search-sample)           | [Link](./pages/vue/jobsearch-vue-app)           |                                                   |                                                    |
 
 
 ---
