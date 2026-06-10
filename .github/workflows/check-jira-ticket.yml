@@ -1,0 +1,22 @@
+name: Validate PR Naming Convention
+
+on:
+  pull_request:
+    types: ['opened', 'edited', 'reopened', 'synchronize']
+
+jobs:
+  title:
+    name: ticket check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check for ticket
+        uses: neofinancial/ticket-check-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          ticketLink: 'https://searchstax.atlassian.net/browse/STUDIO-%ticketNumber%'
+          ticketPrefix: 'STUDIO-'
+          titleRegex: '^STUDIO-(?<ticketNumber>\d+)'
+          branchRegex: '^STUDIO-(?<ticketNumber>\d+)'
+          bodyRegex: 'STUDIO-(?<ticketNumber>\d+)'
+          bodyURLRegex: 'http(s?):\/\/(searchstax.atlassian.net)(\/browse)\/(STUDIO\-)(?<ticketNumber>\d+)'
