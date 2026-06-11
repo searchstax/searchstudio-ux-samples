@@ -13,6 +13,9 @@
     "typescript": "~5.7.2",
     "vite": "^6.2.0"
   },
+  "overrides": {
+    "svgo": "^3.3.3"
+  },
   "dependencies": {
     "@searchstax-inc/searchstudio-ux-js": "npm:@searchstax-inc/searchstudio-ux-js@^4.2.10",
     "dompurify": "^3.2.5",
