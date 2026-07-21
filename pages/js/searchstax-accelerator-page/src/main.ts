@@ -84,11 +84,13 @@ searchstax.addAnswerWidget("searchstax-answer-container", {
                       </div>
                       {{/conversationMessages}}
                     </div>
+                    {{#showConversationInput}}
                     <div class="searchstax-conversation-separator"></div>
                     <div class="searchstax-conversation-input-container">
                       <input type="text" id="searchstax-conversation-input" class="searchstax-conversation-input" placeholder="Ask a follow-up question" />
                       <button type="button" class="searchstax-conversation-search-icon searchstax-search-icon" aria-label="Submit follow-up question"></button>
                     </div>
+                    {{/showConversationInput}}
                   </div>
               {{/isConversation}}
             {{/showMoreButtonVisible}}
