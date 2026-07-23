@@ -73,7 +73,28 @@ searchstax.addAnswerWidget("searchstax-answer-container", {
                 <div class="searchstax-lightweight-widget-separator-inline"></div>
                 <p class="searchstax-disclaimer">Generative AI is Experimental</p>
             </div>
-            </div>
+            {{^answerLoading}}
+              {{^showMoreButtonVisible}}
+                {{#isConversation}}
+                  <div class="searchstax-conversation-container">
+                    <div class="searchstax-conversation-messages-container">
+                      {{#conversationMessages}}
+                      <div class="searchstax-conversation-messages-container-message">
+                        {{{formattedMessage}}}
+                      </div>
+                      {{/conversationMessages}}
+                    </div>
+                    {{#showConversationInput}}
+                    <div class="searchstax-conversation-separator"></div>
+                    <div class="searchstax-conversation-input-container">
+                      <input type="text" id="searchstax-conversation-input" class="searchstax-conversation-input" placeholder="Ask a follow-up question" />
+                      <button type="button" class="searchstax-conversation-search-icon searchstax-search-icon" aria-label="Submit follow-up question"></button>
+                    </div>
+                    {{/showConversationInput}}
+                  </div>
+              {{/isConversation}}
+            {{/showMoreButtonVisible}}
+          {{/answerLoading}}
         {{/shouldShowAnswer}}
         `,
     },
