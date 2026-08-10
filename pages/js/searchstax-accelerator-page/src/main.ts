@@ -36,6 +36,7 @@ searchstax.initialize({
 });
 searchstax.addAnswerWidget("searchstax-answer-container", {
   showMoreAfterWordCount: 100,
+  isFullScreenConversation: false,
   templates: {
     main: {
       template: `
@@ -76,16 +77,27 @@ searchstax.addAnswerWidget("searchstax-answer-container", {
             {{^answerLoading}}
               {{^showMoreButtonVisible}}
                 {{#isConversation}}
-                  <div class="searchstax-conversation-container">
+                  <div class="searchstax-conversation-container {{#isFullScreenConversation}}searchstax-conversation-container-full-screen{{/isFullScreenConversation}}">
+                    {{#showConversationHeader}}
+                    <div class="searchstax-conversation-full-screen-header">
+                      <button type="button" class="searchstax-conversation-back-to-results">Back to results</button>
+                      <div class="searchstax-conversation-full-screen-title">Ask SearchStax</div>
+                      <div class="searchstax-conversation-full-screen-header-spacer" aria-hidden="true"></div>
+                    </div>
+                    {{/showConversationHeader}}
+                    {{#showConversationMessages}}
                     <div class="searchstax-conversation-messages-container">
                       {{#conversationMessages}}
-                      <div class="searchstax-conversation-messages-container-message">
+                      <div class="searchstax-conversation-messages-container-message {{messageClass}}">
                         {{{formattedMessage}}}
                       </div>
                       {{/conversationMessages}}
                     </div>
+                    {{/showConversationMessages}}
                     {{#showConversationInput}}
+                    {{#showConversationMessages}}
                     <div class="searchstax-conversation-separator"></div>
+                    {{/showConversationMessages}}
                     <div class="searchstax-conversation-input-container">
                       <input type="text" id="searchstax-conversation-input" class="searchstax-conversation-input" placeholder="Ask a follow-up question" />
                       <button type="button" class="searchstax-conversation-search-icon searchstax-search-icon" aria-label="Submit follow-up question"></button>
