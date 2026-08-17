@@ -1,6 +1,6 @@
 {
   "name": "facets-demo",
-  "version": "4.2.33",
+  "version": "4.2.34",
   "description": "",
   "scripts": {
     "dev": "parcel src/index.html"
@@ -15,7 +15,7 @@
     "parcel": "^2.9.3"
   },
   "dependencies": {
-    "@searchstax-inc/searchstudio-ux-js": "npm:@searchstax-inc/searchstudio-ux-js-staging@^4.2.33"
+    "@searchstax-inc/searchstudio-ux-js": "npm:@searchstax-inc/searchstudio-ux-js-staging@^4.2.34"
   },
   "overrides": {
     "immutable": "5.1.9"
