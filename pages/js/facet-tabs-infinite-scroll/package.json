@@ -15,7 +15,7 @@
     "parcel": "^2.9.3"
   },
   "dependencies": {
-    "@searchstax-inc/searchstudio-ux-js": "npm:@searchstax-inc/searchstudio-ux-js-staging@^4.2.36"
+    "@searchstax-inc/searchstudio-ux-js": "npm:@searchstax-inc/searchstudio-ux-js@^4.2.36"
   },
   "overrides": {
     "immutable": "5.1.9"
