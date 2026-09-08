@@ -1,7 +1,7 @@
 {
   "name": "job-search-sample",
   "private": true,
-  "version": "4.2.34",
+  "version": "4.2.37",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -17,7 +17,7 @@
     "svgo": "^3.3.3"
   },
   "dependencies": {
-    "@searchstax-inc/searchstudio-ux-js": "npm:@searchstax-inc/searchstudio-ux-js@^4.2.34",
+    "@searchstax-inc/searchstudio-ux-js": "npm:@searchstax-inc/searchstudio-ux-js@^4.2.37",
     "dompurify": "^3.2.5",
     "patch-package": "^8.0.1"
   }
