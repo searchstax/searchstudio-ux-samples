@@ -1,6 +1,6 @@
 {
   "name": "next-js-sample",
-  "version": "4.2.38",
+  "version": "4.2.41",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,8 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@searchstax-inc/searchstudio-ux-js": "npm:@searchstax-inc/searchstudio-ux-js-staging@^4.2.38",
-    "@searchstax-inc/searchstudio-ux-react": "npm:@searchstax-inc/searchstudio-ux-react-staging@^4.2.38",
+    "@searchstax-inc/searchstudio-ux-js": "npm:@searchstax-inc/searchstudio-ux-js-staging@^4.2.41",
+    "@searchstax-inc/searchstudio-ux-react": "npm:@searchstax-inc/searchstudio-ux-react-staging@^4.2.41",
     "next": "15.5.21",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
