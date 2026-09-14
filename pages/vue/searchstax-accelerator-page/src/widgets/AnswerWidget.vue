@@ -1,6 +1,6 @@
 <template>
   <div>
-    <SearchstaxAnswerWidget :showMoreAfterWordCount="100" :feedbackwidget="feedbackConfig">
+    <SearchstaxAnswerWidget :showMoreAfterWordCount="100" :feedbackwidget="feedbackConfig" :isFullScreenConversation="true" >
       <template
         #answer="{ answerData, showMore, submitConversationQuestion, exitConversation, setConversationInputRef }"
       >
