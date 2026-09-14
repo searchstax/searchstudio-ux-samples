@@ -29,7 +29,7 @@
               </div>
             </div>
             <div
-              v-if="!answerData.answerLoading && answerData.isConversation"
+              v-if="!answerData.answerLoading && !answerData.showMoreButtonVisible && answerData.isConversation"
               :class="{
                 'searchstax-conversation-container': true,
                 'searchstax-conversation-container-full-screen': answerData.isFullScreenConversation
