@@ -20,7 +20,7 @@
           <div id="searchstax-feedback-container"></div>
           <SearchInputWidget />
           <!--- Search Input Widget -->
-          <SearchstaxAnswerWidget />
+          <SearchstaxAnswerWidget isFullScreenConversation="true" />
           <div class="search-details-container">
             <SearchFeedbackWidget />
             <!--- Search Feedback Widget -->

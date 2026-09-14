@@ -55,7 +55,7 @@ export function answerTemplate(
             </div>
           )}
         </div>
-        {!answerData.answerLoading && answerData.isConversation && (
+        {!answerData.answerLoading && !answerData.showMoreButtonVisible && answerData.isConversation && (
           <div className={`searchstax-conversation-container${answerData.isFullScreenConversation ? " searchstax-conversation-container-full-screen" : ""}`}>
             {answerData.showConversationHeader && (
               <div className="searchstax-conversation-full-screen-header">
