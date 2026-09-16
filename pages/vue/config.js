@@ -1,37 +1,31 @@
 const config = {
   language: "en",
-    model: "Main Profile",
-    searchURL:
-      "https://searchcloud-staging-3-us-east-1.searchstax.co/138/corpsitednrcrawlerdnd-6246/emselect",
-    suggesterURL:
-      "https://searchcloud-staging-3-us-east-1.searchstax.co/138/corpsitednrcrawlerdnd-6246_suggester/emsuggest",
-    trackApiKey: "CKHcsBBTMKtH1xWxhw76Tt3bpgbMAbKwlnyHginyoGc",
-    searchAuth: "7e6c816ba15a9f4917046f4d2967eef13d2a5a9f",
-    authType: "token",
-    relatedSearchesURL:
-      "https://staging.searchstax.co/api/v1/6246/related-search/",
-    relatedSearchesAPIKey: "0302d21778dbd2d6ff1b01b39169303bdcaad3a7",
-    analyticsBaseUrl: "https://analytics-us-west-staging.searchstax.co",
-    analyticsSrc:
-      "https://static-staging.searchstax.co/studio-js/v4/js/studio-analytics.js",
-    questionURL:
-      "https://search-ai-us-west-staging.searchstax.co/api/v1/6246/answer/",
-    appId: "6246",
+  searchURL:
+    "https://searchcloud-2-us-east-1.searchstax.com/29847/corpsiteuxsamples-1442/emselect",
+  suggesterURL:
+    "https://searchcloud-2-us-east-1.searchstax.com/29847/corpsiteuxsamples-1442_suggester/emsuggest",
+  trackApiKey: "DPAOKNB9c5chZZDwN1Il9dLUCLMGF1ggehy0dWewZwk",
+  searchAuth: "b065448ad1484e205f4851f0ce89d128e704e2f4",
+  authType: "token",
+  relatedSearchesURL: "https://app.searchstax.com/api/v1/1442/related-search/",
+  relatedSearchesAPIKey: "fac98ad405cc50e0c0693331e8d2119de592f0e3",
+  analyticsBaseUrl: "https://analytics-us.searchstax.com",
+  questionURL: "https://search-ai-us.searchstax.com/api/v1/1442/answer/",
+  model: "Default",
+  appId: "1442",
 };
 
 const jobSearchConfig = {
   language: "en",
   searchURL:
-    "https://ss128295-ag4l6w0z-us-west-1-aws.searchstax.co/solr/accessibilityjuliatestdonotdelete-3182/emselect",
+    "https://searchcloud-2-us-east-1.searchstax.com/29847/jobsearchuxsample-1447/emselect",
   suggesterURL:
-    "https://ss128295-ag4l6w0z-us-west-1-aws.searchstax.co/solr/accessibilityjuliatestdonotdelete-3182-suggester/emsuggest",
-  searchAuth: "YXBwMzE4Mi1hcGk6V2VsY29tZTEhIQ==",
-  trackApiKey: "feqWatajyMvdrpvMyFIMwdHtRdkjPqqHMttUCnVpRss",
-  authType: "basic",
-  relatedSearchesURL:
-    "https://staging.searchstax.co/api/v1/3182/related-search/",
-  relatedSearchesAPIKey: "055651fc679c8492ab98badd08ee6c6f2d8e25ce",
-  analyticsBaseUrl: "https://analytics-us-west-staging.searchstax.co",
+    "https://searchcloud-2-us-east-1.searchstax.com/29847/jobsearchuxsample-1447_suggester/emsuggest",
+  searchAuth: "9c77f740418413b6701fe7a98cc7c640987a9af1",
+  trackApiKey: "Cnpe2IL7uXaztPzavTIuDAiAmfydOa12f0iAGE0hLlY",
+  authType: "token",
+  relatedSearchesURL: "https://app.searchstax.com/api/v1/1447/related-search/",
+  relatedSearchesAPIKey: "3014f9d0276906ac17fff16c500e5ee75b20d73c",
 };
 
 const renderConfig = {
@@ -49,7 +43,7 @@ const renderConfig = {
       return new Promise((resolve) => {
         // make a request to google geocoding API to retrieve lat, lon and address
 
-        const geocodingAPIKey = "AIzaSyDK5wQQaz7kmP60_DViAto5rTQ301eVBFs";
+        const geocodingAPIKey = "AIzaSyDK5wQQaz7kmP60_DViAto5rTQ301eVBFs";// Replace with your actual API key
         const geocodingURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
           term
         )}&key=${geocodingAPIKey}`;
@@ -86,7 +80,7 @@ const renderConfig = {
     locationDecodeCoordinatesToAddress: (lat, lon) => {
       return new Promise((resolve) => {
         fetch(
-          `https://geocoding-staging.searchstax.co/reverse?location=${lat},${lon}&components=country:US&app_id=${config.appId}`,
+          `https://geocoding.searchstax.com/reverse?location=${lat},${lon}&components=country:US&app_id=${config.appId}`,
           {
             method: "GET",
             headers: {
