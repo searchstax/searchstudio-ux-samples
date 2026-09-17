@@ -162,6 +162,7 @@ export default function Home() {
               searchAnswerTemplate={answerTemplate}
               showMoreAfterWordCount={100}
               feedbackwidget={feedbackConfig}
+              isFullScreenConversation={true}
             ></SearchstaxAnswerWidget>
 
             <div className="search-details-container">

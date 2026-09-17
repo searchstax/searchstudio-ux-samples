@@ -155,6 +155,7 @@ function App() {
           <SearchstaxAnswerWidget
             searchAnswerTemplate={answerTemplate}
             showMoreAfterWordCount={100}
+            isFullScreenConversation={true}
             feedbackwidget={feedbackConfig}
           ></SearchstaxAnswerWidget>
           <div className="search-details-container">

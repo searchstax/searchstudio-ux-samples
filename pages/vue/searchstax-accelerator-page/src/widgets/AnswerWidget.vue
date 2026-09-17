@@ -1,7 +1,9 @@
 <template>
   <div>
-    <SearchstaxAnswerWidget :showMoreAfterWordCount="100" :feedbackwidget="feedbackConfig">
-      <template #answer="{ answerData, showMore }">
+    <SearchstaxAnswerWidget :showMoreAfterWordCount="100" :feedbackwidget="feedbackConfig" :isFullScreenConversation="true" >
+      <template
+        #answer="{ answerData, showMore, submitConversationQuestion, exitConversation, setConversationInputRef }"
+      >
         <div v-if="answerData && answerData?.searchExecuted && answerData.shouldShowAnswer">
           <div class="searchstax-answer-wrap">
             <div class="searchstax-answer-icon"></div>
@@ -24,6 +26,51 @@
                 <button class="searchstax-answer-load-more-button" @click="showMore">
                   Show More
                 </button>
+              </div>
+            </div>
+            <div
+              v-if="!answerData.answerLoading && !answerData.showMoreButtonVisible && answerData.isConversation"
+              :class="{
+                'searchstax-conversation-container': true,
+                'searchstax-conversation-container-full-screen': answerData.isFullScreenConversation
+              }"
+            >
+              <div v-if="answerData.showConversationHeader" class="searchstax-conversation-full-screen-header">
+                <button
+                  type="button"
+                  class="searchstax-conversation-back-to-results"
+                  @click="() => exitConversation()"
+                >
+                  Back to results
+                </button>
+                <div class="searchstax-conversation-full-screen-title">Ask SearchStax</div>
+              </div>
+              <div
+                v-if="answerData.showConversationMessages && answerData.conversationMessages?.length"
+                class="searchstax-conversation-messages-container"
+              >
+                <div
+                  v-for="(message, index) in answerData.conversationMessages"
+                  :key="message.conversationMessageId ?? index"
+                  :class="['searchstax-conversation-messages-container-message', message.messageClass]"
+                  v-html="message.formattedMessage"
+                ></div>
+              </div>
+              <div v-if="answerData.showConversationInput" class="searchstax-conversation-input-container">
+                <input
+                  type="text"
+                  id="searchstax-conversation-input"
+                  class="searchstax-conversation-input"
+                  placeholder="Ask a follow-up question"
+                  :ref="(el) => setConversationInputRef?.(el)"
+                  @keydown.enter.prevent="submitConversationQuestion($event.target.value)"
+                />
+                <button
+                  type="button"
+                  class="searchstax-conversation-search-icon searchstax-search-icon"
+                  aria-label="Submit follow-up question"
+                  @click="submitConversationQuestion($event.target.closest('.searchstax-conversation-input-container').querySelector('#searchstax-conversation-input').value)"
+                ></button>
               </div>
             </div>
             <div class="searchstax-answer-footer">
