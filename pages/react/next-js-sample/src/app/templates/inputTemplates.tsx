@@ -4,7 +4,7 @@ import {
   //@ts-ignore
 } from "@searchstax-inc/searchstudio-ux-react";
 import { LocationTemplate } from "./locationTemplates";
-import {renderConfig} from "./../../../../config.js";
+import {renderConfig} from "./../../../config.js";
 
 
 export function InputTemplate(
