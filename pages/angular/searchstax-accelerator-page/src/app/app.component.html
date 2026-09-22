@@ -198,6 +198,77 @@
               </div>
               }
             </div>
+            @if (!answerData.answerLoading && !answerData.showMoreButtonVisible && answerData.isConversation) {
+            <div
+              [class]="{
+                'searchstax-conversation-container': true,
+                'searchstax-conversation-container-full-screen':
+                  answerData.isFullScreenConversation
+              }"
+            >
+              @if (answerData.showConversationHeader) {
+              <div class="searchstax-conversation-full-screen-header">
+                <button
+                  type="button"
+                  class="searchstax-conversation-back-to-results"
+                  (click)="context.exitConversation(context)"
+                >
+                  Back to results
+                </button>
+                <div class="searchstax-conversation-full-screen-title">
+                  Ask SearchStax
+                </div>
+              </div>
+              }
+              @if (answerData.showConversationMessages && answerData.conversationMessages?.length) {
+              <div class="searchstax-conversation-messages-container">
+                @for (
+                  message of answerData.conversationMessages;
+                  track message.conversationMessageId ?? $index
+                ) {
+                <div
+                  [class]="
+                    'searchstax-conversation-messages-container-message' +
+                    (message.messageClass ? ' ' + message.messageClass : '')
+                  "
+                  [innerHTML]="message.formattedMessage"
+                ></div>
+                }
+              </div>
+              }
+              @if (answerData.showConversationInput) {
+              <div class="searchstax-conversation-input-container">
+                <input
+                  type="text"
+                  id="searchstax-conversation-input"
+                  class="searchstax-conversation-input"
+                  placeholder="Ask a follow-up question"
+                  #conversationInput
+                  (keydown.enter)="
+                    $event.preventDefault();
+                    context.submitConversationQuestion(
+                      conversationInput.value,
+                      context,
+                      conversationInput
+                    )
+                  "
+                />
+                <button
+                  type="button"
+                  class="searchstax-conversation-search-icon searchstax-search-icon"
+                  aria-label="Submit follow-up question"
+                  (click)="
+                    context.submitConversationQuestion(
+                      conversationInput.value,
+                      context,
+                      conversationInput
+                    )
+                  "
+                ></button>
+              </div>
+              }
+            </div>
+            }
             <div class="searchstax-answer-footer">
               <div id="feedbackWidgetContainer"></div>
               <div class="searchstax-lightweight-widget-separator-inline"></div>
