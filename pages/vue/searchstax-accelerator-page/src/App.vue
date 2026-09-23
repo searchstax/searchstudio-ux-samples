@@ -105,7 +105,7 @@ const sessionId = makeId(25)
 </script>
 
 <style lang="scss">
-@import './assets/style.scss';
+@use './assets/style.scss';
 #searchstax-feedback-container {
   width: calc(50% - 5px) !important;
   margin-left: auto !important;
