@@ -139,6 +139,7 @@ function App() {
         authType={config.authType}
         sessionId={sessionId}
         analyticsBaseUrl={config.analyticsBaseUrl}
+        analyticsSrc={config.analyticsSrc}
         router={{ enabled: true }}
         language={config.language}
         model={config.model}

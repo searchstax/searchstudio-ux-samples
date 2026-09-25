@@ -32,6 +32,7 @@ const jobSearchConfig = {
     "https://staging.searchstax.co/api/v1/3182/related-search/",
   relatedSearchesAPIKey: "055651fc679c8492ab98badd08ee6c6f2d8e25ce",
   analyticsBaseUrl: "https://analytics-us-west-staging.searchstax.co",
+  analyticsSrc: "https://static-staging.searchstax.co/studio-js/v4/js/studio-analytics.js",
 };
 
 const renderConfig = {
