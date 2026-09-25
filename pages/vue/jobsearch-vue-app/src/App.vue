@@ -8,6 +8,7 @@
       :searchAuth="jobSearchConfig.searchAuth"
       :sessionId="sessionId"
       :authType="jobSearchConfig.authType"
+      :analyticsSrc="jobSearchConfig.analyticsSrc"
     >
       <template #default>
           <nav>

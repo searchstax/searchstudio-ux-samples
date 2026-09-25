@@ -77,7 +77,7 @@ function App() {
         model: config.model,
         containerId: "searchstax-feedback-container",
         analyticsSrc:
-          "https://static-staging.searchstax.co/studio-js/v4.1.53/js/studio-analytics.js",
+          "https://static-staging.searchstax.co/studio-js/v4/js/studio-analytics.js",
       });
     }
   }
@@ -139,6 +139,7 @@ function App() {
         authType={config.authType}
         sessionId={sessionId}
         analyticsBaseUrl={config.analyticsBaseUrl}
+        analyticsSrc={config.analyticsSrc}
         router={{ enabled: true }}
         language={config.language}
         model={config.model}
