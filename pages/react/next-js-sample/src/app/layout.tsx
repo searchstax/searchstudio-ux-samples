@@ -17,7 +17,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link
-          href="https://static-staging.searchstax.co/studio-js/v4/css/feedbackWidget.css"
+          href="https://static.searchstax.com/studio-js/v4/css/feedbackWidget.css"
           rel="stylesheet"
         />
       </head>
