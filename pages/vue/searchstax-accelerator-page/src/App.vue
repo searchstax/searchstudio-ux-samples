@@ -75,7 +75,7 @@ onMounted(() => {
       model: config.model,
       containerId: 'searchstax-feedback-container',
       lightweight: false,
-      analyticsSrc: 'https://static.searchstax.com/studio-js/v4.1.53/js/studio-analytics.js'
+      analyticsSrc: 'https://static.searchstax.com/studio-js/v4/js/studio-analytics.js'
     })
   }, 300)
 })
@@ -105,7 +105,7 @@ const sessionId = makeId(25)
 </script>
 
 <style lang="scss">
-@import './assets/style.scss';
+@use './assets/style.scss';
 #searchstax-feedback-container {
   width: calc(50% - 5px) !important;
   margin-left: auto !important;
