@@ -6,3 +6,4 @@ dist/
 createRelease.cjs
 **/package-lock.json
 .cline/
+.clinerules
