@@ -7,3 +7,7 @@ createRelease.cjs
 **/package-lock.json
 .cline/
 .clinerules
+.claude/
+.local-agent/
+AGENTS.md
+CLAUDE.md
