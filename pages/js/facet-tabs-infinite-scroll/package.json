@@ -18,6 +18,7 @@
     "@searchstax-inc/searchstudio-ux-js": "npm:@searchstax-inc/searchstudio-ux-js-staging@^4.2.60"
   },
   "overrides": {
-    "immutable": "5.1.9"
+    "immutable": "5.1.9",
+    "source-map-js": "^1.2.2"
   }
 }
