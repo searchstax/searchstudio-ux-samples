@@ -17,7 +17,9 @@
   },
   "overrides": {
     "svgo": "^3.3.3",
-    "immutable": "5.1.9"
+    "immutable": "5.1.9",
+    "baseline-browser-mapping": "^2.11.0",
+    "browserslist": "^4.29.0"
   },
   "dependencies": {
     "@searchstax-inc/searchstudio-ux-js": "^0.4.3"

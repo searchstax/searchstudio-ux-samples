@@ -5,3 +5,4 @@ dist/
 .DS_Store
 createRelease.cjs
 **/package-lock.json
+.cline/
