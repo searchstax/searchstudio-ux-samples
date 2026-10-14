@@ -1,64 +1,59 @@
 const initConfig = {
-  acceleratorSample: {
-    language: "en",
-    searchURL:
-      "https://searchcloud-2-us-east-1.searchstax.com/29847/corpsiteuxsamples-1442/emselect",
-    suggesterURL:
-      "https://searchcloud-2-us-east-1.searchstax.com/29847/corpsiteuxsamples-1442_suggester/emsuggest",
-    searchAuth: "b065448ad1484e205f4851f0ce89d128e704e2f4",
-    trackApiKey: "DPAOKNB9c5chZZDwN1Il9dLUCLMGF1ggehy0dWewZwk",
-    authType: "token",
-    relatedSearchesURL:
-      "https://app.searchstax.com/api/v1/1442/related-search/",
-    relatedSearchesAPIKey: "fac98ad405cc50e0c0693331e8d2119de592f0e3",
-    analyticsBaseUrl: "https://analytics-us.searchstax.com",
-    questionURL: "https://search-ai-us.searchstax.com/api/v1/1442/answer/",
-    model: "Default",
-    appId: "1442",
-  },
-  acceleratorRelatedSearchSample: {
-    relatedSearchesURL:
-      "https://app.searchstax.com/api/v1/1442/related-search/",
-    relatedSearchesAPIKey: "fac98ad405cc50e0c0693331e8d2119de592f0e3",
-    model: "Default",
-  },
-  jobSearchSample: {
-    language: "en",
-    searchURL:
-      "https://searchcloud-2-us-east-1.searchstax.com/29847/jobsearchuxsample-1447/emselect",
-    suggesterURL:
-      "https://searchcloud-2-us-east-1.searchstax.com/29847/jobsearchuxsample-1447_suggester/emsuggest",
-    searchAuth: "9c77f740418413b6701fe7a98cc7c640987a9af1",
-    trackApiKey: "Cnpe2IL7uXaztPzavTIuDAiAmfydOa12f0iAGE0hLlY",
-    authType: "token",
-    analyticsBaseUrl: "https://analytics-us.searchstax.com",
-    model: "Default",
-  },
-  jobSearchRelatedSearchSample: {
-    relatedSearchesURL:
-      "https://app.searchstax.com/api/v1/1447/related-search/",
-    relatedSearchesAPIKey: "3014f9d0276906ac17fff16c500e5ee75b20d73c",
-    analyticsBaseUrl: "https://analytics-us.searchstax.com",
-    model: "Default",
-  },
-  searchStandaloneSearchSample: {
-    language: "en",
-    searchURL:
-      "",
-    suggesterURL:
-      "",
-    searchAuth: "",
-    trackApiKey: "DPAOKNB9c5chZZDwN1Il9dLUCLMGF1ggehy0dWewZwk",
-    authType: "token",
-    relatedSearchesURL:
-      "https://app.searchstax.com/api/v1/1442/related-search/",
-    relatedSearchesAPIKey: "fac98ad405cc50e0c0693331e8d2119de592f0e3",
-    analyticsBaseUrl: "https://analytics-us.searchstax.com",
-    questionURL: "https://search-ai-us.searchstax.com/api/v1/1442/answer/",
-    model: "Default",
-    appId: "1442",
-  },
-};
+    acceleratorSample: {
+      language: "en",
+      searchURL:
+        "https://searchcloud-2-us-east-1.searchstax.com/29847/corpsiteuxsamples-1442/emselect",
+      suggesterURL:
+        "https://searchcloud-2-us-east-1.searchstax.com/29847/corpsiteuxsamples-1442_suggester/emsuggest",
+      searchAuth: "b065448ad1484e205f4851f0ce89d128e704e2f4",
+      trackApiKey: "DPAOKNB9c5chZZDwN1Il9dLUCLMGF1ggehy0dWewZwk",
+      authType: "token",
+      relatedSearchesURL:
+        "https://app.searchstax.com/api/v1/1442/related-search/",
+      relatedSearchesAPIKey: "fac98ad405cc50e0c0693331e8d2119de592f0e3",
+      analyticsBaseUrl: 'https://analytics-us.searchstax.com',
+      questionURL: "https://search-ai-us.searchstax.com/api/v1/1442/answer/",
+    },
+    acceleratorRelatedSearchSample: {
+      relatedSearchesURL:
+        "https://app.searchstax.com/api/v1/1442/related-search/",
+      relatedSearchesAPIKey: "fac98ad405cc50e0c0693331e8d2119de592f0e3",
+    },
+    jobSearchSample: {
+      language: "en",
+      searchURL:
+        "https://searchcloud-2-us-east-1.searchstax.com/29847/jobsearchuxsample-1447/emselect",
+      suggesterURL:
+        "https://searchcloud-2-us-east-1.searchstax.com/29847/jobsearchuxsample-1447_suggester/emsuggest",
+      searchAuth: "9c77f740418413b6701fe7a98cc7c640987a9af1",
+      trackApiKey: "Cnpe2IL7uXaztPzavTIuDAiAmfydOa12f0iAGE0hLlY",
+      authType: "token",
+      analyticsBaseUrl: 'https://analytics-us.searchstax.com'
+    },
+    jobSearchRelatedSearchSample: {
+      relatedSearchesURL:
+        "https://app.searchstax.com/api/v1/1447/related-search/",
+      relatedSearchesAPIKey: "3014f9d0276906ac17fff16c500e5ee75b20d73c",
+      analyticsBaseUrl: 'https://analytics-us.searchstax.com'
+    },
+    locationSearchSample: {
+      language: "en",
+      searchURL:
+        "https://searchcloud-2-us-east-1.searchstax.com/29847/fiveguyslocationsdemo-4848/emselect",
+      suggesterURL:
+        "https://searchcloud-2-us-east-1.searchstax.com/29847/fiveguyslocationsdemo-4848_suggester/emsuggest",
+      searchAuth: "1641be461786e5b311905176ea67bcb8416c442d",
+      trackApiKey: "qYQh2M9XAE3sfBX2uUbNQ6UPTRK9zEoxptZ9tkfluVU",
+      authType: "token",
+      relatedSearchesURL:
+        "https://app.searchstax.com/api/v1/4848/related-search/",
+      relatedSearchesAPIKey: "9f755acd4eb7ba0935c318e7cb08f43cd0751257",
+      analyticsBaseUrl: 'https://analytics-us.searchstax.com',
+      questionURL: "https://search-ai-us.searchstax.com/api/v1/4848/answer/",
+      geocodingAPIKey: "**__add_your_own_**",
+      googleMapsApiKey: "**__add_your_own_**",
+    }
+  };
 
 const renderConfig = {
   inputWidget: {},
