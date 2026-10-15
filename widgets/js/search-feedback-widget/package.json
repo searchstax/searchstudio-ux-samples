@@ -19,7 +19,8 @@
     "svgo": "^3.3.3",
     "immutable": "5.1.9",
     "baseline-browser-mapping": "^2.11.0",
-    "browserslist": "^4.29.0"
+    "browserslist": "^4.29.0",
+    "source-map-js": "^1.2.2"
   },
   "dependencies": {
     "@searchstax-inc/searchstudio-ux-js": "^0.4.3"
