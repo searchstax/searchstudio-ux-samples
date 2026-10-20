@@ -31,7 +31,7 @@ export function answerTemplate(
               (answerData.showMoreButtonVisible === true ? "searchstax-answer-show-more" : "")
             }
           >
-            <div className="searchstax-answer-title">Smart Answers</div>
+            <h2 className="searchstax-answer-title">Smart Answers</h2>
               {answerData.shouldShowAnswerError && (
                 <div className="searchstax-answer-error" dangerouslySetInnerHTML={{__html:answerData.answerErrorMessage}}></div>
               )}
@@ -66,7 +66,7 @@ export function answerTemplate(
                 >
                   Back to results
                 </button>
-                <div className="searchstax-conversation-full-screen-title">Ask SearchStax</div>
+                <h1 className="searchstax-conversation-full-screen-title">Ask SearchStax</h1>
               </div>
             )}
             {answerData.showConversationMessages && answerData.conversationMessages?.length ? (
