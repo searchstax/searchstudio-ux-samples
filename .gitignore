@@ -11,3 +11,6 @@ createRelease.cjs
 .local-agent/
 AGENTS.md
 CLAUDE.md
+
+# Qwen Code config (local agent tooling, not app code)
+.qwen/
