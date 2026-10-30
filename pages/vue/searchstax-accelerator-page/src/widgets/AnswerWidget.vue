@@ -1,18 +1,35 @@
 <template>
   <div>
-    <SearchstaxAnswerWidget :showMoreAfterWordCount="100" :feedbackwidget="feedbackConfig" :isFullScreenConversation="true" >
+    <SearchstaxAnswerWidget
+      :showMoreAfterWordCount="100"
+      :feedbackwidget="feedbackConfig"
+      :isFullScreenConversation="true"
+    >
       <template
-        #answer="{ answerData, showMore, submitConversationQuestion, exitConversation, setConversationInputRef }"
+        #answer="{
+          answerData,
+          showMore,
+          submitConversationQuestion,
+          exitConversation,
+          setConversationInputRef
+        }"
       >
-        <div v-if="answerData && answerData?.searchExecuted && answerData.shouldShowAnswer">
+        <div v-if="answerData && answerData.shouldShowAnswer">
           <div class="searchstax-answer-wrap">
             <div class="searchstax-answer-icon"></div>
             <div>
               <div
-                :class="{'searchstax-answer-container': true, 'searchstax-answer-show-more': answerData.showMoreButtonVisible}"
+                :class="{
+                  'searchstax-answer-container': true,
+                  'searchstax-answer-show-more': answerData.showMoreButtonVisible
+                }"
               >
                 <h2 class="searchstax-answer-title">Smart Answers</h2>
-                <div class="searchstax-answer-error" v-if="answerData.shouldShowAnswerError" v-html="answerData.answerErrorMessage"></div>
+                <div
+                  class="searchstax-answer-error"
+                  v-if="answerData.shouldShowAnswerError"
+                  v-html="answerData.answerErrorMessage"
+                ></div>
                 <div
                   class="searchstax-answer-description"
                   v-html="answerData.fullAnswerFormatted"
@@ -23,54 +40,10 @@
                 v-if="answerData.showMoreButtonVisible"
                 class="searchstax-answer-load-more-button-container"
               >
+                <div v-if="answerData.answerLoading" class="searchstax-answer-loading"></div>
                 <button class="searchstax-answer-load-more-button" @click="showMore">
                   Show More
                 </button>
-              </div>
-            </div>
-            <div
-              v-if="!answerData.answerLoading && !answerData.showMoreButtonVisible && answerData.isConversation"
-              :class="{
-                'searchstax-conversation-container': true,
-                'searchstax-conversation-container-full-screen': answerData.isFullScreenConversation
-              }"
-            >
-              <div v-if="answerData.showConversationHeader" class="searchstax-conversation-full-screen-header">
-                <button
-                  type="button"
-                  class="searchstax-conversation-back-to-results"
-                  @click="() => exitConversation()"
-                >
-                  Back to results
-                </button>
-                <h1 class="searchstax-conversation-full-screen-title">Ask SearchStax</h1>
-              </div>
-              <div
-                v-if="answerData.showConversationMessages && answerData.conversationMessages?.length"
-                class="searchstax-conversation-messages-container"
-              >
-                <div
-                  v-for="(message, index) in answerData.conversationMessages"
-                  :key="message.conversationMessageId ?? index"
-                  :class="['searchstax-conversation-messages-container-message', message.messageClass]"
-                  v-html="message.formattedMessage"
-                ></div>
-              </div>
-              <div v-if="answerData.showConversationInput" class="searchstax-conversation-input-container">
-                <input
-                  type="text"
-                  id="searchstax-conversation-input"
-                  class="searchstax-conversation-input"
-                  placeholder="Ask a follow-up question"
-                  :ref="(el) => setConversationInputRef?.(el)"
-                  @keydown.enter.prevent="submitConversationQuestion($event.target.value)"
-                />
-                <button
-                  type="button"
-                  class="searchstax-conversation-search-icon searchstax-search-icon"
-                  aria-label="Submit follow-up question"
-                  @click="submitConversationQuestion($event.target.closest('.searchstax-conversation-input-container').querySelector('#searchstax-conversation-input').value)"
-                ></button>
               </div>
             </div>
             <div class="searchstax-answer-footer">
@@ -78,6 +51,81 @@
               <div class="searchstax-lightweight-widget-separator-inline"></div>
               <p class="searchstax-disclaimer">Generative AI is Experimental</p>
             </div>
+            <component
+              v-if="
+                !answerData.answerLoading &&
+                !answerData.showMoreButtonVisible &&
+                answerData.isConversation
+              "
+              :is="answerData.isFullScreenConversation ? 'dialog' : 'div'"
+              ref="conversationContainer"
+              :aria-label="answerData.isFullScreenConversation ? 'Ask SearchStax' : undefined"
+              @cancel.prevent="() => exitConversation?.()"
+              :class="{
+                'searchstax-conversation-container': true,
+                'searchstax-conversation-container-full-screen': answerData.isFullScreenConversation
+              }"
+            >
+              <div
+                v-if="answerData.showConversationHeader"
+                class="searchstax-conversation-full-screen-header"
+              >
+                <button
+                  type="button"
+                  class="searchstax-conversation-back-to-results"
+                  @click="() => exitConversation?.()"
+                >
+                  Back to results
+                </button>
+                <h1 class="searchstax-conversation-full-screen-title">Ask SearchStax</h1>
+                <div
+                  class="searchstax-conversation-full-screen-header-spacer"
+                  aria-hidden="true"
+                ></div>
+              </div>
+              <div
+                v-if="answerData.showConversationMessages"
+                class="searchstax-conversation-messages-container"
+                role="log"
+                aria-label="Conversation history"
+                aria-relevant="additions"
+                aria-atomic="false"
+              >
+                <div
+                  v-for="(message, index) in answerData.conversationMessages"
+                  :key="message.conversationMessageId ?? index"
+                  :class="[
+                    'searchstax-conversation-messages-container-message',
+                    message.messageClass
+                  ]"
+                  :aria-hidden="message.isStreaming ? 'true' : undefined"
+                  v-html="message.formattedMessage"
+                ></div>
+              </div>
+              <template v-if="answerData.showConversationInput">
+                <div
+                  v-if="answerData.showConversationMessages"
+                  class="searchstax-conversation-separator"
+                ></div>
+                <div class="searchstax-conversation-input-container">
+                  <input
+                    type="text"
+                    id="searchstax-conversation-input"
+                    class="searchstax-conversation-input"
+                    placeholder="Ask a follow-up question"
+                    :autofocus="answerData.isFullScreenConversation"
+                    :ref="(el) => setConversationInputRef?.(el)"
+                    @keydown="handleConversationInputKeydown($event, submitConversationQuestion)"
+                  />
+                  <button
+                    type="button"
+                    class="searchstax-conversation-search-icon searchstax-search-icon"
+                    aria-label="Submit follow-up question"
+                    @click="handleConversationSubmitClick($event, submitConversationQuestion)"
+                  ></button>
+                </div>
+              </template>
+            </component>
           </div>
         </div>
       </template>
@@ -86,10 +134,37 @@
 </template>
 
 <script>
+import { ref, watchPostEffect } from 'vue'
 import { SearchstaxAnswerWidget } from '@searchstax-inc/searchstudio-ux-vue'
 export default {
   components: {
     SearchstaxAnswerWidget
+  },
+  setup() {
+    const conversationContainer = ref(null)
+
+    watchPostEffect(() => {
+      const container = conversationContainer.value
+      if (container?.tagName === 'DIALOG' && !container.open) {
+        container.showModal()
+      }
+    })
+
+    return { conversationContainer }
+  },
+  methods: {
+    handleConversationInputKeydown(event, submitConversationQuestion) {
+      if (event.key !== 'Enter') {
+        return
+      }
+      event.preventDefault()
+      submitConversationQuestion?.(event.target.value)
+    },
+    handleConversationSubmitClick(event, submitConversationQuestion) {
+      const container = event.target?.closest('.searchstax-conversation-input-container')
+      const input = container?.querySelector('#searchstax-conversation-input')
+      submitConversationQuestion?.(input?.value ?? '')
+    }
   },
   data() {
     return {

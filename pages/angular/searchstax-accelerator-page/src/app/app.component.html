@@ -181,16 +181,18 @@
                   [innerHTML]="answerData.answerErrorMessage"
                 ></div>
                 }
-                <div
-                  class="searchstax-answer-description"
-                  [innerHTML]="answerData.fullAnswerFormatted"
-                ></div>
-                @if (answerData.answerLoading) {
-                <div class="searchstax-answer-loading"></div>
-                }
+                <div class="searchstax-answer-description">
+                  <span style="display: contents" [innerHTML]="answerData.fullAnswerFormatted"></span>
+                  @if (!answerData.showMoreButtonVisible && answerData.answerLoading) {
+                    <div class="searchstax-answer-loading"></div>
+                  }
+                </div>
               </div>
               @if (answerData.showMoreButtonVisible) {
               <div class="searchstax-answer-load-more-button-container">
+                @if (answerData.answerLoading) {
+                  <div class="searchstax-answer-loading"></div>
+                }
                 <button
                   class="searchstax-answer-load-more-button"
                   (click)="showMore($event, context)"
@@ -200,82 +202,92 @@
               </div>
               }
             </div>
-            @if (!answerData.answerLoading && !answerData.showMoreButtonVisible && answerData.isConversation) {
-            <div
-              [class]="{
-                'searchstax-conversation-container': true,
-                'searchstax-conversation-container-full-screen':
-                  answerData.isFullScreenConversation
-              }"
-            >
-              @if (answerData.showConversationHeader) {
-              <div class="searchstax-conversation-full-screen-header">
-                <button
-                  type="button"
-                  class="searchstax-conversation-back-to-results"
-                  (click)="context.exitConversation(context)"
-                >
-                  Back to results
-                </button>
-                <h1 class="searchstax-conversation-full-screen-title">
-                  Ask SearchStax
-                </h1>
-              </div>
-              }
-              @if (answerData.showConversationMessages && answerData.conversationMessages?.length) {
-              <div class="searchstax-conversation-messages-container">
-                @for (
-                  message of answerData.conversationMessages;
-                  track message.conversationMessageId ?? $index
-                ) {
-                <div
-                  [class]="
-                    'searchstax-conversation-messages-container-message' +
-                    (message.messageClass ? ' ' + message.messageClass : '')
-                  "
-                  [innerHTML]="message.formattedMessage"
-                ></div>
-                }
-              </div>
-              }
-              @if (answerData.showConversationInput) {
-              <div class="searchstax-conversation-input-container">
-                <input
-                  type="text"
-                  id="searchstax-conversation-input"
-                  class="searchstax-conversation-input"
-                  placeholder="Ask a follow-up question"
-                  #conversationInput
-                  (keydown.enter)="
-                    $event.preventDefault();
-                    context.submitConversationQuestion(
-                      conversationInput.value,
-                      context,
-                      conversationInput
-                    )
-                  "
-                />
-                <button
-                  type="button"
-                  class="searchstax-conversation-search-icon searchstax-search-icon"
-                  aria-label="Submit follow-up question"
-                  (click)="
-                    context.submitConversationQuestion(
-                      conversationInput.value,
-                      context,
-                      conversationInput
-                    )
-                  "
-                ></button>
-              </div>
-              }
-            </div>
-            }
             <div class="searchstax-answer-footer">
               <div id="feedbackWidgetContainer"></div>
               <div class="searchstax-lightweight-widget-separator-inline"></div>
               <p class="searchstax-disclaimer">Generative AI is Experimental</p>
             </div>
+            @if (!answerData.answerLoading && !answerData.showMoreButtonVisible && answerData.isConversation) {
+              @if (answerData.isFullScreenConversation) {
+                <dialog
+                  class="searchstax-conversation-container searchstax-conversation-container-full-screen"
+                  aria-label="Ask SearchStax"
+                >
+                  <ng-container [ngTemplateOutlet]="conversationContent"></ng-container>
+                </dialog>
+              } @else {
+                <div class="searchstax-conversation-container">
+                  <ng-container [ngTemplateOutlet]="conversationContent"></ng-container>
+                </div>
+              }
+            }
+            <ng-template #conversationContent>
+              @if (answerData.showConversationHeader) {
+                <div class="searchstax-conversation-full-screen-header">
+                  <button
+                    type="button"
+                    class="searchstax-conversation-back-to-results"
+                    (click)="context.exitConversation(context)"
+                  >
+                    Back to results
+                  </button>
+                  <h1 class="searchstax-conversation-full-screen-title">Ask SearchStax</h1>
+                  <div class="searchstax-conversation-full-screen-header-spacer" aria-hidden="true"></div>
+                </div>
+              }
+              @if (answerData.showConversationMessages) {
+                <div
+                  class="searchstax-conversation-messages-container"
+                  role="log"
+                  aria-label="Conversation history"
+                  aria-relevant="additions"
+                  aria-atomic="false"
+                >
+                  @for (message of answerData.conversationMessages; track $index) {
+                    <div
+                      class="searchstax-conversation-messages-container-message {{ message.messageClass }}"
+                      [attr.aria-hidden]="message.isStreaming ? 'true' : null"
+                      [innerHTML]="message.formattedMessage"
+                    ></div>
+                  }
+                </div>
+              }
+              @if (answerData.showConversationInput) {
+                @if (answerData.showConversationMessages) {
+                  <div class="searchstax-conversation-separator"></div>
+                }
+                <div class="searchstax-conversation-input-container">
+                  <input
+                    type="text"
+                    id="searchstax-conversation-input"
+                    class="searchstax-conversation-input"
+                    placeholder="Ask a follow-up question"
+                    [attr.autofocus]="answerData.isFullScreenConversation ? '' : null"
+                    #conversationInput
+                    (keydown.enter)="
+                      $event.preventDefault();
+                      context.submitConversationQuestion(
+                        conversationInput.value,
+                        context,
+                        conversationInput
+                      )
+                    "
+                  />
+                  <button
+                    type="button"
+                    class="searchstax-conversation-search-icon searchstax-search-icon"
+                    aria-label="Submit follow-up question"
+                    (click)="
+                      context.submitConversationQuestion(
+                        conversationInput.value,
+                        context,
+                        conversationInput
+                      )
+                    "
+                  ></button>
+                </div>
+              }
+            </ng-template>
           </div>
         </ng-template>
       </app-searchstax-answer>

@@ -36,13 +36,13 @@ searchstax.initialize({
 });
 searchstax.addAnswerWidget("searchstax-answer-container", {
   showMoreAfterWordCount: 100,
-  isFullScreenConversation: false,
+  isFullScreenConversation: true,
   templates: {
     main: {
       template: `
         {{#shouldShowAnswer}}
         <div class="searchstax-answer-wrap">
-        <div class="searchstax-answer-icon"></div>
+            <div class="searchstax-answer-icon"></div>
             <div>
                 <div class="searchstax-answer-container {{#showMoreButtonVisible}}searchstax-answer-show-more{{/showMoreButtonVisible}}">
                     <h2 class="searchstax-answer-title">Smart Answers</h2>
@@ -52,9 +52,9 @@ searchstax.addAnswerWidget("searchstax-answer-container", {
                     <div class="searchstax-answer-description">
                         {{{fullAnswerFormatted}}}
                         {{^showMoreButtonVisible}}
-                          {{#answerLoading}}
-                              <div class="searchstax-answer-loading"></div>
-                          {{/answerLoading}}
+                            {{#answerLoading}}
+                                <div class="searchstax-answer-loading"></div>
+                            {{/answerLoading}}
                         {{/showMoreButtonVisible}}
                     </div>
 
@@ -74,10 +74,16 @@ searchstax.addAnswerWidget("searchstax-answer-container", {
                 <div class="searchstax-lightweight-widget-separator-inline"></div>
                 <p class="searchstax-disclaimer">Generative AI is Experimental</p>
             </div>
-            {{^answerLoading}}
+
+          {{^answerLoading}}
               {{^showMoreButtonVisible}}
                 {{#isConversation}}
-                  <div class="searchstax-conversation-container {{#isFullScreenConversation}}searchstax-conversation-container-full-screen{{/isFullScreenConversation}}">
+                  {{#isFullScreenConversation}}
+                  <dialog class="searchstax-conversation-container searchstax-conversation-container-full-screen" aria-label="Ask SearchStax">
+                  {{/isFullScreenConversation}}
+                  {{^isFullScreenConversation}}
+                  <div class="searchstax-conversation-container">
+                  {{/isFullScreenConversation}}
                     {{#showConversationHeader}}
                     <div class="searchstax-conversation-full-screen-header">
                       <button type="button" class="searchstax-conversation-back-to-results">Back to results</button>
@@ -86,9 +92,9 @@ searchstax.addAnswerWidget("searchstax-answer-container", {
                     </div>
                     {{/showConversationHeader}}
                     {{#showConversationMessages}}
-                    <div class="searchstax-conversation-messages-container">
+                    <div class="searchstax-conversation-messages-container" role="log" aria-label="Conversation history" aria-relevant="additions" aria-atomic="false">
                       {{#conversationMessages}}
-                      <div class="searchstax-conversation-messages-container-message {{messageClass}}">
+                      <div class="searchstax-conversation-messages-container-message {{messageClass}}"{{#isStreaming}} aria-hidden="true"{{/isStreaming}}>
                         {{{formattedMessage}}}
                       </div>
                       {{/conversationMessages}}
@@ -99,14 +105,16 @@ searchstax.addAnswerWidget("searchstax-answer-container", {
                     <div class="searchstax-conversation-separator"></div>
                     {{/showConversationMessages}}
                     <div class="searchstax-conversation-input-container">
-                      <input type="text" id="searchstax-conversation-input" class="searchstax-conversation-input" placeholder="Ask a follow-up question" />
+                      <input type="text" id="searchstax-conversation-input" class="searchstax-conversation-input" placeholder="Ask a follow-up question" {{#isFullScreenConversation}}autofocus{{/isFullScreenConversation}} />
                       <button type="button" class="searchstax-conversation-search-icon searchstax-search-icon" aria-label="Submit follow-up question"></button>
                     </div>
                     {{/showConversationInput}}
-                  </div>
+                  {{#isFullScreenConversation}}</dialog>{{/isFullScreenConversation}}
+                  {{^isFullScreenConversation}}</div>{{/isFullScreenConversation}}
               {{/isConversation}}
             {{/showMoreButtonVisible}}
           {{/answerLoading}}
+            </div>
         {{/shouldShowAnswer}}
         `,
     },
