@@ -62,7 +62,7 @@ searchstax.initialize({
     },
     afterSearch: (
       results: ISearchstaxParsedResult[],
-      _unparsedResponse: ISearchstaxSearchResponse,
+      unparsedResponse: ISearchstaxSearchResponse,
     ) => {
       const copy = [...results];
       return copy;
